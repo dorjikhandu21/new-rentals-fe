@@ -1,14 +1,12 @@
 {
+  "name": "new-rentals",
   "projectType": "application",
-  "root": "apps/new-rentals",
   "sourceRoot": "apps/new-rentals/src",
   "prefix": "new-rentals",
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/new-rentals",
         "index": "apps/new-rentals/src/index.html",
@@ -25,9 +23,7 @@
           "apps/new-rentals/src/styles.scss"
         ],
         "scripts": [],
-        "allowedCommonJsDependencies": [
-          "lodash", "fast-json-stable-stringify"
-        ]
+        "allowedCommonJsDependencies": ["lodash", "fast-json-stable-stringify"]
       },
       "configurations": {
         "production": {
@@ -91,9 +87,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/apps/new-rentals"
-      ],
+      "outputs": ["coverage/apps/new-rentals"],
       "options": {
         "jestConfig": "apps/new-rentals/jest.config.js",
         "passWithNoTests": true

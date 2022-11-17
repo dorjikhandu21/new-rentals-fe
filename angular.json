@@ -1,7 +1,11 @@
 {
   "version": 2,
   "projects": {
+    "auth": "libs/auth",
+    "layout": "libs/layout",
     "new-rentals": "apps/new-rentals",
-    "new-rentals-e2e": "apps/new-rentals-e2e"
+    "new-rentals-e2e": "apps/new-rentals-e2e",
+    "shared": "libs/shared",
+    "shell": "libs/shell"
   }
 }
