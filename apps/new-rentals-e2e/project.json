@@ -1,0 +1,28 @@
+{
+  "root": "apps/new-rentals-e2e",
+  "sourceRoot": "apps/new-rentals-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/new-rentals-e2e/cypress.json",
+        "devServerTarget": "new-rentals:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "new-rentals:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/new-rentals-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["new-rentals"]
+}
