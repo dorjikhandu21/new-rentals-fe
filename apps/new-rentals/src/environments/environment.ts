@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  graphqlUrl: '/api/v1/graphql',
+  graphqlUrl: 'https://newrentals.tk/api/v1/graphql',
+  loginUrl: 'https://newrentals.tk/api/v1/users/sign_in',
+  signUpUrl: 'https://newrentals.tk/api/v1/users',
   serverUrl: 'https://newrentals.tk/api/v1',
 };
 

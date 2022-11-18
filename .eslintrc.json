@@ -23,8 +23,45 @@
     },
     {
       "files": ["*.ts", "*.tsx"],
+      "excludedFiles": ["*.spec.ts"],
       "extends": ["plugin:@nrwl/nx/typescript"],
-      "rules": {}
+      "rules": {
+        "@typescript-eslint/ban-ts-comment": "off",
+        "max-lines": ["error", {"max": 400 }],
+        "max-lines-per-function": ["error", 22],
+        "max-params": ["error", { "max": 5 }],
+        "@typescript-eslint/typedef": ["error", {
+          "variableDeclaration": true,
+          "memberVariableDeclaration": true,
+          "propertyDeclaration": true,
+          "variableDeclarationIgnoreFunction": true
+        }
+        ],
+        "@typescript-eslint/explicit-function-return-type": "error",
+        "@typescript-eslint/adjacent-overload-signatures": "warn",
+        "arrow-body-style": ["warn", "as-needed"],
+        "camelcase": "off",
+        "@typescript-eslint/naming-convention": [
+          "error",
+          {
+            "selector": "default",
+            "format": ["camelCase"]
+          },
+
+          {
+            "selector": ["variable", "memberLike"],
+            "format": ["camelCase", "UPPER_CASE", "snake_case"]
+          },
+          {
+            "selector": "typeLike",
+            "format": ["PascalCase"]
+          },
+          {
+            "selector": "property",
+            "format": ["snake_case", "camelCase"]
+          }
+        ]
+      }
     },
     {
       "files": ["*.js", "*.jsx"],

@@ -7,7 +7,7 @@
         "url": "https://newrentals.tk/api/v1/graphql",
         "headers": {
           "user-agent": "JS GraphQL",
-          "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJjMGM5N2U2My1kN2RjLTQ1MDYtODFkMi0yNjNhMWY2ZmYwMTMiLCJzdWIiOiIyIiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjY4NzE2Mjk5LCJleHAiOjE2Njg4ODkwOTl9.hAN3tlilOPvw762xisMQgJWPTT2yvhG12HzZlkfpAcc"
+          "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJjMGM5N2U2My1kN2RjLTQ1MDYtODFkMi0yNjNhMWY2ZmYwMTMiLCJzdWIiOiIyIiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjY4Nzg0NDg4LCJleHAiOjE2Njg5NTcyODh9.KNEPq4GJTwVqVOW49AoF7LGnACrg8HM4P3oQC33KPb4"
         },
         "introspect": true
       }

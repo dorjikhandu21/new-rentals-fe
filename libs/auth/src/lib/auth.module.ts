@@ -14,6 +14,7 @@ import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatSelectModule} from "@angular/material/select";
 import {TranslateModule} from "@ngx-translate/core";
 import {ReactiveFormsModule} from "@angular/forms";
+import {AuthService} from "./auth/service/auth.service";
 
 @NgModule({
     imports: [CommonModule, MatCardModule, FlexModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, RouterLinkWithHref, MatTooltipModule, MatSelectModule, TranslateModule.forRoot(), ReactiveFormsModule],
@@ -23,7 +24,7 @@ export class AuthModule {
   static forRoot(): ModuleWithProviders<any> {
     return {
       ngModule: AuthModule,
-      providers: []
+      providers: [AuthService]
     };
   }
 }

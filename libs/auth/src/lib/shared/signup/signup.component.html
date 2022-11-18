@@ -1,4 +1,4 @@
-<div class="sign-up m-28">
+<div class="sign-up m-28" [formGroup]="signUpForm" >
   <p class="font-size-24 mt-0 mb-28 text-center">Create an Account</p>
   <div fxLayout="row wrap" fxLayoutAlign="space-between">
 
@@ -16,23 +16,23 @@
 
     <mat-form-field appearance="outline" fxFlex="73" fxFlex.xs="100" data-cy="firstname">
       <mat-label>Full Name</mat-label>
-      <input matInput>
+      <input matInput [formControl]="$any(signUpForm.get('profile').get('full_name'))">
     </mat-form-field>
 
 
     <mat-form-field appearance="outline" fxFlex="100" data-cy="email">
       <mat-label>Email</mat-label>
-      <input matInput>
+      <input matInput [formControl]="$any(signUpForm.get('email'))">
     </mat-form-field>
 
     <mat-form-field appearance="outline" fxFlex="100" data-cy="phone">
       <mat-label>Phone Number</mat-label>
-      <input matInput>
+      <input matInput [formControl]="$any(signUpForm.get('profile').get('phone'))">
     </mat-form-field>
 
     <mat-form-field appearance="outline" fxFlex="49" fxFlex.xs="100" data-cy="password">
       <mat-label>{{'Password' | translate}}</mat-label>
-      <input matInput [type]="passwordInVisibility.password ? 'password' : 'text'">
+      <input matInput [type]="passwordInVisibility.password ? 'password' : 'text'" [formControl]="$any(signUpForm?.get('password'))">
       <i matSuffix tabIndex="-1"
          class="pi {{passwordInVisibility.password ? 'pi-eye' : 'pi-eye-slash'}} boulder-color s-20 hand-cursor"
          [matTooltip]="(passwordInVisibility.password ? 'Show Password' : 'Hide Password') | translate"
@@ -41,17 +41,14 @@
 
     <mat-form-field appearance="outline" fxFlex="49" fxFlex.xs="100" data-cy="cPassword">
       <mat-label>{{'Confirm Password' | translate}}</mat-label>
-      <input matInput [type]="passwordInVisibility.confirmPassword ? 'password' : 'text'">
+      <input matInput [type]="passwordInVisibility.confirmPassword ? 'password' : 'text'" [formControl]="$any(signUpForm.get('password_confirmation'))">
       <i matSuffix tabIndex="-1"
          class="pi {{passwordInVisibility.confirmPassword ? 'pi-eye' : 'pi-eye-slash'}} boulder-color s-20 hand-cursor"
          [matTooltip]="(passwordInVisibility.confirmPassword ? 'Show Password' : 'Hide Password') | translate"
          (click)="passwordInVisibility.confirmPassword = !passwordInVisibility.confirmPassword"></i>
-
-      <!--   <mat-error class="white-space&#45;&#45;nowrap">
-           Mismatch Password
-         </mat-error>-->
+      <mat-error class="white-space&#45;&#45;nowrap" *ngIf="mismatchPassword">Mismatch Password </mat-error>
     </mat-form-field>
-    <button mat-flat-button color="primary" class="full-width my-8" data-cy="signUp"> {{'Sign Up' | translate}}</button>
+    <button [disabled]="signUpForm.invalid" mat-flat-button color="primary" class="full-width my-8" data-cy="signUp" (click)="signUp()"> {{'Sign Up' | translate}}</button>
     <div fxFlex="100" fxLayout="row" fxLayoutAlign="center center" class="my-16">
       <hr fxFlex="30"/>
       <span>Or Sign In with</span>
