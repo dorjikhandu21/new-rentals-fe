@@ -2,6 +2,9 @@ import {NgModule, Optional, SkipSelf} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule, Routes, UrlSerializer} from "@angular/router";
 import {HttpClientModule} from "@angular/common/http";
+import {AuthenticatedGuard} from "../guards/authenticated.guard";
+import {ENV_TOKEN} from "@new-rentals/auth";
+import {environment} from "../../environments/environment";
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'auth' },
@@ -18,7 +21,7 @@ const routes: Routes = [
   {
     path: 'users',
     loadChildren: () => import('../user-management/app-user-management/app-user-management.module').then(m => m.AppUserManagementModule),
-    canActivate: []
+    canActivate: [AuthenticatedGuard]
   },
 ];
 
@@ -36,7 +39,8 @@ export function malformedErrHandler(error: URIError, urlSerializer: UrlSerialize
     RouterModule.forRoot(routes, {
       malformedUriErrorHandler: malformedErrHandler
     })
-  ]
+  ],
+  providers: [AuthenticatedGuard]
 })
 export class CoreModule {
   constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
