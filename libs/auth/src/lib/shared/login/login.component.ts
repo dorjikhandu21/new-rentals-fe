@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { switchMap, tap} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {AuthFacadeService} from "@new-rentals/layout";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {EndPointUris} from "../../auth/models/auth.model";
 
 @Component({
   selector: 'new-rentals-login',
@@ -10,6 +12,11 @@ import {AuthFacadeService} from "@new-rentals/layout";
 })
 export class LoginComponent implements OnInit {
   passwordVisibility = true;
+  loginEndPointUri = EndPointUris.LOGIN_URI;
+  loginForm: FormGroup = new FormGroup({
+    email: new FormControl('dk3@newrentals.com', Validators.required),
+    password: new FormControl('status200', Validators.required)
+  })
   constructor(private http: HttpClient, private authFacadeService: AuthFacadeService) {}
 
   ngOnInit(): void {
@@ -19,9 +26,9 @@ export class LoginComponent implements OnInit {
 
   login(): void {
 
-    this.http.post('https://newrentals.tk/api/v1/users/sign_in', { user: {email: 'dk3@newrentals.com', password: 'status200'}} ).pipe(switchMap((res) => {
+    this.http.post(this.loginEndPointUri, { user: {...this.loginForm.value}} ).pipe(switchMap((user) => {
       // @ts-ignore
-      return this.authFacadeService.updateUser({attributes: res['id']})
+      return this.authFacadeService.updateUser({attributes: user['id']})
     })).subscribe();
   }
 

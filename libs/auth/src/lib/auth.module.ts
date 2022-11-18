@@ -13,9 +13,10 @@ import {RouterLinkWithHref} from "@angular/router";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatSelectModule} from "@angular/material/select";
 import {TranslateModule} from "@ngx-translate/core";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
-  imports: [CommonModule, MatCardModule, FlexModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, RouterLinkWithHref, MatTooltipModule, MatSelectModule, TranslateModule.forRoot()],
+    imports: [CommonModule, MatCardModule, FlexModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, RouterLinkWithHref, MatTooltipModule, MatSelectModule, TranslateModule.forRoot(), ReactiveFormsModule],
   declarations: [AuthComponent, LoginComponent, SignupComponent],
 })
 export class AuthModule {
