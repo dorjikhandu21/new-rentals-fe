@@ -25,7 +25,6 @@ const routes: Routes = [
   },
 ];
 
-
 export function malformedErrHandler(error: URIError, urlSerializer: UrlSerializer, url: string) {
   window.location.replace('404');
   return urlSerializer.parse('/404');
