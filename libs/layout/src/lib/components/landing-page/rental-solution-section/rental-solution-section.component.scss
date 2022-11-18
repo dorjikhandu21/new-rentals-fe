@@ -1,0 +1,45 @@
+@import "apps/new-rentals/src/assets/styles/variables";
+.nr-portal {
+  scale: 1.09;
+  box-shadow:  0 4px 10px rgba($black-color, 0.25);
+}
+
+.permission-accordion {
+  .mat-accordion {
+    & .mat-expansion-panel-spacing:first-child {
+      margin-top: 20px;
+    }
+
+    ::ng-deep.mat-expansion-panel {
+      border-radius: 8px !important;
+      margin-top: 20px !important;
+
+      mat-expansion-panel-header {
+        height: 64px !important;
+      }
+
+      &:not(.mat-expanded) mat-expansion-panel-header {
+        &:hover:not([aria-disabled='true']) {
+          background: lighten($primary-color, 43%);
+        }
+
+        &.mat-expansion-toggle-indicator-after .mat-expansion-indicator{
+          margin-right: 7px !important;
+        }
+      }
+      &.mat-expanded mat-expansion-panel-header {
+        background: $primary-color;
+        .mat-expansion-panel-header-title {
+          color: $white-color !important;
+        }
+        .mat-expansion-toggle-indicator-after .mat-expansion-indicator{
+          color: $white-color !important;
+        }
+      }
+    }
+
+    table tr:last-of-type td {
+      border-bottom: none;
+    }
+  }
+}

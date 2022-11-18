@@ -7,10 +7,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {GraphQLModule} from "./graphql.module";
 import {RouterOutlet} from "@angular/router";
 import {CoreModule} from "./core";
+import {GoogleMapsModule} from "@angular/google-maps";
 
 @NgModule({
   declarations: [AppComponent, NxWelcomeComponent],
-  imports: [BrowserModule, BrowserAnimationsModule, GraphQLModule, RouterOutlet, CoreModule],
+  imports: [BrowserModule, BrowserAnimationsModule, GraphQLModule, RouterOutlet, CoreModule, GoogleMapsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

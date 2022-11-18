@@ -422,3 +422,11 @@ mat-checkbox .mat-checkbox-layout {
 .modal-loader .mat-dialog-container {
   padding-top: 0 !important;
 }
+
+.mat-mdc-text-field-wrapper.mdc-text-field--outlined .mat-mdc-form-field-infix {
+  padding-top: 12px;
+  padding-bottom: 16px;
+}
+.mat-mdc-form-field-flex {
+  height: 48px;
+}

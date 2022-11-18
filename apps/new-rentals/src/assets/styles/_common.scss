@@ -68,7 +68,7 @@ a {
 }
 
 .light-bg{
-  background-color: lighten($primary-color, 43%);
+  background-color: lighten($primary-color, 43%) !important;
 }
 
 @include nr-media(lt-md) {
@@ -442,4 +442,20 @@ $colorsMap: (success: $success-color, accent: $accent-color, red: $warn-color);
 
 .facebook-btn {
   background:  lighten(#1877F2, 45%) !important;
+}
+
+.landing-page {
+  overflow-y: auto;
+  height: 100vh;
+}
+
+.line-break {
+  width: 40%;
+
+  hr {
+    background: #FFBABA;
+    height: 4px;
+    border-radius: 8px;
+    margin: 0 26px;
+  }
 }
