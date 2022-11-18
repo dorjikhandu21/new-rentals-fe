@@ -8,4 +8,10 @@ import {RouterOutlet} from "@angular/router";
   imports: [CommonModule, LayoutModule, RouterOutlet],
   declarations: [ShellComponent],
 })
-export class ShellModule {}
+export class ShellModule {
+  static forRoot() {
+    return {
+      ngModule: ShellModule
+    };
+  }
+}

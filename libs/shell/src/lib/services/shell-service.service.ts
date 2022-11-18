@@ -5,7 +5,7 @@ import {ShellComponent} from "../components/shell/shell.component";
 @Injectable({
   providedIn: 'root'
 })
-export class ShellServiceService {
+export class ShellService {
 
   constructor() { }
   static childRoutes(routes: Routes): Route {

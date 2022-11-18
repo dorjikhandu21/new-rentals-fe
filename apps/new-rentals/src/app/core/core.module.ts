@@ -14,6 +14,12 @@ const routes: Routes = [
     loadChildren: () => import('../auth/app-auth/app-auth.module').then(m => m.AppAuthModule),
     canActivate: []
   },
+
+  {
+    path: 'users',
+    loadChildren: () => import('../user-management/app-user-management/app-user-management.module').then(m => m.AppUserManagementModule),
+    canActivate: []
+  },
 ];
 
 
