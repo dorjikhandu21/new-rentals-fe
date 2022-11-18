@@ -17,7 +17,7 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    window.location.pathname === '/auth' && this.credentials.isAuthenticated() && this.router.navigate(['/users']);
+    // window.location.pathname === '/' && this.credentials.isAuthenticated() && this.router.navigate(['']);
     this.loadLatestVersion();
   }
 

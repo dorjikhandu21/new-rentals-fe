@@ -12,6 +12,7 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {TranslateModule} from "@ngx-translate/core";
 import {ENV_TOKEN} from "@new-rentals/auth";
 import {environment} from "../environments/environment";
+import {SwUpdate} from "@angular/service-worker";
 
 @NgModule({
   declarations: [AppComponent, NxWelcomeComponent],
@@ -19,7 +20,10 @@ import {environment} from "../environments/environment";
   providers: [{
     provide: ENV_TOKEN,
     useValue: environment
-  },],
+  },{
+    provide: SwUpdate,
+    useValue: SwUpdate
+  }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
