@@ -54,3 +54,14 @@ nav.shift ul li a:hover:after {
 }
 
 
+
+.main-nav ul li a {
+  display: flex !important;
+  padding: 8px;
+  text-decoration: none;
+  margin: 0 10px;
+  color: black;
+}
+.main-nav ul li a:hover mat-icon{
+  color: white !important;
+}

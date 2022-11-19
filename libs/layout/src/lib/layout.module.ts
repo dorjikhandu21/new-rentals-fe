@@ -17,6 +17,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { FaqSectionsComponent } from './components/faq-sections/faq-sections.component';
 import {MatSelectModule} from "@angular/material/select";
+import {UserManagementModule} from "@new-rentals/user-management";
 
 @NgModule({
   imports: [
@@ -30,6 +31,7 @@ import {MatSelectModule} from "@angular/material/select";
     MatCardModule,
     MatExpansionModule,
     MatSelectModule,
+    UserManagementModule,
   ],
   declarations: [
     LayoutComponent,

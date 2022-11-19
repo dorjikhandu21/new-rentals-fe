@@ -224,7 +224,7 @@ button {
   text-shadow: none;
 }
 
-button:not(.mat-icon-button):not(.mat-button-toggle-button):not(.mat-sort-header-button):not(.mat-mini-fab):not(.remarks-button):not(.add-billing-addresses ) {
+.mat-mdc-button {
   border-radius: 4px;
   min-height: 40px !important;
   min-width: 130px !important;
@@ -429,4 +429,7 @@ mat-checkbox .mat-checkbox-layout {
 }
 .mat-mdc-form-field-flex {
   height: 48px;
+}
+.mat-toolbar-single-row {
+  height: 90px !important;
 }
