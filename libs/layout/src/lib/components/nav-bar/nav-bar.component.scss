@@ -1,12 +1,12 @@
 nav ul {
-  list-style: none;
-  text-align: center;
+  list-style: none !important;
+  text-align: center !important;
 }
 nav ul li {
-  display: inline-block;
+  display: inline-block !important;
 }
 nav ul li a {
-  display: block;
+  display: block !important;
   padding: 16px;
   text-decoration: none;
   margin: 0 10px;
@@ -24,7 +24,7 @@ nav ul li a:hover {
 
 
 nav.shift ul li a {
-  position:relative;
+  position:relative !important;
   z-index: 1;
 }
 nav.shift ul li a:hover {
@@ -42,7 +42,7 @@ nav.shift ul li a:after {
   height: 1px;
   content: '.';
   color: transparent;
-  background: #D7385E;
+  background: #D7385E !important;
   visibility: none;
   opacity: 0;
   z-index: -1;
