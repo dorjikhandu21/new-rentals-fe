@@ -35,6 +35,7 @@ export class AuthComponent implements OnInit {
   signUp(signUpData: any): void {
     this.authService.signUp(signUpData).pipe(tap(response => {
       this.notificationService.success('Signed In Successfully');
+      this.router.navigate([''])
     }, (error) => {
       this.notificationService.error(error['error']['errors'][0]);
     })).subscribe();

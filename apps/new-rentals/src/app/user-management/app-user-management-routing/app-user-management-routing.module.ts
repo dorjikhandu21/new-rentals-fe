@@ -17,7 +17,7 @@ const routes: Routes = [
       },
       children: [
         {
-          path: '',
+          path: 'user/list',
           component: UserListingComponent
         }
       ]

@@ -3,6 +3,7 @@ import {NavigationStart, Router} from "@angular/router";
 import {CredentialsService} from "@new-rentals/shared";
 import {SwUpdate} from "@angular/service-worker";
 import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
+import {AuthService} from "@new-rentals/auth";
 
 @UntilDestroy()
 @Component({
@@ -13,11 +14,12 @@ import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
 export class AppComponent implements OnInit{
   title = 'new-rentals';
 
-  constructor(private credentials: CredentialsService, private router: Router, private swUpdate: SwUpdate) {
+  constructor(private credentials: CredentialsService, private router: Router, private swUpdate: SwUpdate, private authService: AuthService) {
   }
 
   ngOnInit(): void {
-    window.location.pathname === '/' && this.credentials.isAuthenticated() && this.router.navigate(['/users']);
+    // this.authService.setCredentials();
+    window.location.pathname === '/' && this.credentials.isAuthenticated() && this.router.navigate(['/home']);
     this.loadLatestVersion();
   }
 
@@ -30,7 +32,7 @@ export class AppComponent implements OnInit{
 
   reloadPage(): void {
     if (this.swUpdate.isEnabled) {
-      this.swUpdate.available.pipe(untilDestroyed(this)).subscribe(() => {
+      this.swUpdate.versionUpdates.pipe(untilDestroyed(this)).subscribe(() => {
         if (confirm('New version available. Load New Version?')) {
           window.location.reload();
         }

@@ -10,20 +10,22 @@ import {CoreModule} from "./core";
 import {GoogleMapsModule} from "@angular/google-maps";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {TranslateModule} from "@ngx-translate/core";
-import {ENV_TOKEN} from "@new-rentals/auth";
+import {AuthService, ENV_TOKEN} from "@new-rentals/auth";
 import {environment} from "../environments/environment";
 import {SwUpdate} from "@angular/service-worker";
+import {GooglePlaceModule} from "ngx-google-places-autocomplete";
 
 @NgModule({
   declarations: [AppComponent, NxWelcomeComponent],
-  imports: [BrowserModule, BrowserAnimationsModule, GraphQLModule, RouterOutlet, CoreModule, GoogleMapsModule, MatSnackBarModule, TranslateModule.forRoot()],
+  imports: [BrowserModule, GooglePlaceModule, BrowserAnimationsModule, GraphQLModule, RouterOutlet, CoreModule, GoogleMapsModule, MatSnackBarModule, TranslateModule.forRoot()],
   providers: [{
     provide: ENV_TOKEN,
     useValue: environment
   },{
     provide: SwUpdate,
     useValue: SwUpdate
-  }],
+  },
+    {provide: AuthService, useClass: AuthService}],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
