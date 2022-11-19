@@ -15,8 +15,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@new-rentals/applications": ["libs/applications/src/index.ts"],
       "@new-rentals/auth": ["libs/auth/src/index.ts"],
       "@new-rentals/layout": ["libs/layout/src/index.ts"],
+      "@new-rentals/maintenance": ["libs/maintenance/src/index.ts"],
       "@new-rentals/property-listing": ["libs/property-listing/src/index.ts"],
       "@new-rentals/shared": ["libs/shared/src/index.ts"],
       "@new-rentals/shell": ["libs/shell/src/index.ts"],

@@ -1,8 +1,10 @@
 {
   "version": 2,
   "projects": {
+    "applications": "libs/applications",
     "auth": "libs/auth",
     "layout": "libs/layout",
+    "maintenance": "libs/maintenance",
     "new-rentals": "apps/new-rentals",
     "new-rentals-e2e": "apps/new-rentals-e2e",
     "property-listing": "libs/property-listing",
