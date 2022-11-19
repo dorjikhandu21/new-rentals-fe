@@ -25,20 +25,14 @@ const routes: Routes = [
     loadChildren: () => import('../user-management/app-user-management/app-user-management.module').then(m => m.AppUserManagementModule),
     canActivate: []
   },
+  {
+    path: 'home',
+    loadChildren: () => import('../public-listing/public-listing/public-listing.module').then(m => m.PublicListingModule)
+  },
   // {
-  //   path: '',
-  //   loadChildren: () => import('../user-management/app-user-management/app-user-management.module').then(m => m.AppUserManagementModule),
-  //   canActivate: []
+  //   path: '**',
+  //   redirectTo: 'home'
   // },
-  {
-    path: 'property-list',
-    loadChildren: () => import('../../../../../libs/property-listing/src/lib/property-listing.module').then(m => m.PropertyListingModule),
-    canActivate: []
-  },
-  {
-    path: '**',
-    redirectTo: 'home'
-  },
 ];
 
 export function malformedErrHandler(error: URIError, urlSerializer: UrlSerializer, url: string) {
