@@ -3,9 +3,10 @@ import { CommonModule } from '@angular/common';
 import { AdvancedFilterComponent } from './components/advanced-filter/advanced-filter.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { NotificationComponent } from './components/notification/notification.component';
-import {MatIconModule} from "@angular/material/icon";
-import {TranslateModule} from "@ngx-translate/core";
-import {MatSnackBarModule} from "@angular/material/snack-bar";
+import { MatIconModule } from '@angular/material/icon';
+import { TranslateModule } from '@ngx-translate/core';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
 @NgModule({
   imports: [CommonModule, MatIconModule, TranslateModule, MatSnackBarModule],
@@ -13,6 +14,7 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     AdvancedFilterComponent,
     NavBarComponent,
     NotificationComponent,
+    SearchBarComponent,
   ],
 })
 export class SharedModule {}

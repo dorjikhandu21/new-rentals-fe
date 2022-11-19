@@ -33,19 +33,19 @@
     <mat-form-field appearance="outline" fxFlex="49" fxFlex.xs="100" data-cy="password">
       <mat-label>{{'Password' | translate}}</mat-label>
       <input matInput [type]="passwordInVisibility.password ? 'password' : 'text'" [formControl]="$any(signUpForm?.get('password'))">
-      <i matSuffix tabIndex="-1"
-         class="pi {{passwordInVisibility.password ? 'pi-eye' : 'pi-eye-slash'}} boulder-color s-20 hand-cursor"
-         [matTooltip]="(passwordInVisibility.password ? 'Show Password' : 'Hide Password') | translate"
-         (click)="passwordInVisibility.password = !passwordInVisibility.password"></i>
+      <mat-icon tabindex="-1" class="boulder-color s-24 hand-cursor"  matSuffix (click)="passwordInVisibility.password = !passwordInVisibility.password"
+                [matTooltip]="(passwordInVisibility.password ? 'Show Password' : 'Hide Password')">
+        {{passwordInVisibility.password ? 'visibility' : 'visibility_off'}}
+      </mat-icon>
     </mat-form-field>
 
     <mat-form-field appearance="outline" fxFlex="49" fxFlex.xs="100" data-cy="cPassword">
       <mat-label>{{'Confirm Password' | translate}}</mat-label>
       <input matInput [type]="passwordInVisibility.confirmPassword ? 'password' : 'text'" [formControl]="$any(signUpForm.get('password_confirmation'))">
-      <i matSuffix tabIndex="-1"
-         class="pi {{passwordInVisibility.confirmPassword ? 'pi-eye' : 'pi-eye-slash'}} boulder-color s-20 hand-cursor"
-         [matTooltip]="(passwordInVisibility.confirmPassword ? 'Show Password' : 'Hide Password') | translate"
-         (click)="passwordInVisibility.confirmPassword = !passwordInVisibility.confirmPassword"></i>
+      <mat-icon tabindex="-1" class="boulder-color s-24 hand-cursor"  matSuffix (click)="passwordInVisibility.confirmPassword = !passwordInVisibility.confirmPassword"
+                [matTooltip]="(passwordInVisibility.confirmPassword ? 'Show Password' : 'Hide Password')">
+        {{passwordInVisibility.confirmPassword ? 'visibility' : 'visibility_off'}}
+      </mat-icon>
       <mat-error class="white-space&#45;&#45;nowrap" *ngIf="mismatchPassword">Mismatch Password </mat-error>
     </mat-form-field>
     <button [disabled]="signUpForm.invalid" mat-flat-button color="primary" class="full-width my-8" data-cy="signUp" (click)="signUp()"> {{'Sign Up' | translate}}</button>
@@ -65,7 +65,8 @@
       </button>
     </div>
   </div>
+  <div class="text-center mt-12">Already have an account?
+    <a [routerLink]="['']" data-cy="register">Sign In</a>
+  </div>
 </div>
-<div class="text-center mt-12">Already have an account?
-  <a [routerLink]="['']" data-cy="register">Sign In</a>
-</div>
+

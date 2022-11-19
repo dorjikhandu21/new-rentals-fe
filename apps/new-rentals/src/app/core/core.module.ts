@@ -5,6 +5,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {AuthenticatedGuard} from "../guards/authenticated.guard";
 import {ENV_TOKEN} from "@new-rentals/auth";
 import {environment} from "../../environments/environment";
+import {PropertyListingModule} from "@new-rentals/property-listing";
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'auth' },
@@ -22,6 +23,16 @@ const routes: Routes = [
     path: 'users',
     loadChildren: () => import('../user-management/app-user-management/app-user-management.module').then(m => m.AppUserManagementModule),
     canActivate: [AuthenticatedGuard]
+  },
+  {
+    path: '',
+    loadChildren: () => import('../user-management/app-user-management/app-user-management.module').then(m => m.AppUserManagementModule),
+    canActivate: []
+  },
+  {
+    path: 'property-list',
+    loadChildren: () => import('../../../../../libs/property-listing/src/lib/property-listing.module').then(m => m.PropertyListingModule),
+    canActivate: []
   },
 ];
 

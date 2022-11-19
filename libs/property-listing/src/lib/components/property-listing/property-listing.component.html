@@ -1,0 +1,69 @@
+<div fxLayout="row wrap" class="full-width p-24" >
+  <div fxLayout="row wrap" fxLayoutAlign="space-between">
+    <div fxFlex="85">
+      <mat-form-field fxFlex="15" appearance="outline" *ngFor="let filter of filters" class="mr-12" data-cy="filter">
+        <mat-icon matPrefix class="boulder-color">{{filter.icon}}</mat-icon>
+        <mat-label>{{filter.name}}</mat-label>
+        <mat-select>
+          <mat-option [value]="1">dummy</mat-option>
+          <mat-option [value]="2">value</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <mat-form-field fxFlex="12"  appearance="outline" class="pull-right">
+      <mat-icon matPrefix class="boulder-color">filter_3</mat-icon>
+      <mat-label>Sort By</mat-label>
+      <mat-select>
+        <mat-option [value]="1">lorem</mat-option>
+        <mat-option [value]="2">dummy</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div fxLayout="row" fxFlex="100" class="mt-24">
+    <div fxFlex="55" class="mr-20">
+      <google-map class="full-width"  width="100%" height="100%"  [zoom]="14" (mapClick)="mapClick($event)" [center]="center" [options]="options">
+
+      </google-map>
+    </div>
+
+    <div fxFlex="43" fxLayout="row wrap" fxLayoutAlign="space-around center">
+
+      <p fxFlex="100" class="p-12 nr-white-bg br-4 nr-silver-border">41 Apartments, Thimphu Bhutan</p>
+
+      <div  *ngFor="let card of [1,2,3,4,]" class="example-card hand-cursor br-8 nr-white-bg nr-silver-border mb-24" fxFlex="46">
+        <div class="image-container">
+          <span class="cost-label nr-white-color">Nu.15000/-</span>
+          <img mat-card-image class="image" src="../../../../../../../assets/images/flat.svg"
+               alt="Photo of a Shiba Inu">
+        </div>
+        <div class="m-16">
+          <p>Empty room in Babesa</p>
+          <div fxLayout="row" class="boulder-color">
+            <mat-icon>location_on_outline</mat-icon>
+            <p>Babesa, Thimphu, Highway, Bhutan</p>
+          </div>
+          <div fxLayout="row" class="boulder-color">
+            <mat-icon>account_tree_outline</mat-icon>
+            <p>3BHK, 2 Corridor</p>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-between center">
+            <button mat-button color="primary" class="light-bg no-wrap">Apply For Tenant
+              <mat-icon matSuffix>navigate_next</mat-icon>
+            </button>
+            <mat-icon class="nr-white-fade-bg s-20 boulder-color p-8 br-8 hand-cursor ml-20">bookmark_outline</mat-icon>
+          </div>
+        </div>
+
+        <!-- <div class="info full-width" fxLayout="column" fxLayoutAlign="center center">
+           <h3 class="nr-white-color">SKR Building, Babesa</h3>
+           <button mat-flat-button color="primary" class="px-40">View More Details
+           </button>
+         </div>-->
+
+      </div>
+
+    </div>
+  </div>
+</div>
