@@ -11,7 +11,7 @@ import {LayoutComponent} from "@new-rentals/layout";
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   {
-    path: 'auth',
+    path: '',
     loadChildren: () => import('../auth/app-auth/app-auth.module').then(m => m.AppAuthModule),
     canActivate: []
   },

@@ -41,7 +41,7 @@
 
       <p fxFlex="100" class="p-12 nr-white-bg br-4 nr-silver-border">41 Apartments, Thimphu Bhutan</p>
 
-      <div  *ngFor="let card of [1,2,3,4,]" class="example-card hand-cursor br-8 nr-white-bg nr-silver-border mb-24" fxFlex="46">
+      <div  *ngFor="let card of [1,2,3,4,]" class="example-card hand-cursor br-8 nr-white-bg nr-silver-border mb-24" fxFlex="46" (click)="routeToDetails()">
         <div class="image-container">
           <span class="cost-label nr-white-color">Nu.15000/-</span>
           <img mat-card-image class="image" src="../../../../../../../assets/images/flat.svg"

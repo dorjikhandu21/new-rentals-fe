@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {GoogleMap, MapInfoWindow} from "@angular/google-maps";
 import {HttpClient} from "@angular/common/http";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'new-rentals-flat-lists',
@@ -12,7 +13,7 @@ export class FlatListsComponent implements OnInit {
   @ViewChild(GoogleMap) map!: GoogleMap;
   // @ViewChild(MapInfoWindow) infoWindow?: MapInfoWindow;
   @ViewChild(MapInfoWindow, { static: false }) infoWindow?: MapInfoWindow;
-
+  id: number = 1;
   filters: any[] = [
     {name: 'Type', icon: 'category'},
     {name: 'Price', icon: 'attach_money'},
@@ -107,7 +108,7 @@ export class FlatListsComponent implements OnInit {
       }
     }
   ];
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient, private router: Router) {}
   ngOnInit(): void {
     this.center = {lat: 27.4716, lng: 89.6386};
   }
@@ -137,6 +138,10 @@ export class FlatListsComponent implements OnInit {
   openInfoWindow(marker: any): void {
     // @ts-ignore
     this.infoWindow.open();
+  }
+
+  routeToDetails(): void {
+    this.router.navigateByUrl(`home/detail/${this.id}`)
   }
 
 }

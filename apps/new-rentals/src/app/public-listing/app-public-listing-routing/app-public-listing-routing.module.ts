@@ -11,7 +11,7 @@ const routes: Routes = [
       path: 'list',
       component: FlatListsComponent
     },
-    {path: 'detail',
+    {path: 'detail/:id',
     component: FlatDetailsComponent
     }
   ])
