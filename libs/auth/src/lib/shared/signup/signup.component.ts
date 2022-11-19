@@ -42,4 +42,8 @@ export class SignupComponent implements OnInit {
   signUp(): void {
     this.submitForm.emit({user: this?.signUpForm.value});
   }
+
+  navigate(): void {
+    this.router.navigateByUrl('auth/login');
+  }
 }

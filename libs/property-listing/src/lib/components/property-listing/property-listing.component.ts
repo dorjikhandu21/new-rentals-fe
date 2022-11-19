@@ -29,6 +29,5 @@ export class PropertyListingComponent implements OnInit {
     this.center = {lat: 27.4716, lng: 89.6386};
   }
   mapClick(event: any): void {
-    debugger
   }
 }

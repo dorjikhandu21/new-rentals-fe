@@ -7,10 +7,15 @@ import {AuthWrapperComponent} from "../auth-wrapper/auth-wrapper.component";
 const routes: Routes = [
   {
     path: '',
+    pathMatch: 'full',
+    redirectTo: 'auth/login'
+  },
+  {
+    path: 'auth',
     component: AuthWrapperComponent,
     children: [
       {
-        path: '',
+        path: 'login',
         component: AuthComponent,
         data: {
           type: 'login'
@@ -19,6 +24,7 @@ const routes: Routes = [
       {
         path: 'signup',
         component: AuthComponent,
+        canActivate: [],
         data: {
           type: 'signup'
         }

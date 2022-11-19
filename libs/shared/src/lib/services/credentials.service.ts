@@ -56,6 +56,14 @@ export class CredentialsService {
   //   return false;
   // }
 
+  get credentials(): CredentialsFromService | null {
+    const savedCredentials = this.unparsedCredentials;
+    if (savedCredentials) {
+      this.userCredentials = JSON.parse(savedCredentials);
+    }
+    return this.userCredentials;
+  }
+
   set credentials(userCredentials: CredentialsFromService) {
     this.userCredentials = userCredentials;
   }

@@ -1,0 +1,30 @@
+
+
+<mat-dialog-content>
+  <mat-tab-group>
+    <mat-tab label="Application Details">
+      <div fxLayout="row">
+        <mat-chip-set>
+          <mat-chip color="primary" class="item__status--active item__status">
+            Status: Received
+          </mat-chip>
+        </mat-chip-set>
+        <button color="primary" mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>expand_more</mat-icon></button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>received</button>
+          <button mat-menu-item>Interviewed</button>
+        </mat-menu>
+      </div>
+
+    </mat-tab>
+    <mat-tab label="Messages"> Discussion Working on</mat-tab>
+  </mat-tab-group>
+</mat-dialog-content>
+<hr class="full-width">
+<mat-dialog-actions class="m-16" fxLayoutAlign="end">
+  <button mat-button mat-stroked-button color="primary" class="primary-border mr-12"
+          (click)="closeDialog()">{{'cancel'}}</button>
+
+  <button mat-flat-button mat-button color="primary">{{'Invite Tenant'}}</button>
+</mat-dialog-actions>

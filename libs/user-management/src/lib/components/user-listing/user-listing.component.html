@@ -107,7 +107,7 @@
         {{element.actions}}</td>
     </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns" class="nr-white-fade-bg"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"
         (click)="selection.toggle(row)">
     </tr>

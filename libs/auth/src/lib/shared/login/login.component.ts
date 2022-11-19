@@ -33,4 +33,8 @@ export class LoginComponent implements OnInit {
       debugger
     })).subscribe();
   }
+
+  navigate(): void {
+    this.router.navigateByUrl('auth/signup');
+  }
 }

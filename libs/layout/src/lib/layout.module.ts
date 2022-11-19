@@ -17,22 +17,22 @@ import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { FaqSectionsComponent } from './components/faq-sections/faq-sections.component';
 import {MatSelectModule} from "@angular/material/select";
-import {UserManagementModule} from "@new-rentals/user-management";
+import {GooglePlaceModule} from "ngx-google-places-autocomplete";
 
 @NgModule({
-  imports: [
-    CommonModule,
-    GoogleMapsModule,
-    FlexLayoutModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatInputModule,
-    MatIconModule,
-    MatCardModule,
-    MatExpansionModule,
-    MatSelectModule,
-    UserManagementModule,
-  ],
+    imports: [
+        CommonModule,
+        GoogleMapsModule,
+        FlexLayoutModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatInputModule,
+        MatIconModule,
+        MatCardModule,
+        MatExpansionModule,
+        MatSelectModule,
+        GooglePlaceModule,
+    ],
   declarations: [
     LayoutComponent,
     NavBarComponent,
@@ -43,6 +43,6 @@ import {UserManagementModule} from "@new-rentals/user-management";
     RentalSolutionSectionComponent,
     FaqSectionsComponent,
   ],
-  exports: [LayoutComponent],
+  exports: [LayoutComponent, NavBarComponent],
 })
 export class LayoutModule {}

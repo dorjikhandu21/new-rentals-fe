@@ -6,33 +6,43 @@ import {AuthenticatedGuard} from "../guards/authenticated.guard";
 import {ENV_TOKEN} from "@new-rentals/auth";
 import {environment} from "../../environments/environment";
 import {PropertyListingModule} from "@new-rentals/property-listing";
+import {LayoutComponent} from "@new-rentals/layout";
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'auth' },
+  { path: '', pathMatch: 'full', redirectTo: 'home' },
   {
-    path: '**',
-    redirectTo: 'login'
-  },
-  {
-    path: '',
+    path: 'auth',
     loadChildren: () => import('../auth/app-auth/app-auth.module').then(m => m.AppAuthModule),
     canActivate: []
   },
-
+  {
+    path: 'home',
+    component: LayoutComponent,
+    canActivate: []
+  },
   {
     path: 'users',
     loadChildren: () => import('../user-management/app-user-management/app-user-management.module').then(m => m.AppUserManagementModule),
-    canActivate: [AuthenticatedGuard]
-  },
-  {
-    path: '',
-    loadChildren: () => import('../user-management/app-user-management/app-user-management.module').then(m => m.AppUserManagementModule),
     canActivate: []
   },
+  // {
+  //   path: '',
+  //   loadChildren: () => import('../user-management/app-user-management/app-user-management.module').then(m => m.AppUserManagementModule),
+  //   canActivate: []
+  // },
   {
     path: 'property-list',
     loadChildren: () => import('../../../../../libs/property-listing/src/lib/property-listing.module').then(m => m.PropertyListingModule),
     canActivate: []
+  },
+  {
+    path: 'applications',
+    loadChildren: () => import('../applications/applications.module').then(m => m.ApplicationsModule),
+    canActivate: []
+  },
+  {
+    path: '**',
+    redirectTo: 'home'
   },
 ];
 
