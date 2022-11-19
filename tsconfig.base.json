@@ -17,6 +17,7 @@
     "paths": {
       "@new-rentals/auth": ["libs/auth/src/index.ts"],
       "@new-rentals/layout": ["libs/layout/src/index.ts"],
+      "@new-rentals/property-listing": ["libs/property-listing/src/index.ts"],
       "@new-rentals/shared": ["libs/shared/src/index.ts"],
       "@new-rentals/shell": ["libs/shell/src/index.ts"],
       "@new-rentals/user-management": ["libs/user-management/src/index.ts"]

@@ -5,11 +5,9 @@
     "layout": "libs/layout",
     "new-rentals": "apps/new-rentals",
     "new-rentals-e2e": "apps/new-rentals-e2e",
+    "property-listing": "libs/property-listing",
     "shared": "libs/shared",
     "shell": "libs/shell",
     "user-management": "libs/user-management"
-  },
-  "cli": {
-    "analytics": false
   }
 }

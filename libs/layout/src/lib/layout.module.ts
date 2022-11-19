@@ -11,23 +11,26 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
 import { SearchHomeComponent } from './components/landing-page/search-home/search-home.component';
 import { FeaturedApartmentsComponent } from './components/landing-page/featured-apartments/featured-apartments.component';
 import { RentalSolutionSectionComponent } from './components/landing-page/rental-solution-section/rental-solution-section.component';
-import {MatInputModule} from "@angular/material/input";
-import {MatIconModule} from "@angular/material/icon";
-import {MatCardModule} from "@angular/material/card";
-import {MatExpansionModule} from "@angular/material/expansion";
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { FaqSectionsComponent } from './components/faq-sections/faq-sections.component';
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
-    imports: [
-        CommonModule,
-        GoogleMapsModule,
-        FlexLayoutModule,
-        MatToolbarModule,
-        MatButtonModule,
-        MatInputModule,
-        MatIconModule,
-        MatCardModule,
-        MatExpansionModule,
-    ],
+  imports: [
+    CommonModule,
+    GoogleMapsModule,
+    FlexLayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatInputModule,
+    MatIconModule,
+    MatCardModule,
+    MatExpansionModule,
+    MatSelectModule,
+  ],
   declarations: [
     LayoutComponent,
     NavBarComponent,
@@ -36,6 +39,7 @@ import {MatExpansionModule} from "@angular/material/expansion";
     SearchHomeComponent,
     FeaturedApartmentsComponent,
     RentalSolutionSectionComponent,
+    FaqSectionsComponent,
   ],
   exports: [LayoutComponent],
 })

@@ -13,14 +13,14 @@ const routes: Routes = [
         path: '',
         component: AuthComponent,
         data: {
-          TYPE: 'login'
+          type: 'login'
         },
       },
       {
         path: 'signup',
         component: AuthComponent,
         data: {
-          TYPE: 'signup'
+          type: 'signup'
         }
   }]
   }

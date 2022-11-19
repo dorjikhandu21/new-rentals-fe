@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { switchMap, tap} from "rxjs";
-import {HttpClient} from "@angular/common/http";
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import { tap} from "rxjs";
 import {AuthFacadeService} from "@new-rentals/layout";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {EndPointUris} from "../../auth/models/auth.model";
+import { Router} from "@angular/router";
 
 @Component({
   selector: 'new-rentals-login',
@@ -12,24 +12,20 @@ import {EndPointUris} from "../../auth/models/auth.model";
 })
 export class LoginComponent implements OnInit {
   passwordVisibility = true;
-  loginEndPointUri = EndPointUris.LOGIN_URI;
   loginForm: FormGroup = new FormGroup({
     email: new FormControl('dk3@newrentals.com', Validators.required),
     password: new FormControl('status200', Validators.required)
   })
-  constructor(private http: HttpClient, private authFacadeService: AuthFacadeService) {}
+  constructor(private router: Router, private authFacadeService: AuthFacadeService) {}
+  @Output() submitForm: EventEmitter<{user: {email: string, password: string}}> = new EventEmitter<{user: {email: string, password: string}}>();
+
 
   ngOnInit(): void {
     this.listenToTestState()
-
   }
 
   login(): void {
-
-    this.http.post(this.loginEndPointUri, { user: {...this.loginForm.value}} ).pipe(switchMap((user) => {
-      // @ts-ignore
-      return this.authFacadeService.updateUser({attributes: user['id']})
-    })).subscribe();
+    this.submitForm.emit({ user: {...this.loginForm.value}});
   }
 
   listenToTestState(): void {

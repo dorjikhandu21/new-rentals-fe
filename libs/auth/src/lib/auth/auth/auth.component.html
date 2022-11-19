@@ -6,10 +6,11 @@
     <mat-card fxFlex="40" class="login-card">
       <new-rentals-login
         *ngSwitchCase="'login'"
+        (submitForm)="submit($event)"
       ></new-rentals-login>
       <new-rentals-signup
         *ngSwitchCase="'signup'"
-      ></new-rentals-signup>
+      (submitForm)="submit($event)"></new-rentals-signup>
     </mat-card>
   </div>
 </div>
