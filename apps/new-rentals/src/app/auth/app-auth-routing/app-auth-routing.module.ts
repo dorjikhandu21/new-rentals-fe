@@ -19,6 +19,7 @@ const routes: Routes = [
       {
         path: 'signup',
         component: AuthComponent,
+        canActivate: [],
         data: {
           type: 'signup'
         }

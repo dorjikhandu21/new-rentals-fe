@@ -23,12 +23,12 @@ export class AuthComponent implements OnInit {
   }
 
   submit(event: any): void {
-    this.componentType === 'login' ? this.login(event.value) : this.signUp(event.value);
+    this.componentType === 'login' ? this.login(event) : this.signUp(event);
   }
 
   login(loginData: {user: {email: string, password: string}}): void {
     this.authService.login(loginData).pipe(tap(response => {
-
+      this.router.navigate(['/users']);
     })).subscribe()
   }
 
