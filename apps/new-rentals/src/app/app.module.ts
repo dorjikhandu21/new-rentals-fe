@@ -18,7 +18,7 @@ import {HttpClientJsonpModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [AppComponent, NxWelcomeComponent],
-  imports: [BrowserModule, HttpClientJsonpModule,GooglePlaceModule, BrowserAnimationsModule, GraphQLModule, RouterOutlet, CoreModule, GoogleMapsModule, MatSnackBarModule, TranslateModule.forRoot()],
+  imports: [BrowserModule, HttpClientJsonpModule,GooglePlaceModule, BrowserAnimationsModule, GraphQLModule, RouterOutlet, CoreModule, MatSnackBarModule, TranslateModule.forRoot()],
   providers: [{
     provide: ENV_TOKEN,
     useValue: environment

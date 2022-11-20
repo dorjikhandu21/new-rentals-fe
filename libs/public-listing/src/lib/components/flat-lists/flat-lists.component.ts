@@ -1,7 +1,24 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {GoogleMap, MapInfoWindow} from "@angular/google-maps";
+import {GoogleMap, MapInfoWindow, MapMarker} from "@angular/google-maps";
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
+import {Loader} from "@googlemaps/js-api-loader";
+
+
+// function initMap(): void {
+//    map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
+//     center: { lat: -34.397, lng: 150.644 },
+//     zoom: 8,
+//   });
+// }
+//
+// declare global {
+//   interface Window {
+//     initMap: () => void;
+//   }
+// }
+// window.initMap = initMap;
+// export {};
 
 @Component({
   selector: 'new-rentals-flat-lists',
@@ -10,10 +27,13 @@ import {Router} from "@angular/router";
 })
 
 export class FlatListsComponent implements OnInit {
-  @ViewChild(GoogleMap) map!: GoogleMap;
+
+   // @ts-ignore
+
+  private map: google.maps.Map;
   // @ViewChild(MapInfoWindow) infoWindow?: MapInfoWindow;
   @ViewChild(MapInfoWindow, { static: false }) infoWindow?: MapInfoWindow;
-  id: number = 1;
+  id = 1;
   filters: any[] = [
     {name: 'Type', icon: 'category'},
     {name: 'Price', icon: 'attach_money'},
@@ -24,7 +44,6 @@ export class FlatListsComponent implements OnInit {
 
   center!: google.maps.LatLngLiteral;
   options: google.maps.MapOptions = {
-    // zoomControl: true,
     scrollwheel: true,
     disableDoubleClickZoom: true,
     zoom: 15,
@@ -111,6 +130,48 @@ export class FlatListsComponent implements OnInit {
   constructor(private httpClient: HttpClient, private router: Router) {}
   ngOnInit(): void {
     this.center = {lat: 27.4716, lng: 89.6386};
+    this.loadMap();
+  }
+
+  loadMap(): void {
+    const loader: Loader = new Loader({
+      apiKey: 'AIzaSyDpNbirRykNtf26goqNIwT4diZcsIP-vy4',
+    })
+    loader.load().then(() => {
+      const position: { lat: number; lng: number; } = {lat: 27.4716, lng: 89.6386};
+      this.map = new google.maps.Map(document.getElementById('map') as HTMLElement,{
+        center: position,
+        scrollwheel: true,
+        disableDoubleClickZoom: true,
+        zoom: 15,
+        disableDefaultUI: true,
+      });
+      this.addMarkers()
+    }).catch(error => {
+      console.log('Maps could not load')
+    })
+  }
+
+  addMarkers(): void {
+    const marker = new google.maps.Marker({
+      position: this.center,
+      map: this.map
+    })
+    const infowindow = new google.maps.InfoWindow({
+      content: 'contentString',
+    });
+
+    marker.addListener('mouseover', () => {
+      infowindow.open({
+        // @ts-ignore
+        anchor: marker,
+        map: this.map,
+      });
+    })
+    infowindow.addListener('click', () => {
+      debugger
+      this.routeToDetails()
+    })
   }
 
   dropMarker(event:any): void {
@@ -141,6 +202,7 @@ export class FlatListsComponent implements OnInit {
   }
 
   routeToDetails(): void {
+    debugger
     this.router.navigateByUrl(`home/detail/${this.id}`)
   }
 

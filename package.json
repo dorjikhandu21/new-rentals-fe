@@ -27,6 +27,7 @@
     "@angular/service-worker": "^15.0.0",
     "@apollo/client": "^3.3.7",
     "@codewithdan/observable-store": "^2.2.14",
+    "@googlemaps/js-api-loader": "^1.15.1",
     "@ngneat/until-destroy": "^9.2.2",
     "@ngx-translate/core": "^14.0.0",
     "@nrwl/angular": "^15.1.1",
