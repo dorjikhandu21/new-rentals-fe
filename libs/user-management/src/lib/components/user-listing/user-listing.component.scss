@@ -1,0 +1,22 @@
+@import "apps/new-rentals/src/assets/styles/variables";
+.user-profile {
+  width: 55px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.item {
+  &__status {
+    height: 26px;
+    padding: 4px 20px;
+    border-width: 0;
+    border-radius: 4px;
+
+    &--active {
+      background: rgba(0, 181, 58, 0.16) !important;
+      ::ng-deep.mdc-evolution-chip__text-label {
+        color: $success-color !important;
+      }
+    }
+  }
+}

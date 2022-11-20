@@ -1,12 +1,22 @@
 <mat-toolbar fxLayout="row" fxLayoutAlign="space-between center" class="nr-white-bg">
   <img class="auth-logo" src="/assets/images/logo.svg"/>
-
+<!--
   <nav class="shift">
     <ul>
-      <li><a href="#">Rental Solution</a></li>
+      <li><a href="#rental-solution">Rental Solution</a></li>
       <li><a href="#">Pricing</a></li>
       <li><a href="#">FAQ</a></li>
       <li><a href="#">Contact Us</a></li>
+    </ul>
+  </nav>-->
+
+  <nav class="shift main-nav">
+    <ul>
+      <li class="text-center" *ngFor="let nav of navs">
+        <a fxLayout="column" fxLayoutAlign="center center" href="#">
+          <mat-icon class="s-24 boulder-color">{{nav.icon}}</mat-icon>
+          {{nav.name}}</a>
+      </li>
     </ul>
   </nav>
 

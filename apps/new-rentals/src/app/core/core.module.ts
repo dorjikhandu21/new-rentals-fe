@@ -33,6 +33,20 @@ const routes: Routes = [
   //   path: '**',
   //   redirectTo: 'home'
   // },
+  {
+    path: 'property-list',
+    loadChildren: () => import('../../../../../libs/property-listing/src/lib/property-listing.module').then(m => m.PropertyListingModule),
+    canActivate: []
+  },
+  {
+    path: 'applications',
+    loadChildren: () => import('../applications/applications.module').then(m => m.ApplicationsModule),
+    canActivate: []
+  },
+  {
+    path: '**',
+    redirectTo: 'home'
+  },
 ];
 
 export function malformedErrHandler(error: URIError, urlSerializer: UrlSerializer, url: string) {
