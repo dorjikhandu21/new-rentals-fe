@@ -3,7 +3,7 @@ import { tap} from "rxjs";
 import {AuthFacadeService} from "@new-rentals/layout";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {EndPointUris} from "../../auth/models/auth.model";
-import { Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'new-rentals-login',
@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
     email: new FormControl('dk3@newrentals.com', Validators.required),
     password: new FormControl('status200', Validators.required)
   })
-  constructor(private router: Router, private authFacadeService: AuthFacadeService) {}
+  constructor(private router: Router, private authFacadeService: AuthFacadeService, private route: ActivatedRoute) {}
   @Output() submitForm: EventEmitter<{user: {email: string, password: string}}> = new EventEmitter<{user: {email: string, password: string}}>();
 
 
@@ -35,6 +35,6 @@ export class LoginComponent implements OnInit {
   }
 
   navigate(): void {
-    this.router.navigateByUrl('auth/signup');
+    void this.router.navigate(['signup'], {relativeTo: this.route});
   }
 }

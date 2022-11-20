@@ -4,8 +4,8 @@
 
     <mat-form-field appearance="outline" fxFlex="25" fxFlex.xs="100" data-cy="salutation">
       <mat-label>Salutation</mat-label>
-      <mat-select>
-        <mat-option *ngFor="let option of salutations">
+      <mat-select [formControl]="$any(signUpForm.get('salutation'))">
+        <mat-option *ngFor="let option of salutations" [value]="option">
           {{option}}
         </mat-option>
       </mat-select>
@@ -28,6 +28,7 @@
     <mat-form-field appearance="outline" fxFlex="100" data-cy="phone">
       <mat-label>Phone Number</mat-label>
       <input matInput [formControl]="$any(signUpForm.get('profile').get('phone'))">
+      <mat-error *ngIf="signUpForm.controls['profile'].get('phone')?.hasError('invalidPhone') && (signUpForm.controls['profile'].get('phone').touched || signUpForm.controls['profile'].get('phone') ) ">Invalid Phone Number</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline" fxFlex="49" fxFlex.xs="100" data-cy="password">
