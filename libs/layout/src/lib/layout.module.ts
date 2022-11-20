@@ -18,21 +18,23 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { FaqSectionsComponent } from './components/faq-sections/faq-sections.component';
 import {MatSelectModule} from "@angular/material/select";
 import {GooglePlaceModule} from "ngx-google-places-autocomplete";
+import {RouterLinkWithHref} from "@angular/router";
 
 @NgModule({
-    imports: [
-        CommonModule,
-        GoogleMapsModule,
-        FlexLayoutModule,
-        MatToolbarModule,
-        MatButtonModule,
-        MatInputModule,
-        MatIconModule,
-        MatCardModule,
-        MatExpansionModule,
-        MatSelectModule,
-        GooglePlaceModule,
-    ],
+  imports: [
+    CommonModule,
+    GoogleMapsModule,
+    FlexLayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatInputModule,
+    MatIconModule,
+    MatCardModule,
+    MatExpansionModule,
+    MatSelectModule,
+    GooglePlaceModule,
+    RouterLinkWithHref,
+  ],
   declarations: [
     LayoutComponent,
     NavBarComponent,

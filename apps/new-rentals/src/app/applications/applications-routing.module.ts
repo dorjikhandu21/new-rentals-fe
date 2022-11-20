@@ -9,7 +9,7 @@ const routes: Routes = [
 
 ShellService.childRoutes([
     {
-      path: 'list',
+      path: '',
       component: ApplicationsComponent,
       canActivate: [],
       data: {

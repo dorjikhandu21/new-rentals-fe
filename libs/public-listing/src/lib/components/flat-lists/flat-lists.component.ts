@@ -1,24 +1,8 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {GoogleMap, MapInfoWindow, MapMarker} from "@angular/google-maps";
 import {HttpClient} from "@angular/common/http";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {Loader} from "@googlemaps/js-api-loader";
-
-
-// function initMap(): void {
-//    map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
-//     center: { lat: -34.397, lng: 150.644 },
-//     zoom: 8,
-//   });
-// }
-//
-// declare global {
-//   interface Window {
-//     initMap: () => void;
-//   }
-// }
-// window.initMap = initMap;
-// export {};
 
 @Component({
   selector: 'new-rentals-flat-lists',
@@ -127,7 +111,7 @@ export class FlatListsComponent implements OnInit {
       }
     }
   ];
-  constructor(private httpClient: HttpClient, private router: Router) {}
+  constructor(private httpClient: HttpClient, private router: Router, private route: ActivatedRoute) {}
   ngOnInit(): void {
     this.center = {lat: 27.4716, lng: 89.6386};
     this.loadMap();
@@ -192,18 +176,13 @@ export class FlatListsComponent implements OnInit {
     })
   }
 
-  // mapClick(event: any): void {
-  //   this.dropMarker(event)
-  // }
-
   openInfoWindow(marker: any): void {
     // @ts-ignore
     this.infoWindow.open();
   }
 
   routeToDetails(): void {
-    debugger
-    this.router.navigateByUrl(`home/detail/${this.id}`)
+    this.router.navigate([`${this.id}`], {relativeTo: this.route})
   }
 
 }
