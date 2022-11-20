@@ -23,6 +23,7 @@
     <mat-form-field appearance="outline" fxFlex="100" data-cy="email">
       <mat-label>Email</mat-label>
       <input matInput [formControl]="$any(signUpForm.get('email'))">
+      <mat-error *ngIf="signUpForm.get('email').errors['email']">Invalid Email Address</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline" fxFlex="100" data-cy="phone">
@@ -47,8 +48,13 @@
                 [matTooltip]="(passwordInVisibility.confirmPassword ? 'Show Password' : 'Hide Password')">
         {{passwordInVisibility.confirmPassword ? 'visibility' : 'visibility_off'}}
       </mat-icon>
-      <mat-error class="white-space&#45;&#45;nowrap" *ngIf="mismatchPassword">Mismatch Password </mat-error>
+      <mat-error class="white-space&#45;&#45;nowrap"> </mat-error>
     </mat-form-field>
+
+    <div fxFlex="100" fxLayout="row" fxLayoutAlign="center center" class="my-16">
+      <span *ngIf="mismatchPassword">Passwords doesn't match</span>
+    </div>
+
     <button [disabled]="signUpForm.invalid" mat-flat-button color="primary" class="full-width my-8" data-cy="signUp" (click)="signUp()"> {{'Sign Up' | translate}}</button>
     <div fxFlex="100" fxLayout="row" fxLayoutAlign="center center" class="my-16">
       <hr fxFlex="30"/>
