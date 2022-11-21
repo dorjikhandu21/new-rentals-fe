@@ -11,7 +11,6 @@ import { get } from 'lodash-es';
 import {Router} from "@angular/router";
 import {first, switchMap, tap, catchError, throwError} from "rxjs";
 
-
 @Injectable()
 export class ApiInterceptor implements HttpInterceptor {
   constructor(

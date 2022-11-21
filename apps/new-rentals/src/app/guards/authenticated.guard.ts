@@ -7,9 +7,9 @@ export class AuthenticatedGuard implements CanActivate {
   constructor(public router: Router, private credentials: CredentialsService) {}
 
    canActivate(): boolean {
-    // if (!this.credentials.isAuthenticated()) {
-    //    this.router.navigate(['']);
-    // }
+    if (!this.credentials.isAuthenticated()) {
+       this.router.navigate(['/auth']);
+    }
     return true;
   }
 
