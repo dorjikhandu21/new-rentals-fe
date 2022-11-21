@@ -1,30 +1,93 @@
-
-
-<mat-dialog-content>
+<div fxLayout="column" fxLayoutAlign="space-between" class="chat-modal">
+<mat-dialog-content fxFlex="90">
   <mat-tab-group>
     <mat-tab label="Application Details">
-      <div fxLayout="row">
+      <div fxLayout="row" class="mt-20">
         <mat-chip-set>
-          <mat-chip color="primary" class="item__status--active item__status">
+          <mat-chip class="primary-bg br-4 nr-white-color mr-4">
             Status: Received
           </mat-chip>
         </mat-chip-set>
-        <button color="primary" mat-icon-button [matMenuTriggerFor]="menu">
-          <mat-icon>expand_more</mat-icon></button>
+        <mat-icon class="primary-bg p-4 br-4 hand-cursor nr-white-color mt-4" [matMenuTriggerFor]="menu">
+          <mat-icon>expand_more</mat-icon></mat-icon>
         <mat-menu #menu="matMenu">
           <button mat-menu-item>received</button>
           <button mat-menu-item>Interviewed</button>
         </mat-menu>
       </div>
 
+      <div class="nr-white-fade-bg br-4 px-16 py-8 mt-20">
+        <p class="mb-8">Location</p>
+        <p class="mb-0">IT PARK, Babesa</p>
+      </div>
+
+      <div class="nr-white-fade-bg br-4 px-16 py-8 my-20">
+        <p class="mb-8">Application By</p>
+        <p class="mb-0" fxLayoutAlign="start center"><img class="user-profile mr-8" src="../assets/images/user.svg"/>
+          Cristina
+        </p>
+      </div>
+
+      <h2>Application Title</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aspernatur eaque minus numquam similique totam? Assumenda dicta rem saepe. Veniam.</p>
+
+      <div fxLayoutAlign="space-between">
+        <div>
+          <p class="mb-0">Preferred Moved in Date:</p>
+          <p class="nr-black-color">11-23-22</p>
+        </div>
+
+        <div fxFlex="30">
+          <p class="mb-0">CID Number:</p>
+          <p class="nr-black-color">11-23-22</p>
+        </div>
+      </div>
+
+      <div fxLayoutAlign="space-between">
+        <div>
+          <p class="mb-0">Current Employeer:</p>
+          <p class="nr-black-color">RCSC</p>
+        </div>
+
+        <div fxFlex="30">
+          <p class="mb-0">Family:</p>
+          <p class="nr-black-color">11-23-22</p>
+        </div>
+      </div>
+
+      <div fxLayoutAlign="space-between">
+        <div>
+          <p class="mb-0">Pet:</p>
+          <p class="nr-black-color">1 puppy</p>
+        </div>
+
+        <div fxFlex="30">
+          <p class="mb-0">Guarantor:</p>
+          <p class="nr-black-color">11-23-22</p>
+        </div>
+      </div>
+
+      <div fxLayoutAlign="space-between">
+        <div>
+          <p class="mb-0">Created On:</p>
+          <p class="nr-black-color">1 puppy</p>
+        </div>
+
+        <div fxFlex="30">
+          <p class="mb-0">Last Updated On:</p>
+          <p class="nr-black-color">11-23-22</p>
+        </div>
+      </div>
+<div>
+
+</div>
     </mat-tab>
     <mat-tab label="Messages"> Discussion Working on</mat-tab>
   </mat-tab-group>
 </mat-dialog-content>
-<hr class="full-width">
 <mat-dialog-actions class="m-16" fxLayoutAlign="end">
+  <hr class="full-width mb-20">
   <button mat-button mat-stroked-button color="primary" class="primary-border mr-12"
           (click)="closeDialog()">{{'cancel'}}</button>
-
-  <button mat-flat-button mat-button color="primary">{{'Invite Tenant'}}</button>
 </mat-dialog-actions>
+</div>

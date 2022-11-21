@@ -1,39 +1,47 @@
-<div fxLayout="row wrap" fxLayoutAlign="space-between" class="mx-24 mb-16 mt-32 application-container">
+<div fxLayout="row wrap" fxLayoutAlign="space-between center" class="mx-24 mb-16 mt-32 application-container">
   <div fxLayout="row wrap" fxFlex="80" fxLayoutGap="12px">
     <mat-form-field appearance="outline" fxFlex="40" class="search-field">
       <mat-icon matPrefix color="primary" class="hand-cursor mr-12 ml-4 s-24">search</mat-icon>
-      <input type="text" matInput placeholder="Search home by Property Listed" autocomplete="off" data-cy="search">
+      <input type="text" matInput placeholder="Search customer or category" autocomplete="off" data-cy="search">
     </mat-form-field>
 
     <mat-form-field fxFlex="20" appearance="outline" class="pull-right">
       <mat-icon matPrefix class="boulder-color">filter_3</mat-icon>
-      <mat-label>All List Vacant Property</mat-label>
+      <mat-label>Priority</mat-label>
+      <mat-select>
+        <mat-option [value]="1">lorem</mat-option>
+        <mat-option [value]="2">dummy</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field fxFlex="20" appearance="outline" class="pull-right">
+      <mat-icon matPrefix class="boulder-color">filter_3</mat-icon>
+      <mat-label>Category</mat-label>
       <mat-select>
         <mat-option [value]="1">lorem</mat-option>
         <mat-option [value]="2">dummy</mat-option>
       </mat-select>
     </mat-form-field>
   </div>
-  <button mat-flat-button mat-button color="primary" fxFlex="20" class="mt-8">
+  <button mat-flat-button mat-button color="primary" fxFlex="16" class="mt-8 mb-20" (click)=" openMaintenanceRequest()">
     <mat-icon>add</mat-icon>
-    {{'List Vacant Property'}}</button>
+    {{'Add Request'}}</button>
 </div>
 
 <div fxLayout="row" class="m-24">
-<!-- Received Application -->
+  <!-- open Maintenance -->
   <div class="example-container">
     <div
       cdkDropList
-      #receivedList="cdkDropList"
-      [cdkDropListData]="received"
-      [cdkDropListConnectedTo]="[InterviewList,declinedList,acceptedList]"
+      #openList="cdkDropList"
+      [cdkDropListData]="open"
+      [cdkDropListConnectedTo]="[onholdList,inprogressList,completedList]"
       class="example-list"
       (cdkDropListDropped)="drop($event)">
       <div fxLayoutAlign="space-between center" class="card-title nr-white-bg br-4 p-8 m-20">
         <h3 class="my-0">Received</h3>
         <span class="primary-bg py-4 px-8 br-4 nr-white-color">3</span>
       </div>
-      <div fxLayout="column" class="example-box m-16 p-8 br-8 hand-cursor" (click)="openApplicationDetail()" *ngFor="let item of received" cdkDrag>
+      <div fxLayout="column" class="example-box m-16 p-8 br-8 hand-cursor" (click)="openMaintenanceDetail()" *ngFor="let item of open" cdkDrag>
         <div fxLayoutAlign="space-between center" class="border-bottom">
           <p>IT Park, Babesa, Thimphu</p>
           <mat-icon class="hand-cursor boulder-color">more_horiz</mat-icon>
@@ -53,54 +61,20 @@
     </div>
   </div>
 
-  <!-- Interviewd Application -->
+  <!-- onhold Maintenance -->
   <div class="example-container">
     <div
       cdkDropList
-      #InterviewList="cdkDropList"
-      [cdkDropListData]="interview"
-      [cdkDropListConnectedTo]="[receivedList,declinedList,acceptedList]"
+      #onholdList="cdkDropList"
+      [cdkDropListData]="onhold"
+      [cdkDropListConnectedTo]="[openList,inprogressList,completedList]"
       class="example-list"
       (cdkDropListDropped)="drop($event)">
       <div fxLayoutAlign="space-between center" class="nr-white-bg br-4 p-8 m-20">
         <h3 class="my-0">Interviewing</h3>
-        <span class="purple-bg py-4 px-8 br-4 nr-white-color">3</span>
-      </div>
-      <div fxLayout="column" class="example-box m-16 p-8 br-8" *ngFor="let item of interview" cdkDrag>
-        <div fxLayoutAlign="space-between center" class="border-bottom">
-          <p>IT Park, Babesa, Thimphu</p>
-          <mat-icon class="hand-cursor boulder-color">more_horiz</mat-icon>
-        </div>
-        <div fxLayoutAlign="space-between center" class="mt-16">
-          <div><p class="boulder-color">Property</p>
-            <p>Licha House</p></div>
-          <div><p class="boulder-color">Created On</p>
-            <p>23-23-2022</p></div>
-        </div>
-        <p>{{item}}</p>
-        <div fxLayoutAlign="space-between center" class="nr-white-fade-bg br-4 px-12">
-          <img class="user-profile my-8 mr-8" src="../assets/images/user.svg"/>
-          <mat-icon class="boulder-color">message</mat-icon>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Accepted Application -->
-
-  <div class="example-container">
-    <div
-      cdkDropList
-      #acceptedList="cdkDropList"
-      [cdkDropListData]="accepted"
-      [cdkDropListConnectedTo]="[receivedList, InterviewList, declinedList]"
-      class="example-list"
-      (cdkDropListDropped)="drop($event)">
-      <div fxLayoutAlign="space-between center" class="nr-white-bg br-4 p-8 m-20">
-        <h3 class="my-0">Received</h3>
         <span class="green-dragonfly-bg py-4 px-8 br-4 nr-white-color">3</span>
       </div>
-      <div fxLayout="column" class="example-box m-16 p-8 br-8" *ngFor="let item of accepted" cdkDrag>
+      <div fxLayout="column" class="example-box m-16 p-8 br-8" *ngFor="let item of onhold" cdkDrag (click)="openMaintenanceDetail()">
         <div fxLayoutAlign="space-between center" class="border-bottom">
           <p>IT Park, Babesa, Thimphu</p>
           <mat-icon class="hand-cursor boulder-color">more_horiz</mat-icon>
@@ -120,20 +94,54 @@
     </div>
   </div>
 
-  <!-- Declined Application -->
+  <!-- Inprogress Maintenance -->
+
   <div class="example-container">
     <div
       cdkDropList
-      #declinedList="cdkDropList"
-      [cdkDropListData]="declined"
-      [cdkDropListConnectedTo]="[receivedList, InterviewList, acceptedList]"
+      #inprogressList="cdkDropList"
+      [cdkDropListData]="inprogress"
+      [cdkDropListConnectedTo]="[openList, onholdList, completedList]"
       class="example-list"
       (cdkDropListDropped)="drop($event)">
       <div fxLayoutAlign="space-between center" class="nr-white-bg br-4 p-8 m-20">
         <h3 class="my-0">Received</h3>
-        <span class="warn-bg py-4 px-8 br-4 nr-white-color">3</span>
+        <span class="purple-bg py-4 px-8 br-4 nr-white-color">3</span>
       </div>
-      <div fxLayout="column" class="example-box m-16 p-8 br-8" *ngFor="let item of declined" cdkDrag>
+      <div fxLayout="column" class="example-box m-16 p-8 br-8" *ngFor="let item of inprogress" cdkDrag (click)="openMaintenanceDetail()">
+        <div fxLayoutAlign="space-between center" class="border-bottom">
+          <p>IT Park, Babesa, Thimphu</p>
+          <mat-icon class="hand-cursor boulder-color">more_horiz</mat-icon>
+        </div>
+        <div fxLayoutAlign="space-between center" class="mt-16">
+          <div><p class="boulder-color">Property</p>
+            <p>Licha House</p></div>
+          <div><p class="boulder-color">Created On</p>
+            <p>23-23-2022</p></div>
+        </div>
+        <p>{{item}}</p>
+        <div fxLayoutAlign="space-between center" class="nr-white-fade-bg br-4 px-12">
+          <img class="user-profile my-8 mr-8" src="../assets/images/user.svg"/>
+          <mat-icon class="boulder-color">message</mat-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Completed Maintenance -->
+  <div class="example-container">
+    <div
+      cdkDropList
+      #completedList="cdkDropList"
+      [cdkDropListData]="completed"
+      [cdkDropListConnectedTo]="[openList, onholdList, inprogressList]"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <div fxLayoutAlign="space-between center" class="nr-white-bg br-4 p-8 m-20">
+        <h3 class="my-0">Received</h3>
+        <span class="success-bg py-4 px-8 br-4 nr-white-color">3</span>
+      </div>
+      <div fxLayout="column" class="example-box m-16 p-8 br-8" *ngFor="let item of completed" cdkDrag (click)="openMaintenanceDetail()">
         <div fxLayoutAlign="space-between center" class="border-bottom">
           <p>IT Park, Babesa, Thimphu</p>
           <mat-icon class="hand-cursor boulder-color">more_horiz</mat-icon>

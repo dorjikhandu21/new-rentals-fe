@@ -12,7 +12,6 @@ export class ApplicationListComponent implements OnInit {
   received: any[] = ['Get to work', 'Go home', 'Fall asleep'];
   interview: any[] = ['Pick up groceries', 'Go home', 'Fall asleep'];
   declined: any[] = ['Get to work', 'Pick up groceries', 'Fall asleep'];
-
   accepted: any[] = ['Get up', 'Brush teeth'];
 
   drop(event: CdkDragDrop<string[]>) {
@@ -32,7 +31,7 @@ export class ApplicationListComponent implements OnInit {
   ngOnInit(): void {}
   openApplicationDetail(): void {
     this.matDialog.open(ApplicationDetailModalComponent, {
-      panelClass: ['modal-sm', 'full-width-modal', 'chat-modal'],
+      panelClass: ['modal-sm', 'full-width-modal', 'common-chat-modal'],
       position: {right: '0', top: '0', bottom:'0'},
       data: {
       }

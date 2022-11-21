@@ -1,0 +1,53 @@
+<div fxLayout="row" fxLayoutAlign="space-between center">
+  <h2 mat-dialog-title class="mb-0">Request Maintenance</h2>
+  <a (click)="closeDialog()">
+    <mat-icon class="pull-right white-color font-size-20">close</mat-icon>
+  </a>
+</div>
+<mat-dialog-content>
+  <div fxLayout="row wrap" fxLayoutAlign="space-between">
+
+
+    <mat-form-field appearance="outline" fxFlex="100" data-cy="title">
+      <mat-label>Request Title</mat-label>
+      <input matInput>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" fxFlex="49" fxFlex.xs="100">
+      <mat-label>Type</mat-label>
+      <mat-select>
+        <mat-option [value]="1">
+          value
+        </mat-option>
+      </mat-select>
+      <!--  <mat-error class="white-space&#45;&#45;nowrap">
+          This field is required.
+        </mat-error>-->
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" fxFlex="49" fxFlex.xs="100">
+      <mat-label>Priority</mat-label>
+      <mat-select>
+        <mat-option [value]="1">
+          value
+        </mat-option>
+      </mat-select>
+      <!--  <mat-error class="white-space&#45;&#45;nowrap">
+          This field is required.
+        </mat-error>-->
+    </mat-form-field>
+
+    <mat-form-field fxFlex="100" appearance="outline">
+      <mat-label>Description</mat-label>
+      <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+    </mat-form-field>
+
+  </div>
+</mat-dialog-content>
+<hr class="full-width">
+<mat-dialog-actions class="m-16" fxLayoutAlign="end">
+  <button mat-button mat-stroked-button color="primary" class="primary-border mr-12"
+          (click)="closeDialog()">{{'cancel'}}</button>
+
+  <button mat-flat-button mat-button color="primary">{{'Add Request'}}</button>
+</mat-dialog-actions>

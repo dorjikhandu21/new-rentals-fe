@@ -1,0 +1,68 @@
+<div fxLayout="column" fxLayoutAlign="space-between" class="chat-modal">
+  <mat-dialog-content fxFlex="90">
+    <mat-tab-group>
+      <mat-tab label="Application Details">
+
+        <div fxLayout="row" fxLayoutAlign="space-between center" class="my-20">
+          <div fxLayout="row">
+            <mat-chip-set>
+              <mat-chip class="primary-bg br-4 nr-white-color mr-4">
+                Status: Open
+              </mat-chip>
+            </mat-chip-set>
+            <mat-icon class="primary-bg p-4 br-4 hand-cursor nr-white-color mt-4" [matMenuTriggerFor]="menu">
+              <mat-icon>expand_more</mat-icon></mat-icon>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item>on hold</button>
+              <button mat-menu-item>In Progress</button>
+            </mat-menu>
+          </div>
+
+          <span fxLayoutAlign="center center" class="light-yellow br-4 px-20">Priority: Medium</span>
+        </div>
+
+        <h2>Kitchen sync Blockage</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aspernatur eaque minus numquam similique totam? Assumenda dicta rem saepe. Veniam.</p>
+
+        <div fxLayoutAlign="space-between">
+          <div>
+            <p class="mb-0">Category:</p>
+            <p class="nr-black-color">Planned</p>
+          </div>
+
+          <div fxFlex="30">
+            <p class="mb-0">Requested ID:</p>
+            <p class="nr-black-color">1</p>
+          </div>
+        </div>
+
+        <div fxLayoutAlign="space-between">
+          <div>
+            <p class="mb-0">Created On:</p>
+            <p class="nr-black-color">1 puppy</p>
+          </div>
+
+          <div fxFlex="30">
+            <p class="mb-0">Last Updated On:</p>
+            <p class="nr-black-color">11-23-22</p>
+          </div>
+        </div>
+        <div class="nr-white-fade-bg br-4 px-16 py-8 my-20">
+          <p class="mb-8">Requested By</p>
+          <p class="mb-0" fxLayoutAlign="start center"><img class="user-profile mr-8" src="../assets/images/user.svg"/>
+            Cristina
+          </p>
+        </div>
+        <div>
+
+        </div>
+      </mat-tab>
+      <mat-tab label="Messages"> Discussion Working on</mat-tab>
+    </mat-tab-group>
+  </mat-dialog-content>
+  <mat-dialog-actions class="m-16" fxLayoutAlign="end">
+    <hr class="full-width mb-20">
+    <button mat-button mat-stroked-button color="primary" class="primary-border mr-12"
+            (click)="closeDialog()">{{'cancel'}}</button>
+  </mat-dialog-actions>
+</div>
