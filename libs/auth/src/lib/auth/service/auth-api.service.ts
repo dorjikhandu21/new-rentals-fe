@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {UpdateUserInput, UpdateUserPayload} from "@new-rentals/shared";
 import {map, Observable} from 'rxjs';
 import {Apollo, Mutation, } from "apollo-angular";
-import {UPDATE_USER_MUTATION} from "../gql/mutations";
+import {UPDATE_USER_MUTATION} from "../../../../../layout/src/lib/gql/mutations";
 
 @Injectable({
   providedIn: 'root'

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {AuthStateService} from "./auth-state.service";
-import {BaseFacadeService} from "../../../../shared/src/lib/services/base-facade.service";
-import {AuthStoreState} from "../models/auth.state";
+import {BaseFacadeService} from "../../../../../shared/src/lib/services/base-facade.service";
+import {AuthStoreState} from "../../../../../layout/src/lib/models/auth.state";
 import {AuthApiService} from "./auth-api.service";
 import {Observable, tap} from "rxjs";
 import {UpdateUserInput, UpdateUserPayload} from "@new-rentals/shared";

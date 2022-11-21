@@ -20,15 +20,6 @@ export interface PeriodicElement {
   position: number;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Dechen Choden', email: 'dc@selise.ch', phone: '17839393', building_name: 'KSR Building', apartment: 'F-6', status:'Active', actions:''},
-  {position: 2, name: 'Dechen Choden', email: 'dc@selise.ch', phone: '17839393', building_name: 'KSR Building', apartment: 'F-6', status:'Active', actions:''},
-  {position: 3, name: 'Dechen Choden', email: 'dc@selise.ch', phone: '17839393', building_name: 'KSR Building', apartment: 'F-6', status:'Active', actions:''},
-  {position: 4, name: 'Dechen Choden', email: 'dc@selise.ch', phone: '17839393', building_name: 'KSR Building', apartment: 'F-6', status:'Active', actions:''},
-  {position: 5, name: 'Dechen Choden', email: 'dc@selise.ch', phone: '17839393', building_name: 'KSR Building', apartment: 'F-6', status:'Active', actions:''},
-  {position: 6, name: 'Dechen Choden', email: 'dc@selise.ch', phone: '17839393', building_name: 'KSR Building', apartment: 'F-6', status:'Active', actions:''},
-  {position: 7, name: 'Dechen Choden', email: 'dc@selise.ch', phone: '17839393', building_name: 'KSR Building', apartment: 'F-6', status:'Active', actions:''}
-];
 @Component({
   selector: 'new-rentals-user-listing',
   templateUrl: './user-listing.component.html',

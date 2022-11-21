@@ -22,6 +22,6 @@ export class NavBarComponent implements OnInit {
   ngOnInit(): void {}
 
   routeToAuth(path: string): void {
-    this.router.navigateByUrl(`auth/${path}`);
+    this.router.navigate([`auth/${path}`], {});
   }
 }

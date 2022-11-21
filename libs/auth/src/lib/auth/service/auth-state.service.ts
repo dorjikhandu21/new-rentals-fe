@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {BaseStateService} from "@new-rentals/shared";
-import {AuthStoreState} from "../models/auth.state";
+import {AuthStoreState} from "../../../../../layout/src/lib/models/auth.state";
 
 @Injectable({
   providedIn: 'root'

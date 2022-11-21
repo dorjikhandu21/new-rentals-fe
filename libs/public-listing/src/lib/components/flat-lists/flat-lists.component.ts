@@ -3,7 +3,11 @@ import {GoogleMap, MapInfoWindow, MapMarker} from "@angular/google-maps";
 import {HttpClient} from "@angular/common/http";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Loader} from "@googlemaps/js-api-loader";
+import {SharedFacadeService, SharedStoreStateEnum} from "@new-rentals/shared";
+import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
+import {tap} from "rxjs";
 
+@UntilDestroy()
 @Component({
   selector: 'new-rentals-flat-lists',
   templateUrl: './flat-lists.component.html',
@@ -111,10 +115,18 @@ export class FlatListsComponent implements OnInit {
       }
     }
   ];
-  constructor(private httpClient: HttpClient, private router: Router, private route: ActivatedRoute) {}
+  constructor(private httpClient: HttpClient, private router: Router, private route: ActivatedRoute, private sharedFacadeService: SharedFacadeService) {}
   ngOnInit(): void {
     this.center = {lat: 27.4716, lng: 89.6386};
     this.loadMap();
+    this.listenToApartmentListingFilters();
+  }
+
+  listenToApartmentListingFilters(): void {
+    this.sharedFacadeService.specificStateChange(SharedStoreStateEnum.GEO_CODING_FILTERS).pipe(untilDestroyed(this), tap((filters) => {
+      debugger
+      //query for apartments will happen here
+    })).subscribe();
   }
 
   loadMap(): void {

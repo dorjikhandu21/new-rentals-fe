@@ -9,3 +9,8 @@ export * from './lib/components/advanced-filter/advanced-filter.component'
 export * from './lib/components/public-listing/public-listing.component'
 export * from './lib/components/flat-details/flat-details.component'
 export * from './lib/misc/validators';
+export * from './lib/services/shared-bl.service'
+export * from './lib/services/shared-facade.service'
+export * from './lib/services/shared-api.service'
+export * from './lib/services/shared-state.service'
+export * from './lib/models/shared.store';
