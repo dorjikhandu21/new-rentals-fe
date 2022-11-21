@@ -35,9 +35,10 @@ const routes: Routes = [
     loadChildren: () => import('../../../../../libs/property-listing/src/lib/property-listing.module').then(m => m.PropertyListingModule),
     canActivate: []
   },
+
   {
-    path: 'applications',
-    loadChildren: () => import('../applications/applications.module').then(m => m.ApplicationsModule),
+    path: 'maintenance',
+    loadChildren: () => import('../maintenance/maintenance.module').then(m => m.MaintenanceModule),
     canActivate: []
   },
   {

@@ -1,6 +1,5 @@
-@import "apps/new-rentals/src/assets/styles/mixins";
 .chat-modal {
-height: 100vh;
+  height: 100vh;
   ::ng-deep.mat-mdc-menu-panel.mat-mdc-menu-panel {
     right: 128px;
   }
@@ -10,7 +9,8 @@ height: 100vh;
       color: #fff !important;
     }
   }
+  .light-yellow {
+    background: rgba(250, 188, 7, 0.2);
+    color: rgba(192, 98, 10, 0.87);  }
 }
-
-
 
