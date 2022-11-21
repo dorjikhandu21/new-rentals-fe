@@ -13,7 +13,7 @@
   <nav class="shift main-nav">
     <ul>
       <li class="text-center" *ngFor="let nav of navs">
-        <a fxLayout="column" fxLayoutAlign="center center" href="#">
+        <a fxLayout="column" fxLayoutAlign="center center" [routerLink]="nav.routerLink">
           <mat-icon class="s-24 boulder-color">{{nav.icon}}</mat-icon>
           {{nav.name}}</a>
       </li>

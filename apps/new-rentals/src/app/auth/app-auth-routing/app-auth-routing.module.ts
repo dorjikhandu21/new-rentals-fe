@@ -5,17 +5,17 @@ import {RouterModule, Routes} from "@angular/router";
 import {AuthWrapperComponent} from "../auth-wrapper/auth-wrapper.component";
 
 const routes: Routes = [
+  // {
+  //   path: '',
+  //   pathMatch: 'full',
+  //   redirectTo: 'auth/login'
+  // },
   {
     path: '',
-    pathMatch: 'full',
-    redirectTo: 'auth/login'
-  },
-  {
-    path: 'auth',
     component: AuthWrapperComponent,
     children: [
       {
-        path: 'login',
+        path: '',
         component: AuthComponent,
         data: {
           type: 'login'

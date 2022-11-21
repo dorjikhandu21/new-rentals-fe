@@ -26,4 +26,7 @@ export class SearchHomeComponent implements OnInit {
 
     }))
   }
+
+  addressChange(event: any): void {
+  }
 }

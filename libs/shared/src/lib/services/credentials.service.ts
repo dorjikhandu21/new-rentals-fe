@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {of, Observable} from "rxjs";
+import {of, Observable, BehaviorSubject} from "rxjs";
 
 const credentialsKey: any = 'WHSApp.token';
 
@@ -45,6 +45,10 @@ export class CredentialsService {
 
   get unparsedCredentials(): string {
     return sessionStorage.getItem(credentialsKey) || localStorage.getItem(credentialsKey) as unknown as string;
+  }
+
+  token(): Observable<string> {
+    return new BehaviorSubject(this.unparsedCredentials);
   }
   //
   // get hasTokenExpired(): boolean {
