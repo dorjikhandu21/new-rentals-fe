@@ -13,8 +13,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class LoginComponent implements OnInit {
   passwordVisibility = true;
   loginForm: FormGroup = new FormGroup({
-    email: new FormControl('dk3@newrentals.com', Validators.required),
-    password: new FormControl('status200', Validators.required)
+    email: new FormControl('', [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]),
+    password: new FormControl('', Validators.required)
   })
   constructor(private router: Router, private authFacadeService: AuthFacadeService, private route: ActivatedRoute) {}
   @Output() submitForm: EventEmitter<{user: {email: string, password: string}}> = new EventEmitter<{user: {email: string, password: string}}>();
@@ -30,7 +30,6 @@ export class LoginComponent implements OnInit {
 
   listenToTestState(): void {
     this.authFacadeService.specificStateChange('error').pipe(tap((error) => {
-      debugger
     })).subscribe();
   }
 

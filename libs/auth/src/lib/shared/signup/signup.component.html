@@ -23,7 +23,7 @@
     <mat-form-field appearance="outline" fxFlex="100" data-cy="email">
       <mat-label>Email</mat-label>
       <input matInput [formControl]="$any(signUpForm.get('email'))">
-      <mat-error *ngIf="signUpForm.get('email').errors['email']">Invalid Email Address</mat-error>
+      <mat-error *ngIf="signUpForm.get('email')?.errors?.['email']">Invalid Email Address</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline" fxFlex="100" data-cy="phone">

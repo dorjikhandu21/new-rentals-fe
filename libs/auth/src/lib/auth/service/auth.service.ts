@@ -1,9 +1,9 @@
 import {Inject, Injectable} from '@angular/core';
 import { ENV_TOKEN, EnvToken, StoreState} from "../models/auth.model";
-import {HttpClient} from "@angular/common/http";
-import {mapTo, Observable, tap} from "rxjs";
+import {HttpClient, HttpResponse} from "@angular/common/http";
+import {map, mapTo, Observable, tap} from "rxjs";
 import {ObservableStore} from "@codewithdan/observable-store";
-import {CredentialsService} from "@new-rentals/shared";
+import {CredentialsService, User} from "@new-rentals/shared";
 
 @Injectable()
 
@@ -18,18 +18,20 @@ export class AuthService extends ObservableStore<StoreState>{
   }
 
   login(loginData: {user: {email: string, password: string}}): Observable<boolean> {
-    return this.http.post(this.env.loginUrl, loginData).pipe(tap((user) => {
-      this.setCredentials(user);
-    }),mapTo(true));
+    // @ts-ignore
+    return this.http.post(this.env.loginUrl, loginData, {observe: 'response'}).pipe(map((response: HttpResponse<any>) => {
+      const token = response.headers.get('authorization')
+      this.setCredentials({token: token as string, user: {...response.body}});
+    }), map((response: boolean) => response));
   }
 
   signUp(signUpData: any): Observable<boolean> {
     return this.http.post(this.env.signUpUrl, signUpData).pipe(mapTo(true))
   }
 
-  setCredentials(user?: any): void {
+  setCredentials(user?: { token: string, user: User }): void {
     this.credentialsService.clearVersionOneStorage();
-    this.credentialsService.setCredentials(user, );
+    this.credentialsService.setCredentials(user);
   }
 
 }

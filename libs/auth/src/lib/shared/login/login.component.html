@@ -5,9 +5,7 @@
     <mat-form-field appearance="outline" fxFlex="100" data-cy="email">
       <mat-label>Email Address</mat-label>
       <input matInput formControlName="email">
-      <!--
-            <mat-error>Email is in an invalid format.</mat-error>
-      -->
+      <mat-error *ngIf="loginForm.get('email')?.errors?.['email']">Invalid Email Address</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline" fxFlex="100" data-cy="password">
@@ -23,7 +21,7 @@
       <mat-checkbox color="primary" tabIndex="-1" class="remember-me" aria-label="Remember Me" data-cy="rememberMe">
         Remember Me
       </mat-checkbox>
-      <a tabIndex="-1" class="pull-right" [routerLink]="'/auth/forgot-password'" data-cy="forgotPassword">
+      <a tabIndex="-1" class="pull-right" data-cy="forgotPassword">
         Forgot Password?
       </a>
     </div>
