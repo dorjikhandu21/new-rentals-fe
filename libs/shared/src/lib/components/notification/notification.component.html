@@ -5,10 +5,10 @@
         <mat-icon [ngClass]="data.iconColor">{{ data.iconType }}</mat-icon>
       </div>
       <div fxFlex="80">
-        <span [innerHTML]="data.translate ? (data.message) : (data.message | uppercase | translate)"></span>
+        <span [innerHTML]="data.translate ? (data.message) : (data.message)"></span>
       </div>
       <div fxFlex="10" (click)="closeSnackbar()">
-        <mat-icon>close</mat-icon>
+        <mat-icon class="hand-cursor">close</mat-icon>
       </div>
     </div>
   </div>

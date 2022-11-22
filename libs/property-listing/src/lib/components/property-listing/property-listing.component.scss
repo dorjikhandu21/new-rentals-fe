@@ -1,0 +1,14 @@
+.label {
+  position: absolute;
+  z-index: 2;
+  &__text {
+    border-radius: 4px;
+    padding: 4px;
+  }
+  top: 14px;
+  left: 16px;
+
+}
+.label-green-bg {
+  background: rgba(29, 178, 182, 0.6);
+}

@@ -488,10 +488,10 @@ $colorsMap: (success: $success-color, accent: $accent-color, red: $warn-color);
 }
 
 .example-card {
-  transition: 0.3s ease-out;
-  box-shadow: 0px 7px 10px rgba(black, 0.5);
+ /* transition: 0.3s ease-out;
+  box-shadow: 0px 7px 10px rgba(black, 0.5);*/
   position: relative;
-  &:hover {
+/*  &:hover {
     transform: translateY(20px);
 
     &:before {
@@ -502,8 +502,8 @@ $colorsMap: (success: $success-color, accent: $accent-color, red: $warn-color);
       opacity: 1;
       transform: translateY(0px);
     }
-  }
-  &:before {
+  }*/
+  /*&:before {
     content: "";
     position: absolute;
     display: block;
@@ -515,8 +515,8 @@ $colorsMap: (success: $success-color, accent: $accent-color, red: $warn-color);
     transition: 0.5s;
     opacity: 0;
   }
-
-  .info {
+*/
+  /*.info {
     position: absolute;
     top: 35%;
     z-index: 3;
@@ -524,7 +524,7 @@ $colorsMap: (success: $success-color, accent: $accent-color, red: $warn-color);
     opacity: 0;
     transform: translateY(30px);
     transition: 0.3s;
-  }
+  }*/
 }
 .example-card:nth-child(3n) {
   margin-right: 0 !important;
@@ -532,6 +532,46 @@ $colorsMap: (success: $success-color, accent: $accent-color, red: $warn-color);
 
 .common-chat-modal {
   height: 100vh;
+}
+
+.permission-accordion {
+  .mat-accordion {
+    & .mat-expansion-panel-spacing:first-child {
+      margin-top: 20px;
+    }
+
+    ::ng-deep.mat-expansion-panel {
+      border-radius: 8px !important;
+      margin-top: 20px !important;
+
+      mat-expansion-panel-header {
+        height: 64px !important;
+      }
+
+      &:not(.mat-expanded) mat-expansion-panel-header {
+        &:hover:not([aria-disabled='true']) {
+          background: lighten($primary-color, 43%);
+        }
+
+        &.mat-expansion-toggle-indicator-after .mat-expansion-indicator{
+          margin-right: 7px !important;
+        }
+      }
+      &.mat-expanded mat-expansion-panel-header {
+        background: $primary-color;
+        .mat-expansion-panel-header-title {
+          color: $white-color !important;
+        }
+        .mat-expansion-toggle-indicator-after .mat-expansion-indicator{
+          color: $white-color !important;
+        }
+      }
+    }
+
+    table tr:last-of-type td {
+      border-bottom: none;
+    }
+  }
 }
 
 
