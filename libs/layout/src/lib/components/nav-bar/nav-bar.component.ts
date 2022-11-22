@@ -10,7 +10,7 @@ import {CredentialsService, NotificationService} from "@new-rentals/shared";
 export class NavBarComponent implements OnInit {
   authenticated: boolean = this.credentials.isAuthenticated();
   navs: any[] = [
-    {name: 'Dashboard', icon: 'insert_chart_outlined', routerLink: '/dashboard'},
+    {name: 'Dashboard', icon: 'insert_chart_outlined', routerLink: '/dashboard',},
     {name: 'Tenants', icon: 'group', routerLink: '/users'},
     {name: 'Properties', icon: 'domain', routerLink: '/properties'},
     {name: 'Maintenance', icon: 'control_camera', routerLink: '/maintenance'},
@@ -28,7 +28,7 @@ export class NavBarComponent implements OnInit {
   logOut(): void {
     void this.credentials.logout().toPromise().then(() => {
       this.notificationService.success('Logged out successfully');
-      void this.router.navigate(['/auth']);
+      void this.router.navigate(['/home']);
     });
   }
 }

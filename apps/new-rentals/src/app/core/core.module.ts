@@ -7,6 +7,7 @@ import {ENV_TOKEN} from "@new-rentals/auth";
 import {environment} from "../../environments/environment";
 import {PropertyListingModule} from "@new-rentals/property-listing";
 import {LayoutComponent} from "@new-rentals/layout";
+import {HomeComponent} from "../public-listing/home/home.component";
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
