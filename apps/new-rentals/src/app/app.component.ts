@@ -24,6 +24,7 @@ export class AppComponent implements OnInit{
 
   loadLatestVersion(): void {
     if (this.swUpdate.isEnabled) {
+      debugger
       this.reloadPage();
       this.routeChange();
     }
@@ -32,6 +33,7 @@ export class AppComponent implements OnInit{
   reloadPage(): void {
     if (this.swUpdate.isEnabled) {
       this.swUpdate.versionUpdates.pipe(untilDestroyed(this)).subscribe(() => {
+        debugger
         if (confirm('New version available. Load New Version?')) {
           window.location.reload();
         }
