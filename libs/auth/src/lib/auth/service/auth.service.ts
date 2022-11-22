@@ -1,5 +1,5 @@
 import {Inject, Injectable} from '@angular/core';
-import { ENV_TOKEN, EnvToken, StoreState} from "../models/auth.model";
+import {EndPointUris, ENV_TOKEN, EnvToken, StoreState} from "../models/auth.model";
 import {HttpClient, HttpResponse} from "@angular/common/http";
 import {map, mapTo, Observable} from "rxjs";
 import {ObservableStore} from "@codewithdan/observable-store";
@@ -19,7 +19,7 @@ export class AuthService extends ObservableStore<StoreState>{
 
   login(loginData: {user: {email: string, password: string}}): Observable<boolean> {
     // @ts-ignore
-    return this.http.post(this.env.loginUrl, loginData, {observe: 'response'}).pipe(map((response: HttpResponse<any>) => {
+    return this.http.post(EndPointUris.LOGIN_URI, loginData, {observe: 'response'}).pipe(map((response: HttpResponse<any>) => {
       const token = response.headers.get('authorization')
       this.setCredentials({token: token as string, user: {...response.body}});
       this.notificationService.success('Logged in Successfully');

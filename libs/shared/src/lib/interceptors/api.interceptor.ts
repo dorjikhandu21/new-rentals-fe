@@ -60,7 +60,7 @@ export class ApiInterceptor implements HttpInterceptor {
 
   private handleErrorResponse(errorResponse: HttpErrorResponse): any {
     if (errorResponse?.url?.split('/').includes('graphql') && get(errorResponse, 'error.error')) {
-      return throwError(this.displayErrors([errorResponse.error.error]));
+      return throwError(this.displayErrors([errorResponse.error?.error]));
     } else {
       const errors = get(errorResponse, 'error');
       if (errors && Array.isArray(errors)) {
@@ -74,7 +74,7 @@ export class ApiInterceptor implements HttpInterceptor {
         this.router.navigate(['auth']);
         window.location.reload();
       } else {
-        this.notificationService.error(errors.error);
+        this.notificationService.error(errors?.error);
         return throwError(errorResponse);
       }
     }
