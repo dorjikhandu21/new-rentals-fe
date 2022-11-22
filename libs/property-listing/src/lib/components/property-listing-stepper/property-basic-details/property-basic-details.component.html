@@ -1,0 +1,56 @@
+<div>
+  <h2>Basic Details</h2>
+  <div fxLayout="row wrap" fxLayoutAlign="space-between" class="mb-20">
+    <mat-card fxFlex="48" class="mat-elevation-z0 nr-silver-border hand-cursor py-12" fxLayout="row"
+              fxLayoutAlign="start center">
+      <img class="mr-24 ml-8" src="/assets/images/user-icon.svg"/>
+      <div>
+        <p class="boulder-color mb-0">Single Family Home</p>
+      </div>
+    </mat-card>
+    <mat-card fxFlex="48" class="mat-elevation-z0 nr-silver-border hand-cursor py-12" fxLayout="row"
+              fxLayoutAlign="start center">
+      <img class="mr-24 ml-8" src="/assets/images/user-icon.svg"/>
+      <div>
+        <p class="boulder-color mb-0">Multi Family Home</p>
+      </div>
+    </mat-card>
+  </div>
+  <div fxLayout="row wrap">
+    <mat-form-field appearance="outline" fxFlex="100">
+      <mat-label>Property Type</mat-label>
+      <mat-select>
+        <mat-option [value]="1">
+          option
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline" fxFlex="100" data-cy="title">
+      <mat-label>Property Name or Title</mat-label>
+      <input matInput>
+    </mat-form-field>
+    <mat-form-field appearance="outline" fxFlex="100" data-cy="title">
+      <mat-label>Describe Your home</mat-label>
+      <input matInput>
+    </mat-form-field>
+
+
+    <div fxFlex="100">
+      <h2 class="mb-0">Upload Your Image</h2>
+      <p class="font-size-14 boulder-color">Upload at least 3 images.</p>
+      <div class="multi-file-upload mb-20">
+        <!--  <div fxLayoutAlign="" fxLayout="row wrap">
+            <img mat-card-image class="image" src="../../../../../../../assets/images/flat.svg"
+                 alt="Photo of a Shiba Inu">
+          </div>-->
+        <div class="file-upload-content hand-cursor br-8 py-16" fxLayoutAlign="center center" fxLayout="column">
+          <mat-icon color="primary" class="ver-middle s-32 hand-cursor">cloud_upload</mat-icon>
+          <p>Drop a files here or <a href="">Choose from computer</a></p>
+          <p class="boulder-color center-block px-12">Choose any image format to upload here, upload upto 200 MB</p>
+          <input #fileUploader [hidden]="true" type="file" [multiple]="true">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

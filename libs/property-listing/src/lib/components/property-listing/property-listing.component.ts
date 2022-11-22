@@ -1,9 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+import {STEPPER_GLOBAL_OPTIONS} from "@angular/cdk/stepper";
 
 @Component({
   selector: 'new-rentals-property-listing',
   templateUrl: './property-listing.component.html',
   styleUrls: ['./property-listing.component.scss'],
+  providers: [
+    {
+      provide: STEPPER_GLOBAL_OPTIONS,
+      useValue: {displayDefaultIndicatorType: false},
+    },
+  ],
 })
 export class PropertyListingComponent implements OnInit {
   filters: any[] = [

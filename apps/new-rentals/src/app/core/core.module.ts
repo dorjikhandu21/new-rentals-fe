@@ -34,8 +34,8 @@ const routes: Routes = [
   //   redirectTo: 'home'
   // },
   {
-    path: 'property-list',
-    loadChildren: () => import('../../../../../libs/property-listing/src/lib/property-listing.module').then(m => m.PropertyListingModule),
+    path: 'property',
+    loadChildren: () => import('../property-listing/property-listing.module').then(m => m.PropertyListingModule),
     canActivate: []
   },
 

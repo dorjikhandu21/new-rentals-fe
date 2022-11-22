@@ -1,0 +1,13 @@
+@import "apps/new-rentals/src/assets/styles/mixins";
+
+.multi-file-upload {
+
+  .file-upload-content {
+    border: 2px dashed $alto-gray;
+    min-height: 100px;
+
+    @include nr-media('gt-xs') {
+      width: 476px;
+    }
+  }
+}

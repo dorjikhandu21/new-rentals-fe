@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'new-rentals-property-listing',
-  templateUrl: './property-listing.component.html',
-  styleUrls: ['./property-listing.component.scss'],
+  template: '<router-outlet></router-outlet>'
 })
 export class PropertyListingComponent implements OnInit {
   constructor() {}
