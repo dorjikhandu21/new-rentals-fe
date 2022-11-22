@@ -9,9 +9,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { PublicListingComponent } from './components/public-listing/public-listing.component';
 import { FlatDetailsComponent } from './components/flat-details/flat-details.component';
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 @NgModule({
-  imports: [CommonModule, MatIconModule, TranslateModule, MatSnackBarModule],
+  imports: [CommonModule, MatIconModule, TranslateModule, MatSnackBarModule, FlexLayoutModule],
   declarations: [
     AdvancedFilterComponent,
     NavBarComponent,

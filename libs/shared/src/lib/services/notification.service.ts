@@ -20,7 +20,7 @@ export class NotificationService {
   private snackBarConfig: MatSnackBarConfig = {
     horizontalPosition: 'right',
     verticalPosition: 'top',
-    duration: 5000
+    duration: 5000000000
   };
 
   constructor(private snackBar: MatSnackBar) {
