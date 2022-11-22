@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import {of, Observable, BehaviorSubject} from "rxjs";
+import jwt_decode from 'jwt-decode'
 
-const credentialsKey: any = 'WHSApp.token';
+const credentialsKey: any = 'NewRentals.token';
 
 export interface CredentialsFromService {
   token?: string;
@@ -17,14 +18,16 @@ export class CredentialsService {
   constructor() { }
 
   isAuthenticated(): boolean {
-    return !!this.credentials;
+    sessionStorage.removeItem('WHSApp.token');
+    return !!this.credentials && !this.hasTokenExpired;
+
   }
 
   clearVersionOneStorage(): void {
-    sessionStorage.removeItem('WHSApp.token');
-    localStorage.removeItem('WHSApp.token');
-    sessionStorage.removeItem('WHSApp.decodedToken');
-    localStorage.removeItem('WHSApp.decodedToken');
+    sessionStorage.removeItem('NewRentals.token');
+    localStorage.removeItem('NewRentals.token');
+    sessionStorage.removeItem('NewRentals.decodedToken');
+    localStorage.removeItem('NewRentals.decodedToken');
   }
 
   setCredentials(userCredentials?: CredentialsFromService): void {
@@ -50,15 +53,15 @@ export class CredentialsService {
   token(): Observable<string> {
     return new BehaviorSubject(this.unparsedCredentials);
   }
-  //
-  // get hasTokenExpired(): boolean {
-  //   const savedCredentials: any = this.unparsedCredentials;
-  //   if (savedCredentials) {
-  //     const expiry = jwt_decode<Record<string,number>>(savedCredentials).exp;
-  //     return (Math.floor((new Date).getTime() / 1000)) >= expiry
-  //   }
-  //   return false;
-  // }
+
+  get hasTokenExpired(): boolean {
+    const savedCredentials: any = this.unparsedCredentials;
+    if (savedCredentials) {
+      const expiry = jwt_decode<Record<string,number>>(savedCredentials)['exp'];
+      return (Math.floor((new Date).getTime() / 1000)) >= expiry
+    }
+    return false;
+  }
 
   get credentials(): CredentialsFromService | null {
     const savedCredentials = this.unparsedCredentials;

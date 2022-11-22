@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {CredentialsService} from "@new-rentals/shared";
+import {CredentialsService, NotificationService} from "@new-rentals/shared";
 
 @Component({
   selector: 'new-rentals-nav-bar',
@@ -17,11 +17,18 @@ export class NavBarComponent implements OnInit {
     {name: 'Payments', icon: 'payments', routerLink: '/payments'},
     {name: 'Application', icon: 'app_registration', routerLink: '/applications'}];
 
-  constructor(private router: Router, private route: ActivatedRoute, private credentials: CredentialsService) {}
+  constructor(private router: Router, private route: ActivatedRoute, private credentials: CredentialsService, private notificationService: NotificationService) {}
 
   ngOnInit(): void {}
 
   routeToAuth(path: string): void {
     this.router.navigate([`auth/${path}`], {});
+  }
+
+  logOut(): void {
+    void this.credentials.logout().toPromise().then(() => {
+      this.notificationService.success('Logged out successfully');
+      void this.router.navigate(['/auth']);
+    });
   }
 }
