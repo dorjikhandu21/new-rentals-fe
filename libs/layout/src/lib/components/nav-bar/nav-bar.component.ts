@@ -9,7 +9,9 @@ import {CredentialsService, NotificationService} from "@new-rentals/shared";
 })
 export class NavBarComponent implements OnInit {
   authenticated: boolean = this.credentials.isAuthenticated();
-  navs: any[] = [
+  currentActiveLink?:string;
+
+  navs: { name: string, icon: string, routerLink: string }[] = [
     {name: 'Dashboard', icon: 'insert_chart_outlined', routerLink: '/dashboard',},
     {name: 'Tenants', icon: 'group', routerLink: '/users'},
     {name: 'Properties', icon: 'domain', routerLink: '/properties'},

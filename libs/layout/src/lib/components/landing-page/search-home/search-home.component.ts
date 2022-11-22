@@ -18,16 +18,6 @@ export class SearchHomeComponent implements OnInit {
   constructor(private sharedFacadeService: SharedFacadeService, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    // this.listenToSearchControl();
-  }
-
-  listenToSearchControl(): void {
-    this.searchControl.valueChanges.pipe(untilDestroyed(this),
-      distinctUntilChanged(),
-      debounceTime(400),
-      filter((value: string) => value.length > 2),
-      tap((value)=> {
-    }))
   }
 
   addressChange(event: Address): void {

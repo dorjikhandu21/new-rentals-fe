@@ -18,7 +18,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { FaqSectionsComponent } from './components/faq-sections/faq-sections.component';
 import {MatSelectModule} from "@angular/material/select";
 import {GooglePlaceModule} from "ngx-google-places-autocomplete";
-import {RouterLinkWithHref} from "@angular/router";
+import {RouterLinkActive, RouterLinkWithHref} from "@angular/router";
 
 @NgModule({
   imports: [
@@ -34,6 +34,7 @@ import {RouterLinkWithHref} from "@angular/router";
     MatSelectModule,
     GooglePlaceModule,
     RouterLinkWithHref,
+    RouterLinkActive,
   ],
   declarations: [
     LayoutComponent,
