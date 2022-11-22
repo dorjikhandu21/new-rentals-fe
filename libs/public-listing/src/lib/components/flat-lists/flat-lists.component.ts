@@ -1,11 +1,12 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {GoogleMap, MapInfoWindow, MapMarker} from "@angular/google-maps";
+import { MapInfoWindow } from "@angular/google-maps";
 import {HttpClient} from "@angular/common/http";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Loader} from "@googlemaps/js-api-loader";
-import {SharedFacadeService, SharedStoreStateEnum} from "@new-rentals/shared";
+import {SharedFacadeService, SharedStoreStateEnum, Unit} from "@new-rentals/shared";
 import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
-import {tap} from "rxjs";
+import {switchMap, tap} from "rxjs";
+import {UnitFacadeService} from "../services/unit-facade.service";
 
 @UntilDestroy()
 @Component({
@@ -16,11 +17,11 @@ import {tap} from "rxjs";
 
 export class FlatListsComponent implements OnInit {
 
-   // @ts-ignore
-
+  // @ts-ignore
+  units: Unit[] = [];
   private map: google.maps.Map;
   // @ViewChild(MapInfoWindow) infoWindow?: MapInfoWindow;
-  @ViewChild(MapInfoWindow, { static: false }) infoWindow?: MapInfoWindow;
+  @ViewChild(MapInfoWindow, {static: false}) infoWindow?: MapInfoWindow;
   id = 1;
   filters: any[] = [
     {name: 'Type', icon: 'category'},
@@ -34,98 +35,27 @@ export class FlatListsComponent implements OnInit {
   options: google.maps.MapOptions = {
     scrollwheel: true,
     disableDoubleClickZoom: true,
-    zoom: 15,
+    zoom: 6,
     disableDefaultUI: true
   };
 
-  markers: any[] = [
-    {
-      "position": {
-        "lat": 27.474925998493138,
-        "lng": 89.64200758778681
-      },
-      "label": {
-        "color": "#D7385E",
-        "text": "Marker label 1"
-      },
-      "title": "Marker title 1",
-      "info": "Marker info 1",
-      "options": {
-        "animation": 2
-      }
-    },
-    {
-      "position": {
-        "lat": 27.472603396354472,
-        "lng": 89.63921809041132
-      },
-      "label": {
-        "color": "#D7385E",
-        "text": "Marker label 4"
-      },
-      "title": "Marker title 4",
-      "info": "Marker info 4",
-      "options": {
-        "animation": 2
-      }
-    },
-    {
-      "position": {
-        "lat": 27.470966122805464,
-        "lng": 89.63921809041132
-      },
-      "label": {
-        "color": "#D7385E",
-        "text": "Marker label 5"
-      },
-      "title": "Marker title 5",
-      "info": "Marker info 5",
-      "options": {
-        "animation": 2
-      }
-    },
-    {
-      "position": {
-        "lat": 27.47083285528322,
-        "lng": 89.63816666447748
-      },
-      "label": {
-        "color": "#D7385E",
-        "text": "Marker label 6"
-      },
-      "title": "Marker title 6",
-      "info": "Marker info 6",
-      "options": {
-        "animation": 2
-      }
-    },
-    {
-      "position": {
-        "lat": 27.471384962540522,
-        "lng": 89.63241600834955
-      },
-      "label": {
-        "color": "#D7385E",
-        "text": "Marker label 7"
-      },
-      "title": "Marker title 7",
-      "info": "Marker info 7",
-      "options": {
-        "animation": 2
-      }
-    }
-  ];
-  constructor(private httpClient: HttpClient, private router: Router, private route: ActivatedRoute, private sharedFacadeService: SharedFacadeService) {}
+markers: any[] = [];
+  constructor(private httpClient: HttpClient, private router: Router, private route: ActivatedRoute, private sharedFacadeService: SharedFacadeService, private unitFacadeService: UnitFacadeService) {
+  }
+
   ngOnInit(): void {
-    this.center = {lat: 27.4716, lng: 89.6386};
-    this.loadMap();
+    this.center = {lat: 27.4288601, lng: 89.6532514};
+    this.sharedFacadeService.updateSpecificState({}, SharedStoreStateEnum.GEO_CODING_FILTERS);
     this.listenToApartmentListingFilters();
+    this.loadMap();
   }
 
   listenToApartmentListingFilters(): void {
-    this.sharedFacadeService.specificStateChange(SharedStoreStateEnum.GEO_CODING_FILTERS).pipe(untilDestroyed(this), tap((filters) => {
-      debugger
-      //query for apartments will happen here
+    this.sharedFacadeService.specificStateChange(SharedStoreStateEnum.GEO_CODING_FILTERS).pipe(untilDestroyed(this), switchMap(() => this.unitFacadeService.getUnits()), tap((units) => {
+      this.units = units;
+      this.units.forEach(unit => {
+        this.addMarkers(unit);
+      })
     })).subscribe();
   }
 
@@ -135,22 +65,21 @@ export class FlatListsComponent implements OnInit {
     })
     loader.load().then(() => {
       const position: { lat: number; lng: number; } = {lat: 27.4716, lng: 89.6386};
-      this.map = new google.maps.Map(document.getElementById('map') as HTMLElement,{
+      this.map = new google.maps.Map(document.getElementById('map') as HTMLElement, {
         center: position,
         scrollwheel: true,
         disableDoubleClickZoom: true,
         zoom: 15,
         disableDefaultUI: true,
       });
-      this.addMarkers()
     }).catch(error => {
       console.log('Maps could not load')
     })
   }
 
-  addMarkers(): void {
+  addMarkers(unit: Unit): void {
     const marker = new google.maps.Marker({
-      position: this.center,
+      position: {lat: Number(unit.property.lat), lng: Number(unit?.property?.lng)},
       map: this.map
     })
     const infowindow = new google.maps.InfoWindow({
@@ -165,12 +94,11 @@ export class FlatListsComponent implements OnInit {
       });
     })
     infowindow.addListener('click', () => {
-      debugger
       this.routeToDetails()
     })
   }
 
-  dropMarker(event:any): void {
+  dropMarker(event: any): void {
     this.markers.push({
       position: {
         lat: event.latLng.lat(),

@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import {BaseStateService} from "@new-rentals/shared";
-import {AuthStoreState} from "../../../../../layout/src/lib/models/auth.state";
+import {StoreState} from "../models/auth.model";
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthStateService extends BaseStateService<AuthStoreState>{
+export class AuthStateService extends BaseStateService<StoreState>{
 
   constructor() {
     super();

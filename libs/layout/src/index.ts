@@ -5,5 +5,5 @@ export * from './lib/components/footer/footer.component';
 export * from '../../auth/src/lib/auth/service/auth-facade.service';
 export * from '../../auth/src/lib/auth/service/auth-state.service';
 export * from '../../auth/src/lib/auth/service/auth-api.service';
-export * from './lib/models/auth.state';
+export * from './lib/models/layout.state';
 export * from './lib/gql/mutations';

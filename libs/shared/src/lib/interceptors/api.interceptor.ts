@@ -31,7 +31,7 @@ export class ApiInterceptor implements HttpInterceptor {
             const clone = req.clone({
               setHeaders: {
                 //@ts-ignore
-                Authorization: `${JSON.parse(idToken).token}`
+                Authorization: `${JSON.parse(idToken)?.token}`
               }
             });
             return next.handle(clone).pipe(tap((event) => {
@@ -60,6 +60,7 @@ export class ApiInterceptor implements HttpInterceptor {
 
   private handleErrorResponse(errorResponse: HttpErrorResponse): any {
     if (errorResponse?.url?.split('/').includes('graphql') && get(errorResponse, 'error.error')) {
+      debugger
       return throwError(this.displayErrors([errorResponse.error?.error]));
     } else {
       const errors = get(errorResponse, 'error');

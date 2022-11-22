@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl} from "@angular/forms";
-import {debounce, debounceTime, distinctUntilChanged, filter, tap} from "rxjs";
-import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
-import {Loader} from "@googlemaps/js-api-loader";
+import {UntilDestroy} from "@ngneat/until-destroy";
 import {Address} from "ngx-google-places-autocomplete/objects/address";
 import {SharedFacadeService, SharedStoreStateEnum} from "@new-rentals/shared";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -21,9 +19,9 @@ export class SearchHomeComponent implements OnInit {
   }
 
   addressChange(event: Address): void {
+    debugger
     this.sharedFacadeService.updateSpecificState({}, SharedStoreStateEnum.GEO_CODING_FILTERS);
     this.router.navigate(['list'], {relativeTo: this.route});
-    // The api requests for the apartments will happen here: privide lat and lng filters;
     console.log(event.geometry.location.lat());
     console.log(event.geometry.location.lng());
   }
