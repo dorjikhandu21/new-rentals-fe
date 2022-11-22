@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'new-rentals-property-listing',
   template: '<router-outlet></router-outlet>'
 })
-export class PropertyListingComponent implements OnInit {
+export class AppPropertyListingComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}

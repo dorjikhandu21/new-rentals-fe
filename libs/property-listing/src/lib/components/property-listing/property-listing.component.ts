@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {STEPPER_GLOBAL_OPTIONS} from "@angular/cdk/stepper";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'new-rentals-property-listing',
@@ -30,11 +31,15 @@ export class PropertyListingComponent implements OnInit {
     disableDoubleClickZoom: true,
     maxZoom: 15,
   };
-  constructor() {}
+  constructor(private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.center = {lat: 27.4716, lng: 89.6386};
   }
   mapClick(event: any): void {
+  }
+
+  routeToPropertyCreation(): void {
+    void  this.router.navigateByUrl('properties/add');
   }
 }

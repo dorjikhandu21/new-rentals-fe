@@ -1,25 +1,26 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from "@angular/router";
-import {ShellService} from "@new-rentals/shell";
+import {ShellModule, ShellService} from "@new-rentals/shell";
 import {
   PropertyListingComponent,
   PropertyListingModule,
   PropertyListingStepperComponent
 } from "@new-rentals/property-listing";
+import {AppPropertyListingComponent} from "./app-property-listing.component";
 
 const routes: Routes = [
   ShellService.childRoutes([
     {
       path: '',
-      component: PropertyListingComponent,
+      component: AppPropertyListingComponent,
       canActivate: [],
       data: {
         breadCrumb: 'property-list'
       },
       children: [
         {
-          path: 'list',
+          path: '',
           component: PropertyListingComponent,
         },
         {
@@ -37,7 +38,8 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    PropertyListingModule
+    PropertyListingModule,
+    ShellModule
   ]
 })
 export class PropertyListingRoutingModule { }

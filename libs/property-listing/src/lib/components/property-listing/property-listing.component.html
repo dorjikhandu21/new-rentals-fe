@@ -22,7 +22,7 @@
       </mat-select>
     </mat-form-field>
   </div>
-  <button mat-flat-button mat-button color="primary" fxFlex="16" class="mt-8 mb-20" [routerLink]="['/property-list/add']">
+  <button mat-flat-button mat-button color="primary" fxFlex="16" class="mt-8 mb-20" (click)="routeToPropertyCreation()">
     <mat-icon>add</mat-icon>
     {{'Add Property'}}</button>
 </div>
