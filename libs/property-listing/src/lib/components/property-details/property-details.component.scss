@@ -1,0 +1,17 @@
+@import "apps/new-rentals/src/assets/styles/variables";
+
+.banner-container {
+  height: 220px;
+  .banner {
+    object-fit: cover;
+    height: 100%;
+  }
+}
+.detail-page {
+  position: relative;
+  z-index: 9;
+  margin-top: -40px;
+}
+.add-button {
+  border: 1px dashed $alto-gray;
+}

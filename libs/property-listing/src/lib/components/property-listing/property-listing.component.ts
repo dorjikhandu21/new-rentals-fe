@@ -42,4 +42,7 @@ export class PropertyListingComponent implements OnInit {
   routeToPropertyCreation(): void {
     void  this.router.navigateByUrl('properties/add');
   }
+  routeToPropertyDetail(): void {
+    void  this.router.navigateByUrl('properties/detail');
+  }
 }

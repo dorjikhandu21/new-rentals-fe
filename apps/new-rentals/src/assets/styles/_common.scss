@@ -43,19 +43,9 @@ p {
 
 /* This is common style for three components i.e, user, contact and nni address */
 
-.addresses-section {
-
-  .mat-chip.mat-standard-chip {
-    background-color: $mild-gray;
-  }
-}
 
 hr {
   border: 0.6px solid $alto-gray;
-}
-
-.m-auto {
-  margin: auto;
 }
 
 a {
@@ -63,43 +53,10 @@ a {
   text-decoration: none;
 }
 
-.header-container {
-  position: relative;
-}
-
 .light-bg{
   background-color: lighten($primary-color, 43%) !important;
 }
 
-@include nr-media(lt-md) {
-
-  .customer-detail-edit .edit-btn {
-    display: contents;
-  }
-}
-
-@include nr-media(gt-sm) {
-
-  .customer-detail-edit {
-
-    .edit-btn {
-      display: none;
-    }
-
-    .light-bg:hover {
-      background-color: lighten($primary-color, 48%) !important;
-
-      .edit-btn {
-        display: inline-table;
-        transition: 0.2s;
-
-        &:hover {
-          background-color: $athens-gray;
-        }
-      }
-    }
-  }
-}
 
 @mixin responsive-table {
 
@@ -178,14 +135,6 @@ a {
   }
 }
 
-.content {
-  margin-top: 16px;
-
-  @include nr-media('xs') {
-    margin: 56px 0;
-  }
-}
-
 .edit-icons,
 .delete-icon {
   border-radius: 20px;
@@ -197,29 +146,10 @@ a {
   }
 }
 
-.add-icon {
-  height: 27px !important;
-}
-
 .text-truncate {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-}
-
-.addresses-section, .billing-account,
-.user-address {
-  @include nr-media('gt-md') {
-    &:nth-child(3n) {
-      margin-right: 0 !important;
-    }
-  }
-
-  @include nr-media('sm') {
-    &:nth-child(2n) {
-      margin-right: 0 !important;
-    }
-  }
 }
 
 sup {
@@ -248,145 +178,6 @@ mat-icon {
 
 .faint-primary-bg {
   background: $faint-primary-bg;
-}
-
-.filter-container {
-  @include nr-box-shadow(0 4px 10px rgba($black-color, 0.25));
-
-  animation: slidein 0.3s;
-  left: 24px;
-  right: 24px;
-  position: absolute;
-  top: 83%;
-  width: 567px;
-  z-index: 3;
-}
-
-.custom-filter {
-  width: auto;
-  right: 24px;
-}
-
-@include nr-media(xs) {
-
-  .filter-container-mobile {
-    max-width: 89%;
-    top: 44% !important;
-  }
-
-  .add-customer {
-    $box-shadow: 2px -3px 5px -6px rgba($black-color, 0.8);
-
-    @include nr-box-shadow($box-shadow);
-
-    bottom: -2px;
-    left: 0;
-    position: fixed;
-    z-index: 999;
-  }
-}
-
-@keyframes slidein {
-
-  from {
-    margin-top: -30px;
-  }
-
-  to {
-    margin-top: 0;
-  }
-}
-
-@mixin cpe-table {
-
-  .cpe-table {
-
-    .mat-header-row,
-    th {
-      height: 52px;
-    }
-
-    tr {
-
-      &.edit-price-row {
-        height: 0 !important;
-      }
-
-      &:last-of-type td.mat-cell {
-        border-bottom: none;
-      }
-    }
-
-    .edit-cpe-price {
-      display: flex;
-      overflow: hidden;
-    }
-
-    .cpe-content-row {
-
-      td {
-        border-bottom-width: 0;
-      }
-
-      &:not(.cpe-expanded-row):hover {
-        background: $light-cyan;
-      }
-    }
-
-    ::ng-deep.mat-form-field-wrapper {
-      padding-bottom: 0 !important;
-    }
-  }
-}
-
-.empty-data {
-  height: 60vh;
-}
-
-.no-attachment {
-  height: 25vh;
-}
-
-.custom-mat-accordion {
-
-  mat-accordion {
-
-    & .mat-expansion-panel-spacing:first-child {
-      margin-top: 20px;
-    }
-
-    .mat-expansion-panel {
-      border-radius: 8px !important;
-      margin-top: 20px !important;
-
-      .mat-expansion-panel-header {
-        height: 64px !important;
-      }
-
-      &:not(.mat-expanded) .mat-expansion-panel-header {
-
-        &:hover:not([aria-disabled='true']) {
-          background: lighten($primary-color, 48%);
-        }
-
-        &.mat-expansion-toggle-indicator-before .mat-expansion-indicator {
-          margin: 0 16px 8px 0 !important;
-        }
-      }
-    }
-  }
-}
-
-.fixed-header {
-  $boxshadow: 0 0.1px 2px 0 rgba($black-color, 0.24);
-
-  @include nr-box-shadow($boxshadow);
-
-  z-index: 999;
-
-  @include nr-media(lt-md) {
-    width: 100%;
-  }
 }
 
 .mat-card {
@@ -421,18 +212,6 @@ $colorsMap: (success: $success-color, accent: $accent-color, red: $warn-color);
 
   .mat-form-field-wrapper {
     padding-bottom: 0;
-  }
-}
-
-.billing-account {
-  &__sunrise {
-    color: $sweet-pink;
-    background-color: rgba($sweet-pink, 0.08);
-  }
-
-  &__upc {
-    color: $blue-haze;
-    background-color: rgba($blue-haze, 0.08);
   }
 }
 

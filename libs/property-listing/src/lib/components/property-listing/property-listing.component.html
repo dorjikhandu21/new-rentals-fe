@@ -29,7 +29,7 @@
 
 <div class="mx-24" fxLayout="row wrap" fxLayoutAlign="space-between streatch">
   <div *ngFor="let card of [1,2,3,4,]" class="example-card hand-cursor br-8 nr-white-bg nr-silver-border mb-24"
-       fxFlex="24">
+       fxFlex="24" (click)="routeToPropertyDetail()">
     <div class="image-container">
       <div class="label">
         <span class="label__text nr-white-color label-green-bg mr-12">Nu.15000/-</span>

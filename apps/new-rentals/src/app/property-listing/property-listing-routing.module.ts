@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from "@angular/router";
 import {ShellModule, ShellService} from "@new-rentals/shell";
 import {
+  PropertyDetailsComponent,
   PropertyListingComponent,
   PropertyListingModule,
   PropertyListingStepperComponent
@@ -26,6 +27,10 @@ const routes: Routes = [
         {
           path: 'add',
           component: PropertyListingStepperComponent,
+        },
+        {
+          path: 'detail',
+          component: PropertyDetailsComponent,
         }
       ],
 

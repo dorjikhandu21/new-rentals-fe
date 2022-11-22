@@ -1,14 +1,13 @@
-<div fxLayout="row wrap" fxLayoutAlign="space-between" class="mx-24 mb-16 mt-32">
+<div fxLayout="row wrap" fxLayoutAlign="space-between" class="mx-24 mt-24">
 <div fxLayout="row wrap" fxFlex="85"  fxLayoutGap="12px">
   <mat-form-field appearance="outline" fxFlex="40" class="search-field">
     <mat-icon matPrefix color="primary" class="hand-cursor mr-12 ml-4 s-24">search</mat-icon>
     <input type="text" matInput placeholder="Search home by Location" autocomplete="off" data-cy="search">
   </mat-form-field>
 
-  <mat-form-field fxFlex="20"  appearance="outline" class="pull-right">
+  <!--<mat-form-field fxFlex="20"  appearance="outline" class="pull-right">
     <mat-icon matPrefix class="boulder-color">filter_3</mat-icon>
-    <mat-label>All Buildings</mat-label>
-    <mat-select>
+    <mat-select placeholder="all building">
       <mat-option [value]="1">lorem</mat-option>
       <mat-option [value]="2">dummy</mat-option>
     </mat-select>
@@ -21,11 +20,11 @@
       <mat-option [value]="1">dummy</mat-option>
       <mat-option [value]="2">value</mat-option>
     </mat-select>
-  </mat-form-field>
+  </mat-form-field>-->
 </div>
 
 
-  <button mat-flat-button mat-button color="primary" fxFlex="15" class="mt-8" (click)="openInviteTenant()">
+  <button mat-flat-button mat-button color="primary" fxFlex="15" class="mt-4" (click)="openInviteTenant()">
     <mat-icon>add</mat-icon>
     {{'Invite Member'}}</button>
 </div>
@@ -59,8 +58,10 @@
     <!-- name Column -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let element" fxLayoutAlign="center center">
-        <img class="user-profile my-8 mr-8" src="../assets/images/user.svg"/>
+      <td mat-cell *matCellDef="let element" fxLayoutAlign="start center">
+        <div class="user-profile">
+          <img class="mt-8 mb-4 mr-8" src="../assets/images/user.svg"/>
+        </div>
         {{element.name}} </td>
     </ng-container>
 
@@ -112,4 +113,10 @@
         (click)="selection.toggle(row)">
     </tr>
   </table>
+  <hr class="full-width">
+  <mat-paginator [length]="100"
+                 [pageSize]="10"
+                 [pageSizeOptions]="[5, 10, 25, 100]"
+                 aria-label="Select page">
+  </mat-paginator>
 </div>
