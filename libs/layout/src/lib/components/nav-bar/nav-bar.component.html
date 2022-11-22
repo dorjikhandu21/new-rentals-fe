@@ -1,20 +1,19 @@
-<mat-toolbar fxLayout="row" fxLayoutAlign="space-between center" class="nr-white-bg">
+<mat-toolbar fxLayout="row" fxLayoutAlign="space-between center" class="nr-white-bg home-nav-bar">
   <img class="auth-logo" src="/assets/images/logo.svg"/>
-<!--
-  <nav class="shift">
-    <ul>
-      <li><a href="#rental-solution">Rental Solution</a></li>
-      <li><a href="#">Pricing</a></li>
-      <li><a href="#">FAQ</a></li>
-      <li><a href="#">Contact Us</a></li>
+
+ <!-- <nav fxFlex="70" class="home-nav-bar stroke">
+    <ul fxLayout="row" fxLayoutAlign="center center">
+      <li fxFlex="15" *ngFor="let nav of ['Rental Solution', 'Pricing', 'FAQ', 'Contact Us']"
+      class="px-20 hand-cursor"><a class="nr-black-color full-width" href="#">{{nav}}</a></li>
     </ul>
   </nav>-->
 
-  <nav class="shift main-nav">
-    <ul>
-      <li class="text-center" *ngFor="let nav of navs">
-        <a fxLayout="column" fxLayoutAlign="center center" [routerLink]="nav.routerLink">
-          <mat-icon class="s-24 boulder-color">{{nav.icon}}</mat-icon>
+
+  <nav fxFlex="70" class="stroke">
+    <ul fxLayout="row" fxLayoutAlign="center center">
+      <li class="text-center" fxFlex="15" *ngFor="let nav of navs">
+        <a fxLayout="column" fxLayoutAlign="center center" class="nr-black-color full-width font-size-14" [routerLink]="nav.routerLink">
+          <mat-icon class="s-20 boulder-color">{{nav.icon}}</mat-icon>
           {{nav.name}}</a>
       </li>
     </ul>

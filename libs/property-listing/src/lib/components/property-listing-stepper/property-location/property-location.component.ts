@@ -21,7 +21,7 @@ export class PropertyLocationComponent implements OnInit {
         "lng": 89.64200758778681
       },
       "label": {
-        "color": "blue",
+        "color": "#D7385E",
         "text": "Marker label 1"
       },
       "title": "Marker title 1",
@@ -36,7 +36,7 @@ export class PropertyLocationComponent implements OnInit {
         "lng": 89.63921809041132
       },
       "label": {
-        "color": "blue",
+        "color": "#D7385E",
         "text": "Marker label 4"
       },
       "title": "Marker title 4",
@@ -51,7 +51,7 @@ export class PropertyLocationComponent implements OnInit {
         "lng": 89.63921809041132
       },
       "label": {
-        "color": "blue",
+        "color": "#D7385E",
         "text": "Marker label 5"
       },
       "title": "Marker title 5",
@@ -66,7 +66,7 @@ export class PropertyLocationComponent implements OnInit {
         "lng": 89.63816666447748
       },
       "label": {
-        "color": "blue",
+        "color": "#D7385E",
         "text": "Marker label 6"
       },
       "title": "Marker title 6",
@@ -81,7 +81,7 @@ export class PropertyLocationComponent implements OnInit {
         "lng": 89.63241600834955
       },
       "label": {
-        "color": "blue",
+        "color": "#D7385E",
         "text": "Marker label 7"
       },
       "title": "Marker title 7",

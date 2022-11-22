@@ -19,15 +19,15 @@ mat-sidenav-container {
 }
 
 button {
-  &.mat-flat-button, &.mat-stroked-button {
+  &.mat-flat-button, &.mat-stroked-button &.mat-mdc-button {
     @include nr-media('lt-sm') {
       padding: 1px 12px !important;
     }
 
-    border-radius: $radius !important;
-    font-size: 16px;
+    border-radius: 4px !important;
+    font-size: 14px;
     min-width: 146px !important;
-    padding: 2px 26px !important;
+    padding: 0 !important;
     text-transform: uppercase;
 
     &:focus,
@@ -430,9 +430,6 @@ mat-checkbox .mat-checkbox-layout {
 .mat-mdc-form-field-flex {
   height: 48px;
 }
-.mat-toolbar-single-row {
-  height: 90px !important;
-}
 
 //drag and drop
 .example-container {
@@ -481,4 +478,11 @@ mat-checkbox .mat-checkbox-layout {
 
 .example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+mat-form-field .mdc-notched-outline__notch .mat-mdc-floating-label:not(.mdc-floating-label--float-above) {
+  top: 21px;
+}
+mat-form-field ::ng-deep.mdc-notched-outline__notch .mdc-floating-label--float-above {
+  top: 28px !important;
 }

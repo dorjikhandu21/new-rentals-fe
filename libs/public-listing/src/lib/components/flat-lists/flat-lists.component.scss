@@ -1,6 +1,25 @@
+@import "apps/new-rentals/src/assets/styles/variables";
+.flat-image-container {
+  position: relative;
+  .flat-image {
+    width: 100%;
+    object-fit: cover;
+  }
+  .cost-label {
+    position: absolute;
+    border-radius: 4px;
+    top: 14px;
+    left: 16px;
+    padding: 4px;
+    background: rgba(29, 178, 182, 0.6);
+  }
+}
+
 
 #map {
   height: 100%;
+  border: 1px solid $alto-gray;
+  border-radius: 4px;
 }
 
 /*

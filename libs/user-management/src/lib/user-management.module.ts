@@ -16,26 +16,28 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {TranslateModule} from "@ngx-translate/core";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FlexLayoutModule,
-    MatInputModule,
-    MatIconModule,
-    MatSelectModule,
-    MatButtonModule,
-    MatTableModule,
-    MatCheckboxModule,
-    MatSlideToggleModule,
-    MatChipsModule,
-    MatDialogModule,
-    ReactiveFormsModule,
-    TranslateModule,
-    MatInputModule,
-    MatDatepickerModule,
-    MatNativeDateModule
-  ],
+    imports: [
+        CommonModule,
+        FlexLayoutModule,
+        MatInputModule,
+        MatIconModule,
+        MatSelectModule,
+        MatButtonModule,
+        MatTableModule,
+        MatCheckboxModule,
+        MatSlideToggleModule,
+        MatChipsModule,
+        MatDialogModule,
+        ReactiveFormsModule,
+        TranslateModule,
+        MatInputModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatPaginatorModule
+    ],
   declarations: [UserListingComponent, InviteTenantModalComponent],
   exports: [UserListingComponent],
   entryComponents: [InviteTenantModalComponent],

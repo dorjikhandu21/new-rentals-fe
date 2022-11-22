@@ -1,8 +1,11 @@
 @import "apps/new-rentals/src/assets/styles/variables";
-.user-profile {
-  width: 55px;
-  border-radius: 50%;
-  object-fit: cover;
+.user-profile{
+  height: 70px;
+  img {
+    width: 55px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
 }
 
 .item {
@@ -20,3 +23,4 @@
     }
   }
 }
+mat-select::placeholder { vertical-align: middle }

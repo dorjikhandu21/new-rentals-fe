@@ -1,15 +1,91 @@
-<div class="image-gallery" fxLayout="row wrap">
-  <img class="flat-image" src="/assets/images/flat.svg"/>
-  <img class="flat-image" src="/assets/images/flat.svg"/>
-  <img class="flat-image" src="/assets/images/flat.svg"/>
-  <img class="flat-image" src="/assets/images/flat.svg"/>
-  <img class="flat-image" src="/assets/images/flat.svg"/>
-</div>
-
 <div>
-  <div>
-    <h1>Whispering Pines Cottages| Cabin | Tandi</h1>
-    <p>mat-icon</p>
+  <div class="banner-container">
+    <img class="banner" src="/assets/images/banner.svg"/>
   </div>
-  <div></div>
+  <div class="detail-page br-4 mx-24 p-20">
+    <div class="p-20 br-8 nr-white-bg">
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <h2>Building Name</h2>
+        <button mat-flat-button mat-button color="primary" fxFlex="15" class="mt-4">
+          <mat-icon>add</mat-icon>
+          {{'Add Units'}}</button>
+      </div>
+      <p><mat-icon class="ver-middle">location_on</mat-icon>Babesa, Thimphu |  4 Units</p>
+    </div>
+
+    <div class="mt-28">
+      <mat-tab-group>
+        <mat-tab label="About">
+          <div class="my-32 p-20 br-8 nr-white-bg">
+            <p>Building Details</p>
+            <div class="br-4 nr-white-fade-bg p-20" fxLayout="row wrap" fxLayoutAlign="space-between">
+              <div fxFlex="20">
+                <p class="boulder-color mb-0"> Building Name</p>
+                <p>Nima Khangzang</p>
+              </div>
+              <div fxFlex="20">
+                <p class="boulder-color mb-0">Number of Units</p>
+                <p>9</p>
+              </div>
+              <div fxFlex="20">
+                <p class="boulder-color mb-0">Monthly Rent</p>
+                <p>Nu.2000 per month</p>
+              </div>
+
+              <div fxFlex="100">
+                <p class="boulder-color mb-0">Description</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, asperiores at autem consequuntur corporis dignissimos eos error est illo minima minus neque odio optio perferendis quam qui sapiente soluta suscipit.</p>
+              </div>
+            </div>
+          </div>
+          <div class="my-32 p-20 br-8 nr-white-bg">
+            <div fxLayoutAlign="space-between center" class="mb-20">
+              <p class="mb-0">Special Amenities</p>
+              <button mat-button mat-stroked-button color="primary" class="primary-border"
+              ><mat-icon>add</mat-icon>{{'Add Amenities'}}</button>
+            </div>
+            <div class="br-4 nr-white-fade-bg p-20" fxLayoutAlign="space-between"  fxLayout="row wrap">
+              <div fxFlex="20">
+                <p class="boulder-color mb-0">Swimming Pool</p>
+                <p>3</p>
+              </div>
+              <div fxFlex="20">
+                <p class="boulder-color mb-0">Lifts</p>
+                <p>9</p>
+              </div>
+              <div fxFlex="20">
+                <p class="boulder-color mb-0">Free Water Charge</p>
+                <p>Nu.200 per month</p>
+              </div>
+            </div>
+          </div>
+          <div class="my-32 p-20 br-8 nr-white-bg">
+            <div fxLayoutAlign="space-between center" class="mb-20">
+              <p class="mb-0">Neighbourhood</p>
+              <button mat-button mat-stroked-button color="primary" class="primary-border"
+              ><mat-icon>add</mat-icon>{{'Edit Details'}}</button>
+            </div>
+            <div class="br-4 nr-white-fade-bg p-20">
+              <div fxFlex="100">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur consequatur cum dolore harum impedit nisi odio pariatur quasi ut voluptatem?</p>
+              </div>
+            </div>
+          </div>
+          <div class="my-32 p-20 br-8 nr-white-bg" fxLayout="row">
+            <div fxLayoutAlign="center center" class="add-button br-4 px-24 hand-cursor mr-20">
+              <mat-icon class="mb-12">add</mat-icon>
+              <p>Add Image</p>
+            </div>
+            <div>
+              <img mat-card-image class="room-image mr-20" src="../../../../../../../assets/images/flat.svg"
+                   alt="Photo of a Shiba Inu">
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab label="Units"></mat-tab>
+        <mat-tab label="Tenants"></mat-tab>
+        <mat-tab label="Messages"> Discussion Working on</mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
 </div>

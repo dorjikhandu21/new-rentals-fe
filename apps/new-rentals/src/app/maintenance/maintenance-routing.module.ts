@@ -8,7 +8,7 @@ import {RouterModule, Routes} from "@angular/router";
 const routes: Routes = [
 ShellService.childRoutes([
   {
-    path: 'list',
+    path: '',
     component: MaintenanceComponent,
     canActivate: [],
     data: {
