@@ -19,7 +19,7 @@
   <div fxLayout="row wrap" [formGroup]="basicDetail">
     <mat-form-field appearance="outline" fxFlex="100">
       <mat-label>Property Type</mat-label>
-      <mat-select formControlName="propertyType">
+      <mat-select formControlName="propertyType" required>
         <mat-option [value]="'modern_building'">
           Modern Building
         </mat-option>

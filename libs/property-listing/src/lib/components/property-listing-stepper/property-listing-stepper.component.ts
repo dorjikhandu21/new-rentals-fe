@@ -5,12 +5,19 @@ import {CredentialsService, Property} from "@new-rentals/shared";
 import {PropertyStoreEnum} from "../../models/property.store";
 import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
 import {tap} from "rxjs";
+import {STEPPER_GLOBAL_OPTIONS} from "@angular/cdk/stepper";
 
 @UntilDestroy()
 @Component({
   selector: 'new-rentals-property-listing-stepper',
   templateUrl: './property-listing-stepper.component.html',
   styleUrls: ['./property-listing-stepper.component.scss'],
+  providers: [
+    {
+      provide: STEPPER_GLOBAL_OPTIONS,
+      useValue: {showError: true},
+    },
+  ],
 })
 export class PropertyListingStepperComponent implements OnInit {
   basicDetail?: FormGroup;
