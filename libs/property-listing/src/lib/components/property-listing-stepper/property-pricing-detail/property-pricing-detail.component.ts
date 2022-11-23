@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'new-rentals-property-pricing-detail',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./property-pricing-detail.component.scss'],
 })
 export class PropertyPricingDetailComponent implements OnInit {
+  @Input() unitDetails?:FormGroup;
   constructor() {}
 
   ngOnInit(): void {}

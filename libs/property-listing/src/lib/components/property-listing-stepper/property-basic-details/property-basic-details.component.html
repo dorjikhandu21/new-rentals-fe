@@ -16,22 +16,31 @@
       </div>
     </mat-card>
   </div>
-  <div fxLayout="row wrap">
+  <div fxLayout="row wrap" [formGroup]="basicDetail">
     <mat-form-field appearance="outline" fxFlex="100">
       <mat-label>Property Type</mat-label>
-      <mat-select>
-        <mat-option [value]="1">
-          option
+      <mat-select formControlName="propertyType">
+        <mat-option [value]="'modern_building'">
+          Modern Building
+        </mat-option>
+        <mat-option [value]="'traditional_house'">
+          Traditional House
         </mat-option>
       </mat-select>
     </mat-form-field>
+
+
+<!--    "Variable $input of type CreatePropertyInput! was provided invalid value for attributes.propertyType (Expected \"dummy property\" to be one of: modern_building, traditional_house), attributes.ownerId (Expected value to not be null), attributes.occupancyType (Expected value to not be null), attributes.lat (Expected value to not be null), attributes.lng (Expected value to not be null), attributes.neighbourhoodDetails (Expected value to not be null)"-->
+
+
+
     <mat-form-field appearance="outline" fxFlex="100" data-cy="title">
       <mat-label>Property Name or Title</mat-label>
-      <input matInput>
+      <input matInput formControlName="propertyName">
     </mat-form-field>
     <mat-form-field appearance="outline" fxFlex="100" data-cy="title">
       <mat-label>Describe Your home</mat-label>
-      <input matInput>
+      <input matInput formControlName="propertyDescription">
     </mat-form-field>
 
 

@@ -21,6 +21,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { StepperButtonsComponent } from './components/property-listing-stepper/stepper-buttons/stepper-buttons.component';
 import {MatTabsModule} from "@angular/material/tabs";
+import {ReactiveFormsModule} from "@angular/forms";
+import {GooglePlaceModule} from "ngx-google-places-autocomplete";
 
 @NgModule({
     imports: [
@@ -38,6 +40,8 @@ import {MatTabsModule} from "@angular/material/tabs";
         MatExpansionModule,
         MatButtonToggleModule,
         MatTabsModule,
+        ReactiveFormsModule,
+        GooglePlaceModule,
     ],
   declarations: [
     PropertyListingComponent,

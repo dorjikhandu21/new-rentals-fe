@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {FormGroup} from "@angular/forms";
+import {Address} from "ngx-google-places-autocomplete/objects/address";
+import {Loader} from "@googlemaps/js-api-loader";
 
 @Component({
   selector: 'new-rentals-property-location',
@@ -6,6 +9,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./property-location.component.scss'],
 })
 export class PropertyLocationComponent implements OnInit {
+  @Input() geoInformation?:FormGroup;
+  private map: google.maps.Map;
+  position: { lat: number; lng: number; } = {lat: 27.4716, lng: 89.6386};
   center!: google.maps.LatLngLiteral;
   options: google.maps.MapOptions = {
     scrollwheel: true,
@@ -14,84 +20,39 @@ export class PropertyLocationComponent implements OnInit {
     disableDefaultUI: true
   };
 
-  markers: any[] = [
-    {
-      "position": {
-        "lat": 27.474925998493138,
-        "lng": 89.64200758778681
-      },
-      "label": {
-        "color": "#D7385E",
-        "text": "Marker label 1"
-      },
-      "title": "Marker title 1",
-      "info": "Marker info 1",
-      "options": {
-        "animation": 2
-      }
-    },
-    {
-      "position": {
-        "lat": 27.472603396354472,
-        "lng": 89.63921809041132
-      },
-      "label": {
-        "color": "#D7385E",
-        "text": "Marker label 4"
-      },
-      "title": "Marker title 4",
-      "info": "Marker info 4",
-      "options": {
-        "animation": 2
-      }
-    },
-    {
-      "position": {
-        "lat": 27.470966122805464,
-        "lng": 89.63921809041132
-      },
-      "label": {
-        "color": "#D7385E",
-        "text": "Marker label 5"
-      },
-      "title": "Marker title 5",
-      "info": "Marker info 5",
-      "options": {
-        "animation": 2
-      }
-    },
-    {
-      "position": {
-        "lat": 27.47083285528322,
-        "lng": 89.63816666447748
-      },
-      "label": {
-        "color": "#D7385E",
-        "text": "Marker label 6"
-      },
-      "title": "Marker title 6",
-      "info": "Marker info 6",
-      "options": {
-        "animation": 2
-      }
-    },
-    {
-      "position": {
-        "lat": 27.471384962540522,
-        "lng": 89.63241600834955
-      },
-      "label": {
-        "color": "#D7385E",
-        "text": "Marker label 7"
-      },
-      "title": "Marker title 7",
-      "info": "Marker info 7",
-      "options": {
-        "animation": 2
-      }
-    }
-  ];
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.loadMap();
+  }
+
+  loadMap(): void {
+    const loader: Loader = new Loader({
+      apiKey: 'AIzaSyDpNbirRykNtf26goqNIwT4diZcsIP-vy4',
+    })
+    loader.load().then(() => {
+      this.map = new google.maps.Map(document.getElementById('map') as HTMLElement, {
+        center: this.position,
+        scrollwheel: true,
+        disableDoubleClickZoom: true,
+        zoom: 5,
+        disableDefaultUI: true,
+      });
+    }).catch(error => {
+      console.log('Maps could not load')
+    })
+  }
+
+
+  geoCode(event: Address): void {
+    this.position = {lat: event.geometry.location.lat(), lng: event.geometry.location.lng()}
+    this.addMarker();
+  }
+
+  addMarker(): void {
+    const marker = new google.maps.Marker({
+      position: this.position,
+      map: this.map
+    })
+  }
 }

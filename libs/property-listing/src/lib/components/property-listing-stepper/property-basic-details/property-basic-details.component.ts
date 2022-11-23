@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {FormGroup} from "@angular/forms";
+import {PropertyFacadeService} from "../../../services/property-facade.service";
 
 @Component({
   selector: 'new-rentals-property-basic-details',
@@ -6,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./property-basic-details.component.scss'],
 })
 export class PropertyBasicDetailsComponent implements OnInit {
-  constructor() {}
+  @Input() basicDetail?: FormGroup;
+  constructor(private propertyFacadeService: PropertyFacadeService) {}
 
   ngOnInit(): void {}
 }

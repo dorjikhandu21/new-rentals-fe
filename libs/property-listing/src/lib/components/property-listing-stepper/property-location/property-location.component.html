@@ -1,22 +1,12 @@
 <h2>Location</h2>
 <p class="boulder-color">Drag and drop the map to enter your location.</p>
-<div>
+<div fxLayout="row" fxFlex="100" class="mt-24">
   <mat-form-field appearance="outline" fxFlex="100" class="search-field">
     <mat-icon matSuffix class="hand-cursor nr-white-color mr-12 ml-4 font-size-24 p-12 ">search</mat-icon>
     <mat-icon matPrefix color="primary" class="hand-cursor mr-12 ml-4 s-24">location_on</mat-icon>
-    <input type="text" matInput placeholder="Search home by Location" autocomplete="off" data-cy="search">
+    <input type="text" ngx-google-places-autocomplete matInput placeholder="Search home by Location" autocomplete="off" data-cy="search" (onAddressChange)="geoCode($event)">
   </mat-form-field>
 
-  <!--<google-map #maps class="full-width"  width="100%" height="100%"  [zoom]="14" [center]="center" [options]="options">
-    <map-marker
-      #marker="mapMarker"
-      *ngFor="let marker of markers"
-      [position]="marker.position"
-      [label]="marker.label"
-      [title]="marker.title"
-      [options]="marker.options">
-      <map-info-window></map-info-window>
-    </map-marker>
-  </google-map>-->
+  <div fxFlex="55" class="mr-20" id="map"></div>
 
 </div>

@@ -1,14 +1,27 @@
 <div class="m-24" fxLayoutAlign="space-between" fxLayout="row wrap">
   <div fxFlex="75">
     <mat-stepper>
-      <mat-step label="Basic Details" state="phone">
-        <new-rentals-property-basic-details></new-rentals-property-basic-details>
+      <mat-step label="Basic Details" state="phone" [stepControl]="basicDetail" errorMessage="Address is required.">
+        <new-rentals-property-basic-details [basicDetail]="basicDetail"></new-rentals-property-basic-details>
+        <div>
+          <button mat-button matStepperNext (click)="createProperty()">Next</button>
+        </div>
       </mat-step>
       <mat-step label="Location" state="chat">
-        <new-rentals-property-location></new-rentals-property-location>
+        <new-rentals-property-location [geoInformation]="geoInformation"></new-rentals-property-location>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+
       </mat-step>
       <mat-step label="Unit and Pricing details">
-        <new-rentals-property-pricing-detail></new-rentals-property-pricing-detail>
+        <new-rentals-property-pricing-detail [unitDetails]="unitDetails"></new-rentals-property-pricing-detail>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+
       </mat-step>
 
       <!-- Icon overrides. -->

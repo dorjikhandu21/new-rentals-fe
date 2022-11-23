@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {of, Observable, BehaviorSubject} from "rxjs";
 import jwt_decode from 'jwt-decode'
+import {User} from "../models/graphql";
 
 const credentialsKey: any = 'NewRentals.token';
 
@@ -16,6 +17,10 @@ export class CredentialsService {
   private userCredentials: CredentialsFromService | null = null;
 
   constructor() { }
+
+  currentUser(): User {
+    return JSON.parse(this.unparsedCredentials)['user'];
+  }
 
   isAuthenticated(): boolean {
     sessionStorage.removeItem('WHSApp.token');
