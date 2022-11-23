@@ -1,0 +1,38 @@
+@keyframes glowing {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.apartment-card::before {
+  content: "";
+  position: absolute;
+  width: 50%;
+  height: 150%;
+  right: 32%;
+  top: -25%;
+  background: -webkit-linear-gradient(to right, #FF0080, #FF8C00, #40E0D0);
+  background: linear-gradient(to right, #FF0080, #FF8C00, #40E0D0);
+  transform-origin: center;
+  animation: glowing 5s linear infinite;
+
+}
+
+.card-container {
+  position: relative;
+}
+
+.apartment-card {
+  position: absolute;
+  overflow: hidden;
+  padding: 4px;
+}
+
+.card-main {
+  position: relative;
+  z-index: 9999999999999;
+  background: beige;
+}
