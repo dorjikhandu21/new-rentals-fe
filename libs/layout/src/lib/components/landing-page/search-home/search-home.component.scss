@@ -1,7 +1,8 @@
 @import "apps/new-rentals/src/assets/styles/variables";
 .search-home {
-  height: 90vh;
-  background-image: url(/assets/images/landing-bg.svg);
+  position: relative;
+  height: 92vh;
+  background-image: url(/assets/images/landing.svg);
   background-size: cover;
 }
 ::ng-deep.search-field {
@@ -15,3 +16,156 @@
     color: $primary-color;
   }
 }
+.car-moving-container {
+  bottom: 0;
+  .car-2 {
+    animation: left 15s infinite;
+  }
+  .car-3 {
+    animation: right 30s infinite;
+    .back-wheel {
+      left: 12px;
+    }
+  }
+  .car-4 {
+    animation-delay: 10s;
+    animation: right 80s infinite;
+    .back-wheel {
+      left: 12px;
+    }
+  }
+
+  .car-1 {
+    animation: left 50s infinite;
+  }
+
+}
+.right-lane {
+  bottom: 30px;
+}
+.moving-car {
+  position: relative;
+
+}
+@keyframes left {
+  0%   {left: -4vw; top: 0px;}
+  100% {left: 108vw; top: 0px;}
+}
+@keyframes right {
+  0%   {left: 105vw; top: 0px;}
+  100% {left: -5vw; top: 0px;}
+}
+
+.wheel {
+  border-radius: 37%;
+  height: 15px;
+  width: 15px;
+  bottom: 5px;
+  position: absolute;
+  animation-name: spin;
+  animation-duration: 50ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+.back-wheel {
+  left: 8px;
+}
+.front-wheel {
+  left: 51px;
+}
+
+.wheel {
+  border-radius: 37%;
+  height: 15px;
+  width: 15px;
+  bottom: 5px;
+  position: absolute;
+  animation-duration: 5000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+.back-wheel {
+  left: 8px;
+}
+.front-wheel {
+  left: 51px;
+}
+
+@keyframes spin-left {
+  from {
+    transform:rotate(0deg);
+  }
+  to {
+    transform:rotate(360deg);
+  }
+}
+
+.spin-right {
+  animation-name: spin-right;
+}
+.spin-left {
+  animation-name: spin-left;
+}
+@keyframes spin-right {
+  from  {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+.cloud {
+  position: absolute;
+}
+.cloud-1 {
+  top:5%;
+  animation-delay: 8s !important;
+  left: 10%;
+
+}
+.cloud-2 {
+  top:5%;
+  left: 10%;
+  margin-left: 200px;
+  animation-delay: 3s !important;
+}
+.cloud-3 {
+  top:17%;
+  margin-left: 200px;
+  animation-delay: 6s !important;
+  left: 10%;
+}
+.cloud-4 {
+  top:30%;
+  left: 10%;
+}
+.cloud-5 {
+  top:50%;
+  animation-delay: 10s !important;
+}
+.cloud-6 {
+  top:20%;
+}
+.right-clouds {
+  animation: right-move 120s linear infinite;
+}
+
+.left-clouds {
+  animation: left-move 120s linear infinite;
+}
+
+@keyframes left-move {
+  0% {left: 10%;}
+  50% { left: 85%}
+  100% {left: 10%;}
+}
+@keyframes right-move {
+  0% {right: 10%;}
+  50% { right: 85%}
+  100% {right: 10%;}
+}
+
+.search-container {
+  height: 100%;
+}
+

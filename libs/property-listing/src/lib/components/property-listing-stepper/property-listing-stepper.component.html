@@ -1,37 +1,38 @@
 <div class="m-24" fxLayoutAlign="space-between" fxLayout="row wrap">
   <div fxFlex="75">
-    <mat-stepper>
-      <mat-step label="Basic Details" state="phone" [stepControl]="basicDetail" errorMessage="Address is required.">
-        <new-rentals-property-basic-details [basicDetail]="basicDetail"></new-rentals-property-basic-details>
-        <div>
-          <button mat-button matStepperNext (click)="createProperty()">Next</button>
-        </div>
+    <mat-stepper #stepper>
+      <mat-step [stepControl]="basicDetail" errorMessage="Fill up the required filled">
+        <form [formGroup]="basicDetail">
+          <ng-template matStepLabel>Basic Details</ng-template>
+          <new-rentals-property-basic-details [basicDetail]="basicDetail"></new-rentals-property-basic-details>
+          <div>
+            <button mat-button matStepperNext (click)="createProperty()">Next</button>
+          </div>
+        </form>
       </mat-step>
-      <mat-step label="Location" state="chat">
-        <new-rentals-property-location [geoInformation]="geoInformation"></new-rentals-property-location>
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-
+      <mat-step [stepControl]="geoInformation" errorMessage="Location is required.">
+        <form [formGroup]="geoInformation">
+          <ng-template matStepLabel>Location</ng-template>
+          <new-rentals-property-location [geoInformation]="geoInformation"></new-rentals-property-location>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+            <p>Go to a different step to see the error state</p>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+        </form>
       </mat-step>
-      <mat-step label="Unit and Pricing details">
+      <mat-step>
+        <ng-template matStepLabel>Unit and Pricing Details</ng-template>
         <new-rentals-property-pricing-detail [unitDetails]="unitDetails"></new-rentals-property-pricing-detail>
         <div>
           <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
+          <button mat-button (click)="stepper.reset()">Reset</button>
         </div>
-
       </mat-step>
-
-      <!-- Icon overrides. -->
-      <ng-template matStepperIcon="phone">
-        <mat-icon>call_end</mat-icon>
-      </ng-template>
-      <ng-template matStepperIcon="chat">
-        <mat-icon>forum</mat-icon>
-      </ng-template>
     </mat-stepper>
+    <new-rentals-property-listing-stepper></new-rentals-property-listing-stepper>
   </div>
   <div fxFlex="23">
     <div class="example-card hand-cursor br-8 nr-white-bg nr-silver-border mb-24"
