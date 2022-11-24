@@ -1,0 +1,30 @@
+@import 'apps/new-rentals/src/assets/styles/variables';
+
+@import "apps/new-rentals/src/assets/styles/mixins";
+
+.multi-file-upload {
+    border: 2px dashed $alto-gray;
+    min-height: 100px;
+
+    @include nr-media('gt-xs') {
+      width: 476px;
+    }
+}
+
+.media-upload {
+  img, video {
+    max-width: 200px;
+    max-height: 180px;
+  }
+}
+.release-media-container {
+  width: 200px;
+  background: $mild-gray;
+  position: relative;
+  .close-icon {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    opacity: 0.5;
+  }
+}
