@@ -27,7 +27,7 @@
           </div>
         </form>
       </mat-step>
-      <mat-step [stepControl]="units" errorMessage="Location is required.">
+      <mat-step [stepControl]="units" errorMessage="Unit details are required.">
         <ng-template matStepLabel>Unit and Pricing Details</ng-template>
         <new-rentals-property-pricing-detail [units]="units"></new-rentals-property-pricing-detail>
         <div fxLayout="row" fxLayoutAlign="space-between center" class="py-12">
