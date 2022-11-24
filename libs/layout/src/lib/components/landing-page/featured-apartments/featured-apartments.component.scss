@@ -7,37 +7,35 @@
   }
 }
 
-.apartment-card::before {
-  content: "";
-  position: absolute;
-  width: 50%;
-  height: 150%;
-  right: 32%;
-  top: -25%;
-  background: -webkit-linear-gradient(to right, #FF0080, #FF8C00, #40E0D0);
-  background: linear-gradient(to right, #FF0080, #FF8C00, #40E0D0);
-  transform-origin: center;
-  animation: glowing 5s linear infinite;
-
-}
 
 .card-container {
   position: relative;
   .apartment-card {
-    position: absolute;
+    position: relative;
     overflow: hidden;
     padding: 4px;
     .card-main {
       position: relative;
-      z-index: 9999999999999;
-      background: beige;
+      z-index: 9;
     }
   }
+ &:hover {
+   .apartment-card::before {
+     content: "";
+     position: absolute;
+     width: 50%;
+     height: 150%;
+     right: 32%;
+     top: -25%;
+     background: -webkit-linear-gradient(to right, #FF0080, #FF8C00, #40E0D0);
+     background: linear-gradient(to right, #FF0080, #FF8C00, #40E0D0);
+     transform-origin: center;
+     animation: glowing 5s linear infinite;
+
+   }
+ }
 }
 
-
-
-
 .featured-apartment {
-  height: 80vh;
+  height: 100vh;
 }

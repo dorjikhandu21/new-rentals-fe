@@ -15,10 +15,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { FaqSectionsComponent } from './components/faq-sections/faq-sections.component';
-import {MatSelectModule} from "@angular/material/select";
-import {GooglePlaceModule} from "ngx-google-places-autocomplete";
-import {RouterLinkActive, RouterLinkWithHref} from "@angular/router";
+import { FaqSectionsComponent } from './components/landing-page/faq-sections/faq-sections.component';
+import { MatSelectModule } from '@angular/material/select';
+import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
+import { RouterLinkActive, RouterLinkWithHref } from '@angular/router';
+import { OurUniqueFeatureComponent } from './components/landing-page/our-unique-feature/our-unique-feature.component';
+import { LetsTalkComponent } from './components/landing-page/lets-talk/lets-talk.component';
 
 @NgModule({
   imports: [
@@ -45,6 +47,8 @@ import {RouterLinkActive, RouterLinkWithHref} from "@angular/router";
     FeaturedApartmentsComponent,
     RentalSolutionSectionComponent,
     FaqSectionsComponent,
+    OurUniqueFeatureComponent,
+    LetsTalkComponent,
   ],
   exports: [LayoutComponent, NavBarComponent],
 })

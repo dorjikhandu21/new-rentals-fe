@@ -1,8 +1,6 @@
 .landing-page {
-  height: 95vh;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
-.landing-hr {
-  height: 20%;
-}
