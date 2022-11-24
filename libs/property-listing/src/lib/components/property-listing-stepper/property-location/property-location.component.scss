@@ -9,4 +9,26 @@
   .mdc-notched-outline {
     color: $primary-color;
   }
+  .mat-mdc-text-field-wrapper {
+    background: $white-color;
+  }
+}
+
+.map {
+  position: relative;
+  height: 50vh;
+  width: 100%;
+  border-radius: 4px;
+  border: 2px solid $primary-color;
+}
+
+.location {
+  position: relative;
+
+  .search-location {
+    position: absolute;
+    z-index: 9999;
+    top: 0;
+    width: 50%;
+  }
 }
