@@ -5,8 +5,11 @@
         <form [formGroup]="basicDetail">
           <ng-template matStepLabel>Basic Details</ng-template>
           <new-rentals-property-basic-details [basicDetail]="basicDetail"></new-rentals-property-basic-details>
-          <div>
-            <button mat-button matStepperNext (click)="createProperty()">Next</button>
+          <div fxLayout="row" fxLayoutAlign="space-between center" class="py-12">
+            <button mat-button mat-stroked-button color="primary" class="primary-border mr-20">{{'Cancel'}}</button>
+            <div>
+              <button mat-flat-button mat-button color="primary" matStepperNext (click)="createProperty()">{{'Next'}}</button>
+            </div>
           </div>
         </form>
       </mat-step>
@@ -18,17 +21,26 @@
             <button mat-button matStepperPrevious>Back</button>
             <button mat-button matStepperNext>Next</button>
           </div>
-            <p>Go to a different step to see the error state</p>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext>Next</button>
+
+          <div fxLayout="row" fxLayoutAlign="space-between center" class="py-12">
+            <button mat-button mat-stroked-button color="primary" class="primary-border mr-20">{{'Cancel'}}</button>
+            <div>
+              <button mat-button mat-stroked-button color="primary" matStepperPrevious class="primary-border mr-20">{{'Previous'}}</button>
+
+              <button mat-flat-button mat-button color="primary" matStepperNext>{{'Next'}}</button>
+            </div>
+          </div>
         </form>
       </mat-step>
       <mat-step>
         <ng-template matStepLabel>Unit and Pricing Details</ng-template>
         <new-rentals-property-pricing-detail [unitDetails]="unitDetails"></new-rentals-property-pricing-detail>
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button (click)="stepper.reset()">Reset</button>
+        <div fxLayout="row" fxLayoutAlign="space-between center" class="py-12">
+          <button mat-button mat-stroked-button color="primary" class="primary-border mr-20">{{'Cancel'}}</button>
+          <div>
+            <button mat-button mat-stroked-button color="primary" matStepperPrevious class="primary-border mr-20">{{'Previous'}}</button>
+            <button mat-flat-button mat-button color="primary" (click)="stepper.reset()">{{'Done'}}</button>
+          </div>
         </div>
       </mat-step>
     </mat-stepper>

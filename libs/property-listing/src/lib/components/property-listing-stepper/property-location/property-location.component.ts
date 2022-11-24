@@ -23,7 +23,7 @@ export class PropertyLocationComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    // this.loadMap();
+    this.loadMap();
   }
 
   loadMap(): void {
