@@ -224,7 +224,7 @@ mat-icon {
 
 //cards
 .image-container {
-  height: 200px;
+  height: 170px;
   position: relative;
 
   .image {
@@ -257,7 +257,7 @@ mat-icon {
   height: 100vh;
 }
 
-.permission-accordion {
+::ng-deep.permission-accordion {
   .mat-accordion {
     & .mat-expansion-panel-spacing:first-child {
       margin-top: 20px;
@@ -295,6 +295,10 @@ mat-icon {
       border-bottom: none;
     }
   }
+}
+
+.landing-hr {
+  height: 20%;
 }
 
 

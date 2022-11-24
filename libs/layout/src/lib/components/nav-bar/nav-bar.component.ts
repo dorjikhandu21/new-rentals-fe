@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {CredentialsService, NotificationService} from "@new-rentals/shared";
 
@@ -10,6 +10,8 @@ import {CredentialsService, NotificationService} from "@new-rentals/shared";
 export class NavBarComponent implements OnInit {
   authenticated: boolean = this.credentials.isAuthenticated();
   currentActiveLink?:string;
+
+  @Input() navBar?:{ name: string, link: string}[];
 
   navs: { name: string, icon: string, routerLink: string }[] = [
     {name: 'Dashboard', icon: 'insert_chart_outlined', routerLink: '/dashboard',},

@@ -14,6 +14,14 @@ export class LayoutComponent implements OnInit {
     disableDoubleClickZoom: true,
     maxZoom: 15,
   };
+  navBar: { name: string, link: string}[] = [
+    {name: 'Featured Apartments', link: 'featured-apartments'},
+    {name: 'Rental Solution', link: 'rental-solution'},
+    {name: 'Main Service', link: 'main-services'},
+    {name: 'FAQ', link: 'faq'},
+    {name: 'Contact Us', link: 'contact-us'},
+  ];
+
   constructor() {}
 
   ngOnInit(): void {

@@ -1,0 +1,28 @@
+<div fxLayout="row" fxLayoutAlign="center end" class="landing-hr">
+  <div fxLayout="row" fxLayoutAlign="center end" class="line-break">
+    <hr fxFlex="15" />
+    <img class="auth-logo" src="/assets/images/home-icon.svg"/>
+    <hr fxFlex="15" />
+  </div>
+</div>
+<div class="faq-section mb-60" fxLayoutAlign="center start">
+  <div fxFlex="50">
+    <h1 class="nr-black-color text-center my-28">Frequently Asked Questions</h1>
+    <div class="permission-accordion">
+      <mat-accordion >
+        <mat-expansion-panel *ngFor="let faq of [1,2,3,4,5,6]" class="mat-elevation-z0 nr-silver-border" >
+          <mat-expansion-panel-header class="pr-12">
+            <mat-panel-title class="py-20 pr-20">
+              Can anybody without subscription plans list the property for rent?
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div fxLayout="row" fxLayoutAlign="center">
+            <div fxFlex="95" class="br-8 mb-8 pt-20 boulder-color">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores minus quas ullam voluptate! At deserunt eaque expedita fugit nemo quis!
+            </div>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </div>
+</div>

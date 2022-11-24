@@ -1,0 +1,50 @@
+<div fxLayout="row" fxLayoutAlign="center end" class="landing-hr">
+  <div fxLayout="row" fxLayoutAlign="center end" class="line-break">
+    <hr fxFlex="15" />
+    <img class="auth-logo" src="/assets/images/home-icon.svg"/>
+    <hr fxFlex="15" />
+  </div>
+</div>
+<div class="talk-section my-40" fxLayoutAlign="center start">
+  <mat-card fxFlex="80" class="talk-section-container p-24">
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="mb-28 mt-12">
+      <div fxFlex="49" fxLayoutAlign="end end">
+        <div fxLayout="column" fxLayoutAlign="center center">
+          <img class="sush-image" width="100%" src="/assets/images/sush.jpeg"/>
+          <p class="primary-color text-center mt-20">Sushmita</p>
+          <p class="boulder-color text-center">Project Manager</p>
+        </div>
+
+      </div>
+      <div fxFlex="49">
+        <h1 class="primary-color">Let's Talk</h1>
+        <p class="boulder-color font-size-16">Just <span class="nr-black-color font-size-16"> fill in the form </span> and <br />we’ll <span class="nr-black-color font-size-16">schedule a meeting</span></p>
+      </div>
+    </div>
+    <div fxLayoutAlign="space-between">
+    <div fxFlex="49" fxLayout="column">
+      <mat-form-field appearance="outline">
+        <mat-label>Your Name</mat-label>
+        <input type="text" matInput>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Your Email Address</mat-label>
+        <input type="text" matInput>
+      </mat-form-field>
+      <mat-form-field appearance="outline" fxFlex="100">
+        <mat-label>Your Message</mat-label>
+        <textarea matInput
+                placeholder="'Your Message'"
+                cdkTextareaAutosize
+                cdkAutosizeMinRows="5"
+                cdkAutosizeMaxRows="10">
+      </textarea>
+      </mat-form-field>
+      <button mat-flat-button mat-button color="primary">{{'Send Message'}}</button>
+    </div>
+    <div fxFlex="49">
+      <img class="flat-image" width="100%" src="/assets/images/talk.svg"/>
+    </div>
+    </div>
+  </mat-card>
+</div>
