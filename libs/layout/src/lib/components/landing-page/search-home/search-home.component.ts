@@ -19,7 +19,6 @@ export class SearchHomeComponent implements OnInit {
   }
 
   addressChange(event: Address): void {
-    debugger
     this.sharedFacadeService.updateSpecificState({}, SharedStoreStateEnum.GEO_CODING_FILTERS);
     this.router.navigate(['list'], {relativeTo: this.route});
     console.log(event.geometry.location.lat());

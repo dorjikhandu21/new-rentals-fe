@@ -46,6 +46,7 @@ export class PropertyLocationComponent implements OnInit {
 
   geoCode(event: Address): void {
     this.position = {lat: event.geometry.location.lat(), lng: event.geometry.location.lng()}
+    this.geoInformation?.patchValue(this.position);
     this.addMarker();
   }
 

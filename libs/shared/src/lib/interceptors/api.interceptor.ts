@@ -60,7 +60,6 @@ export class ApiInterceptor implements HttpInterceptor {
 
   private handleErrorResponse(errorResponse: HttpErrorResponse): any {
     if (errorResponse?.url?.split('/').includes('graphql') && get(errorResponse, 'error.error')) {
-      debugger
       return throwError(this.displayErrors([errorResponse.error?.error]));
     } else {
       const errors = get(errorResponse, 'error');

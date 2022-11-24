@@ -14,17 +14,17 @@ export class PropertyBasicDetailsComponent implements OnInit {
   constructor(private propertyFacadeService: PropertyFacadeService) {}
 
   ngOnInit(): void {
-    debugger
   }
 
   selectFile(event: Event): void {
     const attachments: FormArray = this.basicDetail?.get('attachments') as FormArray;
-    attachments.push({
+    const attachmentControl: FormGroup = new FormGroup({
       category: new FormControl(CategoryEnum.Property),
       // @ts-ignore
       file: new FormControl(event?.target?.['files']?.[0]),
       // @ts-ignore
       fileFileName: new FormControl(event?.target?.['files']?.[0]['name'])
     })
+    attachments.push(attachmentControl);
   }
 }

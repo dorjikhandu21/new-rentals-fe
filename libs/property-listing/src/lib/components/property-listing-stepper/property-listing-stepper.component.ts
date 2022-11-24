@@ -26,7 +26,6 @@ export class PropertyListingStepperComponent implements OnInit {
   constructor(private propertyFacadeService: PropertyFacadeService, private credentialsService: CredentialsService) {}
 
   ngOnInit(): void {
-    debugger
     this.buildForm();
     this.listenToPropertyChanges();
   }
@@ -48,7 +47,6 @@ export class PropertyListingStepperComponent implements OnInit {
     this.geoInformation = new FormGroup({
       lat: new FormControl('', Validators.required),
       lng: new FormControl('', Validators.required),
-      neighbourhoodDetails: new FormControl(''),
     });
 
     this.unitDetails = new FormGroup({
