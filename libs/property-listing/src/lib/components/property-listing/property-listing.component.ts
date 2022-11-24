@@ -35,12 +35,19 @@ export class PropertyListingComponent implements OnInit {
 
   ngOnInit(): void {
     this.center = {lat: 27.4716, lng: 89.6386};
+    this.checkRoutes();
   }
   mapClick(event: any): void {
   }
 
+  checkRoutes(): void {
+    this.router.events.subscribe(event => {
+      console.log('jdhfkj')
+    })
+  }
+
   routeToPropertyCreation(): void {
-    void  this.router.navigateByUrl('properties/add');
+    this.router.navigate(['add'], {relativeTo: this.route});
   }
   routeToPropertyDetail(): void {
     void  this.router.navigateByUrl('properties/detail');

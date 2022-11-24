@@ -26,6 +26,7 @@ export class PropertyListingStepperComponent implements OnInit {
   constructor(private propertyFacadeService: PropertyFacadeService, private credentialsService: CredentialsService) {}
 
   ngOnInit(): void {
+    debugger
     this.buildForm();
     this.listenToPropertyChanges();
   }

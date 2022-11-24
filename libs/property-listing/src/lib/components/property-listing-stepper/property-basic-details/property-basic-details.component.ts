@@ -13,7 +13,9 @@ export class PropertyBasicDetailsComponent implements OnInit {
   @ViewChild('fileUpload', {static: false}) fileUpload?: ElementRef;
   constructor(private propertyFacadeService: PropertyFacadeService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    debugger
+  }
 
   selectFile(event: Event): void {
     const attachments: FormArray = this.basicDetail?.get('attachments') as FormArray;
