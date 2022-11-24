@@ -51,7 +51,11 @@
           <mat-icon color="primary" class="ver-middle s-32 hand-cursor">cloud_upload</mat-icon>
           <p>Drop a files here or <a href="">Choose from computer</a></p>
           <p class="boulder-color center-block px-12">Choose any image format to upload here, upload upto 200 MB</p>
-          <input #fileUpload type="file" (change)="selectFile($event)"  >
+          <input #fileUpload type="file" [multiple]="true" (change)="selectFile($event)">
+          <div fxLayoutAlign="center center" class="release-media-container br-8 mb-16">
+            <img *ngFor="let attachment of basicDetail.get('attachments').value; let i=index;" [src]="attachment.url" height="100">
+            <mat-icon class="s-16 br-40 whs-white-color hand-cursor close-icon whs-black-bg">close</mat-icon>
+          </div>
         </div>
       </div>
     </div>
