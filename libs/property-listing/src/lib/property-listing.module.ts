@@ -23,6 +23,7 @@ import { StepperButtonsComponent } from './components/property-listing-stepper/s
 import {MatTabsModule} from "@angular/material/tabs";
 import {ReactiveFormsModule} from "@angular/forms";
 import {GooglePlaceModule} from "ngx-google-places-autocomplete";
+import {SharedModule} from "@new-rentals/shared";
 
 @NgModule({
     imports: [
@@ -42,6 +43,7 @@ import {GooglePlaceModule} from "ngx-google-places-autocomplete";
         MatTabsModule,
         ReactiveFormsModule,
         GooglePlaceModule,
+        SharedModule,
     ],
   declarations: [
     PropertyListingComponent,

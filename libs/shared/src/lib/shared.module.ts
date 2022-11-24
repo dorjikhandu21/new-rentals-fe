@@ -9,17 +9,28 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { PublicListingComponent } from './components/public-listing/public-listing.component';
 import { FlatDetailsComponent } from './components/flat-details/flat-details.component';
-import {FlexLayoutModule} from "@angular/flex-layout";
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { FilePickerComponent } from './components/file-picker/file-picker.component';
 
 @NgModule({
-  imports: [CommonModule, MatIconModule, TranslateModule, MatSnackBarModule, FlexLayoutModule],
-  declarations: [
-    AdvancedFilterComponent,
-    NavBarComponent,
-    NotificationComponent,
-    SearchBarComponent,
-    PublicListingComponent,
-    FlatDetailsComponent,
-  ],
+    imports: [
+        CommonModule,
+        MatIconModule,
+        TranslateModule,
+        MatSnackBarModule,
+        FlexLayoutModule,
+    ],
+    declarations: [
+        AdvancedFilterComponent,
+        NavBarComponent,
+        NotificationComponent,
+        SearchBarComponent,
+        PublicListingComponent,
+        FlatDetailsComponent,
+        FilePickerComponent,
+    ],
+    exports: [
+        FilePickerComponent
+    ]
 })
 export class SharedModule {}
