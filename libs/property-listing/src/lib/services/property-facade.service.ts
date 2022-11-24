@@ -16,6 +16,8 @@ export class PropertyFacadeService extends BaseFacadeService<PropertyStateServic
   createProperty(attributes: PropertyAttributes): Observable<boolean> {
     return this.propertyApiService.createProperty(attributes).pipe(tap((response) => {
       this.updateSpecificState(response, PropertyStoreEnum.PROPERTY);
+    }, (err) => {
+      debugger
     }), mapTo(true));
   }
 }

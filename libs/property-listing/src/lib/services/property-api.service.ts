@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
 import {Apollo, Mutation} from "apollo-angular";
-import {map, Observable} from "rxjs";
-import {CreatePropertyInput, CreatePropertyPayload, Property, PropertyAttributes} from "@new-rentals/shared";
+import {map, Observable, tap} from "rxjs";
+import {
+  CreatePropertyPayload,
+  NotificationService,
+  PropertyAttributes
+} from "@new-rentals/shared";
 import {CREATE_PROPERTY} from "../gql/mutations";
 
 @Injectable({
@@ -9,14 +13,15 @@ import {CREATE_PROPERTY} from "../gql/mutations";
 })
 export class PropertyApiService {
 
-  constructor(private apollo: Apollo) { }
+  constructor(private apollo: Apollo, private notificationService: NotificationService) { }
 
   createProperty(attributes: PropertyAttributes): Observable<CreatePropertyPayload> {
     return this.apollo.mutate<Mutation>({
       mutation: CREATE_PROPERTY,
       variables: {input: {attributes}},
       fetchPolicy: "no-cache"
-    }).pipe(map((response) => {
+    }).pipe(tap(() => this.notificationService.success('Property created successfully')),
+      map((response) => {
       // @ts-ignore
       return response.data['createProperty']
     }))

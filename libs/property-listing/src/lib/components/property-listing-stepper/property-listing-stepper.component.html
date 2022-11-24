@@ -8,7 +8,7 @@
           <div fxLayout="row" fxLayoutAlign="space-between center" class="py-12">
             <button mat-button mat-stroked-button color="primary" class="primary-border mr-20">{{'Cancel'}}</button>
             <div>
-              <button mat-flat-button mat-button color="primary" matStepperNext (click)="createProperty()">{{'Next'}}</button>
+              <button mat-flat-button mat-button color="primary" matStepperNext>{{'Next'}}</button>
             </div>
           </div>
         </form>
@@ -27,14 +27,14 @@
           </div>
         </form>
       </mat-step>
-      <mat-step>
+      <mat-step [stepControl]="units" errorMessage="Location is required.">
         <ng-template matStepLabel>Unit and Pricing Details</ng-template>
-        <new-rentals-property-pricing-detail [unitDetails]="unitDetails"></new-rentals-property-pricing-detail>
+        <new-rentals-property-pricing-detail [units]="units"></new-rentals-property-pricing-detail>
         <div fxLayout="row" fxLayoutAlign="space-between center" class="py-12">
           <button mat-button mat-stroked-button color="primary" class="primary-border mr-20">{{'Cancel'}}</button>
           <div>
             <button mat-button mat-stroked-button color="primary" matStepperPrevious class="primary-border mr-20">{{'Previous'}}</button>
-            <button mat-flat-button mat-button color="primary" (click)="stepper.reset()">{{'Done'}}</button>
+            <button [disabled]="basicDetail.invalid || geoInformation.invalid || units.invalid" mat-flat-button mat-button color="primary" (click)="createProperty();stepper.reset()">{{'Done'}}</button>
           </div>
         </div>
       </mat-step>

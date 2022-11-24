@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
 import {PropertyFacadeService} from "../../services/property-facade.service";
-import {CredentialsService, Property} from "@new-rentals/shared";
+import {CredentialsService, Property, UnitAttributes} from "@new-rentals/shared";
 import {PropertyStoreEnum} from "../../models/property.store";
 import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
 import {tap} from "rxjs";
 import {STEPPER_GLOBAL_OPTIONS} from "@angular/cdk/stepper";
+import {Router} from "@angular/router";
 
 @UntilDestroy()
 @Component({
@@ -22,8 +23,9 @@ import {STEPPER_GLOBAL_OPTIONS} from "@angular/cdk/stepper";
 export class PropertyListingStepperComponent implements OnInit {
   basicDetail?: FormGroup;
   geoInformation?: FormGroup;
-  unitDetails?: FormGroup;
-  constructor(private propertyFacadeService: PropertyFacadeService, private credentialsService: CredentialsService) {}
+  // @ts-ignore
+  units: FormArray = new FormArray([]);
+  constructor(private propertyFacadeService: PropertyFacadeService, private router: Router, private credentialsService: CredentialsService) {}
 
   ngOnInit(): void {
     this.buildForm();
@@ -48,16 +50,17 @@ export class PropertyListingStepperComponent implements OnInit {
       lat: new FormControl('', Validators.required),
       lng: new FormControl('', Validators.required),
     });
-
-    this.unitDetails = new FormGroup({
-      units: new FormArray([])
-    });
-
   }
 
   createProperty(): void {
+    const units: UnitAttributes[] = this.units.value;
+    // @ts-ignore
+    units[0].nosOfBath = units[0].nosOfBath.toString();
+    units[0].nosOfBed = units[0]?.nosOfBed?.toString();
     this.basicDetail?.valid &&
-    this.propertyFacadeService.createProperty({...this.basicDetail?.value, ownerId: this.credentialsService.currentUser().id}).subscribe();
+    this.propertyFacadeService.createProperty({...this.basicDetail?.value, units: this.units.value, lat: this.geoInformation?.value.lat.toString(), lng: this.geoInformation?.value.lng.toString(), ownerId: this.credentialsService.currentUser().id}).toPromise().then(() => {
+      this.router.navigate(['properties']);
+    });
   }
 
   listenToPropertyChanges(): void {
