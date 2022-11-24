@@ -23,16 +23,21 @@
 
 .card-container {
   position: relative;
+  .apartment-card {
+    position: absolute;
+    overflow: hidden;
+    padding: 4px;
+    .card-main {
+      position: relative;
+      z-index: 9999999999999;
+      background: beige;
+    }
+  }
 }
 
-.apartment-card {
-  position: absolute;
-  overflow: hidden;
-  padding: 4px;
-}
 
-.card-main {
-  position: relative;
-  z-index: 9999999999999;
-  background: beige;
+
+
+.featured-apartment {
+  height: 80vh;
 }

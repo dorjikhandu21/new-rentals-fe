@@ -197,23 +197,6 @@ mat-icon {
   }
 }
 
-$colors: success, accent, red;
-$colorsMap: (success: $success-color, accent: $accent-color, red: $warn-color);
-
-::ng-deep .status-drop-list {
-  @each $color in $colors {
-    .#{$color}-color {
-
-      .mat-select-value {
-        color: map-get($colorsMap, $color) !important;
-      }
-    }
-  }
-
-  .mat-form-field-wrapper {
-    padding-bottom: 0;
-  }
-}
 
 .google-btn {
   background: lighten($primary-color, 45%) !important;

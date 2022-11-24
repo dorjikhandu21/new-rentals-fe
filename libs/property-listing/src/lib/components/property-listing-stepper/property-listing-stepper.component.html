@@ -17,11 +17,6 @@
         <form [formGroup]="geoInformation">
           <ng-template matStepLabel>Location</ng-template>
           <new-rentals-property-location [geoInformation]="geoInformation"></new-rentals-property-location>
-          <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext>Next</button>
-          </div>
-
           <div fxLayout="row" fxLayoutAlign="space-between center" class="py-12">
             <button mat-button mat-stroked-button color="primary" class="primary-border mr-20">{{'Cancel'}}</button>
             <div>
