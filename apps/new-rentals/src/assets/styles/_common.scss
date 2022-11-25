@@ -299,6 +299,9 @@ mat-icon {
 
 .landing-hr {
   height: 20%;
+  @include nr-media(lt-sm) {
+    height: 10%;
+  }
 }
 
 

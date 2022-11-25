@@ -1,20 +1,39 @@
 <div>
   <h2>Basic Details</h2>
+
   <div fxLayout="row wrap" fxLayoutAlign="space-between" class="mb-20">
-    <mat-card fxFlex="48" class="mat-elevation-z0 nr-silver-border hand-cursor py-12" fxLayout="row"
+    <div fxFlex="48" class="nr-silver-border hand-cursor py-12 card-selection br-8" fxLayout="row"
+         fxLayoutAlign="start center">
+      <img class="mr-24 ml-8" src="/assets/images/user-icon.svg"/>
+      <div>
+        <p class="boulder-color mb-0">As Exchange</p>
+      </div>
+    </div>
+    <div fxFlex="48" class="nr-silver-border hand-cursor py-12 card-selection br-8 selected" fxLayout="row"
+         fxLayoutAlign="start center">
+      <img class="mr-24 ml-8" src="/assets/images/user-icon.svg"/>
+      <div>
+        <p class="boulder-color mb-0">As Owner</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="font-size-16">Property Type</p>
+  <div fxLayout="row wrap" fxLayoutAlign="space-between" class="mb-20">
+    <div fxFlex="48" class="nr-silver-border hand-cursor py-12 card-selection br-8" fxLayout="row"
               fxLayoutAlign="start center">
       <img class="mr-24 ml-8" src="/assets/images/user-icon.svg"/>
       <div>
         <p class="boulder-color mb-0">Single Family Home</p>
       </div>
-    </mat-card>
-    <mat-card fxFlex="48" class="mat-elevation-z0 nr-silver-border hand-cursor py-12" fxLayout="row"
+    </div>
+    <div fxFlex="48" class="nr-silver-border hand-cursor py-12 card-selection br-8 selected" fxLayout="row"
               fxLayoutAlign="start center">
       <img class="mr-24 ml-8" src="/assets/images/user-icon.svg"/>
       <div>
         <p class="boulder-color mb-0">Multi Family Home</p>
       </div>
-    </mat-card>
+    </div>
   </div>
   <div fxLayout="row wrap" [formGroup]="basicDetail">
     <mat-form-field appearance="outline" fxFlex="100">
@@ -33,14 +52,17 @@
       <mat-label>Property Name or Title</mat-label>
       <input matInput formControlName="propertyName">
     </mat-form-field>
-    <mat-form-field appearance="outline" fxFlex="100" data-cy="title">
-      <mat-label>Describe Your home</mat-label>
-      <input matInput formControlName="propertyDescription">
+    <mat-form-field appearance="outline" fxFlex="100" data-cy="title" class="text-area">
+      <textarea matInput
+                placeholder="Describe Your home"
+                cdkTextareaAutosize
+                cdkAutosizeMinRows="5"
+                cdkAutosizeMaxRows="10"
+                formControlName="propertyDescription"></textarea>
     </mat-form-field>
 
-
     <div fxFlex="100">
-      <h2 class="mb-0">Upload Your Image</h2>
+      <p class="font-size-16">Upload Your Image</p>
       <p class="font-size-14 boulder-color">Upload at least 3 images.</p>
       <div class="multi-file-upload mb-20">
         <!--  <div fxLayoutAlign="" fxLayout="row wrap">

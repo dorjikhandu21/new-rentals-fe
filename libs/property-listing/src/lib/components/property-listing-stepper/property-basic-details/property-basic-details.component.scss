@@ -11,3 +11,18 @@
     }
   }
 }
+
+.card-selection {
+  &:hover {
+    background: lighten($primary-color, 44%);
+  }
+}
+.selected {
+  border-color: $primary-color !important;
+  background: lighten($primary-color, 44%);
+}
+.text-area{
+  ::ng-deep.mat-mdc-text-field-wrapper {
+    overflow: hidden !important;
+  }
+}
