@@ -1,0 +1,16 @@
+@import "apps/new-rentals/src/assets/styles/variables";
+.footer {
+  background-image: url(/assets/images/footer-bg.svg);
+  ::ng-deep.mat-mdc-form-field {
+    .mdc-notched-outline__leading, .mdc-notched-outline__notch, .mdc-notched-outline__trailing {
+      border-color: $white-color;
+    }
+    .mdc-floating-label {
+      color: $white-color;
+    }
+  }
+   hr {
+     border-color: $white-color;
+   }
+
+}

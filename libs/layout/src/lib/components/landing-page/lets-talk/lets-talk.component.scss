@@ -1,9 +1,18 @@
 .talk-section {
-  height: 100vh;
+  .talk-section-container {
+
+  }
+
 }
 .sush-image {
   height: 100px;
   width: 100px;
   border-radius: 50%;
   object-fit: cover;
+}
+
+.contact-us {
+  background-image: url(/assets/images/mini-bg.svg);
+  background-size: contain;
+  height: 100%;
 }

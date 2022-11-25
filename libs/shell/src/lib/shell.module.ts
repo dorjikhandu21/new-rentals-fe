@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ShellComponent } from './components/shell/shell.component';
-import {LayoutModule} from "../../../layout/src/lib/layout.module";
+import {LayoutModule} from "@new-rentals/layout";
 import {RouterOutlet} from "@angular/router";
 
 @NgModule({
