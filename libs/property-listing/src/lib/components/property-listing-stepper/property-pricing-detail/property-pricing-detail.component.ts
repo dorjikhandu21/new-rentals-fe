@@ -36,5 +36,7 @@ export class PropertyPricingDetailComponent implements OnInit {
     const value: number = unit?.get(space.value)?.value;
     unit.get(space.value)?.setValue(value <= 9 ? value + 1 : value);
   }
-
+  attachments(): FormArray {
+    return this.units?.get('attachments') as FormArray;
+  }
 }

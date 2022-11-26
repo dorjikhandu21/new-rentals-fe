@@ -1,0 +1,22 @@
+.chip {
+  &--planned {
+    color: #116C6F;
+    background: #E9FDFE;
+  }
+  &--priority-medium {
+    color: rgba(192, 98, 10, 0.87);
+    background: rgba(250, 188, 7, 0.12);
+  }
+  &--priority-high {
+    color: #C63733;
+    background: rgba(220, 53, 69, 0.16);
+  }
+  &--priority-low {
+    color: #5D5FEF;
+    background: rgba(165, 166, 246, 0.25);;
+  }
+  &--corrective {
+    color: #1B8ECE;
+    background: #E8EFFB;
+  }
+}

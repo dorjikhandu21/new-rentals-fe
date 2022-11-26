@@ -10,10 +10,16 @@ import {RequestMaintenanceModalComponent} from "../request-maintenance-modal/req
   styleUrls: ['./maintenance-list.component.scss'],
 })
 export class MaintenanceListComponent implements OnInit {
-  open: any[] = ['Get to work', 'Go home', 'Fall asleep'];
-  onhold: any[] = ['Pick up groceries', 'Go home', 'Fall asleep'];
-  inprogress: any[] = ['Get to work', 'Pick up groceries', 'Fall asleep'];
-  completed: any[] = ['Get up', 'Brush teeth'];
+  open: any[] = ['There is pipe leakage in my area, I would like to request\n' +
+  'to solve it as soon as possible', 'There is pipe leakage in my area, I would like to request\n' +
+  'to solve it as soon as possible',];
+  onhold: any[] = ['There is pipe leakage in my area, I would like to request\n' +
+  'to solve it as soon as possible'];
+  inprogress: any[] = ['There is pipe leakage in my area, I would like to request\n' +
+  'to solve it as soon as possible', 'There is pipe leakage in my area, I would like to request\n' +
+  'to solve it as soon as possible',];
+  completed: any[] = ['There is pipe leakage in my area, I would like to request\n' +
+  'to solve it as soon as possible'];
 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
