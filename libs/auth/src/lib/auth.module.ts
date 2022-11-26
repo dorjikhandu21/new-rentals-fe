@@ -16,9 +16,10 @@ import {TranslateModule} from "@ngx-translate/core";
 import {ReactiveFormsModule} from "@angular/forms";
 import {AuthService} from "./auth/service/auth.service";
 import {MatIconModule} from "@angular/material/icon";
+import {SharedModule} from "@new-rentals/shared";
 
 @NgModule({
-    imports: [CommonModule, MatCardModule, FlexModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, RouterLinkWithHref, MatTooltipModule, MatSelectModule, TranslateModule.forRoot(), ReactiveFormsModule, MatIconModule],
+    imports: [CommonModule, MatCardModule, FlexModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, RouterLinkWithHref, MatTooltipModule, MatSelectModule, TranslateModule.forRoot(), ReactiveFormsModule, MatIconModule, SharedModule],
   declarations: [AuthComponent, LoginComponent, SignupComponent],
 })
 export class AuthModule {

@@ -3,7 +3,7 @@ import {AuthType} from "../models/auth.model";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AuthService} from "../service/auth.service";
 import {HttpClient} from "@angular/common/http";
-import {tap} from "rxjs";
+import {finalize, tap} from "rxjs";
 import {NotificationService} from "@new-rentals/shared";
 
 @Component({
@@ -14,6 +14,7 @@ import {NotificationService} from "@new-rentals/shared";
 
 export class AuthComponent implements OnInit {
   componentType?: AuthType;
+  loading?:boolean;
   constructor(private activatedRoute: ActivatedRoute, private router: Router, private authService: AuthService, private http: HttpClient, private notificationService: NotificationService) {}
 
   ngOnInit(): void {
@@ -27,9 +28,10 @@ export class AuthComponent implements OnInit {
   }
 
   login(loginData: {user: {email: string, password: string}}): void {
+    this.loading = true;
     this.authService.login(loginData).pipe(tap(response => {
       this.router.navigate(['/users']);
-    })).subscribe()
+    }), finalize(() => this.loading = false)).subscribe()
   }
 
   signUp(signUpData: any): void {

@@ -17,6 +17,7 @@ import {TranslateModule} from "@ngx-translate/core";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import {MatPaginatorModule} from "@angular/material/paginator";
+import {SharedModule} from "@new-rentals/shared";
 
 @NgModule({
     imports: [
@@ -36,7 +37,8 @@ import {MatPaginatorModule} from "@angular/material/paginator";
         MatInputModule,
         MatDatepickerModule,
         MatNativeDateModule,
-        MatPaginatorModule
+        MatPaginatorModule,
+        SharedModule
     ],
   declarations: [UserListingComponent, InviteTenantModalComponent],
   exports: [UserListingComponent],

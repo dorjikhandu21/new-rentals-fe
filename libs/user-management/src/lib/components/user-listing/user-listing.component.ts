@@ -7,7 +7,7 @@ import {UserFacadeService} from "../../services/user-facade.service";
 import {User} from "@new-rentals/shared";
 import {UserStoreEnum} from "../../models/user.store.state";
 import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
-import {tap} from "rxjs";
+import {finalize, tap} from "rxjs";
 import {UserTableData} from "../../models/user.model";
 export interface PeriodicElement {
   name: string;
@@ -27,6 +27,8 @@ export interface PeriodicElement {
 })
 @UntilDestroy()
 export class UserListingComponent implements OnInit {
+  loading?:boolean;
+  emptyData?:boolean;
   displayedColumns: string[] = ['select', 'name', 'email', 'phone', 'building_name', 'apartment', 'status', 'actions'];
   dataSource = new MatTableDataSource<UserTableData>([]);
   selection = new SelectionModel<UserTableData>(true, []);
@@ -42,13 +44,15 @@ export class UserListingComponent implements OnInit {
 
 
   getUsers(): void {
-    this.userFacadeService.getUsers().subscribe();
+    this.loading = true;
+    this.userFacadeService.getUsers().pipe(finalize(() => this.loading = false)).subscribe();
   }
 
   listenToUsersState(): void {
     this.userFacadeService.specificStateChange<UserTableData[]>(UserStoreEnum.USER_TABLE_DATA).pipe(untilDestroyed(this), tap((users) => {
+      this.emptyData = users?.length <1;
       this.dataSource = new MatTableDataSource<UserTableData>(users);
-    })).subscribe()
+    })).subscribe();
   }
 
   isAllSelected() {

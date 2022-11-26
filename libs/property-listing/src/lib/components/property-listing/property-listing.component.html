@@ -54,7 +54,7 @@
     </div>
   </div>
 
-  <div fxLayoutAlign="center center" class="full-width">
+  <div fxLayoutAlign="center center" class="full-width" *ngIf="uniqueUnits.length">
     <mat-paginator [length]="100"
                    [pageSize]="10"
                    [pageSizeOptions]="[5, 10, 25, 100]"
@@ -62,5 +62,6 @@
     </mat-paginator>
   </div>
 </div>
-<new-rentals-empty-page *ngIf="!uniqueUnits.length"></new-rentals-empty-page>
+<new-rentals-loader *ngIf="loading"></new-rentals-loader>
+<new-rentals-empty-page *ngIf="!loading && !uniqueUnits.length"></new-rentals-empty-page>
 

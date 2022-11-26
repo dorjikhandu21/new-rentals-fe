@@ -29,7 +29,7 @@
     {{'Invite Member'}}</button>
 </div>
 
-<div class="mx-24 nr-white-bg br-8 p-20">
+<div class="mx-24 nr-white-bg br-8 p-20" *ngIf="!emptyData">
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z0 ">
 
     <!-- Checkbox Column -->
@@ -120,3 +120,5 @@
                  aria-label="Select page">
   </mat-paginator>
 </div>
+<new-rentals-loader *ngIf="loading"></new-rentals-loader>
+<new-rentals-empty-page *ngIf="!loading && emptyData"></new-rentals-empty-page>

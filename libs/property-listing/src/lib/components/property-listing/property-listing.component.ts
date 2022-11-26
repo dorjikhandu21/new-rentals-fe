@@ -4,8 +4,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {PropertyFacadeService} from "../../services/property-facade.service";
 import {PropertyStoreEnum} from "../../models/property.store";
 import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
-import {switchMap, tap} from "rxjs";
-import {geocodeLatLng, Property, Unit, UnitFilterAttributes} from "@new-rentals/shared";
+import {finalize, switchMap, tap} from "rxjs";
+import {Unit, UnitFilterAttributes} from "@new-rentals/shared";
 import {PropertyBlService} from "../../services/property-bl.service";
 
 @UntilDestroy()
@@ -20,9 +20,12 @@ import {PropertyBlService} from "../../services/property-bl.service";
     },
   ],
 })
+
 export class PropertyListingComponent implements OnInit {
   units: Unit[] = [];
   uniqueUnits: Unit[] = [];
+  // eslint-disable-next-line @typescript-eslint/typedef
+  loading = true;
   filters: any[] = [
     {name: 'Type', icon: 'category'},
     {name: 'Price', icon: 'attach_money'},
@@ -56,16 +59,15 @@ export class PropertyListingComponent implements OnInit {
   listenToPropertyFilters(): void {
     this.propertyFacadeService.specificStateChange<UnitFilterAttributes>(PropertyStoreEnum.PROPERTY_FILTERS).pipe(untilDestroyed(this),switchMap((filters) => {
       return this.propertyFacadeService.getUnits(filters);
-    })).subscribe();
+    })).subscribe(() => {
+      this.loading = false;
+    });
   }
 
   listenToUnitsChange(): void {
     this.propertyFacadeService.specificStateChange<Unit[]>(PropertyStoreEnum.UNITS).pipe(untilDestroyed(this), tap((units) => {
       this.units = units;
       this.uniqueUnits = this.propertyBlService.getFormattedProperties(units);
-      this.units?.forEach(unit => {
-        geocodeLatLng(unit);
-      })
     })).subscribe();
   }
 
