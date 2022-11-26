@@ -22,7 +22,6 @@ export class FlatListsComponent implements OnInit {
   private map: google.maps.Map;
   // @ViewChild(MapInfoWindow) infoWindow?: MapInfoWindow;
   @ViewChild(MapInfoWindow, {static: false}) infoWindow?: MapInfoWindow;
-  id = 1;
   filters: any[] = [
     {name: 'Type', icon: 'category'},
     {name: 'Price', icon: 'attach_money'},
@@ -53,10 +52,18 @@ markers: any[] = [];
   listenToApartmentListingFilters(): void {
     this.sharedFacadeService.specificStateChange(SharedStoreStateEnum.GEO_CODING_FILTERS).pipe(untilDestroyed(this), switchMap(() => this.unitFacadeService.getUnits()), tap((units) => {
       this.units = units;
+      this.setMapCenter(units);
       this.units.forEach(unit => {
         this.addMarkers(unit);
+        this.geocodeLatLng(this.map, unit)
       })
     })).subscribe();
+  }
+
+  setMapCenter(units: Unit[]): void {
+    // @ts-ignore
+    this.map.setCenter({lat: +units[0]?.property?.lat, lng: +units[0]?.property?.lng});
+    this.map.setZoom(14);
   }
 
   loadMap(): void {
@@ -121,8 +128,21 @@ markers: any[] = [];
     this.infoWindow.open();
   }
 
-  routeToDetails(): void {
-    this.router.navigate([`${this.id}`], {relativeTo: this.route})
+  routeToDetails(unit?: Unit): void {
+    this.router.navigate([`${unit?.id}`], {relativeTo: this.route})
+  }
+
+   geocodeLatLng(map: google.maps.Map, unit: Unit ): void {
+     const geocoder: google.maps.Geocoder = new google.maps.Geocoder();
+     // @ts-ignore
+     geocoder.geocode({ location: {lat: +unit.property.lat, lng: +unit.property.lng} })
+       // @ts-ignore
+       .then((response) => {
+        if (response.results[0]) {
+          // @ts-ignore
+          unit['address'] = response.results[0].formatted_address;
+        } else console.log("No results found");
+      }).catch((e) => window.alert("Geocoder failed due to: " + e));
   }
 
 }

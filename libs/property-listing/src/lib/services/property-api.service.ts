@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
-import {Apollo, Mutation} from "apollo-angular";
+import {Apollo, Mutation, Query} from "apollo-angular";
 import {map, Observable, tap} from "rxjs";
 import {
   CreatePropertyPayload,
   NotificationService,
-  PropertyAttributes
+  PropertyAttributes, Unit, UnitFilterAttributes
 } from "@new-rentals/shared";
 import {CREATE_PROPERTY} from "../gql/mutations";
+import {UNITS_QUERY} from "../../../../public-listing/src/lib/gql/quries";
 
 @Injectable({
   providedIn: 'root'
@@ -25,5 +26,17 @@ export class PropertyApiService {
       // @ts-ignore
       return response.data['createProperty']
     }))
+  }
+
+  getUnits(attributes: UnitFilterAttributes): Observable<Unit[]> {
+    return this.apollo.query<Query>({
+      query: UNITS_QUERY,
+      variables: {attributes},
+      fetchPolicy: "no-cache"
+    }).pipe(map((response) => {
+      debugger
+        // @ts-ignore
+        return response.data['units']
+      }))
   }
 }
