@@ -28,7 +28,7 @@
 
       <p fxFlex="100" class="p-12 nr-white-bg br-4 nr-silver-border">{{units.length}} Apartments, Thimphu Bhutan</p>
 
-      <div  *ngFor="let unit of units" class="example-card hand-cursor br-4 nr-white-bg nr-silver-border mb-24" fxFlex="48" (click)="routeToDetails(unit)">
+      <div  *ngFor="let unit of units" class="example-card hand-cursor br-4 nr-white-bg nr-silver-border mb-24" fxFlex="48">
         <div class="flat-image-container">
           <span class="cost-label nr-white-color">{{unit.monthlyRent}}/- per month</span>
           <img mat-card-image class="flat-image" src="../../../../../../../assets/images/flat.svg"
@@ -44,8 +44,8 @@
             <mat-icon>account_tree_outline</mat-icon>
             <p>{{unit.nosOfBed}} Beds, {{unit.nosOfBath}} Baths, 2 Corridor</p>
           </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center">
-            <button mat-button color="primary" class="light-bg" fxFlex="95"><span class="no-wrap font-size-12">Apply For Tenant</span>
+          <div fxLayout="row" fxLayoutAlign="space-between center" (click)="routeToDetails(unit)">
+            <button mat-button color="primary" class="light-bg" fxFlex="95"><span class="no-wrap font-size-12">Details</span>
               <mat-icon>navigate_next</mat-icon>
             </button>
             <mat-icon class="nr-white-fade-bg s-20 boulder-color p-8 br-8 hand-cursor ml-20 edit-icons">bookmark_outline</mat-icon>

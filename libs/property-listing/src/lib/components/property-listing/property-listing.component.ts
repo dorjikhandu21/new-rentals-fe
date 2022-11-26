@@ -42,16 +42,16 @@ export class PropertyListingComponent implements OnInit {
 
   ngOnInit(): void {
     this.center = {lat: 27.4716, lng: 89.6386};
-    this.updateUnitFilters();
-    this.listenToUnitFilters();
+    this.updatePropertyFilters();
+    this.listenToPropertyFilters();
     this.listenToUnitsChange()
   }
 
-  updateUnitFilters(): void {
+  updatePropertyFilters(): void {
     this.propertyFacadeService.updateSpecificState({}, PropertyStoreEnum.PROPERTY_FILTERS);
   }
 
-  listenToUnitFilters(): void {
+  listenToPropertyFilters(): void {
     this.propertyFacadeService.specificStateChange<UnitFilterAttributes>(PropertyStoreEnum.PROPERTY_FILTERS).pipe(untilDestroyed(this),switchMap((filters) => {
       return this.propertyFacadeService.getUnits(filters);
     })).subscribe();
