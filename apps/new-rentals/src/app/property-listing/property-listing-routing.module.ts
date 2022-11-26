@@ -29,7 +29,7 @@ const routes: Routes = [
           component: PropertyListingStepperComponent,
         },
         {
-          path: 'detail',
+          path: ':id',
           component: PropertyDetailsComponent,
         }
       ],

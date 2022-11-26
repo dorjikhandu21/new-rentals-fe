@@ -53,10 +53,6 @@ export class PropertyListingStepperComponent implements OnInit {
   }
 
   createProperty(): void {
-    const units: UnitAttributes[] = this.units.value;
-    // @ts-ignore
-    units[0].nosOfBath = units[0].nosOfBath.toString();
-    units[0].nosOfBed = units[0]?.nosOfBed?.toString();
     this.basicDetail?.valid &&
     this.propertyFacadeService.createProperty({...this.basicDetail?.value, units: this.units.value, lat: this.geoInformation?.value.lat.toString(), lng: this.geoInformation?.value.lng.toString(), ownerId: this.credentialsService.currentUser().id}).toPromise().then(() => {
       this.router.navigate(['properties']);
