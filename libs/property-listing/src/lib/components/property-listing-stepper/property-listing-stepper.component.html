@@ -34,7 +34,7 @@
           <button mat-button mat-stroked-button color="primary" class="primary-border mr-20">{{'Cancel'}}</button>
           <div>
             <button mat-button mat-stroked-button color="primary" matStepperPrevious class="primary-border mr-20">{{'Previous'}}</button>
-            <button [disabled]="basicDetail.invalid || geoInformation.invalid || units.invalid" mat-flat-button mat-button color="primary" (click)="createProperty();stepper.reset()">{{'Done'}}</button>
+            <button [disabled]="basicDetail.invalid || geoInformation.invalid || units.invalid" mat-flat-button mat-button color="primary" (click)="createProperty()">{{'Create'}}</button>
           </div>
         </div>
       </mat-step>

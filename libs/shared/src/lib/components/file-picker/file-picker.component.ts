@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormArray, FormControl, FormGroup} from "@angular/forms";
-import {CategoryEnum} from "@new-rentals/shared";
+import {CategoryEnum, CredentialsService} from "@new-rentals/shared";
 
 @Component({
   selector: 'new-rentals-file-picker',
@@ -9,7 +9,8 @@ import {CategoryEnum} from "@new-rentals/shared";
 })
 export class FilePickerComponent implements OnInit {
   @Input() attachments?: FormArray;
-  constructor() {}
+  accept = 'image/jpeg,image/png,image/jpg';
+  constructor(private credentialsService: CredentialsService) {}
 
   ngOnInit(): void {}
 
@@ -31,9 +32,14 @@ export class FilePickerComponent implements OnInit {
       file: new FormControl(event?.target?.['files']?.[0]),
       // @ts-ignore
       fileFileName: new FormControl(event?.target?.['files']?.[0]['name']),
-      url: new FormControl(fileUrl)
+      url: new FormControl(fileUrl),
+      userId: new FormControl(this.credentialsService.currentUser().id)
     })
     // @ts-ignore
     this.attachments.push(attachmentControl);
+  }
+
+  removeAttachment(index: number): void {
+    this.attachments?.removeAt(index);
   }
 }
