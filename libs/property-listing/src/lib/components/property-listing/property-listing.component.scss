@@ -12,3 +12,7 @@
 .label-green-bg {
   background: rgba(29, 178, 182, 0.6);
 }
+
+.example-card:nth-child(4n) {
+  margin-right: 0 !important;
+}

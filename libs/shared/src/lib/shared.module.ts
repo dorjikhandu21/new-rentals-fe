@@ -11,6 +11,8 @@ import { PublicListingComponent } from './components/public-listing/public-listi
 import { FlatDetailsComponent } from './components/flat-details/flat-details.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FilePickerComponent } from './components/file-picker/file-picker.component';
+import { LoaderComponent } from './components/loader/loader.component';
+import { EmptyPageComponent } from './components/empty-page/empty-page.component';
 import {GoogleMapsModule} from "@angular/google-maps";
 
 @NgModule({
@@ -30,9 +32,9 @@ import {GoogleMapsModule} from "@angular/google-maps";
         PublicListingComponent,
         FlatDetailsComponent,
         FilePickerComponent,
-    ],
-    exports: [
-        FilePickerComponent
-    ]
+    LoaderComponent,
+    EmptyPageComponent,
+  ],
+  exports: [FilePickerComponent, LoaderComponent, EmptyPageComponent],
 })
 export class SharedModule {}
