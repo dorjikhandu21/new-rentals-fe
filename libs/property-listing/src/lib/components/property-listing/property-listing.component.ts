@@ -5,7 +5,8 @@ import {PropertyFacadeService} from "../../services/property-facade.service";
 import {PropertyStoreEnum} from "../../models/property.store";
 import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
 import {switchMap, tap} from "rxjs";
-import {Unit, UnitFilterAttributes} from "@new-rentals/shared";
+import {Property, Unit, UnitFilterAttributes} from "@new-rentals/shared";
+import {PropertyBlService} from "../../services/property-bl.service";
 
 @UntilDestroy()
 @Component({
@@ -20,7 +21,8 @@ import {Unit, UnitFilterAttributes} from "@new-rentals/shared";
   ],
 })
 export class PropertyListingComponent implements OnInit {
-  units?: Unit[];
+  units: Unit[] = [];
+  uniqueUnits: Unit[] = [];
   filters: any[] = [
     {name: 'Type', icon: 'category'},
     {name: 'Price', icon: 'attach_money'},
@@ -38,7 +40,7 @@ export class PropertyListingComponent implements OnInit {
     disableDoubleClickZoom: true,
     maxZoom: 15,
   };
-  constructor(private router: Router, private route: ActivatedRoute, private propertyFacadeService: PropertyFacadeService) {}
+  constructor(private router: Router, private route: ActivatedRoute, private propertyFacadeService: PropertyFacadeService, private propertyBlService: PropertyBlService) {}
 
   ngOnInit(): void {
     this.center = {lat: 27.4716, lng: 89.6386};
@@ -60,6 +62,7 @@ export class PropertyListingComponent implements OnInit {
   listenToUnitsChange(): void {
     this.propertyFacadeService.specificStateChange<Unit[]>(PropertyStoreEnum.UNITS).pipe(untilDestroyed(this), tap((units) => {
       this.units = units;
+      this.uniqueUnits = this.propertyBlService.getFormattedProperties(units);
       this.units?.forEach(unit => {
         this.geocodeLatLng(unit);
       })

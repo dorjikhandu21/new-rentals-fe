@@ -104,6 +104,7 @@ type Property {
   propertyType: String
   specialAmenities: [Amenity!]
   units: [Unit!]
+  unitsCount: Int
 }
 
 type Query {

@@ -238,6 +238,7 @@ export const QUERY_UNITS: TypedDocumentNode = gql`
           satDetails
           satType
         }
+        unitsCount
         units {
           attachments {
             attachableId

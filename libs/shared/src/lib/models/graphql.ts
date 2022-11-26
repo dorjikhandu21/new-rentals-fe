@@ -263,6 +263,7 @@ export type Property = {
   propertyType?: Maybe<Scalars['String']>;
   specialAmenities?: Maybe<Array<Amenity>>;
   units?: Maybe<Array<Unit>>;
+  unitsCount?: Maybe<Scalars['Int']>;
 };
 
 export type PropertyAttributes = {

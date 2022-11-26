@@ -7,7 +7,7 @@ import {
   PropertyAttributes, Unit, UnitFilterAttributes
 } from "@new-rentals/shared";
 import {CREATE_PROPERTY} from "../gql/mutations";
-import {UNITS_QUERY} from "../../../../public-listing/src/lib/gql/quries";
+import {UNITS_QUERY} from "../../../../public-listing/src/lib/gql/queries";
 
 @Injectable({
   providedIn: 'root'

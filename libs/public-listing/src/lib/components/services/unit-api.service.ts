@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Unit} from "@new-rentals/shared";
 import {Apollo, Query} from "apollo-angular";
-import {UNITS_QUERY} from "../../gql/quries";
+import {UNITS_QUERY} from "../../gql/queries";
 import {map, Observable} from "rxjs";
 
 @Injectable({

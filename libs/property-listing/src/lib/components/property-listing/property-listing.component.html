@@ -28,7 +28,7 @@
 </div>
 
 <div class="mx-24" fxLayout="row wrap" fxLayoutAlign="space-between streatch">
-  <div *ngFor="let unit of units" class="example-card hand-cursor br-8 nr-white-bg nr-silver-border mb-24"
+  <div *ngFor="let unit of uniqueUnits" class="example-card hand-cursor br-8 nr-white-bg nr-silver-border mb-24"
        fxFlex="24" (click)="routeToPropertyDetail(unit)">
     <div class="image-container">
       <div class="label">
@@ -39,14 +39,14 @@
            alt="Photo of a Shiba Inu">
     </div>
     <div class="m-16">
-      <p>{{unit.unitDescription}}</p>
+      <p>{{unit.property.propertyDescription}}</p>
       <div fxLayout="row" class="boulder-color">
         <mat-icon>location_on_outline</mat-icon>
         <p>{{unit['address']}}</p>
       </div>
       <div fxLayout="row" class="boulder-color">
         <mat-icon>account_tree_outline</mat-icon>
-        <p>{{unit.nosOfBed}} Beds, {{unit.nosOfBath}} Baths, 2 Corridor</p>
+        <p>{{unit.property.unitsCount}} {{unit.property.unitsCount > 1 ? 'Flats' : 'Flat'}}, with installed elevator</p>
       </div>
     </div>
   </div>
