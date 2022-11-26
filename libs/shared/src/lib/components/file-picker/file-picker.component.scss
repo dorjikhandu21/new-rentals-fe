@@ -21,10 +21,24 @@
   width: 200px;
   background: $mild-gray;
   position: relative;
+  overflow: hidden;
   .close-icon {
     position: absolute;
     right: 8px;
     top: 8px;
     opacity: 0.5;
+  }
+}
+
+.image-uploader {
+  border-radius: 12px;
+  color: $primary-color;
+  cursor: pointer;
+  text-align: center;
+
+  input[type='file'] {
+    display: none;
+    height: 0;
+    width: 0;
   }
 }
