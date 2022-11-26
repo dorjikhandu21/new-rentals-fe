@@ -75,6 +75,6 @@ export class PropertyListingComponent implements OnInit {
     this.router.navigate(['add'], {relativeTo: this.route});
   }
   routeToPropertyDetail(unit: Unit): void {
-    void  this.router.navigate([`${unit.id}`], {relativeTo: this.route});
+    void  this.router.navigate([`${unit.property.id}`], {relativeTo: this.route});
   }
 }

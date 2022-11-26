@@ -1,16 +1,17 @@
 import { NgModule } from '@angular/core';
 import { ApolloModule, APOLLO_OPTIONS } from 'apollo-angular';
-import {HttpLink} from "apollo-angular/http";
-import {ApolloLink, InMemoryCache} from "@apollo/client/core";
+import { InMemoryCache} from "@apollo/client/core";
+import {HttpLinkModule, HttpLink} from "apollo-angular-link-http";
+import {from} from "apollo-link";
 
 const omitDeep = require('omit-deep-lodash');
 
 export const createApollo = (httpLink: HttpLink) => ({
-  link: ApolloLink.from([httpLink.create({ uri: 'https://newrentals.tk/api/v1/graphql'})]),
+  link: from([httpLink.create({ uri: 'https://newrentals.tk/api/v1/graphql'})]),
   cache: new InMemoryCache()
 });
 @NgModule({
-  exports: [ApolloModule],
+  exports: [ApolloModule, HttpLinkModule],
   providers: [
     {
       provide: APOLLO_OPTIONS,

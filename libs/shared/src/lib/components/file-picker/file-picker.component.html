@@ -1,14 +1,14 @@
 <div fxLayout="row wrap">
 <div fxFlex="100" class="multi-file-upload image-uploader hand-cursor br-8 py-16 full-width" (click)="fileUpload.click()" fxLayoutAlign="center center" fxLayout="column">
   <mat-icon color="primary" class="ver-middle s-32 hand-cursor">cloud_upload</mat-icon>
-  <input #fileUpload type="file" [multiple]="true" (change)="selectFile($event)">
+  <input #fileUpload type="file" [multiple]="true" (change)="selectFile($event)" accept="{{accept}}">
   <p>Click here to Upload Images from your device.</p>
   <p class="boulder-color center-block px-12">Choose any image format to upload here, upload upto 200 MB</p>
 </div>
 <div fxLayout="row wrap" fxFlex="100" fxLayoutGap="8px" class="mt-20">
   <div fxLayoutAlign="center center" class="release-media-container br-8 mb-16" *ngFor="let attachment of attachments.value; let i=index;">
     <img [src]="attachment.url" height="100">
-    <mat-icon class="s-16 br-40 nr-white-color hand-cursor close-icon nr-black-bg">close</mat-icon>
+    <mat-icon class="s-16 br-40 nr-white-color hand-cursor close-icon nr-black-bg" (click)="removeAttachment(i)">close</mat-icon>
   </div>
 </div>
 </div>
