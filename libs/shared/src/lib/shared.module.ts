@@ -11,26 +11,28 @@ import { PublicListingComponent } from './components/public-listing/public-listi
 import { FlatDetailsComponent } from './components/flat-details/flat-details.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FilePickerComponent } from './components/file-picker/file-picker.component';
+import { LoaderComponent } from './components/loader/loader.component';
+import { EmptyPageComponent } from './components/empty-page/empty-page.component';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        MatIconModule,
-        TranslateModule,
-        MatSnackBarModule,
-        FlexLayoutModule,
-    ],
-    declarations: [
-        AdvancedFilterComponent,
-        NavBarComponent,
-        NotificationComponent,
-        SearchBarComponent,
-        PublicListingComponent,
-        FlatDetailsComponent,
-        FilePickerComponent,
-    ],
-    exports: [
-        FilePickerComponent
-    ]
+  imports: [
+    CommonModule,
+    MatIconModule,
+    TranslateModule,
+    MatSnackBarModule,
+    FlexLayoutModule,
+  ],
+  declarations: [
+    AdvancedFilterComponent,
+    NavBarComponent,
+    NotificationComponent,
+    SearchBarComponent,
+    PublicListingComponent,
+    FlatDetailsComponent,
+    FilePickerComponent,
+    LoaderComponent,
+    EmptyPageComponent,
+  ],
+  exports: [FilePickerComponent, LoaderComponent, EmptyPageComponent],
 })
 export class SharedModule {}

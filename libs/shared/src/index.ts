@@ -15,3 +15,4 @@ export * from './lib/services/shared-facade.service'
 export * from './lib/services/shared-api.service'
 export * from './lib/services/shared-state.service'
 export * from './lib/models/shared.store';
+export * from './lib/components/loader/loader.component'

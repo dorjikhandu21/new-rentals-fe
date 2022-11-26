@@ -1,3 +1,6 @@
+<!--
+<new-rentals-loader></new-rentals-loader>
+-->
 <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="mx-24 mb-16 mt-32 application-container">
   <div fxLayout="row wrap" fxFlex="80" fxLayoutGap="12px">
     <mat-form-field appearance="outline" fxFlex="40" class="search-field">
@@ -27,9 +30,9 @@
     {{'Add Property'}}</button>
 </div>
 
-<div class="mx-24" fxLayout="row wrap" fxLayoutAlign="space-between streatch">
-  <div *ngFor="let card of [1,2,3,4,]" class="example-card hand-cursor br-8 nr-white-bg nr-silver-border mb-24"
-       fxFlex="24" (click)="routeToPropertyDetail()">
+<div class="mx-24" fxLayout="row wrap" fxLayoutAlign="" fxLayoutGap="20px">
+  <div *ngFor="let card of [1,2,3,4,]" class="property-card hand-cursor br-8 nr-white-bg nr-silver-border mb-24"
+       fxFlex="23" (click)="routeToPropertyDetail()">
     <div class="image-container">
       <div class="label">
         <span class="label__text nr-white-color label-green-bg mr-12">Nu.15000/-</span>
@@ -50,12 +53,16 @@
       </div>
     </div>
   </div>
+
+  <div fxLayoutAlign="center center" class="full-width">
+    <mat-paginator [length]="100"
+                   [pageSize]="10"
+                   [pageSizeOptions]="[5, 10, 25, 100]"
+                   aria-label="Select page">
+    </mat-paginator>
+  </div>
 </div>
-<div fxLayoutAlign="center center">
-  <mat-paginator [length]="100"
-                 [pageSize]="10"
-                 [pageSizeOptions]="[5, 10, 25, 100]"
-                 aria-label="Select page">
-  </mat-paginator>
-</div>
+<!--
+<new-rentals-empty-page></new-rentals-empty-page>
+-->
 
