@@ -5,7 +5,7 @@
   <div class="detail-page br-4 mx-24 p-20">
     <div class="p-20 br-8 nr-white-bg">
       <div fxLayout="row" fxLayoutAlign="space-between center">
-        <h2>Building Name</h2>
+        <h2>{{property?.propertyName}}</h2>
         <button mat-flat-button mat-button color="primary" fxFlex="15" class="mt-4">
           <mat-icon>add</mat-icon>
           {{'Add Units'}}</button>
@@ -21,20 +21,20 @@
             <div class="br-4 nr-white-fade-bg p-20" fxLayout="row wrap" fxLayoutAlign="space-between">
               <div fxFlex="20">
                 <p class="boulder-color mb-0"> Building Name</p>
-                <p>Nima Khangzang</p>
+                <p>{{property?.propertyName}}</p>
               </div>
               <div fxFlex="20">
                 <p class="boulder-color mb-0">Number of Units</p>
                 <p>9</p>
               </div>
-              <div fxFlex="20">
-                <p class="boulder-color mb-0">Monthly Rent</p>
-                <p>Nu.2000 per month</p>
-              </div>
+<!--              <div fxFlex="20">-->
+<!--                <p class="boulder-color mb-0">Monthly Rent</p>-->
+<!--                <p>Nu.2000 per month</p>-->
+<!--              </div>-->
 
               <div fxFlex="100">
                 <p class="boulder-color mb-0">Description</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, asperiores at autem consequuntur corporis dignissimos eos error est illo minima minus neque odio optio perferendis quam qui sapiente soluta suscipit.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, asperiores at autem consequuntur corporis dignissimos eos error est illo.</p>
               </div>
             </div>
           </div>
@@ -54,7 +54,7 @@
                 <p>9</p>
               </div>
               <div fxFlex="20">
-                <p class="boulder-color mb-0">Free Water Charge</p>
+                <p class="boulder-color mb-0">Water Charge</p>
                 <p>Nu.200 per month</p>
               </div>
             </div>

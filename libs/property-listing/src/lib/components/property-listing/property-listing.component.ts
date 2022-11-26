@@ -5,7 +5,7 @@ import {PropertyFacadeService} from "../../services/property-facade.service";
 import {PropertyStoreEnum} from "../../models/property.store";
 import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
 import {switchMap, tap} from "rxjs";
-import {Property, Unit, UnitFilterAttributes} from "@new-rentals/shared";
+import {geocodeLatLng, Property, Unit, UnitFilterAttributes} from "@new-rentals/shared";
 import {PropertyBlService} from "../../services/property-bl.service";
 
 @UntilDestroy()
@@ -64,22 +64,9 @@ export class PropertyListingComponent implements OnInit {
       this.units = units;
       this.uniqueUnits = this.propertyBlService.getFormattedProperties(units);
       this.units?.forEach(unit => {
-        this.geocodeLatLng(unit);
+        geocodeLatLng(unit);
       })
     })).subscribe();
-  }
-
-  geocodeLatLng(unit: Unit ): void {
-    const geocoder: google.maps.Geocoder = new google.maps.Geocoder();
-    // @ts-ignore
-    geocoder.geocode({ location: {lat: +unit.property.lat, lng: +unit.property.lng} })
-      // @ts-ignore
-      .then((response) => {
-        if (response.results[0]) {
-          // @ts-ignore
-          unit['address'] = response.results[0].formatted_address;
-        } else console.log("No results found");
-      }).catch((e) => window.alert("Geocoder failed due to: " + e));
   }
 
   routeToPropertyCreation(): void {

@@ -282,3 +282,180 @@ export const UNITS_QUERY: TypedDocumentNode = gql`
     }
   }
 `
+
+export const PROPERTY_QUERY: TypedDocumentNode = gql`
+  query property ($id: ID) {
+    property (id: $id) {
+      attachments {
+        attachableId
+        attachableType
+        category
+        fileContentType
+        fileName
+        fileSize
+        id
+        url
+        userId
+      }
+      id
+      lat
+      lng
+      neighbourhoodDetails
+      normalAmenities {
+        amenitableId
+        amenitableType
+        atDetails
+        atType
+        id
+        satDetails
+        satType
+      }
+      occupancyType
+      owner {
+        email
+        enabled
+        id
+        portalSetting {
+          businessName
+          dzongkhag
+          gewog
+          id
+          themeColour
+        }
+        profile {
+          fullName
+          gender
+          id
+          phone
+        }
+        profileBackground {
+          attachableId
+          attachableType
+          category
+          fileContentType
+          fileName
+          fileSize
+          id
+          url
+          userId
+        }
+        profilePic {
+          attachableId
+          attachableType
+          category
+          fileContentType
+          fileName
+          fileSize
+          id
+          url
+          userId
+        }
+        role {
+          id
+          roleName
+        }
+        status
+        subscriptionPlan {
+          id
+          name
+        }
+      }
+      propertyDescription
+      propertyName
+      propertyType
+      specialAmenities {
+        amenitableId
+        amenitableType
+        atDetails
+        atType
+        id
+        satDetails
+        satType
+      }
+      units {
+        attachments {
+          attachableId
+          attachableType
+          category
+          fileContentType
+          fileName
+          fileSize
+          id
+          url
+          user {
+            email
+            enabled
+            id
+            portalSetting {
+              businessName
+              dzongkhag
+              gewog
+              id
+              themeColour
+            }
+            profile {
+              fullName
+              gender
+              id
+              phone
+            }
+            profileBackground {
+              attachableId
+              attachableType
+              category
+              fileContentType
+              fileName
+              fileSize
+              id
+              url
+              userId
+            }
+            profilePic {
+              attachableId
+              attachableType
+              category
+              fileContentType
+              fileName
+              fileSize
+              id
+              url
+              userId
+            }
+            role {
+              id
+              roleName
+            }
+            status
+            subscriptionPlan {
+              id
+              name
+            }
+          }
+          userId
+        }
+        id
+        monthlyRent
+        normalAmenities {
+          amenitableId
+          amenitableType
+          atDetails
+          atType
+          id
+          satDetails
+          satType
+        }
+        nosOfBath
+        nosOfBed
+        occupied
+        propertyId
+        unitDescription
+        unitNumber
+        property {
+          lat
+          lng
+        }
+      }
+      unitsCount
+    }
+  }
+`

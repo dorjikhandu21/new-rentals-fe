@@ -24,4 +24,11 @@ export class PropertyFacadeService extends BaseFacadeService<PropertyStateServic
       this.updateSpecificState(units, PropertyStoreEnum.UNITS)
     }), mapTo(true))
   }
+
+  getProperty(id: string): Observable<boolean> {
+    return this.propertyApiService.getProperty(id).pipe(tap((response) => {
+      debugger
+      this.updateSpecificState(response, PropertyStoreEnum.PROPERTY);
+    }), mapTo(true))
+  }
 }

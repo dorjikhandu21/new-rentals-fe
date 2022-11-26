@@ -3,7 +3,7 @@ import { MapInfoWindow } from "@angular/google-maps";
 import {HttpClient} from "@angular/common/http";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Loader} from "@googlemaps/js-api-loader";
-import {SharedFacadeService, SharedStoreStateEnum, Unit} from "@new-rentals/shared";
+import {geocodeLatLng, SharedFacadeService, SharedStoreStateEnum, Unit} from "@new-rentals/shared";
 import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
 import {switchMap, tap} from "rxjs";
 import {UnitFacadeService} from "../services/unit-facade.service";
@@ -16,7 +16,6 @@ import {UnitFacadeService} from "../services/unit-facade.service";
 })
 
 export class FlatListsComponent implements OnInit {
-
   // @ts-ignore
   units: Unit[] = [];
   private map: google.maps.Map;
@@ -55,7 +54,7 @@ markers: any[] = [];
       this.setMapCenter(units);
       this.units.forEach(unit => {
         this.addMarkers(unit);
-        this.geocodeLatLng(this.map, unit)
+        geocodeLatLng(unit)
       })
     })).subscribe();
   }
@@ -130,19 +129,6 @@ markers: any[] = [];
 
   routeToDetails(unit?: Unit): void {
     this.router.navigate([`${unit?.id}`], {relativeTo: this.route})
-  }
-
-   geocodeLatLng(map: google.maps.Map, unit: Unit ): void {
-     const geocoder: google.maps.Geocoder = new google.maps.Geocoder();
-     // @ts-ignore
-     geocoder.geocode({ location: {lat: +unit.property.lat, lng: +unit.property.lng} })
-       // @ts-ignore
-       .then((response) => {
-        if (response.results[0]) {
-          // @ts-ignore
-          unit['address'] = response.results[0].formatted_address;
-        } else console.log("No results found");
-      }).catch((e) => window.alert("Geocoder failed due to: " + e));
   }
 
 }

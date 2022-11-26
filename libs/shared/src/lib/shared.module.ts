@@ -11,6 +11,7 @@ import { PublicListingComponent } from './components/public-listing/public-listi
 import { FlatDetailsComponent } from './components/flat-details/flat-details.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FilePickerComponent } from './components/file-picker/file-picker.component';
+import {GoogleMapsModule} from "@angular/google-maps";
 
 @NgModule({
     imports: [
@@ -19,6 +20,7 @@ import { FilePickerComponent } from './components/file-picker/file-picker.compon
         TranslateModule,
         MatSnackBarModule,
         FlexLayoutModule,
+        GoogleMapsModule
     ],
     declarations: [
         AdvancedFilterComponent,
