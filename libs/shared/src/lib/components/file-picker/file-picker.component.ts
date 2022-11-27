@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {FormArray, FormControl, FormGroup} from "@angular/forms";
 import {CategoryEnum, CredentialsService} from "@new-rentals/shared";
 
@@ -10,6 +10,8 @@ import {CategoryEnum, CredentialsService} from "@new-rentals/shared";
 export class FilePickerComponent implements OnInit {
   @Input() attachments?: FormArray;
   accept = 'image/jpeg,image/png,image/jpg';
+  @ViewChild('fileUpload', {static: false}) fileUpload?: ElementRef;
+
   constructor(private credentialsService: CredentialsService) {}
 
   ngOnInit(): void {}
@@ -37,9 +39,15 @@ export class FilePickerComponent implements OnInit {
     })
     // @ts-ignore
     this.attachments.push(attachmentControl);
+    this.clearReference();
   }
 
   removeAttachment(index: number): void {
+    debugger
     this.attachments?.removeAt(index);
+  }
+
+  private clearReference(): void {
+    this.fileUpload && (this.fileUpload.nativeElement.value = '');
   }
 }

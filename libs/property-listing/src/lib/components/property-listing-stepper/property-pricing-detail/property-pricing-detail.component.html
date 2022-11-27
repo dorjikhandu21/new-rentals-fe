@@ -39,7 +39,7 @@
             <mat-label>Monthly Rent</mat-label>
             <input type="number" matInput [formControl]="$any(unit.get('monthlyRent'))">
           </mat-form-field>
-        <new-rentals-file-picker [attachments]="$any(units.at(i).get('attachments'))"></new-rentals-file-picker>
+        <new-rentals-file-picker [attachments]="$any(unit.get('attachments'))"></new-rentals-file-picker>
       </div>
     </mat-expansion-panel>
   </mat-accordion>
