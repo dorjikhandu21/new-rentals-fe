@@ -1,6 +1,8 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import { Gallery, GalleryItem, ImageItem, ThumbnailsPosition, ImageSize } from 'ng-gallery';
 import { Lightbox } from 'ng-gallery/lightbox';
+import {MatDialog} from "@angular/material/dialog";
+import {ApplyTenantModalComponent} from "../apply-tenant-modal/apply-tenant-modal.component";
 
 @Component({
   selector: 'new-rentals-flat-details',
@@ -13,12 +15,16 @@ export class FlatDetailsComponent implements OnInit {
   items: GalleryItem[];
 
   imageData = data;
-  constructor(public gallery: Gallery, public lightbox: Lightbox) {}
+  constructor(public matDialog: MatDialog, public gallery: Gallery, public lightbox: Lightbox) {}
 
   ngOnInit(): void {
     this.items = this.imageData.map(item => new ImageItem({ src: item.srcUrl, thumb: item.previewUrl }));
   }
-
+  openApplyTenantModal() : void {
+    this.matDialog.open(ApplyTenantModalComponent, {
+      panelClass: ['modal-sm', 'full-width-modal'],
+    });
+  }
 }
 const data = [
   {
