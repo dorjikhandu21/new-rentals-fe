@@ -17,3 +17,4 @@ export * from './lib/services/shared-state.service'
 export * from './lib/models/shared.store';
 export * from './lib/components/loader/loader.component'
 export * from './lib/utilities/reverse.geocode'
+export * from './lib/models/roles.enum'
