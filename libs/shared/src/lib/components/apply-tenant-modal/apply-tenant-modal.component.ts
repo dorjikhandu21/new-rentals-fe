@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialogRef} from "@angular/material/dialog";
+import {CredentialsService, SalutationEnum} from "@new-rentals/shared";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'new-rentals-apply-tenant-modal',
@@ -7,11 +10,29 @@ import {MatDialogRef} from "@angular/material/dialog";
   styleUrls: ['./apply-tenant-modal.component.scss'],
 })
 export class ApplyTenantModalComponent implements OnInit {
-  salutations: string[] = ['Mr', 'Mrs'];
+  salutations: string[] = [SalutationEnum.Mr, SalutationEnum.Mrs];
+  tenantForm?: FormGroup;
 
-  constructor(public dialogRef: MatDialogRef<ApplyTenantModalComponent>) {}
+  constructor(public dialogRef: MatDialogRef<ApplyTenantModalComponent>, private credentialsService: CredentialsService, private activatedRoute: ActivatedRoute) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.buildForm();
+  }
+
+  buildForm(): void {
+    this.tenantForm = new FormGroup({
+      applicationTitle: new FormControl('', Validators.required),
+      applicationDetail: new FormControl('', Validators.required),
+      cid: new FormControl('', Validators.required),
+      currentEmployer: new FormControl('', Validators.required),
+      pets: new FormControl('', Validators.required),
+      familyComposition: new FormControl('', Validators.required),
+      preferMoveInDate: new FormControl(new Date(), Validators.required),
+      unitId: new FormControl(this.activatedRoute.snapshot.params['id'], Validators.required),
+      userId: new FormControl(this.credentialsService.currentUser().id, Validators.required),
+    })
+  }
+
   closeDialog(): void {
     this.dialogRef.close();
   }

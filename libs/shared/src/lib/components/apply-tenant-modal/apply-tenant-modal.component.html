@@ -4,46 +4,43 @@
     <mat-icon class="pull-right white-color font-size-20">close</mat-icon>
   </a>
 </div>
-<mat-dialog-content>
+<mat-dialog-content [formGroup]="tenantForm">
   <div fxLayout="row wrap" fxLayoutAlign="space-between">
 
     <mat-form-field appearance="outline" fxFlex="100">
       <mat-label>Your Application Tittle</mat-label>
-      <input matInput>
+      <input matInput formControlName="applicationTitle">
     </mat-form-field>
     <mat-form-field appearance="outline" fxFlex="100">
       <mat-label>Application Details</mat-label>
-      <input matInput>
+      <input matInput formControlName="applicationDetail">
     </mat-form-field>
 
     <mat-form-field appearance="outline" fxFlex="49" data-cy="email">
       <mat-label>CID</mat-label>
-      <input matInput>
+      <input matInput formControlName="cid">
     </mat-form-field>
 
-    <mat-form-field appearance="outline" fxFlex="49" data-cy="email">
-      <mat-label>Move In Date</mat-label>
-      <input matInput>
-    </mat-form-field>
-
-    <!--
     <mat-form-field appearance="outline" fxFlex="49">
       <mat-label>{{'Move In Date'}}</mat-label>
       <input matInput [matDatepicker]="picker">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>-->
+    </mat-form-field>
 
     <mat-form-field appearance="outline" fxFlex="49" data-cy="phone">
       <mat-label>Current Employeer</mat-label>
-      <input matInput>
+      <input matInput formControlName="currentEmployer">
     </mat-form-field>
 
     <mat-form-field appearance="outline" fxFlex="49" fxFlex.xs="100" data-cy="salutation">
       <mat-label>Pet</mat-label>
-      <mat-select>
-        <mat-option>
-          2 cats
+      <mat-select formControlName="pets">
+        <mat-option [value]="true">
+          Yes
+        </mat-option>
+        <mat-option [value]="false" >
+          No
         </mat-option>
       </mat-select>
       <!--  <mat-error class="white-space&#45;&#45;nowrap">
@@ -53,7 +50,7 @@
 
     <mat-form-field appearance="outline" fxFlex="100">
       <mat-label>Family Composition</mat-label>
-      <input matInput>
+      <input matInput formControlName="familyComposition">
     </mat-form-field>
 
 
