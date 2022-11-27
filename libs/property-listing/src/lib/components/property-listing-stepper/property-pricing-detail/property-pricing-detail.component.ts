@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
+import {cloneDeep} from "lodash-es";
+import {Unit} from "@new-rentals/shared";
 
 @Component({
   selector: 'new-rentals-property-pricing-detail',
@@ -8,6 +10,7 @@ import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
 })
 export class PropertyPricingDetailComponent implements OnInit {
   @Input() units?:FormArray;
+  unitForm: FormGroup = new FormGroup({});
   constructor() {}
 
   ngOnInit(): void {
@@ -15,7 +18,7 @@ export class PropertyPricingDetailComponent implements OnInit {
   }
 
   addUnitControl(): void {
-     const unitForm: FormGroup = new FormGroup({
+     this.unitForm = new FormGroup({
        monthlyRent: new FormControl('', Validators.required),
        nosOfBath: new FormControl(1, [Validators.required, Validators.min(1)]),
        nosOfBed: new FormControl(1, Validators.required),
@@ -25,7 +28,17 @@ export class PropertyPricingDetailComponent implements OnInit {
        normalAmenities: new FormArray([]),
        attachments: new FormArray([])
     });
-     this.units?.push(unitForm);
+     this.units?.push(this.unitForm);
+  }
+
+  copyUnit(index: number): void {
+    const valuesToCopy: Unit = cloneDeep(this.units?.at(index).value);
+    this.unitForm?.setValue(valuesToCopy);
+    this.units?.push(this.unitForm);
+  }
+
+  deleteUnit(index: number): void {
+    this.units?.removeAt(index);
   }
 
   minusSpacesCount(unit: FormGroup, space: { label: string, value: string }): void {
