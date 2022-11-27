@@ -1,4 +1,4 @@
-<div fxLayout="row wrap" fxLayoutAlign="space-between" class="mx-24 mb-16 mt-32 application-container">
+<div fxLayout="row wrap" fxLayoutAlign="space-between" class="mx-24 mb-4 mt-24 application-container">
   <div fxLayout="row wrap" fxFlex="80" fxLayoutGap="12px">
     <mat-form-field appearance="outline" fxFlex="40" class="search-field">
       <mat-icon matPrefix color="primary" class="hand-cursor mr-12 ml-4 s-24">search</mat-icon>
@@ -19,8 +19,8 @@
     {{'List Vacant Property'}}</button>
 </div>
 
-<div fxLayout="row" class="m-24">
-<!-- Received Application -->
+<div fxLayout="row" class="mx-24 mb-24" fxLayoutAlign="space-between">
+  <!-- Received Application -->
   <div class="example-container">
     <div
       cdkDropList
@@ -33,20 +33,38 @@
         <h3 class="my-0">Received</h3>
         <span class="primary-bg py-4 px-8 br-4 nr-white-color">3</span>
       </div>
-      <div fxLayout="column" class="example-box m-16 p-8 br-8 hand-cursor" (click)="openApplicationDetail()" *ngFor="let item of received" cdkDrag>
+      <div fxLayout="column" class="example-box m-16 p-16 br-8 hand-cursor" (click)="openApplicationDetail()"
+           *ngFor="let item of received" cdkDrag>
         <div fxLayoutAlign="space-between center" class="border-bottom">
           <p>IT Park, Babesa, Thimphu</p>
-          <mat-icon class="hand-cursor boulder-color">more_horiz</mat-icon>
+          <div>
+            <mat-menu #menu="matMenu">
+                <span mat-menu-item>
+                <i class="pi pi-pencil mr-8 s-12 boulder-color"></i>
+                <span>Edit</span>
+              </span>
+              <span mat-menu-item>
+                <i class="pi pi-trash mr-8 s-12 boulder-color"></i>
+                <span>Delete</span>
+              </span>
+            </mat-menu>
+            <mat-icon class="hand-cursor boulder-color" [matMenuTriggerFor]="menu"
+                      (click)="$event.stopPropagation()">more_horiz
+            </mat-icon>
+          </div>
         </div>
         <div fxLayoutAlign="space-between center" class="mt-16">
-          <div><p class="boulder-color">Property</p>
-            <p>Licha House</p></div>
-          <div><p class="boulder-color">Created On</p>
-            <p>23-23-2022</p></div>
+          <div><p class="boulder-color mb-4 font-size-12">Property</p>
+            <p class="font-size-12">Licha House</p></div>
+          <div><p class="boulder-color font-size-12 mb-4">Created On</p>
+            <p class="font-size-12">23-23-2022</p></div>
         </div>
-        <p>{{item}}</p>
+        <p class="font-size-12">{{item}}</p>
         <div fxLayoutAlign="space-between center" class="nr-white-fade-bg br-4 px-12">
-          <img class="user-profile my-8 mr-8" src="../assets/images/user.svg"/>
+          <div fxLayoutAlign="center center">
+            <img class="user-profile my-8 mr-8" src="../assets/images/user.svg"/>
+            <span>SonamDorji</span>
+          </div>
           <mat-icon matBadge="5" matBadgeSize="small" class="boulder-color mt-8 mr-12">message</mat-icon>
         </div>
       </div>
@@ -66,21 +84,39 @@
         <h3 class="my-0">Interviewing</h3>
         <span class="purple-bg py-4 px-8 br-4 nr-white-color">3</span>
       </div>
-      <div fxLayout="column" class="example-box m-16 p-8 br-8" *ngFor="let item of interview" cdkDrag>
+      <div fxLayout="column" class="example-box m-16 p-16 br-8" *ngFor="let item of interview"
+           (click)="openApplicationDetail()" cdkDrag>
         <div fxLayoutAlign="space-between center" class="border-bottom">
           <p>IT Park, Babesa, Thimphu</p>
-          <mat-icon class="hand-cursor boulder-color">more_horiz</mat-icon>
+          <div>
+            <mat-menu #menu="matMenu">
+                <span mat-menu-item>
+                <i class="pi pi-pencil mr-8 s-12 boulder-color"></i>
+                <span>Edit</span>
+              </span>
+              <span mat-menu-item>
+                <i class="pi pi-trash mr-8 s-12 boulder-color"></i>
+                <span>Delete</span>
+              </span>
+            </mat-menu>
+            <mat-icon class="hand-cursor boulder-color" [matMenuTriggerFor]="menu"
+                      (click)="$event.stopPropagation()">more_horiz
+            </mat-icon>
+          </div>
         </div>
         <div fxLayoutAlign="space-between center" class="mt-16">
-          <div><p class="boulder-color">Property</p>
-            <p>Licha House</p></div>
-          <div><p class="boulder-color">Created On</p>
-            <p>23-23-2022</p></div>
+          <div><p class="boulder-color mb-4 font-size-12">Property</p>
+            <p class="font-size-12">Licha House</p></div>
+          <div><p class="boulder-color font-size-12 mb-4">Created On</p>
+            <p class="font-size-12">23-23-2022</p></div>
         </div>
-        <p>{{item}}</p>
+        <p class="font-size-12">{{item}}</p>
         <div fxLayoutAlign="space-between center" class="nr-white-fade-bg br-4 px-12">
-          <img class="user-profile my-8 mr-8" src="../assets/images/user.svg"/>
-          <mat-icon class="boulder-color">message</mat-icon>
+          <div fxLayoutAlign="center center">
+            <img class="user-profile my-8 mr-8" src="../assets/images/user.svg"/>
+            <span>SonamDorji</span>
+          </div>
+          <mat-icon matBadge="5" matBadgeSize="small" class="boulder-color mt-8 mr-12">message</mat-icon>
         </div>
       </div>
     </div>
@@ -97,24 +133,42 @@
       class="example-list"
       (cdkDropListDropped)="drop($event)">
       <div fxLayoutAlign="space-between center" class="nr-white-bg br-4 p-8 m-20">
-        <h3 class="my-0">Received</h3>
+        <h3 class="my-0">Accepted</h3>
         <span class="green-dragonfly-bg py-4 px-8 br-4 nr-white-color">3</span>
       </div>
-      <div fxLayout="column" class="example-box m-16 p-8 br-8" *ngFor="let item of accepted" cdkDrag>
+      <div fxLayout="column" class="example-box m-16 p-16 br-8" *ngFor="let item of accepted"
+           (click)="openApplicationDetail()" cdkDrag>
         <div fxLayoutAlign="space-between center" class="border-bottom">
           <p>IT Park, Babesa, Thimphu</p>
-          <mat-icon class="hand-cursor boulder-color">more_horiz</mat-icon>
+          <div>
+            <mat-menu #menu="matMenu">
+                <span mat-menu-item>
+                <i class="pi pi-pencil mr-8 s-12 boulder-color"></i>
+                <span>Edit</span>
+              </span>
+              <span mat-menu-item>
+                <i class="pi pi-trash mr-8 s-12 boulder-color"></i>
+                <span>Delete</span>
+              </span>
+            </mat-menu>
+            <mat-icon class="hand-cursor boulder-color" [matMenuTriggerFor]="menu"
+                      (click)="$event.stopPropagation()">more_horiz
+            </mat-icon>
+          </div>
         </div>
         <div fxLayoutAlign="space-between center" class="mt-16">
-          <div><p class="boulder-color">Property</p>
-            <p>Licha House</p></div>
-          <div><p class="boulder-color">Created On</p>
-            <p>23-23-2022</p></div>
+          <div><p class="boulder-color mb-4 font-size-12">Property</p>
+            <p class="font-size-12">Licha House</p></div>
+          <div><p class="boulder-color font-size-12 mb-4">Created On</p>
+            <p class="font-size-12">23-23-2022</p></div>
         </div>
-        <p>{{item}}</p>
+        <p class="font-size-12">{{item}}</p>
         <div fxLayoutAlign="space-between center" class="nr-white-fade-bg br-4 px-12">
-          <img class="user-profile my-8 mr-8" src="../assets/images/user.svg"/>
-          <mat-icon class="boulder-color">message</mat-icon>
+          <div fxLayoutAlign="center center">
+            <img class="user-profile my-8 mr-8" src="../assets/images/user.svg"/>
+            <span>SonamDorji</span>
+          </div>
+          <mat-icon matBadge="5" matBadgeSize="small" class="boulder-color mt-8 mr-12">message</mat-icon>
         </div>
       </div>
     </div>
@@ -130,25 +184,42 @@
       class="example-list"
       (cdkDropListDropped)="drop($event)">
       <div fxLayoutAlign="space-between center" class="nr-white-bg br-4 p-8 m-20">
-        <h3 class="my-0">Received</h3>
+        <h3 class="my-0">Declined</h3>
         <span class="warn-bg py-4 px-8 br-4 nr-white-color">3</span>
       </div>
-      <div fxLayout="column" class="example-box m-16 p-8 br-8" *ngFor="let item of declined" cdkDrag>
+      <div fxLayout="column" class="example-box m-16 p-16 br-8" *ngFor="let item of declined"
+           (click)="openApplicationDetail()" cdkDrag>
         <div fxLayoutAlign="space-between center" class="border-bottom">
           <p>IT Park, Babesa, Thimphu</p>
-          <mat-icon class="hand-cursor boulder-color">more_horiz</mat-icon>
+          <div>
+            <mat-menu #menu="matMenu">
+                <span mat-menu-item>
+                <i class="pi pi-pencil mr-8 s-12 boulder-color"></i>
+                <span>Edit</span>
+              </span>
+              <span mat-menu-item>
+                <i class="pi pi-trash mr-8 s-12 boulder-color"></i>
+                <span>Delete</span>
+              </span>
+            </mat-menu>
+            <mat-icon class="hand-cursor boulder-color" [matMenuTriggerFor]="menu"
+                      (click)="$event.stopPropagation()">more_horiz
+            </mat-icon>
+          </div>
         </div>
         <div fxLayoutAlign="space-between center" class="mt-16">
-          <div><p class="boulder-color">Property</p>
-            <p>Licha House</p></div>
-
-          <div><p class="boulder-color">Created On</p>
-            <p>23-23-2022</p></div>
+          <div><p class="boulder-color mb-4 font-size-12">Property</p>
+            <p class="font-size-12">Licha House</p></div>
+          <div><p class="boulder-color font-size-12 mb-4">Created On</p>
+            <p class="font-size-12">23-23-2022</p></div>
         </div>
-        <p>{{item}}</p>
+        <p class="font-size-12">{{item}}</p>
         <div fxLayoutAlign="space-between center" class="nr-white-fade-bg br-4 px-12">
-          <img class="user-profile my-8 mr-8" src="../assets/images/user.svg"/>
-          <mat-icon class="boulder-color">message</mat-icon>
+          <div fxLayoutAlign="center center">
+            <img class="user-profile my-8 mr-8" src="../assets/images/user.svg"/>
+            <span>SonamDorji</span>
+          </div>
+          <mat-icon matBadge="5" matBadgeSize="small" class="boulder-color mt-8 mr-12">message</mat-icon>
         </div>
       </div>
     </div>

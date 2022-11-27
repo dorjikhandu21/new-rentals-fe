@@ -435,7 +435,6 @@ mat-checkbox .mat-checkbox-layout {
 .example-container {
   width: 24%;
   max-width: 100%;
-  margin: 0 25px 25px 0;
   display: inline-block;
   vertical-align: top;
 }
@@ -451,7 +450,7 @@ mat-checkbox .mat-checkbox-layout {
 .example-box {
   color: rgba(0, 0, 0, 0.87);
   box-sizing: border-box;
-  cursor: move;
+  cursor: pointer;
   background: white;
   font-size: 14px;
 }
