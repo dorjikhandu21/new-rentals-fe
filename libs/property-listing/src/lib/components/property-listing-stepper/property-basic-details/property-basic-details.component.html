@@ -65,7 +65,7 @@
       <p class="font-size-16">Upload Your Image</p>
       <p class="font-size-14 boulder-color">Upload at least 3 images.</p>
       <div class="multi-file-upload mb-20">
-        <new-rentals-file-picker fxFlex="100" [attachments]="attachments()"></new-rentals-file-picker>
+        <new-rentals-file-picker fxFlex="100" [attachments]="$any(basicDetail.get('attachments'))"></new-rentals-file-picker>
       </div>
     </div>
 

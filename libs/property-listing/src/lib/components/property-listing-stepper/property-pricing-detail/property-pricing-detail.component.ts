@@ -22,7 +22,8 @@ export class PropertyPricingDetailComponent implements OnInit {
        occupied: new FormControl(false, [Validators.required, Validators.min(1)]),
        unitDescription: new FormControl(''),
        unitNumber: new FormControl('', Validators.required),
-       normalAmenities: new FormArray([])
+       normalAmenities: new FormArray([]),
+       attachments: new FormArray([])
     });
      this.units?.push(unitForm);
   }
@@ -36,5 +37,4 @@ export class PropertyPricingDetailComponent implements OnInit {
     const value: number = unit?.get(space.value)?.value;
     unit.get(space.value)?.setValue(value <= 9 ? value + 1 : value);
   }
-
 }

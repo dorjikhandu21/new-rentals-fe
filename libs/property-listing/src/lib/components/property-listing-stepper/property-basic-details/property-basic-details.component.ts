@@ -14,8 +14,4 @@ export class PropertyBasicDetailsComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  attachments(): FormArray {
-    return this.basicDetail?.get('attachments') as FormArray;
-  }
 }
