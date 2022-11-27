@@ -16,3 +16,7 @@
 .example-card:nth-child(4n) {
   margin-right: 0 !important;
 }
+
+:host .mat-mdc-paginator {
+  background: none;
+}

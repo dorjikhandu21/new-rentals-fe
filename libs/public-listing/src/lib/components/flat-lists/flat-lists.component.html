@@ -21,14 +21,14 @@
     </mat-form-field>
   </div>
 
-  <div fxLayout="row" fxFlex="100" class="mt-24">
+  <div fxLayout="row" fxFlex="100" class="mt-8">
     <div fxFlex="55" class="mr-20" id="map"></div>
 
     <div fxFlex="43" fxLayout="row wrap" fxLayoutAlign="space-between center">
 
       <p fxFlex="100" class="p-12 nr-white-bg br-4 nr-silver-border">{{units.length}} Apartments, Thimphu Bhutan</p>
 
-      <div  *ngFor="let unit of units" class="example-card hand-cursor br-4 nr-white-bg nr-silver-border mb-24" fxFlex="48">
+      <div  *ngFor="let unit of units" class="example-card hand-cursor br-4 nr-white-bg nr-silver-border mb-24 public-list-card" fxFlex="48">
         <div class="flat-image-container">
           <span class="cost-label nr-white-color">{{unit.monthlyRent}}/- per month</span>
           <img mat-card-image class="flat-image" src="../../../../../../../assets/images/flat.svg"
@@ -37,18 +37,19 @@
         <div class="m-16">
           <p>{{unit.unitNumber}}</p>
           <div fxLayout="row" class="boulder-color">
-            <mat-icon>location_on_outline</mat-icon>
-            <p>{{unit['address']}}</p>
+            <i class="pi pi-map-marker s-20 mr-12"></i>
+            <p class="text-truncate">{{unit['address']}}</p>
           </div>
           <div fxLayout="row" class="boulder-color">
-            <mat-icon>account_tree_outline</mat-icon>
-            <p>{{unit.nosOfBed}} Beds, {{unit.nosOfBath}} Baths, 2 Corridor</p>
+            <i class="pi pi-sitemap s-20 mr-12"></i>
+            <p class="text-truncate">{{unit.nosOfBed}} Beds, {{unit.nosOfBath}} Baths, 2 Corridor</p>
           </div>
           <div fxLayout="row" fxLayoutAlign="space-between center" (click)="routeToDetails(unit)">
-            <button mat-button color="primary" class="light-bg" fxFlex="95"><span class="no-wrap font-size-12">Details</span>
-              <mat-icon>navigate_next</mat-icon>
+            <button mat-button color="primary" class="light-bg" fxFlex="95">
+              <span class="font-size-12">View Details <mat-icon class="ver-middle">navigate_next</mat-icon>
+</span>
             </button>
-            <mat-icon class="nr-white-fade-bg s-20 boulder-color p-8 br-8 hand-cursor ml-20 edit-icons">bookmark_outline</mat-icon>
+            <mat-icon class="nr-white-fade-bg s-20 boulder-color p-8 br-4 hand-cursor ml-20 edit-icons">bookmark_outline</mat-icon>
           </div>
         </div>
 

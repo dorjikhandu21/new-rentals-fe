@@ -31,3 +31,7 @@
 //  margin: 0;
 //  padding: 0;
 //}
+
+.public-list-card:hover {
+  border: 1px solid $primary-color !important;
+}

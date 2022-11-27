@@ -1,0 +1,27 @@
+<mat-stepper #stepper>
+  <mat-step [stepControl]="firstFormGroup" errorMessage="Select Roles">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Choose Roles</ng-template>
+     <new-rentals-select-roles></new-rentals-select-roles>
+      <!--
+      <div fxLayout="row" fxLayoutAlign="space-between center" class="py-12">
+        <button mat-button mat-stroked-button color="primary" class="primary-border mr-20">{{'Cancel'}}</button>
+        <div>
+          <button mat-flat-button mat-button color="primary" matStepperNext>{{'Next'}}</button>
+        </div>
+      </div>-->
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup" errorMessage="Field is required.">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Sign Up</ng-template>
+      <new-rentals-signup></new-rentals-signup>
+     <!-- <div fxLayout="row" fxLayoutAlign="space-between center" class="py-12">
+        <button mat-button mat-stroked-button matStepperPrevious color="primary" class="primary-border mr-20">{{'Previous'}}</button>
+        <div>
+          <button mat-flat-button mat-button color="primary" matStepperNext>{{'Sign Up'}}</button>
+        </div>
+      </div>-->
+    </form>
+  </mat-step>
+</mat-stepper>

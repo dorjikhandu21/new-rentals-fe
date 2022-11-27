@@ -6,6 +6,10 @@
       <li [fxFlex]="nav.name === 'Featured Apartments'? 22 : 15 || nav.name === 'Rental Solution'? 18 : 15"  *ngFor="let nav of navBar"
       class="px-20 hand-cursor"><a class="nr-black-color full-width" href="#{{nav.link}}">{{nav.name}}</a></li>
     </ul>
+    <mat-form-field appearance="outline" fxFlex="50" class="search-field">
+      <mat-icon matPrefix color="primary" class="hand-cursor mr-12 ml-4 s-24">search</mat-icon>
+      <input type="text" matInput placeholder="Search Property by name or unit" autocomplete="off" data-cy="search">
+    </mat-form-field>
   </nav>
 
   <nav fxFlex="70" class="stroke" *ngIf="authenticated">

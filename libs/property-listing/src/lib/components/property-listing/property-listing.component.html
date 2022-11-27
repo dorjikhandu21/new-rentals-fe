@@ -29,32 +29,32 @@
     <mat-icon>add</mat-icon>
     {{'Add Property'}}</button>
 </div>
-
-<div class="mx-24" fxLayout="row wrap" fxLayoutAlign="" fxLayoutGap="20px">
-  <div *ngFor="let unit of uniqueUnits" class="property-card hand-cursor br-8 nr-white-bg nr-silver-border mb-24"
-       fxFlex="23" (click)="routeToPropertyDetail(unit)">
-    <div class="image-container">
-<!--      <div class="label">-->
-<!--        <span class="label__text nr-white-color label-green-bg mr-12">Nu.15000/-</span>-->
-<!--        <span class="label__text nr-white-color primary-bg">Nu.15000/-</span>-->
-<!--      </div>-->
-      <img mat-card-image class="image" src="../../../../../../../assets/images/flat.svg"
-           alt="Photo of a Shiba Inu">
-    </div>
-    <div class="m-16">
-      <p>{{unit.property.propertyName}}</p>
-      <div fxLayout="row" class="boulder-color">
-        <mat-icon>location_on_outline</mat-icon>
-        <p>{{unit['address']}}</p>
+<div fxLayout="column" fxLayoutAlign="space-between">
+  <div class="mx-24" fxLayout="row wrap" fxLayoutGap="20px">
+    <div *ngFor="let unit of uniqueUnits" class="property-card hand-cursor br-8 nr-white-bg nr-silver-border mb-24"
+         fxFlex="23" (click)="routeToPropertyDetail(unit)">
+      <div class="image-container">
+        <!--      <div class="label">-->
+        <!--        <span class="label__text nr-white-color label-green-bg mr-12">Nu.15000/-</span>-->
+        <!--        <span class="label__text nr-white-color primary-bg">Nu.15000/-</span>-->
+        <!--      </div>-->
+        <img mat-card-image class="image" src="../../../../../../../assets/images/flat.svg"
+             alt="Photo of a Shiba Inu">
       </div>
-      <div fxLayout="row" class="boulder-color">
-        <mat-icon>account_tree_outline</mat-icon>
-        <p>{{unit.property.unitsCount}} {{unit.property.unitsCount > 1 ? 'Flats' : 'Flat'}}, with installed elevator</p>
+      <div class="m-16">
+        <p>{{unit.property.propertyName}}</p>
+        <div fxLayout="row" class="boulder-color">
+          <i class="pi pi-map-marker s-20 mr-12"></i>
+          <p class="text-truncate">{{unit['address']}}</p>
+        </div>
+        <div fxLayout="row" class="boulder-color">
+          <i class="pi pi-sitemap s-20 mr-12"></i>
+          <p>{{unit.property.unitsCount}} {{unit.property.unitsCount > 1 ? 'Flats' : 'Flat'}}, with installed elevator</p>
+        </div>
       </div>
     </div>
   </div>
-
-  <div fxLayoutAlign="center center" class="full-width" *ngIf="uniqueUnits.length">
+  <div fxLayoutAlign="center center" class="full-width background-none" *ngIf="uniqueUnits.length">
     <mat-paginator [length]="100"
                    [pageSize]="10"
                    [pageSizeOptions]="[5, 10, 25, 100]"
@@ -62,6 +62,7 @@
     </mat-paginator>
   </div>
 </div>
+
 <new-rentals-loader *ngIf="loading"></new-rentals-loader>
 <new-rentals-empty-page *ngIf="!loading && !uniqueUnits.length"></new-rentals-empty-page>
 

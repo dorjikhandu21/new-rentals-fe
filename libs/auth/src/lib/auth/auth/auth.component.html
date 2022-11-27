@@ -8,9 +8,10 @@
         *ngSwitchCase="'login'"
         (submitForm)="submit($event)"
       ></new-rentals-login>
-      <new-rentals-signup
+<!--      <new-rentals-signup
         *ngSwitchCase="'signup'"
-      (submitForm)="submit($event)"></new-rentals-signup>
+      (submitForm)="submit($event)"></new-rentals-signup>-->
+      <new-rentals-auth-stepper></new-rentals-auth-stepper>
     </mat-card>
   </div>
 </div>
