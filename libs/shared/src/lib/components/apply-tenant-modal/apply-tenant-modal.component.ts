@@ -46,5 +46,5 @@ export class ApplyTenantModalComponent implements OnInit {
       this.loading = false;
       this.dialogRef.close();
     })
-  }
+    }
 }
