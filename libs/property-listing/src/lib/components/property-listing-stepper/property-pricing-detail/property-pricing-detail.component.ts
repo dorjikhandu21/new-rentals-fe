@@ -11,8 +11,7 @@ import {Unit} from "@new-rentals/shared";
 export class PropertyPricingDetailComponent implements OnInit {
   @Input() units?: FormArray;
 
-  constructor() {
-  }
+  constructor() {}
 
   ngOnInit(): void {
     this.addUnitControl();

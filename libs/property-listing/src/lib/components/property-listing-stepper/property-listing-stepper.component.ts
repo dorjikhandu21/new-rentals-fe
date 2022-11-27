@@ -40,6 +40,7 @@ export class PropertyListingStepperComponent implements OnInit {
       propertyName: new FormControl('', Validators.required),
       normalAmenities: new FormArray([]),
       occupancyType: new FormControl('multi_family_home', Validators.required),
+      uploadAs: new FormControl('', Validators.required),
       propertyDescription: new FormControl('', Validators.required),
       specialAmenities: new FormArray([]),
       units: new FormArray([]),

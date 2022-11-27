@@ -346,6 +346,7 @@ export type Property = {
   specialAmenities?: Maybe<Array<Amenity>>;
   units?: Maybe<Array<Unit>>;
   unitsCount?: Maybe<Scalars['Int']>;
+  uploadAs: Scalars['String'];
 };
 
 export type PropertyAttributes = {
@@ -369,6 +370,7 @@ export type PropertyAttributes = {
   sort?: InputMaybe<Scalars['String']>;
   specialAmenities?: InputMaybe<Array<AmenityAttributes>>;
   units?: InputMaybe<Array<UnitAttributes>>;
+  uploadAs?: InputMaybe<UploadAsEnum>;
 };
 
 export enum PropertyTypeEnum {
@@ -596,6 +598,11 @@ export type UpdateUserPayload = {
   clientMutationId?: Maybe<Scalars['String']>;
   user: User;
 };
+
+export enum UploadAsEnum {
+  Exchange = 'exchange',
+  Owner = 'owner'
+}
 
 export type User = {
   __typename?: 'User';
