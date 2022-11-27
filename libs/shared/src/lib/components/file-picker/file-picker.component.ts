@@ -43,7 +43,6 @@ export class FilePickerComponent implements OnInit {
   }
 
   removeAttachment(index: number): void {
-    debugger
     this.attachments?.removeAt(index);
   }
 
