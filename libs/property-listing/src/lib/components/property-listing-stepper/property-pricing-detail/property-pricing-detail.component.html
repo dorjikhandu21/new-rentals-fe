@@ -7,8 +7,8 @@
           <div fxLayout="row" fxLayoutAlign="space-between center" class="full-width">
             <h3>Single Comfortable Home</h3>
             <div>
-              <mat-icon class="boulder-color hand-cursor edit-icons p-8">delete_outline</mat-icon>
-              <mat-icon class="boulder-color hand-cursor edit-icons p-8">content_copy</mat-icon>
+              <mat-icon [hidden]="units.controls.length === 1" class="boulder-color hand-cursor edit-icons p-8" (click)="deleteUnit(i); $event.stopPropagation()">delete_outline</mat-icon>
+              <mat-icon class="boulder-color hand-cursor edit-icons p-8" (click)="copyUnit(i); $event.stopPropagation()">content_copy</mat-icon>
             </div>
           </div>
         </mat-panel-title>
@@ -39,21 +39,7 @@
             <mat-label>Monthly Rent</mat-label>
             <input type="number" matInput [formControl]="$any(unit.get('monthlyRent'))">
           </mat-form-field>
-
-        <div fxFlex="100" fxLayout="row">
-          <!--<div fxLayoutAlign="center center" class="add-button br-4 px-24 hand-cursor mr-20">
-            <mat-icon class="mb-12">add</mat-icon>
-            <p>Add Image</p>
-          </div>
-          <div>
-            <img mat-card-image class="room-image mr-20" src="../../../../../../../assets/images/flat.svg"
-                     alt="Photo of a Shiba Inu">
-          </div>-->
-<!--
-          <new-rentals-file-picker></new-rentals-file-picker>
--->
-
-        </div>
+        <new-rentals-file-picker [attachments]="$any(unit.get('attachments'))"></new-rentals-file-picker>
       </div>
     </mat-expansion-panel>
   </mat-accordion>

@@ -6,7 +6,7 @@
   <p class="boulder-color center-block px-12">Choose any image format to upload here, upload upto 200 MB</p>
 </div>
 <div fxLayout="row wrap" fxFlex="100" fxLayoutGap="8px" class="mt-20">
-  <div fxLayoutAlign="center center" class="release-media-container br-8 mb-16" *ngFor="let attachment of attachments.value; let i=index;">
+  <div fxLayoutAlign="center center" class="release-media-container br-8 mb-16" *ngFor="let attachment of attachments?.value || []; let i=index;">
     <img [src]="attachment.url" height="100">
     <mat-icon class="s-16 br-40 nr-white-color hand-cursor close-icon nr-black-bg" (click)="removeAttachment(i)">close</mat-icon>
   </div>

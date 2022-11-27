@@ -138,6 +138,7 @@ type Property {
   specialAmenities: [Amenity!]
   units: [Unit!]
   unitsCount: Int
+  uploadAs: String!
 }
 
 type Query {
@@ -276,6 +277,11 @@ enum ThemeColourEnum {
   green
   pink
   red
+}
+
+enum UploadAsEnum {
+  exchange
+  owner
 }
 
 "A valid URL, transported as a string"
@@ -450,6 +456,7 @@ input PropertyAttributes {
   sort: String
   specialAmenities: [AmenityAttributes!]
   units: [UnitAttributes!]
+  uploadAs: UploadAsEnum
 }
 
 input SubscriptionPlanAttributes {
