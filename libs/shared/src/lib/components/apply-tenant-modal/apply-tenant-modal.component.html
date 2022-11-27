@@ -23,7 +23,7 @@
 
     <mat-form-field appearance="outline" fxFlex="49">
       <mat-label>{{'Move In Date'}}</mat-label>
-      <input matInput [matDatepicker]="picker">
+      <input matInput [matDatepicker]="picker" formControlName="preferMoveInDate">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
@@ -59,7 +59,8 @@
 <hr class="full-width">
 <mat-dialog-actions class="m-16" fxLayoutAlign="end">
   <button mat-button mat-stroked-button color="primary" class="primary-border mr-12"
-          (click)="closeDialog()">{{'cancel'}}</button>
+          (click)="closeDialog(false)">{{'cancel'}}</button>
 
-  <button mat-flat-button mat-button color="primary">{{'Apply'}}</button>
+  <button mat-flat-button mat-button color="primary" (click)="closeDialog(true)">{{'Apply'}}</button>
 </mat-dialog-actions>
+<new-rentals-loader *ngIf="loading"></new-rentals-loader>

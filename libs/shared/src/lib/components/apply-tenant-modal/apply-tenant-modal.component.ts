@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialogRef} from "@angular/material/dialog";
-import {CredentialsService, SalutationEnum} from "@new-rentals/shared";
+import {CredentialsService, SalutationEnum, SharedFacadeService} from "@new-rentals/shared";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
 
@@ -12,8 +12,9 @@ import {ActivatedRoute} from "@angular/router";
 export class ApplyTenantModalComponent implements OnInit {
   salutations: string[] = [SalutationEnum.Mr, SalutationEnum.Mrs];
   tenantForm?: FormGroup;
+  loading?:boolean;
 
-  constructor(public dialogRef: MatDialogRef<ApplyTenantModalComponent>, private credentialsService: CredentialsService, private activatedRoute: ActivatedRoute) {}
+  constructor(public dialogRef: MatDialogRef<ApplyTenantModalComponent>, private sharedFacadeService: SharedFacadeService, private credentialsService: CredentialsService, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.buildForm();
@@ -33,7 +34,17 @@ export class ApplyTenantModalComponent implements OnInit {
     })
   }
 
-  closeDialog(): void {
-    this.dialogRef.close();
+  closeDialog(flag:boolean): void {
+    !flag && this.dialogRef.close();
+
+    flag && this.createTenant();
+  }
+
+  createTenant(): void {
+    this.loading = true;
+    this.sharedFacadeService.createTenant().toPromise().then(() => {
+      this.loading = false;
+      this.dialogRef.close();
+    })
   }
 }
