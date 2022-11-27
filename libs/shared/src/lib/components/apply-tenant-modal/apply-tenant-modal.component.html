@@ -1,0 +1,68 @@
+<div fxLayout="row" fxLayoutAlign="space-between center">
+  <h2 mat-dialog-title class="mb-0">Apply as Tenant</h2>
+  <a (click)="closeDialog()">
+    <mat-icon class="pull-right white-color font-size-20">close</mat-icon>
+  </a>
+</div>
+<mat-dialog-content>
+  <div fxLayout="row wrap" fxLayoutAlign="space-between">
+
+    <mat-form-field appearance="outline" fxFlex="100">
+      <mat-label>Your Application Tittle</mat-label>
+      <input matInput>
+    </mat-form-field>
+    <mat-form-field appearance="outline" fxFlex="100">
+      <mat-label>Application Details</mat-label>
+      <input matInput>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" fxFlex="49" data-cy="email">
+      <mat-label>CID</mat-label>
+      <input matInput>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" fxFlex="49" data-cy="email">
+      <mat-label>Move In Date</mat-label>
+      <input matInput>
+    </mat-form-field>
+
+    <!--
+    <mat-form-field appearance="outline" fxFlex="49">
+      <mat-label>{{'Move In Date'}}</mat-label>
+      <input matInput [matDatepicker]="picker">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>-->
+
+    <mat-form-field appearance="outline" fxFlex="49" data-cy="phone">
+      <mat-label>Current Employeer</mat-label>
+      <input matInput>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" fxFlex="49" fxFlex.xs="100" data-cy="salutation">
+      <mat-label>Pet</mat-label>
+      <mat-select>
+        <mat-option>
+          2 cats
+        </mat-option>
+      </mat-select>
+      <!--  <mat-error class="white-space&#45;&#45;nowrap">
+          This field is required.
+        </mat-error>-->
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" fxFlex="100">
+      <mat-label>Family Composition</mat-label>
+      <input matInput>
+    </mat-form-field>
+
+
+  </div>
+</mat-dialog-content>
+<hr class="full-width">
+<mat-dialog-actions class="m-16" fxLayoutAlign="end">
+  <button mat-button mat-stroked-button color="primary" class="primary-border mr-12"
+          (click)="closeDialog()">{{'cancel'}}</button>
+
+  <button mat-flat-button mat-button color="primary">{{'Apply'}}</button>
+</mat-dialog-actions>

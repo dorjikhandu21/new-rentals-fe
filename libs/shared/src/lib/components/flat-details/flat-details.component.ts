@@ -8,6 +8,8 @@ import {tap} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
 import {Unit} from "../../models/graphql";
 import {Loader} from "@googlemaps/js-api-loader";
+import {MatDialog} from "@angular/material/dialog";
+import {ApplyTenantModalComponent} from "../apply-tenant-modal/apply-tenant-modal.component";
 
 @UntilDestroy()
 @Component({
@@ -22,7 +24,7 @@ export class FlatDetailsComponent implements OnInit {
   imageData = data;
   unit?: Unit;
   private map: google.maps.Map;
-  constructor(private activatedRoute: ActivatedRoute, private gallery: Gallery, private lightbox: Lightbox, private sharedFacadeService: SharedFacadeService) {}
+  constructor(private activatedRoute: ActivatedRoute, private matDialog: MatDialog, private gallery: Gallery, private lightbox: Lightbox, private sharedFacadeService: SharedFacadeService) {}
 
   ngOnInit(): void {
     this.items = this.imageData.map(item => new ImageItem({ src: item.srcUrl, thumb: item.previewUrl }));
@@ -59,7 +61,11 @@ export class FlatDetailsComponent implements OnInit {
       console.log('Maps could not load')
     })
   }
-
+  openApplyTenantModal() : void {
+    this.matDialog.open(ApplyTenantModalComponent, {
+      panelClass: ['modal-sm', 'full-width-modal'],
+    });
+  }
 }
 const data = [
   {

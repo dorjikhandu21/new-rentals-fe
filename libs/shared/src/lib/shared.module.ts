@@ -18,6 +18,13 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatMenuModule} from "@angular/material/menu";
 import {GalleryModule} from "ng-gallery";
 import {LightboxModule} from "ng-gallery/lightbox";
+import {ApplyTenantModalComponent} from "./components/apply-tenant-modal/apply-tenant-modal.component";
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatSelectModule} from "@angular/material/select";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatInputModule} from "@angular/material/input";
+import {MatNativeDateModule} from "@angular/material/core";
 
 @NgModule({
   imports: [
@@ -33,6 +40,12 @@ import {LightboxModule} from "ng-gallery/lightbox";
       // thumbView: 'contain',
     }),
     LightboxModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatNativeDateModule
   ],
     declarations: [
         AdvancedFilterComponent,
@@ -43,9 +56,10 @@ import {LightboxModule} from "ng-gallery/lightbox";
         FlatDetailsComponent,
         FilePickerComponent,
     LoaderComponent,
-    EmptyPageComponent,
+    EmptyPageComponent, ApplyTenantModalComponent
   ],
   exports: [FilePickerComponent, LoaderComponent, EmptyPageComponent],
-  providers: []
+  providers: [],
+  entryComponents: [ApplyTenantModalComponent]
 })
 export class SharedModule {}
