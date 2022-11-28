@@ -46,16 +46,14 @@ export class ApplicationListComponent implements OnInit {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
+      // @ts-ignore
+      this.sharedFacadeService[this.kanbanConstant[event.container.id]['apiCall']](event.previousContainer.data[event.previousIndex]?.id).pipe(switchMap(() => this.sharedFacadeService.getTenants())).subscribe();
       transferArrayItem(
         event.previousContainer.data,
         event.container.data,
         event.previousIndex,
         event.currentIndex,
       );
-      // @ts-ignore
-      this.sharedFacadeService[this.kanbanConstant[event.container.id]['apiCall']](event.previousContainer.data[event.previousIndex].id).pipe(tap(() => {
-
-      }), switchMap(() => this.sharedFacadeService.getTenants())).subscribe();
     }
   }
 }
