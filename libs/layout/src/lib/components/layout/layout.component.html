@@ -1,3 +1,17 @@
-<new-rentals-nav-bar [navBar]="navBar"></new-rentals-nav-bar>
-  <new-rentals-landing-page [navBar]="navBar"></new-rentals-landing-page>
+<mat-sidenav-container>
+
+  <mat-sidenav mode="over">
+    dedd
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div class="sticky-header">
+      <new-rentals-nav-bar (navToggle)="sideNav.toggle()" [navBar]="navBar"></new-rentals-nav-bar>
+    </div>
+    <div class="main-container">
+      <new-rentals-landing-page [navBar]="navBar"></new-rentals-landing-page>
+    </div>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
 

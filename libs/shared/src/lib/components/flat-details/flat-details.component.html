@@ -8,29 +8,31 @@
       <div class="boulder-color" fxLayout="row" fxFlex="90" fxLayoutAlign="space-between">
         <p class="">
           <i class="pi pi-map-marker s-20 mr-4"></i>
-          {{ unit && unit['address']}}</p> <hr>
-        <p class="mt-4"><span class="nr-black-color">{{unit && unit.nosOfBed}}</span> Bed Rooms</p><hr />
+          {{ unit && unit['address']}}</p>
+        <hr>
+        <p class="mt-4"><span class="nr-black-color">{{unit && unit.nosOfBed}}</span> Bed Rooms</p>
+        <hr/>
         <p class="mt-4"><span class="nr-black-color">{{unit && unit.nosOfBath}}</span> Baths</p>
       </div>
     </div>
   </div>
 
-<!--  <div>
-    <mat-menu #menu="matMenu">
-              <span mat-menu-item>
-                <i class="pi pi-exclamation-circle mr-8 s-16 boulder-color"></i>
-                <span>{{'Report'}}</span>
-              </span>
-    </mat-menu>
-    <button mat-icon-button class="ml-4" [matMenuTriggerFor]="menu" data-cy="openMenu">
-      <mat-icon class="s-24 boulder-color">more_vert</mat-icon>
-    </button>
-  </div>-->
+  <!--  <div>
+      <mat-menu #menu="matMenu">
+                <span mat-menu-item>
+                  <i class="pi pi-exclamation-circle mr-8 s-16 boulder-color"></i>
+                  <span>{{'Report'}}</span>
+                </span>
+      </mat-menu>
+      <button mat-icon-button class="ml-4" [matMenuTriggerFor]="menu" data-cy="openMenu">
+        <mat-icon class="s-24 boulder-color">more_vert</mat-icon>
+      </button>
+    </div>-->
 
 
 </div>
 
-<div fxLayout="row warp" fxLayoutAlign="space-between" class="m-24">
+<div fxLayout="row warp" fxLayoutAlign="space-between start" class="m-24">
   <div fxFlex="72" class="nr-white-bg br-8 p-20">
     <gallery id="basic-test" imageSize="cover" fluid [items]="items"></gallery>
     <button mat-button mat-stroked-button color="primary" class="primary-border mt-16">{{'View Virtual Tour'}}</button>
@@ -44,62 +46,101 @@
       <p class="font-size-16">Special Amenities</p>
       <div class="boulder-color nr-silver-border p-20 br-4" fxLayout="row" fxLayoutAlign="space-between">
         <p class="my-0">
-          Swimming Pool</p> <hr>
-        <p class="mb-0"><span class="nr-black-color">2</span> Lifts</p><hr />
+          Swimming Pool</p>
+        <hr>
+        <p class="mb-0"><span class="nr-black-color">2</span> Lifts</p>
+        <hr/>
         <p class="mb-0"><span class="nr-black-color">10</span> Parking</p>
-      </div>    </div>
+      </div>
+    </div>
 
     <div class="nr-white-fade-bg br-4 mt-24 p-20">
       <p class="font-size-16">Neighbours</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut culpa debitis deleniti dicta ducimus eius enim exercitationem expedita hic illum, in inventore iste, necessitatibus quo sapiente sint totam, ullam voluptatibus. Ad architecto debitis illum nam praesentium similique totam ullam voluptatum.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut culpa debitis deleniti dicta ducimus eius enim
+        exercitationem expedita hic illum, in inventore iste, necessitatibus quo sapiente sint totam, ullam
+        voluptatibus. Ad architecto debitis illum nam praesentium similique totam ullam voluptatum.</p>
     </div>
 
-    <div class="nr-white-fade-bg br-4 mt-24 p-20">
+    <div fxLayout="row wrap" class="nr-white-fade-bg br-4 mt-24 p-20">
       <p class="font-size-16">Location</p>
-      <div fxFlex="55" class="mr-20" id="map"></div>
+      <div fxFlex="100" class="mr-20" id="map"></div>
     </div>
 
   </div>
-  <div fxFlex="26" class="nr-white-bg br-8 p-20">
-    <p>NU.15000/- <span class="font-size-12 boulder-color">per month</span></p>
-    <hr class="full-width" />
-    <div class="nr-white-fade-bg br-4 mt-24 p-20">
-      <div fxLayoutAlign="start center">
-        <i class="pi pi-map-marker s-20 mr-12 boulder-color mb-8"></i>
-        <div>
-          <p class="font-size-12 boulder-color mb-4">Location</p>
-          <p>Babesa, Thimphu, Bhutan</p>
+  <div fxFlex="26">
+    <div class="nr-white-bg br-8 p-20">
+      <p>NU.15000/- <span class="font-size-12 boulder-color">per month</span></p>
+      <hr class="full-width"/>
+      <div class="nr-white-fade-bg br-4 mt-24 p-20">
+        <div fxLayoutAlign="start center">
+          <i class="pi pi-map-marker s-20 mr-12 boulder-color mb-8"></i>
+          <div>
+            <p class="font-size-12 boulder-color mb-4">Location</p>
+            <p>Babesa, Thimphu, Bhutan</p>
+          </div>
+        </div>
+        <div fxLayoutAlign="start center">
+          <i class="pi pi-calendar s-20 mr-12 boulder-color mb-8"></i>
+          <div>
+            <p class="font-size-12 boulder-color mb-4">Move In Date</p>
+            <p>Babesa, Thimphu, Bhutan</p>
+          </div>
+        </div>
+        <div fxLayoutAlign="start center">
+          <i class="pi pi-mobile s-20 mr-12 boulder-color mb-8"></i>
+          <div>
+            <p class="font-size-12 boulder-color mb-4">Contact Number</p>
+            <p>Babesa, Thimphu, Bhutan</p>
+          </div>
         </div>
       </div>
-      <div fxLayoutAlign="start center">
-        <i class="pi pi-calendar s-20 mr-12 boulder-color mb-8"></i>
+      <div fxLayoutAlign="start center" class="nr-white-fade-bg br-4 mt-24 p-20">
+        <img class="user-profile my-8 mr-8" src="../assets/images/user.svg"/>
         <div>
-          <p class="font-size-12 boulder-color mb-4">Move In Date</p>
-          <p>Babesa, Thimphu, Bhutan</p>
+          <p class="font-size-12 boulder-color mb-4">Listed By</p>
+          <p>Thinley Wangchuk</p>
         </div>
       </div>
-      <div fxLayoutAlign="start center">
-        <i class="pi pi-mobile s-20 mr-12 boulder-color mb-8"></i>
-        <div>
-          <p class="font-size-12 boulder-color mb-4">Contact Number</p>
-          <p>Babesa, Thimphu, Bhutan</p>
-        </div>
-      </div>
-    </div>
-    <div fxLayoutAlign="start center"  class="nr-white-fade-bg br-4 mt-24 p-20">
-      <img class="user-profile my-8 mr-8" src="../assets/images/user.svg"/>
       <div>
-        <p class="font-size-12 boulder-color mb-4">Listed By</p>
-        <p>Thinley Wangchuk</p>
+        <button mat-flat-button mat-button color="primary" class="full-width mt-24"
+                (click)="openApplyTenantModal()">{{'Apply For Tenant'}}</button>
       </div>
+      <button mat-button mat-stroked-button color="primary"
+              class="primary-border mt-16 full-width">{{'Schedule a Tour'}}</button>
+      <p class="warn-color mt-20 nr-white-fade-bg br-4 p-8" fxLayoutAlign="start center"><i
+        class="pi pi-info-circle s-20 mr-4"> </i> There are 5 applications ahead of you.
+      </p>
     </div>
-    <div>
-      <button mat-flat-button mat-button color="primary" class="full-width mt-24" (click)="openApplyTenantModal()">{{'Apply For Tenant'}}</button>
+    <div class="nr-white-bg br-8 p-20 mt-20">
+      <p class="font-size-20">Application Status Tracker</p>
+      <mat-stepper orientation="vertical" [disableRipple]="true" [linear]="true" #stepper>
+        <mat-step>
+          <ng-template matStepLabel>Application Sent Successfully!</ng-template>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Received</ng-template>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Interview</ng-template>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Result</ng-template>
+        </mat-step>
+
+        <ng-template matStepperIcon="edit">
+          <mat-icon class="s-20">edit</mat-icon>
+        </ng-template>
+        <ng-template matStepperIcon="access_time">
+          <mat-icon class="s-20">access_time</mat-icon>
+        </ng-template>
+        <ng-template matStepperIcon="done">
+          <mat-icon class="s-20">done</mat-icon>
+        </ng-template>
+      </mat-stepper>
     </div>
-    <button mat-button mat-stroked-button color="primary" class="primary-border mt-16 full-width">{{'Schedule a Tour'}}</button>
-
-
   </div>
+
+
 </div>
 <div class="basic-container">
 </div>

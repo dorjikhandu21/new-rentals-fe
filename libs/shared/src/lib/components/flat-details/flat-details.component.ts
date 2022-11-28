@@ -1,6 +1,5 @@
 import { Component, OnInit} from '@angular/core';
 import { Gallery, GalleryItem, ImageItem } from 'ng-gallery';
-import { Lightbox } from 'ng-gallery/lightbox';
 import {SharedFacadeService} from "../../services/shared-facade.service";
 import {SharedStoreStateEnum} from "../../models/shared.store";
 import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
@@ -23,7 +22,7 @@ export class FlatDetailsComponent implements OnInit {
   tenant?: Tenant;
   unit?: Unit;
   private map?: google.maps.Map;
-  constructor(private activatedRoute: ActivatedRoute, private matDialog: MatDialog, private gallery: Gallery, private lightbox: Lightbox, private sharedFacadeService: SharedFacadeService) {}
+  constructor(private activatedRoute: ActivatedRoute, private matDialog: MatDialog, private gallery: Gallery, private sharedFacadeService: SharedFacadeService) {}
 
   ngOnInit(): void {
     this.items = this.imageData.map(item => new ImageItem({ src: item.srcUrl, thumb: item.previewUrl }));

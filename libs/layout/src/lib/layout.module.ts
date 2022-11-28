@@ -21,6 +21,7 @@ import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 import { RouterLinkActive, RouterLinkWithHref } from '@angular/router';
 import { OurUniqueFeatureComponent } from './components/landing-page/our-unique-feature/our-unique-feature.component';
 import { LetsTalkComponent } from './components/landing-page/lets-talk/lets-talk.component';
+import {MatSidenavModule} from "@angular/material/sidenav";
 
 @NgModule({
   imports: [
@@ -37,6 +38,7 @@ import { LetsTalkComponent } from './components/landing-page/lets-talk/lets-talk
     GooglePlaceModule,
     RouterLinkWithHref,
     RouterLinkActive,
+    MatSidenavModule,
   ],
   declarations: [
     LayoutComponent,

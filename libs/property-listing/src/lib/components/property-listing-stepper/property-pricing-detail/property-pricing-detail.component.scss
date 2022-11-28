@@ -7,3 +7,7 @@
   width: 100px;
   object-fit: cover;
 }
+:host::ng-deep.mat-accordion .mat-expansion-indicator {
+  margin-right: 16px;
+  margin-bottom: 8px;
+}

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {MatSidenav} from "@angular/material/sidenav";
 
 @Component({
   selector: 'new-rentals-layout',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./layout.component.scss'],
 })
 export class LayoutComponent implements OnInit {
+
+  @ViewChild(MatSidenav, { static: false })sideNav: MatSidenav;
+
   center!: google.maps.LatLngLiteral;
   options: google.maps.MapOptions = {
     mapTypeId: 'hybrid',

@@ -1,67 +1,70 @@
-<div class="m-24" fxLayoutAlign="space-between start" fxLayout="row wrap">
-  <div fxFlex="75" class="px-60 br-8">
-    <mat-stepper #stepper class="p-32 br-8">
-      <mat-step [stepControl]="basicDetail" errorMessage="Fill up the required fields">
-        <form [formGroup]="basicDetail">
-          <ng-template matStepLabel>Basic Details</ng-template>
-          <new-rentals-property-basic-details [basicDetail]="basicDetail"></new-rentals-property-basic-details>
-          <div fxLayout="row" fxLayoutAlign="space-between center" class="py-12">
-            <button mat-button mat-stroked-button color="primary" class="primary-border mr-20">{{'Cancel'}}</button>
-            <div>
-              <button mat-flat-button mat-button color="primary" matStepperNext>{{'Next'}}</button>
+<div class="m-24" fxLayoutAlign="center start" fxLayout="row wrap">
+  <div fxFlex="80" fxLayoutAlign="space-between start">
+    <div fxFlex="70" class="br-8 mr-20">
+      <mat-stepper #stepper class="p-32 br-8">
+        <mat-step [stepControl]="basicDetail" errorMessage="Fill up the required fields">
+          <form [formGroup]="basicDetail">
+            <ng-template matStepLabel>Basic Details</ng-template>
+            <new-rentals-property-basic-details [basicDetail]="basicDetail"></new-rentals-property-basic-details>
+            <div fxLayout="row" fxLayoutAlign="space-between center" class="py-12">
+              <button mat-button mat-stroked-button color="primary" class="primary-border mr-20">{{'Cancel'}}</button>
+              <div>
+                <button mat-flat-button mat-button color="primary" matStepperNext>{{'Next'}}</button>
+              </div>
             </div>
-          </div>
-        </form>
-      </mat-step>
-      <mat-step [stepControl]="geoInformation" errorMessage="Location is required.">
-        <form [formGroup]="geoInformation">
-          <ng-template matStepLabel>Location</ng-template>
-          <new-rentals-property-location [geoInformation]="geoInformation"></new-rentals-property-location>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="geoInformation" errorMessage="Location is required.">
+          <form [formGroup]="geoInformation">
+            <ng-template matStepLabel>Location</ng-template>
+            <new-rentals-property-location [geoInformation]="geoInformation"></new-rentals-property-location>
+            <div fxLayout="row" fxLayoutAlign="space-between center" class="py-12">
+              <button mat-button mat-stroked-button color="primary" class="primary-border mr-20">{{'Cancel'}}</button>
+              <div>
+                <button mat-button mat-stroked-button color="primary" matStepperPrevious class="primary-border mr-20">{{'Previous'}}</button>
+
+                <button mat-flat-button mat-button color="primary" matStepperNext>{{'Next'}}</button>
+              </div>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="units" errorMessage="Unit details are required.">
+          <ng-template matStepLabel>Unit and Pricing Details</ng-template>
+          <new-rentals-property-pricing-detail [units]="units"></new-rentals-property-pricing-detail>
           <div fxLayout="row" fxLayoutAlign="space-between center" class="py-12">
             <button mat-button mat-stroked-button color="primary" class="primary-border mr-20">{{'Cancel'}}</button>
             <div>
               <button mat-button mat-stroked-button color="primary" matStepperPrevious class="primary-border mr-20">{{'Previous'}}</button>
-
-              <button mat-flat-button mat-button color="primary" matStepperNext>{{'Next'}}</button>
+              <button [disabled]="basicDetail.invalid || geoInformation.invalid || units.invalid" mat-flat-button mat-button color="primary" (click)="createProperty()">{{'Create'}}</button>
             </div>
           </div>
-        </form>
-      </mat-step>
-      <mat-step [stepControl]="units" errorMessage="Unit details are required.">
-        <ng-template matStepLabel>Unit and Pricing Details</ng-template>
-        <new-rentals-property-pricing-detail [units]="units"></new-rentals-property-pricing-detail>
-        <div fxLayout="row" fxLayoutAlign="space-between center" class="py-12">
-          <button mat-button mat-stroked-button color="primary" class="primary-border mr-20">{{'Cancel'}}</button>
-          <div>
-            <button mat-button mat-stroked-button color="primary" matStepperPrevious class="primary-border mr-20">{{'Previous'}}</button>
-            <button [disabled]="basicDetail.invalid || geoInformation.invalid || units.invalid" mat-flat-button mat-button color="primary" (click)="createProperty()">{{'Create'}}</button>
+        </mat-step>
+      </mat-stepper>
+    </div>
+    <div fxFlex="28">
+      <div class="example-card hand-cursor br-8 nr-white-bg nr-silver-border mb-24"
+           fxFlex="100">
+        <div class="image-container">
+          <div class="cost-label-container">
+            <span class="text-label nr-white-color label-green-bg mr-12 br-4">Nu.15000/-</span>
+            <span class="label__text nr-white-color primary-bg p-4 br-4">Nu.15000/-</span>
           </div>
+          <img mat-card-image class="image" src="../../../../../../../assets/images/flat.svg"
+               alt="Photo of a Shiba Inu">
         </div>
-      </mat-step>
-    </mat-stepper>
-  </div>
-  <div fxFlex="23">
-    <div class="example-card hand-cursor br-8 nr-white-bg nr-silver-border mb-24"
-         fxFlex="100">
-      <div class="image-container">
-        <div class="cost-label">
-          <span class="label__text nr-white-color label-green-bg mr-12">Nu.15000/-</span>
-          <span class="label__text nr-white-color primary-bg">Nu.15000/-</span>
-        </div>
-        <img mat-card-image class="image" src="../../../../../../../assets/images/flat.svg"
-             alt="Photo of a Shiba Inu">
-      </div>
-      <div class="m-16">
-        <p>Empty room in Babesa</p>
-        <div fxLayout="row" class="boulder-color">
-          <mat-icon>location_on_outline</mat-icon>
-          <p>Babesa, Thimphu, Highway, Bhutan</p>
-        </div>
-        <div fxLayout="row" class="boulder-color">
-          <mat-icon>account_tree_outline</mat-icon>
-          <p>3BHK, 2 Corridor</p>
+        <div class="m-16">
+          <p>Empty room in Babesa</p>
+          <div fxLayout="row" class="boulder-color">
+            <i class="pi pi-map-marker s-20 mr-12"></i>
+            <p class="text-truncate">Babesa, Thimphu</p>
+          </div>
+          <div fxLayout="row" class="boulder-color">
+            <i class="pi pi-sitemap s-20 mr-12"></i>
+            <p class="text-truncate">3BHK</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
+
 </div>

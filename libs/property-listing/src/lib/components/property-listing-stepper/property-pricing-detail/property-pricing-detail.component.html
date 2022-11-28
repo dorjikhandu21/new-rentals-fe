@@ -5,10 +5,10 @@
       <mat-expansion-panel-header class="pr-12">
         <mat-panel-title class="py-20 pr-20">
           <div fxLayout="row" fxLayoutAlign="space-between center" class="full-width">
-            <h3>Single Comfortable Home</h3>
+            <h3 class="mb-0">Single Comfortable Home</h3>
             <div>
-              <mat-icon [hidden]="units.controls.length === 1" class="boulder-color hand-cursor edit-icons p-8" (click)="deleteUnit(i); $event.stopPropagation()">delete_outline</mat-icon>
-              <mat-icon class="boulder-color hand-cursor edit-icons p-8" (click)="copyUnit(i); $event.stopPropagation()">content_copy</mat-icon>
+              <mat-icon [hidden]="units.controls.length === 1" class="s-20 boulder-color hand-cursor edit-icons p-8" (click)="deleteUnit(i); $event.stopPropagation()">delete_outline</mat-icon>
+              <mat-icon class="s-20 boulder-color hand-cursor edit-icons p-8" (click)="copyUnit(i); $event.stopPropagation()">content_copy</mat-icon>
             </div>
           </div>
         </mat-panel-title>
@@ -22,24 +22,31 @@
             <mat-label>Describe Your home</mat-label>
             <input matInput [formControl]="$any(unit.get('monthlyRent'))">
           </mat-form-field>
+<div fxLayoutAlign="space-between start" class="my-20">
+  <div fxFlex="60" fxLayout="column" >
+    <div fxFlex="100" fxLayoutAlign="start center" class="mb-12" *ngFor="let space of [{label:'No of Beds', value: 'nosOfBed'}, {label: 'No of  Baths', value: 'nosOfBath'}]">
+      <p class="mr-20 mb-0">{{space.label}}</p>
+      <mat-button-toggle-group aria-label="Font Style">
+        <mat-button-toggle (click)="minusSpacesCount($any(unit), space)">
+          <mat-icon>remove_circle_outline</mat-icon>
+        </mat-button-toggle>
+        <mat-button-toggle disabled value="">{{unit.get(space.value).value}}</mat-button-toggle>
+        <mat-button-toggle (click)="addSpacesCount($any(unit), space)">
+          <mat-icon >add_circle_outline</mat-icon>
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+  </div>
 
-          <div fxLayout="row" fxFlex="100" fxLayoutAlign="start center" class="mb-12" *ngFor="let space of [{label:'No of Beds', value: 'nosOfBed'}, {label: 'No of  Baths', value: 'nosOfBath'}]">
-            <p class="mr-20 mb-0">{{space.label}}</p>
-            <mat-button-toggle-group aria-label="Font Style">
-              <mat-button-toggle (click)="minusSpacesCount($any(unit), space)">
-                <mat-icon>remove_circle_outline</mat-icon>
-              </mat-button-toggle>
-              <mat-button-toggle disabled value="">{{unit.get(space.value).value}}</mat-button-toggle>
-              <mat-button-toggle (click)="addSpacesCount($any(unit), space)">
-                <mat-icon >add_circle_outline</mat-icon>
-              </mat-button-toggle>
-            </mat-button-toggle-group>
-          </div>
-          <mat-form-field appearance="outline" fxFlex="20" class="16" data-cy="rent">
-            <mat-label>Monthly Rent</mat-label>
-            <input type="number" matInput [formControl]="$any(unit.get('monthlyRent'))">
-          </mat-form-field>
-        <new-rentals-file-picker [attachments]="$any(unit.get('attachments'))"></new-rentals-file-picker>
+  <div fxFlex="35">
+    <mat-form-field appearance="outline" fxFlex="90" class="16" data-cy="rent">
+      <mat-label>Monthly Rent</mat-label>
+      <input type="number" matInput [formControl]="$any(unit.get('monthlyRent'))">
+    </mat-form-field>
+  </div>
+</div>
+
+        <new-rentals-file-picker fxFlex="100" [attachments]="$any(unit.get('attachments'))"></new-rentals-file-picker>
       </div>
     </mat-expansion-panel>
   </mat-accordion>

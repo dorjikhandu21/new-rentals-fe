@@ -17,12 +17,11 @@ import {GooglePlaceModule} from "ngx-google-places-autocomplete";
 import {HTTP_INTERCEPTORS, HttpClientJsonpModule} from "@angular/common/http";
 import {HomeComponent} from "./public-listing/home/home.component";
 import {ApiInterceptor} from "../../../../libs/shared/src/lib/interceptors/api.interceptor";
-import {LightboxModule} from "ng-gallery/lightbox";
 import {MatNativeDateModule} from "@angular/material/core";
 
 @NgModule({
   declarations: [AppComponent, NxWelcomeComponent, HomeComponent],
-  imports: [BrowserModule, HttpClientJsonpModule, GooglePlaceModule, LightboxModule, MatNativeDateModule,  BrowserAnimationsModule, GraphQLModule, RouterOutlet, CoreModule, MatSnackBarModule, TranslateModule.forRoot()],
+  imports: [BrowserModule, HttpClientJsonpModule, GooglePlaceModule, MatNativeDateModule,  BrowserAnimationsModule, GraphQLModule, RouterOutlet, CoreModule, MatSnackBarModule, TranslateModule.forRoot()],
   providers: [{
     provide: ENV_TOKEN,
     useValue: environment
