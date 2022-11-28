@@ -16,6 +16,7 @@ export const UNIT_QUERY: TypedDocumentNode = gql`
         userId
       }
       property {
+        id
         lat
         lng
       }
@@ -37,6 +38,28 @@ export const UNIT_QUERY: TypedDocumentNode = gql`
       propertyId
       unitDescription
       unitNumber
+    }
+  }
+`
+
+export const TENANTS_QUERY: TypedDocumentNode = gql`
+  query tenants ($attributes: TenantFilterAttributes) {
+    tenants(attributes: $attributes){
+      id
+      state
+      user {
+        id
+        status
+        profile {
+          id
+          fullName
+          gender
+          phone
+        }
+        profilePic {
+          url
+        }
+      }
     }
   }
 `

@@ -25,8 +25,9 @@
     <div
       cdkDropList
       #receivedList="cdkDropList"
-      [cdkDropListData]="received"
+      [cdkDropListData]="kanbanConstant['received'].data"
       [cdkDropListConnectedTo]="[InterviewList,declinedList,acceptedList]"
+      [id]="'received'"
       class="example-list"
       (cdkDropListDropped)="drop($event)">
       <div fxLayoutAlign="space-between center" class="card-title nr-white-bg br-4 p-8 m-20">
@@ -34,7 +35,7 @@
         <span class="primary-bg py-4 px-8 br-4 nr-white-color">3</span>
       </div>
       <div fxLayout="column" class="example-box m-16 p-16 br-8 hand-cursor" (click)="openApplicationDetail()"
-           *ngFor="let item of received" cdkDrag>
+           *ngFor="let item of kanbanConstant['received'].data" cdkDrag>
         <div fxLayoutAlign="space-between center" class="border-bottom">
           <p>IT Park, Babesa, Thimphu</p>
           <div>
@@ -63,7 +64,7 @@
         <div fxLayoutAlign="space-between center" class="nr-white-fade-bg br-4 px-12">
           <div fxLayoutAlign="center center">
             <img class="user-profile my-8 mr-8" src="../assets/images/user.svg"/>
-            <span>SonamDorji</span>
+            <span>{{item?.user?.profile?.fullName}}</span>
           </div>
           <mat-icon matBadge="5" matBadgeSize="small" class="boulder-color mt-8 mr-12">message</mat-icon>
         </div>
@@ -71,20 +72,21 @@
     </div>
   </div>
 
-  <!-- Interviewd Application -->
+  <!-- Interviewed Application -->
   <div class="example-container">
     <div
       cdkDropList
       #InterviewList="cdkDropList"
-      [cdkDropListData]="interview"
-      [cdkDropListConnectedTo]="[receivedList,declinedList,acceptedList]"
+      [cdkDropListData]="kanbanConstant['interviewing'].data"
+      [cdkDropListConnectedTo]="[declinedList,acceptedList]"
+      [id]="'interviewing'"
       class="example-list"
       (cdkDropListDropped)="drop($event)">
       <div fxLayoutAlign="space-between center" class="nr-white-bg br-4 p-8 m-20">
         <h3 class="my-0">Interviewing</h3>
         <span class="purple-bg py-4 px-8 br-4 nr-white-color">3</span>
       </div>
-      <div fxLayout="column" class="example-box m-16 p-16 br-8" *ngFor="let item of interview"
+      <div fxLayout="column" class="example-box m-16 p-16 br-8" *ngFor="let item of kanbanConstant['interviewing'].data"
            (click)="openApplicationDetail()" cdkDrag>
         <div fxLayoutAlign="space-between center" class="border-bottom">
           <p>IT Park, Babesa, Thimphu</p>
@@ -114,7 +116,7 @@
         <div fxLayoutAlign="space-between center" class="nr-white-fade-bg br-4 px-12">
           <div fxLayoutAlign="center center">
             <img class="user-profile my-8 mr-8" src="../assets/images/user.svg"/>
-            <span>SonamDorji</span>
+            <span>{{item?.user?.profile?.fullName}}</span>
           </div>
           <mat-icon matBadge="5" matBadgeSize="small" class="boulder-color mt-8 mr-12">message</mat-icon>
         </div>
@@ -128,15 +130,16 @@
     <div
       cdkDropList
       #acceptedList="cdkDropList"
-      [cdkDropListData]="accepted"
-      [cdkDropListConnectedTo]="[receivedList, InterviewList, declinedList]"
+      [cdkDropListData]="kanbanConstant['accepted'].data"
+      [cdkDropListConnectedTo]="[]"
+      [id]="'accepted'"
       class="example-list"
       (cdkDropListDropped)="drop($event)">
       <div fxLayoutAlign="space-between center" class="nr-white-bg br-4 p-8 m-20">
         <h3 class="my-0">Accepted</h3>
         <span class="green-dragonfly-bg py-4 px-8 br-4 nr-white-color">3</span>
       </div>
-      <div fxLayout="column" class="example-box m-16 p-16 br-8" *ngFor="let item of accepted"
+      <div fxLayout="column" class="example-box m-16 p-16 br-8" *ngFor="let item of kanbanConstant['accepted'].data"
            (click)="openApplicationDetail()" cdkDrag>
         <div fxLayoutAlign="space-between center" class="border-bottom">
           <p>IT Park, Babesa, Thimphu</p>
@@ -166,7 +169,7 @@
         <div fxLayoutAlign="space-between center" class="nr-white-fade-bg br-4 px-12">
           <div fxLayoutAlign="center center">
             <img class="user-profile my-8 mr-8" src="../assets/images/user.svg"/>
-            <span>SonamDorji</span>
+            <span>{{item?.user?.profile?.fullName}}</span>
           </div>
           <mat-icon matBadge="5" matBadgeSize="small" class="boulder-color mt-8 mr-12">message</mat-icon>
         </div>
@@ -179,16 +182,17 @@
     <div
       cdkDropList
       #declinedList="cdkDropList"
-      [cdkDropListData]="declined"
-      [cdkDropListConnectedTo]="[receivedList, InterviewList, acceptedList]"
+      [cdkDropListData]="kanbanConstant['declined'].data"
+      [cdkDropListConnectedTo]="[]"
+      [id]="'declined'"
       class="example-list"
       (cdkDropListDropped)="drop($event)">
       <div fxLayoutAlign="space-between center" class="nr-white-bg br-4 p-8 m-20">
         <h3 class="my-0">Declined</h3>
         <span class="warn-bg py-4 px-8 br-4 nr-white-color">3</span>
       </div>
-      <div fxLayout="column" class="example-box m-16 p-16 br-8" *ngFor="let item of declined"
-           (click)="openApplicationDetail()" cdkDrag>
+      <div fxLayout="column" class="example-box m-16 p-16 br-8" *ngFor="let item of kanbanConstant['declined'].data"
+           (click)="openApplicationDetail()" cdkDrag [cdkDragData]="item">
         <div fxLayoutAlign="space-between center" class="border-bottom">
           <p>IT Park, Babesa, Thimphu</p>
           <div>
@@ -217,7 +221,7 @@
         <div fxLayoutAlign="space-between center" class="nr-white-fade-bg br-4 px-12">
           <div fxLayoutAlign="center center">
             <img class="user-profile my-8 mr-8" src="../assets/images/user.svg"/>
-            <span>SonamDorji</span>
+            <span>{{item?.user?.profile?.fullName}}</span>
           </div>
           <mat-icon matBadge="5" matBadgeSize="small" class="boulder-color mt-8 mr-12">message</mat-icon>
         </div>

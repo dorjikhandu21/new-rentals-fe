@@ -1,8 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import {MatDialogRef} from "@angular/material/dialog";
-import {CredentialsService, SalutationEnum, SharedFacadeService} from "@new-rentals/shared";
+import {Component, Inject, OnInit} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {
+  CreateTenantPayload,
+  CredentialsService,
+  SalutationEnum,
+  SharedFacadeService,
+  Unit,
+} from "@new-rentals/shared";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
+import {tap} from "rxjs";
 
 @Component({
   selector: 'new-rentals-apply-tenant-modal',
@@ -12,9 +19,10 @@ import {ActivatedRoute} from "@angular/router";
 export class ApplyTenantModalComponent implements OnInit {
   salutations: string[] = [SalutationEnum.Mr, SalutationEnum.Mrs];
   tenantForm?: FormGroup;
-  loading?:boolean;
+  loading?: boolean;
 
-  constructor(public dialogRef: MatDialogRef<ApplyTenantModalComponent>, private sharedFacadeService: SharedFacadeService, private credentialsService: CredentialsService, private activatedRoute: ActivatedRoute) {}
+  constructor(public dialogRef: MatDialogRef<ApplyTenantModalComponent>, @Inject(MAT_DIALOG_DATA) public data: { unit: Unit }, private sharedFacadeService: SharedFacadeService, private credentialsService: CredentialsService, private activatedRoute: ActivatedRoute) {
+  }
 
   ngOnInit(): void {
     this.buildForm();
@@ -29,12 +37,13 @@ export class ApplyTenantModalComponent implements OnInit {
       pets: new FormControl('', Validators.required),
       familyComposition: new FormControl('', Validators.required),
       preferMoveInDate: new FormControl(new Date(), Validators.required),
-      unitId: new FormControl(this.activatedRoute.snapshot.params['id'], Validators.required),
+      unitId: new FormControl(this.data.unit.id, Validators.required),
+      propertyId: new FormControl(this.data.unit.property.id, Validators.required),
       userId: new FormControl(this.credentialsService.currentUser().id, Validators.required),
     })
   }
 
-  closeDialog(flag:boolean): void {
+  closeDialog(flag: boolean): void {
     !flag && this.dialogRef.close();
 
     flag && this.createTenant();
@@ -42,9 +51,9 @@ export class ApplyTenantModalComponent implements OnInit {
 
   createTenant(): void {
     this.loading = true;
-    this.sharedFacadeService.createTenant().toPromise().then(() => {
+    this.sharedFacadeService.createTenant(this.tenantForm?.value).pipe(tap((tenant: CreateTenantPayload) => {
       this.loading = false;
-      this.dialogRef.close();
-    })
-    }
+      this.dialogRef.close(tenant);
+    })).subscribe();
+  }
 }

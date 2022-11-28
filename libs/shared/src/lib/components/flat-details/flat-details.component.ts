@@ -6,7 +6,7 @@ import {SharedStoreStateEnum} from "../../models/shared.store";
 import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
 import {tap} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
-import {Unit} from "../../models/graphql";
+import {Tenant, Unit} from "../../models/graphql";
 import {Loader} from "@googlemaps/js-api-loader";
 import {MatDialog} from "@angular/material/dialog";
 import {ApplyTenantModalComponent} from "../apply-tenant-modal/apply-tenant-modal.component";
@@ -16,14 +16,13 @@ import {ApplyTenantModalComponent} from "../apply-tenant-modal/apply-tenant-moda
   selector: 'new-rentals-flat-details',
   templateUrl: './flat-details.component.html',
   styleUrls: ['./flat-details.component.scss'],
-  // changeDetection: ChangeDetectionStrategy.OnPush
-
 })
 export class FlatDetailsComponent implements OnInit {
-  items: GalleryItem[];
+  items?: GalleryItem[];
   imageData = data;
+  tenant?: Tenant;
   unit?: Unit;
-  private map: google.maps.Map;
+  private map?: google.maps.Map;
   constructor(private activatedRoute: ActivatedRoute, private matDialog: MatDialog, private gallery: Gallery, private lightbox: Lightbox, private sharedFacadeService: SharedFacadeService) {}
 
   ngOnInit(): void {
@@ -57,14 +56,17 @@ export class FlatDetailsComponent implements OnInit {
         zoom: 15,
         disableDefaultUI: true,
       });
-    }).catch(error => {
+    }).catch(() => {
       console.log('Maps could not load')
     })
   }
   openApplyTenantModal() : void {
     this.matDialog.open(ApplyTenantModalComponent, {
       panelClass: ['modal-sm', 'full-width-modal'],
-    });
+      data: {unit: this.unit}
+    }).afterClosed().pipe(untilDestroyed(this),tap((tenant: Tenant) => {
+      this.tenant = tenant;
+    }));
   }
 }
 const data = [
