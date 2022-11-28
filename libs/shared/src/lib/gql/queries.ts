@@ -60,6 +60,15 @@ export const TENANTS_QUERY: TypedDocumentNode = gql`
           url
         }
       }
+      property {
+        propertyName
+      }
+      applicationTitle
+      applicationDetail
+      currentEmployer
+      familyComposition
+      pets
+      preferMoveInDate
     }
   }
 `

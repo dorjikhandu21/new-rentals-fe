@@ -56,14 +56,18 @@
         </div>
         <div fxLayoutAlign="space-between center" class="mt-16">
           <div><p class="boulder-color mb-4 font-size-12">Property</p>
-            <p class="font-size-12">Licha House</p></div>
+            <p class="font-size-12">{{item?.property?.propertyName}}</p></div>
           <div><p class="boulder-color font-size-12 mb-4">Created On</p>
             <p class="font-size-12">23-23-2022</p></div>
         </div>
-        <p class="font-size-12">{{item}}</p>
+        <p class="font-size-12">Application Details</p>
+        <p class="font-size-12">{{item?.applicationTitle}}</p>
+        <p class="font-size-12">{{item?.applicationDetail}}</p>
+        <p class="font-size-12"> Prefered Move In Date: {{item?.preferMoveInDate}}</p>
+        <p class="font-size-12">Application Details</p>
         <div fxLayoutAlign="space-between center" class="nr-white-fade-bg br-4 px-12">
           <div fxLayoutAlign="center center">
-            <img class="user-profile my-8 mr-8" src="../assets/images/user.svg"/>
+            <img class="user-profile my-8 mr-8" [src]=" item.user?.profilePic?.url ? ('https://newrentals.tk' + item.user?.profilePic?.url) :  '../assets/images/user.svg'"/>
             <span>{{item?.user?.profile?.fullName}}</span>
           </div>
           <mat-icon matBadge="5" matBadgeSize="small" class="boulder-color mt-8 mr-12">message</mat-icon>
@@ -108,14 +112,18 @@
         </div>
         <div fxLayoutAlign="space-between center" class="mt-16">
           <div><p class="boulder-color mb-4 font-size-12">Property</p>
-            <p class="font-size-12">Licha House</p></div>
+            <p class="font-size-12">{{item?.property?.propertyName}}</p></div>
           <div><p class="boulder-color font-size-12 mb-4">Created On</p>
             <p class="font-size-12">23-23-2022</p></div>
         </div>
-        <p class="font-size-12">{{item}}</p>
+        <p class="font-size-12">Application Details</p>
+        <p class="font-size-12">{{item?.applicationTitle}}</p>
+        <p class="font-size-12">{{item?.applicationDetail}}</p>
+        <p class="font-size-12"> Prefered Move In Date: {{item?.preferMoveInDate}}</p>
+        <p class="font-size-12">Application Details</p>
         <div fxLayoutAlign="space-between center" class="nr-white-fade-bg br-4 px-12">
           <div fxLayoutAlign="center center">
-            <img class="user-profile my-8 mr-8" src="../assets/images/user.svg"/>
+            <img class="user-profile my-8 mr-8" [src]=" item.user?.profilePic?.url ? ('https://newrentals.tk' + item.user?.profilePic?.url) :  '../assets/images/user.svg'"/>
             <span>{{item?.user?.profile?.fullName}}</span>
           </div>
           <mat-icon matBadge="5" matBadgeSize="small" class="boulder-color mt-8 mr-12">message</mat-icon>
@@ -161,14 +169,18 @@
         </div>
         <div fxLayoutAlign="space-between center" class="mt-16">
           <div><p class="boulder-color mb-4 font-size-12">Property</p>
-            <p class="font-size-12">Licha House</p></div>
+            <p class="font-size-12">{{item?.property?.propertyName}}</p></div>
           <div><p class="boulder-color font-size-12 mb-4">Created On</p>
             <p class="font-size-12">23-23-2022</p></div>
         </div>
-        <p class="font-size-12">{{item}}</p>
+        <p class="font-size-12">Application Details</p>
+        <p class="font-size-12">{{item?.applicationTitle}}</p>
+        <p class="font-size-12">{{item?.applicationDetail}}</p>
+        <p class="font-size-12"> Prefered Move In Date: {{item?.preferMoveInDate}}</p>
+        <p class="font-size-12">Application Details</p>
         <div fxLayoutAlign="space-between center" class="nr-white-fade-bg br-4 px-12">
           <div fxLayoutAlign="center center">
-            <img class="user-profile my-8 mr-8" src="../assets/images/user.svg"/>
+            <img class="user-profile my-8 mr-8" [src]=" item.user?.profilePic?.url ? ('https://newrentals.tk' + item.user?.profilePic?.url) :  '../assets/images/user.svg'"/>
             <span>{{item?.user?.profile?.fullName}}</span>
           </div>
           <mat-icon matBadge="5" matBadgeSize="small" class="boulder-color mt-8 mr-12">message</mat-icon>
@@ -213,14 +225,18 @@
         </div>
         <div fxLayoutAlign="space-between center" class="mt-16">
           <div><p class="boulder-color mb-4 font-size-12">Property</p>
-            <p class="font-size-12">Licha House</p></div>
+            <p class="font-size-12">{{item?.property?.propertyName}}</p></div>
           <div><p class="boulder-color font-size-12 mb-4">Created On</p>
             <p class="font-size-12">23-23-2022</p></div>
         </div>
-        <p class="font-size-12">{{item}}</p>
+        <p class="font-size-12">Application Details</p>
+        <p class="font-size-12">{{item?.applicationTitle}}</p>
+        <p class="font-size-12">{{item?.applicationDetail}}</p>
+        <p class="font-size-12"> Prefered Move In Date: {{item?.preferMoveInDate}}</p>
+        <p class="font-size-12">Application Details</p>
         <div fxLayoutAlign="space-between center" class="nr-white-fade-bg br-4 px-12">
           <div fxLayoutAlign="center center">
-            <img class="user-profile my-8 mr-8" src="../assets/images/user.svg"/>
+            <img class="user-profile my-8 mr-8" [src]=" item.user?.profilePic?.url ? ('https://newrentals.tk' + item.user?.profilePic?.url) :  '../assets/images/user.svg'"/>
             <span>{{item?.user?.profile?.fullName}}</span>
           </div>
           <mat-icon matBadge="5" matBadgeSize="small" class="boulder-color mt-8 mr-12">message</mat-icon>
