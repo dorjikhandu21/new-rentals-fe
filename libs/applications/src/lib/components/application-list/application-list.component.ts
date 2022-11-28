@@ -42,7 +42,7 @@ export class ApplicationListComponent implements OnInit {
     });
   }
 
-  drop(event: CdkDragDrop<Tenant[]>) {
+  drop(event: CdkDragDrop<Tenant[]>): void {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
@@ -52,7 +52,7 @@ export class ApplicationListComponent implements OnInit {
         event.previousContainer.data,
         event.container.data,
         event.previousIndex,
-        event.currentIndex,
+        event.currentIndex
       );
     }
   }
