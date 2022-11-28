@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
@@ -12,9 +12,12 @@ import {NotificationService, phoneNumberValidator} from "@new-rentals/shared";
 export class SignupComponent implements OnInit {
   passwordInVisibility: { password: boolean, confirmPassword: boolean } = { password: false, confirmPassword: true };
   salutations: string[] = ['Mr', 'Mrs'];
-  signUpForm: FormGroup = new FormGroup({});
+  @Input() signUpForm: FormGroup = new FormGroup({});
   mismatchPassword?:boolean;
-  @Output() submitForm: EventEmitter<any> = new EventEmitter<any>()
+  @Output() submitForm: EventEmitter<any> = new EventEmitter<any>();
+  @Input() set roleId(value: number) {
+    this.signUpForm?.get('role_id')?.setValue(value);
+  }
 
 
   constructor(private http: HttpClient, private router: Router, private notificationService: NotificationService) {}
@@ -24,20 +27,7 @@ export class SignupComponent implements OnInit {
   }
 
   buildForm(): void {
-    this.signUpForm = new FormGroup({
-      salutation: new FormControl('', Validators.required),
-      email: new FormControl('', [Validators.required, Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]),
-      password: new FormControl('', [Validators.required, Validators.min(6)]),
-      password_confirmation: new FormControl('', [Validators.required, Validators.min(6)]),
-      role_id: new FormControl(1),
-      profile: new FormGroup({
-        full_name: new FormControl('', Validators.required),
-        phone: new FormControl('', [Validators.required, phoneNumberValidator])
-      }),
-      subscription_plan: new FormGroup({
-        name: new FormControl('golden')
-      })
-    })
+
   }
 
   signUp(): void {

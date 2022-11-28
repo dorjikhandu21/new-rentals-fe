@@ -13,6 +13,6 @@ export class SharedStateService extends BaseStateService<SharedStoreState>{
   }
 
   setInitialState(): void {
-    this.setState({}, 'INITIAL_STATE');
+    this.setState({unit: undefined}, 'INITIAL_STATE');
   }
 }

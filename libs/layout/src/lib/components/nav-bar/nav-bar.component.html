@@ -1,5 +1,7 @@
 <mat-toolbar fxLayout="row" fxLayoutAlign="space-between center" class="nr-white-bg home-nav-bar">
-  <img class="auth-logo" src="/assets/images/logo.svg"/>
+  <a href="#">
+    <img class="auth-logo hand-cursor mt-8" src="/assets/images/logo.svg"/>
+  </a>
 
   <nav fxFlex="70" class="stroke" *ngIf="!authenticated">
     <ul fxLayout="row" fxLayoutAlign="center center">
@@ -28,4 +30,8 @@
     <button *ngIf="!authenticated" mat-flat-button mat-button color="primary" class="pull-right" (click)="routeToAuth('signup')">{{'Sign Up'}}</button>
     <button *ngIf="authenticated" mat-flat-button mat-button color="primary" class="pull-right" (click)="logOut()">{{'Log Out'}}</button>
   </div>
+
+ <!-- <div class="hand-cursor px-16 py-20 header__toggle-icon br-top-right-8 br-bottom-right-8">
+    <i class="pi pi-bars white-color s-24 boulder-color" (click)="navOpen()"></i>
+  </div>-->
 </mat-toolbar>

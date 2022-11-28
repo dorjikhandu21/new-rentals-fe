@@ -28,6 +28,11 @@ export class PropertyBlService {
     updatedAttributes.attachments?.forEach(attachment => {
       unset(attachment,'url');
     });
+    updatedAttributes.units?.forEach(unit => {
+      unit.attachments?.forEach(attachment => {
+        unset(attachment,'url');
+      })
+    });
     return updatedAttributes;
   }
 }

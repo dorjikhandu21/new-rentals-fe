@@ -24,27 +24,29 @@ import {MatSelectModule} from "@angular/material/select";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatInputModule} from "@angular/material/input";
 import {MatNativeDateModule} from "@angular/material/core";
+import {MatStepperModule} from "@angular/material/stepper";
 
 @NgModule({
-  imports: [
-    CommonModule,
-    MatIconModule,
-    TranslateModule,
-    MatSnackBarModule,
-    FlexLayoutModule,
-    GoogleMapsModule,
-    MatButtonModule,
-    MatMenuModule,
-    GalleryModule.withConfig({
-      // thumbView: 'contain',
-    }),
-    MatDialogModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatDatepickerModule,
-    MatInputModule,
-    MatNativeDateModule
-  ],
+    imports: [
+        CommonModule,
+        MatIconModule,
+        TranslateModule,
+        MatSnackBarModule,
+        FlexLayoutModule,
+        GoogleMapsModule,
+        MatButtonModule,
+        MatMenuModule,
+        GalleryModule.withConfig({
+            // thumbView: 'contain',
+        }),
+        MatDialogModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        MatDatepickerModule,
+        MatInputModule,
+        MatNativeDateModule,
+        MatStepperModule
+    ],
     declarations: [
         AdvancedFilterComponent,
         NavBarComponent,

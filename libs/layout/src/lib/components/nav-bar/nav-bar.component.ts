@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {CredentialsService, NotificationService} from "@new-rentals/shared";
 
@@ -10,6 +10,11 @@ import {CredentialsService, NotificationService} from "@new-rentals/shared";
 export class NavBarComponent implements OnInit {
   authenticated: boolean = this.credentials.isAuthenticated();
   currentActiveLink?:string;
+  isOpen = true;
+
+  // @ts-ignore
+  @Output() navToggle: EventEmitter<any> = new EventEmitter<any>(false);
+
 
   @Input() navBar?:{ name: string, link: string}[];
 
@@ -34,5 +39,9 @@ export class NavBarComponent implements OnInit {
       this.notificationService.success('Logged out successfully');
       void this.router.navigate(['/home']);
     });
+  }
+  navOpen(): void {
+    this.navToggle.emit(true);
+    this.isOpen = !this.isOpen;
   }
 }

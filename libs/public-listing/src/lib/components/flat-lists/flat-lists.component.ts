@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import { MapInfoWindow } from "@angular/google-maps";
+import {MapInfoWindow} from "@angular/google-maps";
 import {HttpClient} from "@angular/common/http";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Loader} from "@googlemaps/js-api-loader";
@@ -37,7 +37,8 @@ export class FlatListsComponent implements OnInit {
     disableDefaultUI: true
   };
 
-markers: any[] = [];
+  markers: any[] = [];
+
   constructor(private httpClient: HttpClient, private router: Router, private route: ActivatedRoute, private sharedFacadeService: SharedFacadeService, private unitFacadeService: UnitFacadeService) {
   }
 

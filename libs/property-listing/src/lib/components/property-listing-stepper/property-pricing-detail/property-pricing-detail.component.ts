@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Form, FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
 import {cloneDeep} from "lodash-es";
-import {Unit} from "@new-rentals/shared";
+import {CredentialsService, Unit} from "@new-rentals/shared";
 
 @Component({
   selector: 'new-rentals-property-pricing-detail',
@@ -11,7 +11,7 @@ import {Unit} from "@new-rentals/shared";
 export class PropertyPricingDetailComponent implements OnInit {
   @Input() units?: FormArray;
 
-  constructor() {}
+  constructor(private credentialsService: CredentialsService) {}
 
   ngOnInit(): void {
     this.addUnitControl();
@@ -53,7 +53,7 @@ export class PropertyPricingDetailComponent implements OnInit {
       unitDescription: new FormControl(''),
       unitNumber: new FormControl('', Validators.required),
       normalAmenities: new FormArray([]),
-      attachments: new FormArray([])
+      attachments: new FormArray([]),
     })
   }
 }

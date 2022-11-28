@@ -6,8 +6,8 @@
   </div>
   <p class="mb-28">How would you like to use the platform? You can always change your roles later. </p>
 
-  <mat-card class="mat-elevation-z0 nr-silver-border hand-cursor login-card p-16" fxLayout="row"
-            fxLayoutAlign="start center" fxFlex="100">
+  <mat-card class="mat-elevation-z0 nr-silver-border hand-cursor login-card p-16" [ngClass]="{'selected': rolesClassRef.user}"  fxLayout="row"
+            fxLayoutAlign="start center" fxFlex="100" (click)="setRoles(rolesIdEnum.USER)">
     <img class="mr-24 ml-8" src="/assets/images/user-icon.svg"/>
     <div>
       <h3 class="mb-4"> User</h3>
@@ -15,13 +15,12 @@
     </div>
   </mat-card>
 
-  <mat-card class="mat-elevation-z0 nr-silver-border mt-24 hand-cursor login-card p-16" fxLayout="row"
-            fxLayoutAlign="start center" fxFlex="100">
+  <mat-card class="mat-elevation-z0 nr-silver-border mt-24 hand-cursor login-card p-16" [ngClass]="{'selected': !rolesClassRef.user}"  fxLayout="row"
+            fxLayoutAlign="start center" fxFlex="100" (click)="setRoles(rolesIdEnum.OWNER)">
     <img class="mr-24 ml-8" src="/assets/images/landloard-icon.svg"/>
     <div>
       <h3 class="mb-4">As Landlord</h3>
       <p class="boulder-color mb-0">Look for apartments and add your property for rent.</p>
     </div>
   </mat-card>
-  <button mat-flat-button color="primary" class="full-width mt-24">{{'Next' | translate}}</button>
 </div>
