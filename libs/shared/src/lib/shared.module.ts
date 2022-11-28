@@ -17,7 +17,6 @@ import {GoogleMapsModule} from "@angular/google-maps";
 import {MatButtonModule} from "@angular/material/button";
 import {MatMenuModule} from "@angular/material/menu";
 import {GalleryModule} from "ng-gallery";
-import {LightboxModule} from "ng-gallery/lightbox";
 import {ApplyTenantModalComponent} from "./components/apply-tenant-modal/apply-tenant-modal.component";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatFormFieldModule} from "@angular/material/form-field";
@@ -39,7 +38,6 @@ import {MatNativeDateModule} from "@angular/material/core";
     GalleryModule.withConfig({
       // thumbView: 'contain',
     }),
-    LightboxModule,
     MatDialogModule,
     MatFormFieldModule,
     MatSelectModule,
