@@ -46,7 +46,7 @@ export class FlatDetailsComponent implements OnInit {
 
   loadMap(): void {
     const loader: Loader = new Loader({
-      apiKey: 'AIzaSyDpNbirRykNtf26goqNIwT4diZcsIP-vy4',
+      apiKey: 'AIzaSyB_EQUGViEUjZc-T0lWb3RL7POB0_zpJ14',
     })
     loader.load().then(() => {
       const position: { lat: number; lng: number; } = {lat: Number(this.unit?.property.lat), lng: Number(this.unit?.property.lng)};

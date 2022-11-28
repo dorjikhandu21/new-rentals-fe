@@ -12,5 +12,8 @@ export function geocodeLatLng(unit: Unit ): void {
       } else {
         console.log("No results found");
       }
-    }).catch((e) => window.alert("Geocoder failed due to: " + e));
+    }).catch((e) => {
+      console.log(e);
+      window.alert("Geocoder failed due to: " + e)
+  });
 }

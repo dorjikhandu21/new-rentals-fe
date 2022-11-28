@@ -29,7 +29,7 @@ export class PropertyDetailsComponent implements OnInit {
     this.propertyFacadeService.specificStateChange<Property>(PropertyStoreEnum.PROPERTY).pipe(untilDestroyed(this), tap((property) => {
       this.property = property;
       this.property?.units?.forEach(unit => {
-        geocodeLatLng(unit);
+        // geocodeLatLng(unit);
       });
     })).subscribe();
   }

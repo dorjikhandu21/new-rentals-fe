@@ -14,7 +14,7 @@ export class PropertyBlService {
     const propertyIds: string[] = [];
     const uniqueUnits: Unit[] = [];
     units.forEach(unit => {
-      geocodeLatLng(unit);
+      // geocodeLatLng(unit);
       !propertyIds.includes(unit.property.id) &&
       uniqueUnits.push(unit);
       propertyIds.push(unit.property.id);
