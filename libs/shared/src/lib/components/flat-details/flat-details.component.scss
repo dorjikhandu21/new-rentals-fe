@@ -38,6 +38,11 @@
       }
     }
   }
+
+}
+
+::ng-deep .mat-stepper-vertical .mat-vertical-content-container .mat-vertical-content {
+  padding: 0 !important;
 }
 
 
