@@ -22,24 +22,26 @@ import { RouterLinkActive, RouterLinkWithHref } from '@angular/router';
 import { OurUniqueFeatureComponent } from './components/landing-page/our-unique-feature/our-unique-feature.component';
 import { LetsTalkComponent } from './components/landing-page/lets-talk/lets-talk.component';
 import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatMenuModule} from "@angular/material/menu";
 
 @NgModule({
-  imports: [
-    CommonModule,
-    GoogleMapsModule,
-    FlexLayoutModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatInputModule,
-    MatIconModule,
-    MatCardModule,
-    MatExpansionModule,
-    MatSelectModule,
-    GooglePlaceModule,
-    RouterLinkWithHref,
-    RouterLinkActive,
-    MatSidenavModule,
-  ],
+    imports: [
+        CommonModule,
+        GoogleMapsModule,
+        FlexLayoutModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatInputModule,
+        MatIconModule,
+        MatCardModule,
+        MatExpansionModule,
+        MatSelectModule,
+        GooglePlaceModule,
+        RouterLinkWithHref,
+        RouterLinkActive,
+        MatSidenavModule,
+        MatMenuModule,
+    ],
   declarations: [
     LayoutComponent,
     NavBarComponent,

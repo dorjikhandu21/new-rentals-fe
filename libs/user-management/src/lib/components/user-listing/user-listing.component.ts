@@ -9,6 +9,7 @@ import {UserStoreEnum} from "../../models/user.store.state";
 import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
 import {finalize, tap} from "rxjs";
 import {UserTableData} from "../../models/user.model";
+import {ActivatedRoute, Router} from "@angular/router";
 export interface PeriodicElement {
   name: string;
   email: string;
@@ -34,7 +35,8 @@ export class UserListingComponent implements OnInit {
   selection = new SelectionModel<UserTableData>(true, []);
   constructor(
     public matDialog: MatDialog,
-    private userFacadeService: UserFacadeService
+    private userFacadeService: UserFacadeService,
+    private router: Router, private route: ActivatedRoute,
   ) {}
 
   ngOnInit(): void {
@@ -84,5 +86,9 @@ export class UserListingComponent implements OnInit {
       data: {
       }
     });
+  }
+
+  routeToTenantDetail(): void {
+    this.router.navigate(['detail'], {relativeTo: this.route});
   }
 }

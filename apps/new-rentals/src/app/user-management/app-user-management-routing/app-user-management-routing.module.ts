@@ -5,6 +5,7 @@ import {UserManagementComponent} from "../user-management/user-management.compon
 // @ts-ignore
 import {UserListingComponent, UserManagementModule} from "@new-rentals/user-management";
 import {ShellModule, ShellService} from "@new-rentals/shell";
+import {TenantDetailsComponent} from "@new-rentals/user-management";
 
 
 const routes: Routes = [
@@ -19,6 +20,10 @@ const routes: Routes = [
         {
           path: 'user/list',
           component: UserManagementComponent
+        },
+        {
+          path: 'detail',
+          component: TenantDetailsComponent
         }
       ]
     }

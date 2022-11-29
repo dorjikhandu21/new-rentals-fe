@@ -1,0 +1,34 @@
+@import 'apps/new-rentals/src/assets/styles/variables';
+.tenant-banner {
+  position: relative;
+  background-image: url(/assets/images/banner.svg);
+  width: 100%;
+  height: 200px;
+  .tenant-image {
+    border-radius: 50%;
+    position: absolute;
+width: 133px;
+    top: 59%;
+    left: 8%;
+  }
+}
+
+.item {
+  &__status {
+    height: 26px;
+    padding: 4px 20px;
+    border-width: 0;
+    border-radius: 4px;
+
+    &--active {
+      background: rgba(0, 181, 58, 0.16) !important;
+      ::ng-deep.mdc-evolution-chip__text-label {
+        color: $success-color !important;
+      }
+    }
+  }
+}
+::ng-deep.mat-mdc-tab-group .mat-mdc-tab-labels {
+  background: $white-color;
+  border-radius: 4px;
+}

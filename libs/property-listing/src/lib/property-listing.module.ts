@@ -20,31 +20,32 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { StepperButtonsComponent } from './components/property-listing-stepper/stepper-buttons/stepper-buttons.component';
-import {MatTabsModule} from "@angular/material/tabs";
-import {ReactiveFormsModule} from "@angular/forms";
-import {GooglePlaceModule} from "ngx-google-places-autocomplete";
-import {SharedModule} from "@new-rentals/shared";
+import { MatTabsModule } from '@angular/material/tabs';
+import { ReactiveFormsModule } from '@angular/forms';
+import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
+import { SharedModule } from '@new-rentals/shared';
+import { UnitDetailsComponent } from './components/unit-details/unit-details.component';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        RouterModule,
-        FlexLayoutModule,
-        MatInputModule,
-        MatSelectModule,
-        GoogleMapsModule,
-        MatCardModule,
-        MatIconModule,
-        MatButtonModule,
-        MatPaginatorModule,
-        MatStepperModule,
-        MatExpansionModule,
-        MatButtonToggleModule,
-        MatTabsModule,
-        ReactiveFormsModule,
-        GooglePlaceModule,
-        SharedModule,
-    ],
+  imports: [
+    CommonModule,
+    RouterModule,
+    FlexLayoutModule,
+    MatInputModule,
+    MatSelectModule,
+    GoogleMapsModule,
+    MatCardModule,
+    MatIconModule,
+    MatButtonModule,
+    MatPaginatorModule,
+    MatStepperModule,
+    MatExpansionModule,
+    MatButtonToggleModule,
+    MatTabsModule,
+    ReactiveFormsModule,
+    GooglePlaceModule,
+    SharedModule,
+  ],
   declarations: [
     PropertyListingComponent,
     PropertyDetailsComponent,
@@ -53,6 +54,7 @@ import {SharedModule} from "@new-rentals/shared";
     PropertyLocationComponent,
     PropertyPricingDetailComponent,
     StepperButtonsComponent,
+    UnitDetailsComponent,
   ],
 })
 export class PropertyListingModule {}

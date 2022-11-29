@@ -1,0 +1,53 @@
+<mat-card class="tenant-banner">
+  <img class="tenant-image" src="/assets/images/user.svg"/>
+</mat-card>
+
+<div fxLayoutAlign="space-between start" class="mx-24 mt-60">
+<mat-card fxFlex="24" class="br-4 p-20 nr-white-bg">
+  <h1 class="text-center nr-black-color">Karma Karma</h1>
+  <hr class="full-width">
+
+  <div class="br-4 p-20 nr-white-fade-bg">
+    <div fxLayoutAlign="space-between center">
+      <div fxLayoutAlign="center center">
+        <p class="mr-4 my-0">Status</p>
+        <mat-chip-set>
+          <mat-chip class="item__status--active item__status">
+            active
+          </mat-chip>
+        </mat-chip-set>
+      </div>
+
+      <mat-slide-toggle color="primary"></mat-slide-toggle>
+    </div>
+  </div>
+  <div class="br-4 p-20 nr-white-fade-bg mt-24">
+    <div fxLayoutAlign="start center">
+      <i class="pi pi-phone s-16 mr-16 boulder-color"></i>
+<p class="m-0">133434434343</p>
+    </div>
+
+    <div fxLayoutAlign="start center" class="mt-16">
+      <i class="pi pi-envelope s-16 mr-16 boulder-color"></i>
+      <p class="m-0">sdsfs@sdfsfs.fdf</p>
+    </div>
+    <button mat-button mat-stroked-button color="primary" class="primary-border mt-20 full-width"
+    ><i class="s-20 ver-middle mr-8 pi pi-comments"></i>{{'Message'}}</button>
+  </div>
+</mat-card>
+<div fxFlex="74">
+  <mat-tab-group>
+    <mat-tab label="Basic Detail">
+      <new-rentals-tenant-basic-detail></new-rentals-tenant-basic-detail>
+    </mat-tab>
+    <mat-tab label="Payments">
+      <new-rentals-tenant-payment></new-rentals-tenant-payment>
+    </mat-tab>
+    <mat-tab label="Handing Taking">
+      <new-rentals-tenant-contract></new-rentals-tenant-contract>
+    </mat-tab>
+  </mat-tab-group>
+
+</div>
+
+</div>

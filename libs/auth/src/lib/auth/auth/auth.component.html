@@ -1,9 +1,9 @@
-<div class="login-container full-width py-40" fxLayout="column" fxLayoutAlign="center center" [ngSwitch]="componentType">
+<div class="login-container full-width py-40" fxLayout="column" fxLayoutAlign="start center" [ngSwitch]="componentType">
   <div>
     <img class="auth-logo mb-28" src="/assets/images/logo.svg"/>
   </div>
-  <div fxLayout="row" fxLayoutAlign="center center">
-    <mat-card fxFlex="40" class="login-card">
+  <div fxLayout="row" fxLayoutAlign="center start">
+    <mat-card fxFlex="40" class="login-card mb-60">
       <new-rentals-login
         *ngSwitchCase="'login'"
         (submitForm)="submit($event)"

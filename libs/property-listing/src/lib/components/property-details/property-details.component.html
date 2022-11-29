@@ -5,12 +5,13 @@
   <div class="detail-page br-4 mx-24 p-20">
     <div class="p-20 br-8 nr-white-bg">
       <div fxLayout="row" fxLayoutAlign="space-between center">
-        <h2>{{property?.propertyName}}</h2>
+        <h2 class="nr-black-color">{{property?.propertyName}}</h2>
         <button mat-flat-button mat-button color="primary" fxFlex="15" class="mt-4">
           <mat-icon>add</mat-icon>
           {{'Add Units'}}</button>
       </div>
-      <p><mat-icon class="ver-middle">location_on</mat-icon>Babesa, Thimphu |  4 Units</p>
+      <p class="boulder-color"> <i class="pi pi-map-marker s-20 mr-8"></i>
+        Babesa, Thimphu |  4 Units</p>
     </div>
 
     <div class="mt-28">
@@ -82,9 +83,10 @@
             </div>
           </div>
         </mat-tab>
-        <mat-tab label="Units"></mat-tab>
+        <mat-tab label="Units">
+          <new-rentals-unit-details></new-rentals-unit-details>
+        </mat-tab>
         <mat-tab label="Tenants"></mat-tab>
-        <mat-tab label="Messages"> Discussion Working on</mat-tab>
       </mat-tab-group>
     </div>
   </div>

@@ -7,8 +7,8 @@
           <div fxLayout="row" fxLayoutAlign="space-between center" class="full-width">
             <h3 class="mb-0">Single Comfortable Home</h3>
             <div>
-              <mat-icon [hidden]="units.controls.length === 1" class="s-20 boulder-color hand-cursor edit-icons p-8" (click)="deleteUnit(i); $event.stopPropagation()">delete_outline</mat-icon>
-              <mat-icon class="s-20 boulder-color hand-cursor edit-icons p-8" (click)="copyUnit(i); $event.stopPropagation()">content_copy</mat-icon>
+            <i class="pi pi-trash p-8 edit-icons s-18 boulder-color hand-cursor " [hidden]="units.controls.length === 1" (click)="deleteUnit(i); $event.stopPropagation()"></i>
+            <i class="pi pi-copy p-8 edit-icons s-18 boulder-color hand-cursor " (click)="copyUnit(i); $event.stopPropagation()"></i>
             </div>
           </div>
         </mat-panel-title>

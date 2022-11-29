@@ -41,11 +41,11 @@
           <div>
             <mat-menu #menu="matMenu">
                 <span mat-menu-item>
-                <i class="pi pi-pencil mr-8 s-12 boulder-color"></i>
+                <i class="pi pi-pencil mr-8 s-16 boulder-color"></i>
                 <span>Edit</span>
               </span>
               <span mat-menu-item>
-                <i class="pi pi-trash mr-8 s-12 boulder-color"></i>
+                <i class="pi pi-trash mr-8 s-16 boulder-color"></i>
                 <span>Delete</span>
               </span>
             </mat-menu>
@@ -55,16 +55,15 @@
           </div>
         </div>
         <div fxLayoutAlign="space-between center" class="mt-16">
-          <div><p class="boulder-color mb-4 font-size-12">Property</p>
+          <div><p class="boulder-color mb-0 font-size-12">Property</p>
             <p class="font-size-12">{{item?.property?.propertyName}}</p></div>
-          <div><p class="boulder-color font-size-12 mb-4">Created On</p>
+          <div><p class="boulder-color font-size-12 mb-0">Created On</p>
             <p class="font-size-12">23-23-2022</p></div>
         </div>
-        <p class="font-size-12">Application Details</p>
-        <p class="font-size-12">{{item?.applicationTitle}}</p>
+        <p class="font-size-12 mb-0 boulder-color">Application Details</p>
+        <p class="font-size-12 mb-0">{{item?.applicationTitle}}</p>
         <p class="font-size-12">{{item?.applicationDetail}}</p>
-        <p class="font-size-12"> Prefered Move In Date: {{item?.preferMoveInDate}}</p>
-        <p class="font-size-12">Application Details</p>
+        <p class="font-size-12"><span class="boulder-color">Preferred Move In Date:</span> {{item?.preferMoveInDate}}</p>
         <div fxLayoutAlign="space-between center" class="nr-white-fade-bg br-4 px-12">
           <div fxLayoutAlign="center center">
             <img class="user-profile my-8 mr-8" [src]=" item.user?.profilePic?.url ? ('https://newrentals.tk' + item.user?.profilePic?.url) :  '../assets/images/user.svg'"/>
@@ -97,11 +96,11 @@
           <div>
             <mat-menu #menu="matMenu">
                 <span mat-menu-item>
-                <i class="pi pi-pencil mr-8 s-12 boulder-color"></i>
+                <i class="pi pi-pencil mr-8 s-16 boulder-color"></i>
                 <span>Edit</span>
               </span>
               <span mat-menu-item>
-                <i class="pi pi-trash mr-8 s-12 boulder-color"></i>
+                <i class="pi pi-trash mr-8 s-16 boulder-color"></i>
                 <span>Delete</span>
               </span>
             </mat-menu>
@@ -111,16 +110,15 @@
           </div>
         </div>
         <div fxLayoutAlign="space-between center" class="mt-16">
-          <div><p class="boulder-color mb-4 font-size-12">Property</p>
+          <div><p class="boulder-color mb-0 font-size-12">Property</p>
             <p class="font-size-12">{{item?.property?.propertyName}}</p></div>
-          <div><p class="boulder-color font-size-12 mb-4">Created On</p>
+          <div><p class="boulder-color font-size-12 mb-0">Created On</p>
             <p class="font-size-12">23-23-2022</p></div>
         </div>
-        <p class="font-size-12">Application Details</p>
-        <p class="font-size-12">{{item?.applicationTitle}}</p>
+        <p class="font-size-12 boulder-color mb-0">Application Details</p>
+        <p class="font-size-12 mb-0">{{item?.applicationTitle}}</p>
         <p class="font-size-12">{{item?.applicationDetail}}</p>
-        <p class="font-size-12"> Prefered Move In Date: {{item?.preferMoveInDate}}</p>
-        <p class="font-size-12">Application Details</p>
+        <p class="font-size-12"><span class="boulder-color font-size-12"> Preferred Move In Date:</span> {{item?.preferMoveInDate}}</p>
         <div fxLayoutAlign="space-between center" class="nr-white-fade-bg br-4 px-12">
           <div fxLayoutAlign="center center">
             <img class="user-profile my-8 mr-8" [src]=" item.user?.profilePic?.url ? ('https://newrentals.tk' + item.user?.profilePic?.url) :  '../assets/images/user.svg'"/>
@@ -154,11 +152,11 @@
           <div>
             <mat-menu #menu="matMenu">
                 <span mat-menu-item>
-                <i class="pi pi-pencil mr-8 s-12 boulder-color"></i>
+                <i class="pi pi-pencil mr-8 s-16 boulder-color"></i>
                 <span>Edit</span>
               </span>
               <span mat-menu-item>
-                <i class="pi pi-trash mr-8 s-12 boulder-color"></i>
+                <i class="pi pi-trash mr-8 s-16 boulder-color"></i>
                 <span>Delete</span>
               </span>
             </mat-menu>
@@ -168,16 +166,15 @@
           </div>
         </div>
         <div fxLayoutAlign="space-between center" class="mt-16">
-          <div><p class="boulder-color mb-4 font-size-12">Property</p>
+          <div><p class="boulder-color mb-0 font-size-12">Property</p>
             <p class="font-size-12">{{item?.property?.propertyName}}</p></div>
-          <div><p class="boulder-color font-size-12 mb-4">Created On</p>
+          <div><p class="boulder-color font-size-12 mb-0">Created On</p>
             <p class="font-size-12">23-23-2022</p></div>
         </div>
-        <p class="font-size-12">Application Details</p>
-        <p class="font-size-12">{{item?.applicationTitle}}</p>
+        <p class="font-size-12 mb-0 boulder-color">Application Details</p>
+        <p class="font-size-12 mb-0">{{item?.applicationTitle}}</p>
         <p class="font-size-12">{{item?.applicationDetail}}</p>
-        <p class="font-size-12"> Prefered Move In Date: {{item?.preferMoveInDate}}</p>
-        <p class="font-size-12">Application Details</p>
+        <p class="font-size-12"> <span class="boulder-color font-size-12">Preferred Move In Date:</span> {{item?.preferMoveInDate}}</p>
         <div fxLayoutAlign="space-between center" class="nr-white-fade-bg br-4 px-12">
           <div fxLayoutAlign="center center">
             <img class="user-profile my-8 mr-8" [src]=" item.user?.profilePic?.url ? ('https://newrentals.tk' + item.user?.profilePic?.url) :  '../assets/images/user.svg'"/>
@@ -210,11 +207,11 @@
           <div>
             <mat-menu #menu="matMenu">
                 <span mat-menu-item>
-                <i class="pi pi-pencil mr-8 s-12 boulder-color"></i>
+                <i class="pi pi-pencil mr-8 s-16 boulder-color"></i>
                 <span>Edit</span>
               </span>
               <span mat-menu-item>
-                <i class="pi pi-trash mr-8 s-12 boulder-color"></i>
+                <i class="pi pi-trash mr-8 s-16 boulder-color"></i>
                 <span>Delete</span>
               </span>
             </mat-menu>
@@ -224,16 +221,15 @@
           </div>
         </div>
         <div fxLayoutAlign="space-between center" class="mt-16">
-          <div><p class="boulder-color mb-4 font-size-12">Property</p>
+          <div><p class="boulder-color mb-0 font-size-12">Property</p>
             <p class="font-size-12">{{item?.property?.propertyName}}</p></div>
-          <div><p class="boulder-color font-size-12 mb-4">Created On</p>
+          <div><p class="boulder-color font-size-12 mb-0">Created On</p>
             <p class="font-size-12">23-23-2022</p></div>
         </div>
-        <p class="font-size-12">Application Details</p>
-        <p class="font-size-12">{{item?.applicationTitle}}</p>
+        <p class="font-size-12 boulder-color mb-0">Application Details</p>
+        <p class="font-size-12 mb-0">{{item?.applicationTitle}}</p>
         <p class="font-size-12">{{item?.applicationDetail}}</p>
-        <p class="font-size-12"> Prefered Move In Date: {{item?.preferMoveInDate}}</p>
-        <p class="font-size-12">Application Details</p>
+        <p class="font-size-12"> <span class="boulder-color font-size-12">Prefered Move In Date:</span> {{item?.preferMoveInDate}}</p>
         <div fxLayoutAlign="space-between center" class="nr-white-fade-bg br-4 px-12">
           <div fxLayoutAlign="center center">
             <img class="user-profile my-8 mr-8" [src]=" item.user?.profilePic?.url ? ('https://newrentals.tk' + item.user?.profilePic?.url) :  '../assets/images/user.svg'"/>

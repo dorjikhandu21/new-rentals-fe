@@ -11,36 +11,51 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatChipsModule } from '@angular/material/chips';
 import { InviteTenantModalComponent } from './components/invite-tenant-modal/invite-tenant-modal.component';
-import {MatDialogModule} from "@angular/material/dialog";
-import {ReactiveFormsModule} from "@angular/forms";
-import {TranslateModule} from "@ngx-translate/core";
-import {MatDatepickerModule} from "@angular/material/datepicker";
-import {MatNativeDateModule} from "@angular/material/core";
-import {MatPaginatorModule} from "@angular/material/paginator";
-import {SharedModule} from "@new-rentals/shared";
+import { MatDialogModule } from '@angular/material/dialog';
+import { ReactiveFormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { SharedModule } from '@new-rentals/shared';
+import { TenantDetailsComponent } from './components/tenant-details/tenant-details.component';
+import { TenantBasicDetailComponent } from './components/tenant-basic-detail/tenant-basic-detail.component';
+import { TenantPaymentComponent } from './components/tenant-payment/tenant-payment.component';
+import { TenantContractComponent } from './components/tenant-contract/tenant-contract.component';
+import {MatTabsModule} from "@angular/material/tabs";
+import {MatCardModule} from "@angular/material/card";
 
 @NgModule({
-    imports: [
-        CommonModule,
-        FlexLayoutModule,
-        MatInputModule,
-        MatIconModule,
-        MatSelectModule,
-        MatButtonModule,
-        MatTableModule,
-        MatCheckboxModule,
-        MatSlideToggleModule,
-        MatChipsModule,
-        MatDialogModule,
-        ReactiveFormsModule,
-        TranslateModule,
-        MatInputModule,
-        MatDatepickerModule,
-        MatNativeDateModule,
-        MatPaginatorModule,
-        SharedModule
-    ],
-  declarations: [UserListingComponent, InviteTenantModalComponent],
+  imports: [
+    CommonModule,
+    FlexLayoutModule,
+    MatInputModule,
+    MatIconModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatTableModule,
+    MatCheckboxModule,
+    MatSlideToggleModule,
+    MatChipsModule,
+    MatDialogModule,
+    ReactiveFormsModule,
+    TranslateModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatPaginatorModule,
+    SharedModule,
+    MatTabsModule,
+    MatCardModule,
+  ],
+  declarations: [
+    UserListingComponent,
+    InviteTenantModalComponent,
+    TenantDetailsComponent,
+    TenantBasicDetailComponent,
+    TenantPaymentComponent,
+    TenantContractComponent,
+  ],
   exports: [UserListingComponent],
   entryComponents: [InviteTenantModalComponent],
 })

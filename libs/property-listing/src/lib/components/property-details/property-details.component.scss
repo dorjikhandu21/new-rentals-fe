@@ -5,12 +5,13 @@
   .banner {
     object-fit: cover;
     height: 100%;
+    width: 100%;
   }
 }
 .detail-page {
   position: relative;
   z-index: 9;
-  margin-top: -40px;
+  margin-top: -60px;
 }
 .add-button {
   border: 1px dashed $alto-gray;

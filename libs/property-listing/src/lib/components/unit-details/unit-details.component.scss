@@ -1,0 +1,21 @@
+@import 'apps/new-rentals/src/assets/styles/variables';
+
+.unit-button:hover {
+  border-width: 1px 0 1px 3px;
+  border-color: $primary-color;
+  border-style: solid;
+  background: lighten($primary-color, 43%);
+  color: $primary-color;
+
+}
+.unit-button {
+  border-bottom: 1px solid $alto-gray;
+}
+.active {
+  border-width: 1px 0 1px 3px;
+  border-color: $primary-color;
+  border-style: solid;
+  background: lighten($primary-color, 43%);
+  color: $primary-color;
+
+}
