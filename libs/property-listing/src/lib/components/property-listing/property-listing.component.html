@@ -51,11 +51,11 @@
       </div>
     </div>
   </div>
-  <div fxLayoutAlign="center center" class="full-width background-none" *ngIf="properties.length">
-    <mat-paginator [length]="100"
-                   [pageSize]="10"
-                   [pageSizeOptions]="[5, 10, 25, 100]"
-                   aria-label="Select page">
+  <div fxLayoutAlign="center center" class="full-width background-none">
+    <mat-paginator [length]="50"
+                   [pageSize]="5"
+                   [pageSizeOptions]="[5, 10, 20, 50]"
+                   aria-label="Select page" (page)="updateFilter($event)">
     </mat-paginator>
   </div>
 </div>

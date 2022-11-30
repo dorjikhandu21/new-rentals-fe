@@ -3,7 +3,7 @@ import {MapInfoWindow} from "@angular/google-maps";
 import {HttpClient} from "@angular/common/http";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Loader} from "@googlemaps/js-api-loader";
-import {geocodeLatLng, SharedFacadeService, SharedStoreStateEnum, Unit} from "@new-rentals/shared";
+import {CredentialsService, geocodeLatLng, SharedFacadeService, SharedStoreStateEnum, Unit} from "@new-rentals/shared";
 import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
 import {switchMap, tap} from "rxjs";
 import {UnitFacadeService} from "../services/unit-facade.service";
@@ -19,7 +19,6 @@ export class FlatListsComponent implements OnInit {
   // @ts-ignore
   units: Unit[] = [];
   private map: google.maps.Map;
-  // @ViewChild(MapInfoWindow) infoWindow?: MapInfoWindow;
   @ViewChild(MapInfoWindow, {static: false}) infoWindow?: MapInfoWindow;
   filters: any[] = [
     {name: 'Type', icon: 'category'},
@@ -39,7 +38,7 @@ export class FlatListsComponent implements OnInit {
 
   markers: any[] = [];
 
-  constructor(private httpClient: HttpClient, private router: Router, private route: ActivatedRoute, private sharedFacadeService: SharedFacadeService, private unitFacadeService: UnitFacadeService) {
+  constructor(private httpClient: HttpClient, private credentialsService: CredentialsService, private router: Router, private route: ActivatedRoute, private sharedFacadeService: SharedFacadeService, private unitFacadeService: UnitFacadeService) {
   }
 
   ngOnInit(): void {
@@ -55,7 +54,6 @@ export class FlatListsComponent implements OnInit {
       this.setMapCenter(units);
       this.units.forEach(unit => {
         this.addMarkers(unit);
-        // geocodeLatLng(unit)
       })
     })).subscribe();
   }

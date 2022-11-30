@@ -23,15 +23,13 @@ export class CredentialsService {
   }
 
   isAuthenticated(): boolean {
-    sessionStorage.removeItem('WHSApp.token');
+    localStorage.removeItem('WHSApp.token');
     return !!this.credentials && !this.hasTokenExpired;
 
   }
 
   clearVersionOneStorage(): void {
-    sessionStorage.removeItem('NewRentals.token');
     localStorage.removeItem('NewRentals.token');
-    sessionStorage.removeItem('NewRentals.decodedToken');
     localStorage.removeItem('NewRentals.decodedToken');
   }
 
@@ -39,7 +37,7 @@ export class CredentialsService {
     this.credentials = userCredentials || null as unknown as CredentialsFromService;
 
     if (userCredentials) {
-      const storage: any =  sessionStorage;
+      const storage: any =  localStorage;
       storage.setItem(credentialsKey, JSON.stringify(userCredentials));
     } else {
       this.clearVersionOneStorage();
@@ -52,7 +50,7 @@ export class CredentialsService {
   }
 
   get unparsedCredentials(): string {
-    return sessionStorage.getItem(credentialsKey) || localStorage.getItem(credentialsKey) as unknown as string;
+    return localStorage.getItem(credentialsKey) as unknown as string;
   }
 
   token(): Observable<string> {

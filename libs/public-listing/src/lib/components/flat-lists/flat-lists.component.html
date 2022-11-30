@@ -31,7 +31,7 @@
       <div  *ngFor="let unit of units" class="example-card hand-cursor br-4 nr-white-bg nr-silver-border mb-24 public-list-card" fxFlex="48">
         <div class="flat-image-container">
           <span class="cost-label nr-white-color">{{unit.monthlyRent}}/- per month</span>
-          <img mat-card-image class="flat-image" src="../../../../../../../assets/images/flat.svg"
+          <img mat-card-image class="flat-image" [src]="unit.attachments[0]?.url ? 'https://newrentals.tk' + unit.attachments[0]?.url : '../../../../../../../assets/images/flat.svg'"
                alt="Photo of a Shiba Inu">
         </div>
         <div class="m-16">

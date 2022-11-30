@@ -7,6 +7,7 @@ import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
 import { switchMap, tap} from "rxjs";
 import {PropertiesFilterAttributes, Property, Unit} from "@new-rentals/shared";
 import {PropertyBlService} from "../../services/property-bl.service";
+import {PageEvent} from "@angular/material/paginator";
 
 @UntilDestroy()
 @Component({
@@ -21,9 +22,13 @@ import {PropertyBlService} from "../../services/property-bl.service";
   ],
 })
 
-export class PropertyListingComponent implements OnInit {
+
+  export class PropertyListingComponent implements OnInit {
   properties: Property[] = [];
-  uniqueUnits: Unit[] = [];
+  propertyFilters: PropertiesFilterAttributes = {
+    limitPerPage: 5,
+    offsetPage: 0
+  }
   // eslint-disable-next-line @typescript-eslint/typedef
   loading = true;
   filters: any[] = [
@@ -32,7 +37,6 @@ export class PropertyListingComponent implements OnInit {
     {name: 'Move In Date', icon: 'calendar_month'},
     {name: 'No. of beds', icon: 'account_tree'},
     {name: 'More Filters', icon: 'tune'}
-
   ];
 
   center!: google.maps.LatLngLiteral;
@@ -53,7 +57,7 @@ export class PropertyListingComponent implements OnInit {
   }
 
   updatePropertyFilters(): void {
-    this.propertyFacadeService.updateSpecificState({}, PropertyStoreEnum.PROPERTY_FILTERS);
+    this.propertyFacadeService.updateSpecificState(this.propertyFilters, PropertyStoreEnum.PROPERTY_FILTERS);
   }
 
   listenToPropertyFilters(): void {
@@ -73,7 +77,16 @@ export class PropertyListingComponent implements OnInit {
   routeToPropertyCreation(): void {
     this.router.navigate(['add'], {relativeTo: this.route});
   }
+
   routeToPropertyDetail(property: Property): void {
     void  this.router.navigate([`${property.id}`], {relativeTo: this.route});
+  }
+
+  updateFilter(event: PageEvent): void {
+    this.propertyFilters = {...this.propertyFilters,
+      limitPerPage: event.pageSize,
+      offsetPage: event.pageIndex === 0 ? 0 : event.pageSize
+    }
+    this.propertyFacadeService.updateSpecificState(this.propertyFilters, PropertyStoreEnum.PROPERTY_FILTERS);
   }
 }

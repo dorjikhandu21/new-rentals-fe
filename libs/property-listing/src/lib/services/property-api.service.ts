@@ -16,11 +16,7 @@ export class PropertyApiService {
 
   constructor(private apollo: Apollo, private notificationService: NotificationService) { }
 
-  // ERROR Error: Uncaught (in promise): Error: To use File upload you need to pass "extractFiles" function from "extract-files" library to HttpLink's options
-  // Error: To use File upload you need to pass "extractFiles" function from "extract-files" library to HttpLink's options
-
   createProperty(attributes: PropertyAttributes): Observable<CreatePropertyPayload> {
-    debugger
     return this.apollo.mutate<Mutation>({
       mutation: CREATE_PROPERTY,
       variables: {input: {attributes}},
