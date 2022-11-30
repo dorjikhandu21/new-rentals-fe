@@ -11,10 +11,9 @@
     <mat-form-field appearance="outline" fxFlex="100" data-cy="password">
       <mat-label>Password</mat-label>
       <input matInput [type]="passwordVisibility ? 'password' : 'text'" formControlName="password">
-      <mat-icon class="boulder-color s-24 hand-cursor"  matSuffix (click)="passwordVisibility = !passwordVisibility"
-                [matTooltip]="(passwordVisibility ? 'Show Password' : 'Hide Password')">
-        {{passwordVisibility ? 'visibility' : 'visibility_off'}}
-      </mat-icon>
+      <i matSuffix class="mr-12 pi {{passwordVisibility ? 'pi-eye' : 'pi-eye-slash'}} boulder-color s-20 hand-cursor"
+         [matTooltip]="(passwordVisibility ? 'Show Password' : 'Hide Password') | translate"
+         (click)="passwordVisibility = !passwordVisibility"></i>
     </mat-form-field>
 
     <div class="full-width mb-8" fxLayout="row" fxLayoutAlign="space-between center">

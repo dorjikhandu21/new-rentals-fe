@@ -5,9 +5,11 @@ import {CredentialsService, Property, UnitAttributes} from "@new-rentals/shared"
 import {PropertyStoreEnum} from "../../models/property.store";
 import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
 import {tap} from "rxjs";
-import {STEPPER_GLOBAL_OPTIONS} from "@angular/cdk/stepper";
+import {STEPPER_GLOBAL_OPTIONS, StepperOrientation} from "@angular/cdk/stepper";
 import {Router} from "@angular/router";
-
+import {BreakpointObserver} from "@angular/cdk/layout";
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 @UntilDestroy()
 @Component({
   selector: 'new-rentals-property-listing-stepper',
@@ -21,11 +23,17 @@ import {Router} from "@angular/router";
   ],
 })
 export class PropertyListingStepperComponent implements OnInit {
+  stepperOrientation: Observable<StepperOrientation>;
+
   basicDetail?: FormGroup;
   geoInformation?: FormGroup;
   // @ts-ignore
   units: FormArray = new FormArray([]);
-  constructor(private propertyFacadeService: PropertyFacadeService, private router: Router, private credentialsService: CredentialsService) {}
+  constructor(private propertyFacadeService: PropertyFacadeService, private router: Router, private credentialsService: CredentialsService, breakpointObserver: BreakpointObserver ) {
+    this.stepperOrientation = breakpointObserver
+      .observe('(min-width: 600px)')
+      .pipe(map(({matches}) => (matches ? 'horizontal' : 'vertical')));
+  }
 
   ngOnInit(): void {
     this.buildForm();

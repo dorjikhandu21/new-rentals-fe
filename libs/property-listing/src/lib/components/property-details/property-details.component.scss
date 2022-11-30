@@ -1,6 +1,7 @@
 @import "apps/new-rentals/src/assets/styles/variables";
 
 .banner-container {
+  background-image: url(/assets/images/footer-bg.svg);
   height: 220px;
   .banner {
     object-fit: cover;

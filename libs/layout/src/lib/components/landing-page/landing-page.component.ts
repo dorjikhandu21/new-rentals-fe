@@ -7,6 +7,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class LandingPageComponent implements OnInit {
   @Input() navBar?:{ name: string, link: string}[];
+  @Input() navs?: { name: string, icon: string, routerLink: string}[];
   constructor() {}
 
   ngOnInit(): void {

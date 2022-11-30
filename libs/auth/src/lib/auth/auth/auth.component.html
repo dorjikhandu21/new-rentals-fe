@@ -3,7 +3,7 @@
     <img class="auth-logo mb-28" src="/assets/images/logo.svg"/>
   </div>
   <div fxLayout="row" fxLayoutAlign="center start">
-    <mat-card fxFlex="40" class="login-card mb-60">
+    <mat-card fxFlex="40" fxFlex.xs="92" class="login-card mb-60">
       <new-rentals-login
         *ngSwitchCase="'login'"
         (submitForm)="submit($event)"

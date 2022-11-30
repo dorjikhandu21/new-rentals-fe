@@ -1,11 +1,11 @@
 <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="mx-24 mb-16 mt-32 application-container">
-  <div fxLayout="row wrap" fxLayoutAlign="start start" fxFlex="80" fxLayoutGap="12px">
-    <mat-form-field appearance="outline" fxFlex="40" class="search-field">
+  <div fxLayout="row wrap" fxLayoutAlign="start start" fxFlex="80" fxFlex.lt-md="100" fxLayoutGap="12px">
+    <mat-form-field appearance="outline" fxFlex.lt-sm="60" fxFlex.xs="100" fxFlex="40" class="search-field" ngClass.xs="mb-16">
       <mat-icon matPrefix color="primary" class="hand-cursor mr-12 ml-4 s-24">search</mat-icon>
       <input type="text" matInput placeholder="Search Property by name or unit" autocomplete="off" data-cy="search">
     </mat-form-field>
 
-    <mat-form-field fxFlex="20" appearance="outline" class="pull-right">
+    <mat-form-field fxHide.lt-sm fxFlex="20" appearance="outline" class="pull-right">
       <mat-icon matPrefix class="boulder-color">filter_3</mat-icon>
       <mat-label>Properties</mat-label>
       <mat-select>
@@ -13,7 +13,7 @@
         <mat-option [value]="2">dummy</mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-form-field fxFlex="20" appearance="outline" class="pull-right">
+    <mat-form-field fxHide.lt-sm fxFlex="20" appearance="outline" class="pull-right">
       <mat-icon matPrefix class="boulder-color">filter_3</mat-icon>
       <mat-label>Category</mat-label>
       <mat-select>
@@ -22,14 +22,14 @@
       </mat-select>
     </mat-form-field>
   </div>
-  <button mat-flat-button mat-button color="primary" fxFlex="16" class="mt-8 mb-20" (click)="routeToPropertyCreation()" *ngIf="currentRole === 3">
+  <button mat-flat-button mat-button color="primary" fxFlex="16" fxFlex.lt-md="25" fxFlex.xs="100" class="mt-8 mb-20" (click)="routeToPropertyCreation()" *ngIf="currentRole === 3">
     <mat-icon>add</mat-icon>
     {{'Add Property'}}</button>
 </div>
 <div fxLayout="column" fxLayoutAlign="space-between">
-  <div class="mx-24" fxLayout="row wrap" fxLayoutGap="20px">
+  <div class="mx-24" fxLayout="row wrap" fxLayoutGap.gt-xs="20px">
     <div *ngFor="let property of properties" class="property-card hand-cursor br-8 nr-white-bg nr-silver-border mb-24"
-         fxFlex="23" (click)="routeToPropertyDetail(property)">
+         fxFlex="23" fxFlex.xs="100" fxFlex.lt-md="47"  fxFlex.lt-lg="30" (click)="routeToPropertyDetail(property)">
       <div class="image-container">
         <!--      <div class="label">-->
         <!--        <span class="label__text nr-white-color label-green-bg mr-12">Nu.15000/-</span>-->
@@ -44,7 +44,7 @@
           <i class="pi pi-map-marker s-20 mr-12"></i>
           <p class="text-truncate">{{property?.neighbourhoodDetails}}</p>
         </div>
-        <div fxLayout="row" class="boulder-color">
+        <div fxLayout="row" class="boulder-color text-truncate">
           <i class="pi pi-sitemap s-20 mr-12"></i>
           <p>{{property.unitsCount}} {{property.unitsCount > 1 ? 'Flats' : 'Flat'}}, with installed elevator</p>
         </div>

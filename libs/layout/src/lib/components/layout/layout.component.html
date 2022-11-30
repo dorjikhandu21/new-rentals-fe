@@ -1,7 +1,54 @@
 <mat-sidenav-container>
-
   <mat-sidenav mode="over">
-    dedd
+    <!--
+    For Phone view
+    -->
+    <div fxLayout="column" class="p-20">
+      <a href="#">
+        <img class="auth-logo hand-cursor mt-8" src="/assets/images/logo.svg"/>
+      </a>
+
+      <nav fxFlex="70" fxFlex.xs="100" class="stroke" *ngIf="!authenticated">
+        <ul fxLayout="column">
+          <li fxFlex="20" *ngFor="let nav of navBar"
+              class="p-20 hand-cursor"><i class="pi pi-{{nav.icon}} s-16 mr-8 boulder-color ver-text-bottom"></i><a class="nr-black-color full-width" href="#{{nav.link}}">{{nav.name}}</a></li>
+        </ul>
+      </nav>
+
+      <nav fxHide.lt-sm fxFlex="70" fxFlex.xs="100" class="stroke" *ngIf="authenticated">
+        <ul *ngIf="authenticated" fxLayout="row" fxLayoutAlign="center center">
+          <li class="text-center" fxFlex="15" *ngFor="let nav of navs" [routerLinkActive]="['active']">
+            <a fxLayout="column" fxLayoutAlign="center center" class="nr-black-color full-width font-size-14"
+               [routerLink]="nav.routerLink">
+              <mat-icon class="s-20 boulder-color">{{nav.icon}}</mat-icon>
+              {{nav.name}}</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div fxLayout="row wrap">
+        <button *ngIf="!authenticated" mat-button mat-stroked-button color="primary"
+                class="primary-border pull-right mr-20" (click)="routeToAuth('')">{{'Log In'}}</button>
+        <button *ngIf="!authenticated" mat-flat-button mat-button color="primary" class="pull-right"
+                (click)="routeToAuth('signup')">{{'Sign Up'}}</button>
+        <div *ngIf="authenticated" fxLayoutAlign="center center">
+          <img class="user-profile my-8 mr-8" src="../assets/images/user.svg"/>
+          <mat-icon class="p-4 br-4 hand-cursor nr-white-fade-bg ver-middle s-16" [matMenuTriggerFor]="menu">
+            expand_more
+          </mat-icon>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="logOut()">
+              <i class="pi pi-external-link"></i>
+              Log Out
+            </button>
+            <button mat-menu-item>
+              <i class="pi pi-user"></i>
+              My Profile
+            </button>
+          </mat-menu>
+        </div>
+      </div>
+    </div>
   </mat-sidenav>
 
   <mat-sidenav-content>

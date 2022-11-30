@@ -2,14 +2,14 @@
   <h2 class="mt-20">Basic Details</h2>
 
   <div fxLayout="row wrap" fxLayoutAlign="space-between" class="mb-20">
-    <div fxFlex="48" class="nr-silver-border hand-cursor py-12 card-selection br-8" [ngClass]="{'selected' : !selectedClass[uploadAsEnum.Owner]}" fxLayout="row"
+    <div fxFlex="48" fxFlex.lt-sm="100" class="nr-silver-border hand-cursor py-12 card-selection br-8" [ngClass]="{'selected' : !selectedClass[uploadAsEnum.Owner]}" fxLayout="row"
          fxLayoutAlign="start center" (click)="setUploadAs(uploadAsEnum.Exchange)">
       <img class="mr-24 ml-8" src="/assets/images/user-icon.svg"/>
       <div>
         <p class="boulder-color mb-0">As Exchange</p>
       </div>
     </div>
-    <div fxFlex="48" class="nr-silver-border hand-cursor py-12 card-selection br-8" [ngClass]="{'selected' : selectedClass[uploadAsEnum.Owner]}" fxLayout="row"
+    <div fxFlex="48" fxFlex.lt-sm="100"  ngClass.lt-sm="mt-16" class="nr-silver-border hand-cursor py-12 card-selection br-8" [ngClass]="{'selected' : selectedClass[uploadAsEnum.Owner]}" fxLayout="row"
          fxLayoutAlign="start center" (click)="setUploadAs(uploadAsEnum.Owner)">
       <img class="mr-24 ml-8" src="/assets/images/user-icon.svg"/>
       <div>
@@ -20,14 +20,14 @@
 
   <p class="font-size-16">Property Type</p>
   <div fxLayout="row wrap" fxLayoutAlign="space-between" class="mb-20">
-    <div fxFlex="48" class="nr-silver-border hand-cursor py-12 card-selection br-8" [ngClass]="{'selected' : !selectedClass[occupancyTypeEnum.MultiFamilyHome]}"  fxLayout="row"
+    <div fxFlex="48" fxFlex.lt-sm="100" class="nr-silver-border hand-cursor py-12 card-selection br-8" [ngClass]="{'selected' : !selectedClass[occupancyTypeEnum.MultiFamilyHome]}"  fxLayout="row"
               fxLayoutAlign="start center" (click)="setOccupancyType(occupancyTypeEnum.SingleFamilyHome)">
       <img class="mr-24 ml-8" src="/assets/images/user-icon.svg"/>
       <div>
         <p class="boulder-color mb-0">Single Family Home</p>
       </div>
     </div>
-    <div fxFlex="48" class="nr-silver-border hand-cursor py-12 card-selection br-8" [ngClass]="{'selected' : selectedClass[occupancyTypeEnum.MultiFamilyHome]}" fxLayout="row"
+    <div fxFlex="48" fxFlex.lt-sm="100" ngClass.lt-sm="mt-16" class="nr-silver-border hand-cursor py-12 card-selection br-8" [ngClass]="{'selected' : selectedClass[occupancyTypeEnum.MultiFamilyHome]}" fxLayout="row"
               fxLayoutAlign="start center" (click)="setOccupancyType(occupancyTypeEnum.MultiFamilyHome)">
       <img class="mr-24 ml-8" src="/assets/images/user-icon.svg"/>
       <div>
