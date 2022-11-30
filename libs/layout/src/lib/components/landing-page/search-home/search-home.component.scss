@@ -1,9 +1,12 @@
-@import "apps/new-rentals/src/assets/styles/variables";
+@import "apps/new-rentals/src/assets/styles/mixins";
 .search-home {
   position: relative;
   height: 100vh;
   background-image: url(/assets/images/landing.svg);
   background-size: cover;
+  @include nr-media(xs) {
+    height: 62vh;
+  }
 }
 ::ng-deep.search-field {
   .mat-mdc-form-field-icon-suffix {
@@ -42,6 +45,9 @@
 }
 .right-lane {
   bottom: 30px;
+  @include nr-media(xs) {
+    bottom: 19px;
+  }
 }
 .moving-car {
   position: relative;

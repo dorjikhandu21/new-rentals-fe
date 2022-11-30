@@ -219,6 +219,9 @@ mat-icon {
     height: 4px;
     border-radius: 8px;
     margin: 0 26px;
+    @include nr-media(xs) {
+      margin: 0 !important;
+    }
   }
 }
 

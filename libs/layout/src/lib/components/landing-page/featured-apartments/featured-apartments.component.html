@@ -6,7 +6,7 @@
   </div>
 </div>
 <div fxLayoutAlign="center center">
-  <div fxFlex="70" class="pt-28 featured-apartment">
+  <div fxFlex="70" fxFlex.xs="88" class="pt-28 featured-apartment">
     <h1 class="nr-black-color text-center mb-28">Featured Apartments</h1>
     <div fxLayout="row wrap" fxLayoutAlign="space-between center">
       <div fxFlex="30" fxFlex.xs="100" class="card-container" *ngFor="let card of [1,2,3,4,5,6]">
@@ -20,16 +20,16 @@
             <div class="mx-16 mt-16">
               <p>Empty room in Babesa</p>
               <div fxLayout="row" class="boulder-color">
-                <mat-icon class="mr-8">location_on_outline</mat-icon>
-                <p>Babesa, Thimphu, Highway</p>
+                <i class="pi pi-map-marker s-20 mr-12"></i>
+                <p class="text-truncate">Babesa, Thimphu, Highway</p>
               </div>
-              <div fxLayout="row" class="boulder-color">
-                <mat-icon class="mr-8">account_tree_outline</mat-icon>
-                <p>3BHK, 2 Corridor</p>
+              <div fxLayout="row" class="boulder-color text-truncate">
+                <i class="pi pi-sitemap s-20 mr-12"></i>
+                <p>3BHK, 2 Corridor with installed elevator</p>
               </div>
               <div fxLayout="row" fxLayoutAlign="space-between center">
                 <button fxFlex="85" mat-button color="primary" class="light-bg" fxLayoutAlign="center center">
-                  <span class="font-size-12">Apply For Tenant dsvfasd</span>
+                  <span class="font-size-12">Apply For Tenant</span>
                   <span> <mat-icon class="s-24 ver-middle ml-12">navigate_next</mat-icon></span>
                 </button>
                 <mat-icon class="nr-white-fade-bg s-24 boulder-color py-8 pl-8 pr-12 br-4 hand-cursor ml-16">
@@ -42,7 +42,7 @@
       </div>
     </div>
     <div class="full-width" fxLayoutAlign="center center">
-      <button mat-button mat-stroked-button color="primary" class="primary-border mr-20">{{'Discover All'}}</button>
+      <button mat-button mat-stroked-button color="primary" class="primary-border">{{'Discover All'}}</button>
     </div>
   </div>
 </div>

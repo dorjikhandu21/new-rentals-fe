@@ -7,9 +7,9 @@
   </div>
 </div>
 <div class="talk-section my-40" fxLayoutAlign="center start">
-  <mat-card fxFlex="60" class="talk-section-container p-24">
-    <div fxLayout="row" fxLayoutAlign="space-between center" class="mb-28 mt-12">
-      <div fxFlex="49" fxLayoutAlign="end end">
+  <mat-card fxFlex="60" fxFlex.xs="89" class="talk-section-container p-24">
+    <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="mb-28 mt-12">
+      <div fxFlex="49" fxFlex.xs="100" fxLayoutAlign="end end" fxLayoutAlign.xs="center center">
         <div fxLayout="column" fxLayoutAlign="center center">
           <img class="sush-image" width="100%" src="/assets/images/sush.jpeg"/>
           <p class="primary-color text-center mt-20">Sushmita</p>
@@ -17,13 +17,13 @@
         </div>
 
       </div>
-      <div fxFlex="49">
-        <h1 class="primary-color">Let's Talk</h1>
-        <p class="boulder-color font-size-16">Just <span class="nr-black-color font-size-16"> fill in the form </span> and <br />we’ll <span class="nr-black-color font-size-16">schedule a meeting</span></p>
+      <div fxFlex="49" fxFlex.xs="100">
+        <h1 class="primary-color text-center">Let's Talk</h1>
+        <p class="boulder-color font-size-16 text-center">Just <span class="nr-black-color font-size-16"> fill in the form </span> and <br />we’ll <span class="nr-black-color font-size-16">schedule a meeting</span></p>
       </div>
     </div>
-    <div fxLayoutAlign="space-between">
-    <div fxFlex="49" fxLayout="column">
+    <div  fxLayout="row wrap" fxLayoutAlign="space-between">
+    <div fxFlex="49" fxFlex.xs="100" fxLayout="column">
       <mat-form-field appearance="outline">
         <mat-label>Your Name</mat-label>
         <input type="text" matInput>
@@ -43,7 +43,7 @@
       </mat-form-field>
       <button mat-flat-button mat-button color="primary">{{'Send Message'}}</button>
     </div>
-    <div fxFlex="49">
+    <div fxFlex="49" fxHide.xs>
       <img class="flat-image" width="100%" src="/assets/images/talk.svg"/>
     </div>
     </div>

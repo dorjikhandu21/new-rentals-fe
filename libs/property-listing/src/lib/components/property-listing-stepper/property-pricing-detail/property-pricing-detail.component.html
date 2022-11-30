@@ -4,11 +4,11 @@
     <mat-expansion-panel *ngFor="let unit of units.controls; let i=index;" class="mat-elevation-z0 nr-silver-border mb-20" >
       <mat-expansion-panel-header class="pr-12">
         <mat-panel-title class="py-20 pr-20">
-          <div fxLayout="row" fxLayoutAlign="space-between center" class="full-width">
-            <h3 class="mb-0">Single Comfortable Home</h3>
-            <div>
-            <i class="pi pi-trash p-8 edit-icons s-18 boulder-color hand-cursor " [hidden]="units.controls.length === 1" (click)="deleteUnit(i); $event.stopPropagation()"></i>
-            <i class="pi pi-copy p-8 edit-icons s-18 boulder-color hand-cursor " (click)="copyUnit(i); $event.stopPropagation()"></i>
+          <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="full-width">
+            <h3 class="mb-0 text-truncate">Single Comfortable Home</h3>
+            <div fxLayout="row">
+            <i class="pi pi-trash edit-icons boulder-color hand-cursor" ngClass.gt-xs="s-18 p-8" ngClass.xs="s-16 p-4" [hidden]="units.controls.length === 1" (click)="deleteUnit(i); $event.stopPropagation()"></i>
+            <i class="pi pi-copy  edit-icons boulder-color hand-cursor" ngClass.gt-xs="s-18 p-8" ngClass.xs="s-16 p-4" (click)="copyUnit(i); $event.stopPropagation()"></i>
             </div>
           </div>
         </mat-panel-title>
@@ -22,11 +22,11 @@
             <mat-label>Describe Your home</mat-label>
             <input matInput [formControl]="$any(unit.get('monthlyRent'))">
           </mat-form-field>
-<div fxLayoutAlign="space-between start" class="my-20">
-  <div fxFlex="60" fxLayout="column" >
-    <div fxFlex="100" fxLayoutAlign="start center" class="mb-12" *ngFor="let space of [{label:'No of Beds', value: 'nosOfBed'}, {label: 'No of  Baths', value: 'nosOfBath'}]">
-      <p class="mr-20 mb-0">{{space.label}}</p>
-      <mat-button-toggle-group aria-label="Font Style">
+<div fxLayout="row wrap" fxLayoutAlign="space-between start" class="my-20">
+  <div fxFlex="60" fxFlex.xs="100" fxLayout="column" >
+    <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="start center" class="mb-12" *ngFor="let space of [{label:'No of Bed Rooms', value: 'nosOfBed'}, {label: 'No of  Bath Rooms', value: 'nosOfBath'}]">
+      <p class="mr-20 mb-8 boulder-color">{{space.label}}</p>
+      <mat-button-toggle-group aria-label="Font Style" class="counter-btn mb-8">
         <mat-button-toggle (click)="minusSpacesCount($any(unit), space)">
           <mat-icon>remove_circle_outline</mat-icon>
         </mat-button-toggle>
@@ -38,7 +38,7 @@
     </div>
   </div>
 
-  <div fxFlex="35">
+  <div fxFlex="35" fxFlex.xs="100">
     <mat-form-field appearance="outline" fxFlex="90" class="16" data-cy="rent">
       <mat-label>Monthly Rent</mat-label>
       <input type="number" matInput [formControl]="$any(unit.get('monthlyRent'))">

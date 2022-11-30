@@ -108,7 +108,7 @@ mat-paginator {
 }
 
 .mat-drawer-content.mat-sidenav-content {
-  background-color: $mild-gray !important;
+  background-color: rgba($primary-color, 0.04) !important;
 }
 
 .chip-input-tag .mat-chip-list-wrapper .mat-chip {

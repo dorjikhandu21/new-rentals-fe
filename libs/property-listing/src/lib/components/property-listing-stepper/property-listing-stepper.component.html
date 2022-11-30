@@ -1,14 +1,18 @@
 <div class="m-24" fxLayoutAlign="center start" fxLayout="row wrap">
-  <div fxFlex="60" class="br-8 mr-20">
-    <mat-stepper #stepper class="p-32 br-8">
+  <div fxFlex="60" fxFlex.lt-md="97" fxFlex.lt-lg="70" class="br-8">
+    <ng-container [ngSwitch]="stepperOrientation | async">
+      <div *ngSwitchCase="'horizontal'"></div>
+      <div *ngSwitchCase="'vertical'"></div>
+    </ng-container>
+    <mat-stepper [orientation]="(stepperOrientation | async)!" #stepper class="br-8" ngClass.gt-sm="p-32">
       <mat-step [stepControl]="basicDetail" errorMessage="Fill up the required fields">
         <form [formGroup]="basicDetail">
           <ng-template matStepLabel>Basic Details</ng-template>
           <new-rentals-property-basic-details [basicDetail]="basicDetail"></new-rentals-property-basic-details>
-          <div fxLayout="row" fxLayoutAlign="space-between center" class="py-12">
-            <button mat-button mat-stroked-button color="primary" class="primary-border mr-20">{{'Cancel'}}</button>
-            <div>
-              <button mat-flat-button mat-button color="primary" matStepperNext>{{'Next'}}</button>
+          <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="py-12">
+            <button mat-button mat-stroked-button color="primary" ngClass.xs="full-width mb-12" class="primary-border">{{'Cancel'}}</button>
+            <div ngClass.xs="full-width">
+              <button mat-flat-button mat-button color="primary" ngClass.xs="full-width" matStepperNext>{{'Next'}}</button>
             </div>
           </div>
         </form>
@@ -17,12 +21,12 @@
         <form [formGroup]="geoInformation">
           <ng-template matStepLabel>Location</ng-template>
           <new-rentals-property-location [geoInformation]="geoInformation"></new-rentals-property-location>
-          <div fxLayout="row" fxLayoutAlign="space-between center" class="py-12">
-            <button mat-button mat-stroked-button color="primary" class="primary-border mr-20">{{'Cancel'}}</button>
-            <div>
-              <button mat-button mat-stroked-button color="primary" matStepperPrevious class="primary-border mr-20">{{'Previous'}}</button>
+          <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="py-12">
+            <button mat-button mat-stroked-button color="primary" ngClass.xs="full-width mb-12" class="primary-border">{{'Cancel'}}</button>
+            <div ngClass.xs="full-width">
+              <button mat-button mat-stroked-button color="primary" matStepperPrevious ngClass.xs="full-width mb-12" ngClass.gt-xs="mr-20" class="primary-border">{{'Previous'}}</button>
 
-              <button mat-flat-button mat-button color="primary" matStepperNext>{{'Next'}}</button>
+              <button mat-flat-button mat-button color="primary" ngClass.xs="full-width" matStepperNext>{{'Next'}}</button>
             </div>
           </div>
         </form>
@@ -30,11 +34,11 @@
       <mat-step [stepControl]="units" errorMessage="Unit details are required.">
         <ng-template matStepLabel>Unit and Pricing Details</ng-template>
         <new-rentals-property-pricing-detail [units]="units"></new-rentals-property-pricing-detail>
-        <div fxLayout="row" fxLayoutAlign="space-between center" class="py-12">
-          <button mat-button mat-stroked-button color="primary" class="primary-border mr-20">{{'Cancel'}}</button>
-          <div>
-            <button mat-button mat-stroked-button color="primary" matStepperPrevious class="primary-border mr-20">{{'Previous'}}</button>
-            <button [disabled]="basicDetail.invalid || geoInformation.invalid || units.invalid" mat-flat-button mat-button color="primary" (click)="createProperty()">{{'Create'}}</button>
+        <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="py-12">
+          <button mat-button mat-stroked-button color="primary" ngClass.xs="full-width mb-12" class="primary-border ">{{'Cancel'}}</button>
+          <div ngClass.xs="full-width">
+            <button mat-button mat-stroked-button color="primary" matStepperPrevious ngClass.xs="full-width mb-12" ngClass.gt-xs="mr-20" class="primary-border">{{'Previous'}}</button>
+            <button [disabled]="basicDetail.invalid || geoInformation.invalid || units.invalid" ngClass.xs="full-width" mat-flat-button mat-button color="primary" (click)="createProperty()">{{'Create'}}</button>
           </div>
         </div>
       </mat-step>
