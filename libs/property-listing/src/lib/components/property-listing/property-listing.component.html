@@ -22,7 +22,7 @@
       </mat-select>
     </mat-form-field>
   </div>
-  <button mat-flat-button mat-button color="primary" fxFlex="16" class="mt-8 mb-20" (click)="routeToPropertyCreation()">
+  <button mat-flat-button mat-button color="primary" fxFlex="16" class="mt-8 mb-20" (click)="routeToPropertyCreation()" *ngIf="currentRole === 3">
     <mat-icon>add</mat-icon>
     {{'Add Property'}}</button>
 </div>

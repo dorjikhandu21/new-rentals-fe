@@ -5,8 +5,7 @@ import {PropertyFacadeService} from "../../services/property-facade.service";
 import {PropertyStoreEnum} from "../../models/property.store";
 import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
 import { switchMap, tap} from "rxjs";
-import {PropertiesFilterAttributes, Property, Unit} from "@new-rentals/shared";
-import {PropertyBlService} from "../../services/property-bl.service";
+import {CredentialsService, PropertiesFilterAttributes, Property, Unit} from "@new-rentals/shared";
 import {PageEvent} from "@angular/material/paginator";
 
 @UntilDestroy()
@@ -24,6 +23,8 @@ import {PageEvent} from "@angular/material/paginator";
 
 
   export class PropertyListingComponent implements OnInit {
+  // @ts-ignore
+  currentRole?: number = this.credentialsService?.currentUser()?.['role_id'];
   properties: Property[] = [];
   propertyFilters: PropertiesFilterAttributes = {
     limitPerPage: 5,
@@ -47,7 +48,7 @@ import {PageEvent} from "@angular/material/paginator";
     disableDoubleClickZoom: true,
     maxZoom: 15,
   };
-  constructor(private router: Router, private route: ActivatedRoute, private propertyFacadeService: PropertyFacadeService, private propertyBlService: PropertyBlService) {}
+  constructor(private router: Router, private route: ActivatedRoute, private propertyFacadeService: PropertyFacadeService, private credentialsService: CredentialsService) {}
 
   ngOnInit(): void {
     this.center = {lat: 27.4716, lng: 89.6386};
