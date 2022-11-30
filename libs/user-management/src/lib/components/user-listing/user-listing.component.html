@@ -116,10 +116,10 @@
     </tr>
   </table>
   <hr class="full-width">
-  <mat-paginator [length]="100"
-                 [pageSize]="10"
-                 [pageSizeOptions]="[5, 10, 25, 100]"
-                 aria-label="Select page">
+  <mat-paginator [length]="50"
+                 [pageSize]="5"
+                 [pageSizeOptions]="[5, 10, 20, 50]"
+                 aria-label="Select page" (page)="updateFilters($event)">
   </mat-paginator>
 </div>
 <new-rentals-loader *ngIf="loading"></new-rentals-loader>

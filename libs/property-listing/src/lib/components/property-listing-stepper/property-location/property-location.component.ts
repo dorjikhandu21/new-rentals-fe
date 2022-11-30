@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {FormGroup} from "@angular/forms";
 import {Address} from "ngx-google-places-autocomplete/objects/address";
 import {Loader} from "@googlemaps/js-api-loader";
+import {geocodeLatLng} from "@new-rentals/shared";
 
 @Component({
   selector: 'new-rentals-property-location',
@@ -30,7 +31,7 @@ export class PropertyLocationComponent implements OnInit {
 
   loadMap(): void {
     const loader: Loader = new Loader({
-      apiKey: 'AIzaSyB_EQUGViEUjZc-T0lWb3RL7POB0_zpJ14',
+      apiKey: 'AIzaSyC9hGqlTtL1EtQcOys0mltVUvp1wrm6uZI',
     })
     loader.load().then(() => {
       this.map = new google.maps.Map(document.getElementById('map') as HTMLElement, this.options);
@@ -74,7 +75,10 @@ export class PropertyLocationComponent implements OnInit {
     this.markers = [];
   }
 
-  setGeoInfo(): void {
-    this.geoInformation?.setValue(this.position);
+  async setGeoInfo(): Promise<void> {
+    await geocodeLatLng(this.position).then((address) => {
+      this.geoInformation?.setValue({...this.position, neighbourhoodDetails: address });
+      console.log(this.geoInformation?.value);
+    }).catch((err) => console.log('Address could not be found', err));
   }
 }

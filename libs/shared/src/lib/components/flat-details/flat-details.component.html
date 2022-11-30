@@ -8,7 +8,7 @@
       <div class="boulder-color" fxLayout="row" fxFlex="90" fxLayoutAlign="space-between">
         <p class="">
           <i class="pi pi-map-marker s-20 mr-4"></i>
-          {{ unit && unit['address']}}</p>
+          {{ unit?.property?.neighbourhoodDetails}}</p>
         <hr>
         <p class="mt-4"><span class="nr-black-color">{{unit && unit.nosOfBed}}</span> Bed Rooms</p>
         <hr/>
@@ -83,14 +83,14 @@
           <i class="pi pi-calendar s-20 mr-12 boulder-color mb-8"></i>
           <div>
             <p class="font-size-12 boulder-color mb-4">Move In Date</p>
-            <p>Babesa, Thimphu, Bhutan</p>
+            <p> January 3rd, 2023</p>
           </div>
         </div>
         <div fxLayoutAlign="start center">
           <i class="pi pi-mobile s-20 mr-12 boulder-color mb-8"></i>
           <div>
             <p class="font-size-12 boulder-color mb-4">Contact Number</p>
-            <p>Babesa, Thimphu, Bhutan</p>
+            <p>+975-17630689</p>
           </div>
         </div>
       </div>
@@ -98,44 +98,36 @@
         <img class="user-profile my-8 mr-8" src="../assets/images/user.svg"/>
         <div>
           <p class="font-size-12 boulder-color mb-4">Listed By</p>
-          <p>Thinley Wangchuk</p>
+          <p>{{unit?.property?.owner?.email}}</p>
         </div>
       </div>
       <div>
-        <button mat-flat-button mat-button color="primary" class="full-width mt-24"
+        <button mat-flat-button mat-button color="primary" class="full-width mt-24" *ngIf="unit?.currentUserTenant?.length === 0"
                 (click)="openApplyTenantModal()">{{'Apply For Tenant'}}</button>
       </div>
       <button mat-button mat-stroked-button color="primary"
               class="primary-border mt-16 full-width">{{'Schedule a Tour'}}</button>
       <p class="warn-color mt-20 nr-white-fade-bg br-4 p-8" fxLayoutAlign="start center"><i
-        class="pi pi-info-circle s-20 mr-4"> </i> There are 5 applications ahead of you.
-      </p>
+        class="pi pi-info-circle s-20 mr-4"> </i> There are {{unit?.nosOfApplicants}} applications ahead of you.</p>
     </div>
-    <div class="nr-white-bg br-8 p-20 mt-20">
+    <div class="nr-white-bg br-8 p-20 mt-20" *ngIf="unit?.currentUserTenant?.length > 0">
       <p class="font-size-20">Application Status Tracker</p>
       <mat-stepper orientation="vertical" [disableRipple]="true" [linear]="true" #stepper>
-        <mat-step>
+        <mat-step [completed]="stepperConfig['received'].includes(unit?.currentUserTenant[0]?.state)" [editable]="false" [state]="'done'">
           <ng-template matStepLabel>Application Sent Successfully!</ng-template>
         </mat-step>
-        <mat-step>
+        <mat-step [completed]="stepperConfig['received'].includes(unit?.currentUserTenant[0]?.state)" [editable]="false" [state]="stepperConfig['received'].includes(unit?.currentUserTenant[0]?.state) ? 'done' : 'number'">
           <ng-template matStepLabel>Received</ng-template>
         </mat-step>
-        <mat-step>
-          <ng-template matStepLabel>Interview</ng-template>
+        <mat-step [completed]="stepperConfig['interviewing'].includes(unit?.currentUserTenant[0]?.state)" [editable]="false" [state]="stepperConfig['interviewing'].includes(unit?.currentUserTenant[0]?.state) ?  'done' : 'number'">
+          <ng-template matStepLabel>Interviewing</ng-template>
         </mat-step>
-        <mat-step>
-          <ng-template matStepLabel>Result</ng-template>
+        <mat-step *ngIf="!stepperConfig['declined'].includes(unit?.currentUserTenant[0]?.state)" [completed]="stepperConfig['accepted'].includes(unit?.currentUserTenant[0]?.state)" [editable]="false" [state]=" stepperConfig['accepted'].includes(unit?.currentUserTenant[0]?.state) ? 'done' : 'number'">
+          <ng-template matStepLabel>Accepted</ng-template>
         </mat-step>
-
-        <ng-template matStepperIcon="edit">
-          <mat-icon class="s-20">edit</mat-icon>
-        </ng-template>
-        <ng-template matStepperIcon="access_time">
-          <mat-icon class="s-20">access_time</mat-icon>
-        </ng-template>
-        <ng-template matStepperIcon="done">
-          <mat-icon class="s-20">done</mat-icon>
-        </ng-template>
+        <mat-step *ngIf="stepperConfig['declined'].includes(unit?.currentUserTenant[0]?.state)" [editable]="false" [state]="'error'">
+          <ng-template matStepLabel>Declined</ng-template>
+        </mat-step>
       </mat-stepper>
     </div>
   </div>

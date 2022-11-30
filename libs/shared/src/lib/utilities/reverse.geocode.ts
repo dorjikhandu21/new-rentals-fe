@@ -1,14 +1,14 @@
-import {Unit} from "../models/graphql";
+import LatLngLiteral = google.maps.LatLngLiteral;
 
-export function geocodeLatLng(unit: Unit ): void {
+export function geocodeLatLng(latLng: LatLngLiteral ): Promise<string> {
   const geocoder: google.maps.Geocoder = new google.maps.Geocoder();
   // @ts-ignore
-  geocoder.geocode({ location: {lat: Number(unit.property.lat), lng: Number(unit.property.lng)} })
+  return geocoder.geocode({ location: {lat: Number(latLng.lat), lng: Number(latLng.lng)} })
     // @ts-ignore
     .then((response) => {
       if (response.results[0]) {
         // @ts-ignore
-        unit['address'] = response.results[0].formatted_address;
+        return response.results[0].formatted_address;
       } else {
         console.log("No results found");
       }

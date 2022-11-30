@@ -3,11 +3,11 @@ import {Apollo, Mutation, Query} from "apollo-angular";
 import {map, Observable, tap} from "rxjs";
 import {
   CreatePropertyPayload,
-  NotificationService, Property,
+  NotificationService, PropertiesFilterAttributes, Property,
   PropertyAttributes, Unit, UnitFilterAttributes
 } from "@new-rentals/shared";
 import {CREATE_PROPERTY} from "../gql/mutations";
-import {PROPERTY_QUERY, UNITS_QUERY} from "@new-rentals/public-listing";
+import {PROPERTIES_QUERY, PROPERTY_QUERY, UNITS_QUERY} from "@new-rentals/public-listing";
 
 @Injectable({
   providedIn: 'root'
@@ -16,11 +16,7 @@ export class PropertyApiService {
 
   constructor(private apollo: Apollo, private notificationService: NotificationService) { }
 
-  // ERROR Error: Uncaught (in promise): Error: To use File upload you need to pass "extractFiles" function from "extract-files" library to HttpLink's options
-  // Error: To use File upload you need to pass "extractFiles" function from "extract-files" library to HttpLink's options
-
   createProperty(attributes: PropertyAttributes): Observable<CreatePropertyPayload> {
-    debugger
     return this.apollo.mutate<Mutation>({
       mutation: CREATE_PROPERTY,
       variables: {input: {attributes}},
@@ -43,6 +39,17 @@ export class PropertyApiService {
     }).pipe(map((response) => {
         // @ts-ignore
         return response.data['units']
+      }))
+  }
+
+  getProperties(attributes: PropertiesFilterAttributes): Observable<Property[]> {
+    return this.apollo.query<Query>({
+      query: PROPERTIES_QUERY,
+      variables: {attributes},
+      fetchPolicy: "no-cache"
+    }).pipe(map((response) => {
+        // @ts-ignore
+        return response.data['properties']
       }))
   }
 

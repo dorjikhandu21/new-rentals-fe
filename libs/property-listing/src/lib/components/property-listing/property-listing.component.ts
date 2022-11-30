@@ -4,9 +4,10 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {PropertyFacadeService} from "../../services/property-facade.service";
 import {PropertyStoreEnum} from "../../models/property.store";
 import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
-import {finalize, switchMap, tap} from "rxjs";
-import {Unit, UnitFilterAttributes} from "@new-rentals/shared";
+import { switchMap, tap} from "rxjs";
+import {PropertiesFilterAttributes, Property, Unit} from "@new-rentals/shared";
 import {PropertyBlService} from "../../services/property-bl.service";
+import {PageEvent} from "@angular/material/paginator";
 
 @UntilDestroy()
 @Component({
@@ -21,9 +22,13 @@ import {PropertyBlService} from "../../services/property-bl.service";
   ],
 })
 
-export class PropertyListingComponent implements OnInit {
-  units: Unit[] = [];
-  uniqueUnits: Unit[] = [];
+
+  export class PropertyListingComponent implements OnInit {
+  properties: Property[] = [];
+  propertyFilters: PropertiesFilterAttributes = {
+    limitPerPage: 5,
+    offsetPage: 0
+  }
   // eslint-disable-next-line @typescript-eslint/typedef
   loading = true;
   filters: any[] = [
@@ -32,7 +37,6 @@ export class PropertyListingComponent implements OnInit {
     {name: 'Move In Date', icon: 'calendar_month'},
     {name: 'No. of beds', icon: 'account_tree'},
     {name: 'More Filters', icon: 'tune'}
-
   ];
 
   center!: google.maps.LatLngLiteral;
@@ -53,28 +57,36 @@ export class PropertyListingComponent implements OnInit {
   }
 
   updatePropertyFilters(): void {
-    this.propertyFacadeService.updateSpecificState({}, PropertyStoreEnum.PROPERTY_FILTERS);
+    this.propertyFacadeService.updateSpecificState(this.propertyFilters, PropertyStoreEnum.PROPERTY_FILTERS);
   }
 
   listenToPropertyFilters(): void {
-    this.propertyFacadeService.specificStateChange<UnitFilterAttributes>(PropertyStoreEnum.PROPERTY_FILTERS).pipe(untilDestroyed(this),switchMap((filters) => {
-      return this.propertyFacadeService.getUnits(filters);
+    this.propertyFacadeService.specificStateChange<PropertiesFilterAttributes>(PropertyStoreEnum.PROPERTY_FILTERS).pipe(untilDestroyed(this),switchMap((filters) => {
+      return this.propertyFacadeService.getProperties(filters);
     })).subscribe(() => {
       this.loading = false;
     });
   }
 
   listenToUnitsChange(): void {
-    this.propertyFacadeService.specificStateChange<Unit[]>(PropertyStoreEnum.UNITS).pipe(untilDestroyed(this), tap((units) => {
-      this.units = units;
-      this.uniqueUnits = this.propertyBlService.getFormattedProperties(units);
+    this.propertyFacadeService.specificStateChange<Property[]>(PropertyStoreEnum.PROPERTIES).pipe(untilDestroyed(this), tap((properties) => {
+      this.properties = properties;
     })).subscribe();
   }
 
   routeToPropertyCreation(): void {
     this.router.navigate(['add'], {relativeTo: this.route});
   }
-  routeToPropertyDetail(unit: Unit): void {
-    void  this.router.navigate([`${unit.property.id}`], {relativeTo: this.route});
+
+  routeToPropertyDetail(property: Property): void {
+    void  this.router.navigate([`${property.id}`], {relativeTo: this.route});
+  }
+
+  updateFilter(event: PageEvent): void {
+    this.propertyFilters = {...this.propertyFilters,
+      limitPerPage: event.pageSize,
+      offsetPage: event.pageIndex === 0 ? 0 : event.pageSize
+    }
+    this.propertyFacadeService.updateSpecificState(this.propertyFilters, PropertyStoreEnum.PROPERTY_FILTERS);
   }
 }

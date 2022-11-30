@@ -4,12 +4,13 @@ import {SelectionModel} from "@angular/cdk/collections";
 import {InviteTenantModalComponent} from "../invite-tenant-modal/invite-tenant-modal.component";
 import {MatDialog} from "@angular/material/dialog";
 import {UserFacadeService} from "../../services/user-facade.service";
-import {User} from "@new-rentals/shared";
+import {User, UserFilterAttributes} from "@new-rentals/shared";
 import {UserStoreEnum} from "../../models/user.store.state";
 import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
-import {finalize, tap} from "rxjs";
+import {finalize, switchMap, tap} from "rxjs";
 import {UserTableData} from "../../models/user.model";
 import {ActivatedRoute, Router} from "@angular/router";
+import {PageEvent} from "@angular/material/paginator";
 export interface PeriodicElement {
   name: string;
   email: string;
@@ -33,6 +34,10 @@ export class UserListingComponent implements OnInit {
   displayedColumns: string[] = ['select', 'name', 'email', 'phone', 'building_name', 'apartment', 'status', 'actions'];
   dataSource = new MatTableDataSource<UserTableData>([]);
   selection = new SelectionModel<UserTableData>(true, []);
+  userFilters: UserFilterAttributes = {
+    limitPerPage: 5,
+    offsetPage: 0
+  }
   constructor(
     public matDialog: MatDialog,
     private userFacadeService: UserFacadeService,
@@ -40,14 +45,13 @@ export class UserListingComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getUsers();
+    this.userFacadeService.updateSpecificState(this.userFilters, UserStoreEnum.USER_FILTERS);
+    this.listenToUserFilters();
     this.listenToUsersState();
   }
 
-
-  getUsers(): void {
-    this.loading = true;
-    this.userFacadeService.getUsers().pipe(finalize(() => this.loading = false)).subscribe();
+  listenToUserFilters(): void {
+    this.userFacadeService.specificStateChange<UserFilterAttributes>(UserStoreEnum.USER_FILTERS).pipe(untilDestroyed(this), switchMap((filters) => this.userFacadeService.getUsers(filters))).subscribe()
   }
 
   listenToUsersState(): void {
@@ -57,14 +61,14 @@ export class UserListingComponent implements OnInit {
     })).subscribe();
   }
 
-  isAllSelected() {
+  isAllSelected(): boolean {
     const numSelected = this.selection.selected.length;
     const numRows = this.dataSource.data.length;
     return numSelected === numRows;
   }
 
   /** Selects all rows if they are not all selected; otherwise clear selection. */
-  toggleAllRows() {
+  toggleAllRows(): void {
     if (this.isAllSelected()) {
       this.selection.clear();
       return;
@@ -90,5 +94,13 @@ export class UserListingComponent implements OnInit {
 
   routeToTenantDetail(): void {
     this.router.navigate(['detail'], {relativeTo: this.route});
+  }
+
+  updateFilters(event: PageEvent): void {
+    this.userFilters = {...this.userFilters,
+      limitPerPage: event.pageSize,
+      offsetPage: event.pageIndex === 0 ? 0 : event.pageSize
+    }
+    this.userFacadeService.updateSpecificState(this.userFilters, UserStoreEnum.USER_FILTERS);
   }
 }

@@ -740,6 +740,7 @@ export enum ThemeColourEnum {
 export type Unit = {
   __typename?: 'Unit';
   attachments: Array<Attachment>;
+  currentUserTenant?: Maybe<Array<Tenant>>;
   id: Scalars['ID'];
   monthlyRent: Scalars['Int'];
   normalAmenities: Array<Amenity>;

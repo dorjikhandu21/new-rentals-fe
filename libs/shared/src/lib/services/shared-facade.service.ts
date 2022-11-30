@@ -25,7 +25,6 @@ export class SharedFacadeService extends BaseFacadeService<SharedStateService, S
 
   getUnitDetails(id: string): Observable<Unit> {
     return this.sharedApiService.getUnitDetails(id).pipe(tap( (unit) => {
-      // geocodeLatLng(unit);
       this.updateSpecificState(unit, SharedStoreStateEnum.UNIT);
     }));
   }

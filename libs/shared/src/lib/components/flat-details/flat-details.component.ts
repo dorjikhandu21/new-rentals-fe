@@ -3,24 +3,37 @@ import { Gallery, GalleryItem, ImageItem } from 'ng-gallery';
 import {SharedFacadeService} from "../../services/shared-facade.service";
 import {SharedStoreStateEnum} from "../../models/shared.store";
 import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
-import {tap} from "rxjs";
+import {switchMap, tap} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
 import {Tenant, Unit} from "../../models/graphql";
 import {Loader} from "@googlemaps/js-api-loader";
 import {MatDialog} from "@angular/material/dialog";
 import {ApplyTenantModalComponent} from "../apply-tenant-modal/apply-tenant-modal.component";
+import {STEPPER_GLOBAL_OPTIONS} from "@angular/cdk/stepper";
 
 @UntilDestroy()
 @Component({
   selector: 'new-rentals-flat-details',
   templateUrl: './flat-details.component.html',
   styleUrls: ['./flat-details.component.scss'],
+  providers: [
+    {
+      provide: STEPPER_GLOBAL_OPTIONS,
+      useValue: {displayDefaultIndicatorType: false},
+    },
+  ]
 })
 export class FlatDetailsComponent implements OnInit {
   items?: GalleryItem[];
   imageData = data;
   tenant?: Tenant;
   unit?: Unit;
+  stepperConfig: any = {
+    received: ['received', 'interviewing', 'accepted', 'declined'],
+    interviewing: ['interviewing', 'accepted', 'declined'],
+    accepted: [ 'accepted'],
+    declined: [ 'declined']
+  }
   private map?: google.maps.Map;
   constructor(private activatedRoute: ActivatedRoute, private matDialog: MatDialog, private gallery: Gallery, private sharedFacadeService: SharedFacadeService) {}
 
@@ -44,7 +57,7 @@ export class FlatDetailsComponent implements OnInit {
 
   loadMap(): void {
     const loader: Loader = new Loader({
-      apiKey: 'AIzaSyB_EQUGViEUjZc-T0lWb3RL7POB0_zpJ14',
+      apiKey: 'AIzaSyC9hGqlTtL1EtQcOys0mltVUvp1wrm6uZI',
     })
     loader.load().then(() => {
       const position: { lat: number; lng: number; } = {lat: Number(this.unit?.property.lat), lng: Number(this.unit?.property.lng)};
@@ -65,9 +78,10 @@ export class FlatDetailsComponent implements OnInit {
       data: {unit: this.unit}
     }).afterClosed().pipe(untilDestroyed(this),tap((tenant: Tenant) => {
       this.tenant = tenant;
-    }));
+    }), switchMap(() => this.sharedFacadeService.getUnitDetails(this.activatedRoute.snapshot.params['id'])));
   }
 }
+
 const data = [
   {
     srcUrl: 'https://preview.ibb.co/jrsA6R/img12.jpg',
