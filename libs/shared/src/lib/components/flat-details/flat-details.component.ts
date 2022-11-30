@@ -3,7 +3,7 @@ import { Gallery, GalleryItem, ImageItem } from 'ng-gallery';
 import {SharedFacadeService} from "../../services/shared-facade.service";
 import {SharedStoreStateEnum} from "../../models/shared.store";
 import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
-import {tap} from "rxjs";
+import {switchMap, tap} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
 import {Tenant, Unit} from "../../models/graphql";
 import {Loader} from "@googlemaps/js-api-loader";
@@ -78,9 +78,10 @@ export class FlatDetailsComponent implements OnInit {
       data: {unit: this.unit}
     }).afterClosed().pipe(untilDestroyed(this),tap((tenant: Tenant) => {
       this.tenant = tenant;
-    }));
+    }), switchMap(() => this.sharedFacadeService.getUnitDetails(this.activatedRoute.snapshot.params['id'])));
   }
 }
+
 const data = [
   {
     srcUrl: 'https://preview.ibb.co/jrsA6R/img12.jpg',

@@ -30,6 +30,7 @@ export const UNIT_QUERY: TypedDocumentNode = gql`
             fullName
           }
         }
+        neighbourhoodDetails
       }
       id
       monthlyRent

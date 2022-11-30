@@ -469,3 +469,149 @@ export const PROPERTY_QUERY: TypedDocumentNode = gql`
     }
   }
 `
+
+export const PROPERTIES_QUERY: TypedDocumentNode = gql`
+  query properties ($attributes: PropertiesFilterAttributes) {
+    properties (attributes: $attributes) {
+      allOccupied
+      attachments {
+        attachableId
+        attachableType
+        category
+        fileContentType
+        fileName
+        fileSize
+        id
+        url
+        user {
+          email
+          enabled
+          id
+          profile {
+            fullName
+            gender
+            id
+            phone
+          }
+          role {
+            id
+            roleName
+          }
+          status
+          subscriptionPlan {
+            id
+            name
+          }
+        }
+        userId
+      }
+      id
+      lat
+      lng
+      neighbourhoodDetails
+      normalAmenities {
+        amenitableId
+        amenitableType
+        atDetails
+        atType
+        id
+        satDetails
+        satType
+      }
+      occupancyType
+      owner {
+        email
+        enabled
+        id
+        profile {
+          fullName
+          gender
+          id
+          phone
+        }
+        profilePic {
+          id
+          url
+          userId
+        }
+        role {
+          id
+          roleName
+        }
+        status
+        subscriptionPlan {
+          id
+          name
+        }
+      }
+      propertyDescription
+      propertyName
+      propertyType
+      specialAmenities {
+        atDetails
+        atType
+        id
+        satDetails
+        satType
+      }
+      units {
+        attachments {
+          attachableId
+          attachableType
+          category
+          fileContentType
+          fileName
+          fileSize
+          id
+          url
+          user {
+            email
+            enabled
+            id
+            profile {
+              fullName
+              gender
+              id
+              phone
+            }
+            profilePic {
+              id
+              url
+              userId
+            }
+            role {
+              id
+              roleName
+            }
+            status
+            subscriptionPlan {
+              id
+              name
+            }
+          }
+          userId
+        }
+        id
+        monthlyRent
+        normalAmenities {
+          amenitableId
+          amenitableType
+          atDetails
+          atType
+          id
+          satDetails
+          satType
+        }
+        nosOfApplicants
+        nosOfBath
+        nosOfBed
+        occupied
+        propertyId
+        unitDescription
+        unitNumber
+      }
+      unitsCount
+      uploadAs
+    }
+  }
+`

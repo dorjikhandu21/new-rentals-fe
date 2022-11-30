@@ -28,30 +28,30 @@
 </div>
 <div fxLayout="column" fxLayoutAlign="space-between">
   <div class="mx-24" fxLayout="row wrap" fxLayoutGap="20px">
-    <div *ngFor="let unit of uniqueUnits" class="property-card hand-cursor br-8 nr-white-bg nr-silver-border mb-24"
-         fxFlex="23" (click)="routeToPropertyDetail(unit)">
+    <div *ngFor="let property of properties" class="property-card hand-cursor br-8 nr-white-bg nr-silver-border mb-24"
+         fxFlex="23" (click)="routeToPropertyDetail(property)">
       <div class="image-container">
         <!--      <div class="label">-->
         <!--        <span class="label__text nr-white-color label-green-bg mr-12">Nu.15000/-</span>-->
         <!--        <span class="label__text nr-white-color primary-bg">Nu.15000/-</span>-->
         <!--      </div>-->
-        <img mat-card-image class="image" src="../../../../../../../assets/images/flat.svg"
+        <img mat-card-image class="image" [src]="property.attachments[0]?.url ? ('https://newrentals.tk' + property.attachments[0]?.url) : '../../../../../../../assets/images/flat.svg'"
              alt="Photo of a Shiba Inu">
       </div>
       <div class="m-16">
-        <p>{{unit.property.propertyName}}</p>
+        <p>{{property.propertyName}}</p>
         <div fxLayout="row" class="boulder-color">
           <i class="pi pi-map-marker s-20 mr-12"></i>
-          <p class="text-truncate">{{unit['address']}}</p>
+          <p class="text-truncate">{{property?.neighbourhoodDetails}}</p>
         </div>
         <div fxLayout="row" class="boulder-color">
           <i class="pi pi-sitemap s-20 mr-12"></i>
-          <p>{{unit.property.unitsCount}} {{unit.property.unitsCount > 1 ? 'Flats' : 'Flat'}}, with installed elevator</p>
+          <p>{{property.unitsCount}} {{property.unitsCount > 1 ? 'Flats' : 'Flat'}}, with installed elevator</p>
         </div>
       </div>
     </div>
   </div>
-  <div fxLayoutAlign="center center" class="full-width background-none" *ngIf="uniqueUnits.length">
+  <div fxLayoutAlign="center center" class="full-width background-none" *ngIf="properties.length">
     <mat-paginator [length]="100"
                    [pageSize]="10"
                    [pageSizeOptions]="[5, 10, 25, 100]"
@@ -61,5 +61,5 @@
 </div>
 
 <new-rentals-loader *ngIf="loading"></new-rentals-loader>
-<new-rentals-empty-page *ngIf="!loading && !uniqueUnits.length"></new-rentals-empty-page>
+<new-rentals-empty-page *ngIf="!loading && !properties.length"></new-rentals-empty-page>
 

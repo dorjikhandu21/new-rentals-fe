@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
-import {BaseFacadeService, PropertyAttributes, UnitFilterAttributes} from "@new-rentals/shared";
+import {
+  BaseFacadeService,
+  PropertiesFilterAttributes,
+  PropertyAttributes,
+  UnitFilterAttributes
+} from "@new-rentals/shared";
 import {PropertyStateService} from "./property-state.service";
 import {PropertyStore, PropertyStoreEnum} from "../models/property.store";
 import {mapTo, Observable, tap} from "rxjs";
@@ -23,6 +28,12 @@ export class PropertyFacadeService extends BaseFacadeService<PropertyStateServic
   getUnits(filters: UnitFilterAttributes): Observable<boolean> {
     return this.propertyApiService.getUnits(filters).pipe(tap((units) => {
       this.updateSpecificState(units, PropertyStoreEnum.UNITS)
+    }), mapTo(true))
+  }
+
+  getProperties(filters: PropertiesFilterAttributes): Observable<boolean> {
+    return this.propertyApiService.getProperties(filters).pipe(tap((properties) => {
+      this.updateSpecificState(properties, PropertyStoreEnum.PROPERTIES)
     }), mapTo(true))
   }
 

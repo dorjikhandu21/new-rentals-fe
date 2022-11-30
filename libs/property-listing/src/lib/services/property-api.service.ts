@@ -3,11 +3,11 @@ import {Apollo, Mutation, Query} from "apollo-angular";
 import {map, Observable, tap} from "rxjs";
 import {
   CreatePropertyPayload,
-  NotificationService, Property,
+  NotificationService, PropertiesFilterAttributes, Property,
   PropertyAttributes, Unit, UnitFilterAttributes
 } from "@new-rentals/shared";
 import {CREATE_PROPERTY} from "../gql/mutations";
-import {PROPERTY_QUERY, UNITS_QUERY} from "@new-rentals/public-listing";
+import {PROPERTIES_QUERY, PROPERTY_QUERY, UNITS_QUERY} from "@new-rentals/public-listing";
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +43,17 @@ export class PropertyApiService {
     }).pipe(map((response) => {
         // @ts-ignore
         return response.data['units']
+      }))
+  }
+
+  getProperties(attributes: PropertiesFilterAttributes): Observable<Property[]> {
+    return this.apollo.query<Query>({
+      query: PROPERTIES_QUERY,
+      variables: {attributes},
+      fetchPolicy: "no-cache"
+    }).pipe(map((response) => {
+        // @ts-ignore
+        return response.data['properties']
       }))
   }
 
