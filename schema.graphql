@@ -246,6 +246,7 @@ type Tenant {
 
 type Unit {
   attachments: [Attachment!]!
+  currentUserTenant: [Tenant!]
   id: ID!
   monthlyRent: Int!
   normalAmenities: [Amenity!]!

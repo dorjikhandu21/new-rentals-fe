@@ -4,6 +4,11 @@ import {gql} from "apollo-angular";
 export const UNIT_QUERY: TypedDocumentNode = gql`
   query unit ($id: ID) {
     unit (id: $id) {
+      currentUserTenant {
+        id
+        state
+        userId
+      }
       attachments {
         attachableId
         attachableType
@@ -19,6 +24,12 @@ export const UNIT_QUERY: TypedDocumentNode = gql`
         id
         lat
         lng
+        owner {
+          email
+          profile {
+            fullName
+          }
+        }
       }
       id
       monthlyRent

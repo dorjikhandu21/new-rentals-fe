@@ -9,18 +9,31 @@ import {Tenant, Unit} from "../../models/graphql";
 import {Loader} from "@googlemaps/js-api-loader";
 import {MatDialog} from "@angular/material/dialog";
 import {ApplyTenantModalComponent} from "../apply-tenant-modal/apply-tenant-modal.component";
+import {STEPPER_GLOBAL_OPTIONS} from "@angular/cdk/stepper";
 
 @UntilDestroy()
 @Component({
   selector: 'new-rentals-flat-details',
   templateUrl: './flat-details.component.html',
   styleUrls: ['./flat-details.component.scss'],
+  providers: [
+    {
+      provide: STEPPER_GLOBAL_OPTIONS,
+      useValue: {displayDefaultIndicatorType: false},
+    },
+  ]
 })
 export class FlatDetailsComponent implements OnInit {
   items?: GalleryItem[];
   imageData = data;
   tenant?: Tenant;
   unit?: Unit;
+  stepperConfig: any = {
+    received: ['received', 'interviewing', 'accepted', 'declined'],
+    interviewing: ['interviewing', 'accepted', 'declined'],
+    accepted: [ 'accepted'],
+    declined: [ 'declined']
+  }
   private map?: google.maps.Map;
   constructor(private activatedRoute: ActivatedRoute, private matDialog: MatDialog, private gallery: Gallery, private sharedFacadeService: SharedFacadeService) {}
 
