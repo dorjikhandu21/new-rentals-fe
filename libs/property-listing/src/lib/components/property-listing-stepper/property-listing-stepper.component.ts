@@ -50,12 +50,13 @@ export class PropertyListingStepperComponent implements OnInit {
     this.geoInformation = new FormGroup({
       lat: new FormControl('', Validators.required),
       lng: new FormControl('', Validators.required),
+      neighbourhoodDetails: new FormControl('', Validators.required)
     });
   }
 
   createProperty(): void {
     this.basicDetail?.valid &&
-    this.propertyFacadeService.createProperty({...this.basicDetail?.value, units: this.units.value, lat: this.geoInformation?.value.lat.toString(), lng: this.geoInformation?.value.lng.toString(), ownerId: this.credentialsService.currentUser().id}).toPromise().then(() => {
+    this.propertyFacadeService.createProperty({...this.basicDetail?.value, units: this.units.value, ...this.geoInformation?.value, lat: this.geoInformation?.value.lat.toString(), lng: this.geoInformation?.value.lng.toString(), ownerId: this.credentialsService.currentUser().id}).toPromise().then(() => {
       this.router.navigate(['properties']);
     });
   }

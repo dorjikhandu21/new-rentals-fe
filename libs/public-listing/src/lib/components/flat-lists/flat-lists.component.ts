@@ -68,7 +68,7 @@ export class FlatListsComponent implements OnInit {
 
   loadMap(): void {
     const loader: Loader = new Loader({
-      apiKey: 'AIzaSyB_EQUGViEUjZc-T0lWb3RL7POB0_zpJ14',
+      apiKey: 'AIzaSyC9hGqlTtL1EtQcOys0mltVUvp1wrm6uZI',
     })
     loader.load().then(() => {
       const position: { lat: number; lng: number; } = {lat: 27.4716, lng: 89.6386};
