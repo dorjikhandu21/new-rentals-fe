@@ -427,7 +427,7 @@ mat-checkbox .mat-checkbox-layout {
   padding-top: 12px;
   padding-bottom: 16px;
 }
-.mat-mdc-form-field-flex {
+.mat-mdc-form-field:not(.text-area) .mat-mdc-form-field-flex {
   height: 48px;
 }
 

@@ -18,9 +18,13 @@
             <mat-label>Unit No. or Title</mat-label>
             <input matInput [formControl]="$any(unit.get('unitNumber'))" >
           </mat-form-field>
-          <mat-form-field appearance="outline" fxFlex="100" data-cy="title">
-            <mat-label>Describe Your home</mat-label>
-            <input matInput [formControl]="$any(unit.get('monthlyRent'))">
+          <mat-form-field appearance="outline" fxFlex="100" data-cy="title" class="text-area">
+            <textarea matInput
+                      [formControl]="$any(unit.get('monthlyRent'))"
+                      placeholder="Describe Your home"
+                      cdkTextareaAutosize
+                      cdkAutosizeMinRows="5"
+                      cdkAutosizeMaxRows="10"></textarea>
           </mat-form-field>
 <div fxLayout="row wrap" fxLayoutAlign="space-between start" class="my-20">
   <div fxFlex="60" fxFlex.xs="100" fxLayout="column" >

@@ -37,9 +37,13 @@
         </mat-error>-->
     </mat-form-field>
 
-    <mat-form-field fxFlex="100" appearance="outline">
+    <mat-form-field fxFlex="100" appearance="outline" class="text-area">
       <mat-label>Description</mat-label>
-      <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+      <textarea matInput
+                cdkTextareaAutosize
+                cdkAutosizeMinRows="5"
+                cdkAutosizeMaxRows="10"
+             ></textarea>
     </mat-form-field>
 
   </div>
