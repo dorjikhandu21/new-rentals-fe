@@ -26,15 +26,15 @@
     <mat-icon>add</mat-icon>
     {{'Add Property'}}</button>
 </div>
-<div fxLayout="column" fxLayoutAlign="space-between">
-  <div class="mx-24" fxLayout="row wrap" fxLayoutGap.gt-xs="20px">
+<div fxLayout="column" fxLayoutAlign="space-between start">
+  <div class="mx-24 card-container" fxLayout="row wrap" fxLayoutGap.gt-xs="20px" fxLayoutAlign="start start">
     <div *ngFor="let property of properties" class="property-card hand-cursor br-8 nr-white-bg nr-silver-border mb-24"
          fxFlex="23" fxFlex.xs="100" fxFlex.lt-md="47"  fxFlex.lt-lg="30" (click)="routeToPropertyDetail(property)">
       <div class="image-container">
-        <!--      <div class="label">-->
-        <!--        <span class="label__text nr-white-color label-green-bg mr-12">Nu.15000/-</span>-->
-        <!--        <span class="label__text nr-white-color primary-bg">Nu.15000/-</span>-->
-        <!--      </div>-->
+              <div class="label">
+                <span class="label__text nr-white-color label-green-bg mr-12">Nu.15000/-</span>
+                <span class="label__text nr-white-color primary-bg">Nu.15000/-</span>
+              </div>
         <img mat-card-image class="image" [src]="property.attachments[0]?.url ? ('https://newrentals.tk' + property.attachments[0]?.url) : '../../../../../../../assets/images/flat.svg'"
              alt="Photo of a Shiba Inu">
       </div>
