@@ -10,10 +10,14 @@ import {CredentialsService, NotificationService} from "@new-rentals/shared";
 export class NavBarComponent implements OnInit {
   authenticated: boolean = this.credentials.isAuthenticated();
   currentActiveLink?:string;
+/*
   isOpen = true;
+*/
 
   // @ts-ignore
-  @Output() navToggle: EventEmitter<any> = new EventEmitter<any>(false);
+/*
+  @Output() navToggle: EventEmitter<boolean> = new EventEmitter<boolean>(true);
+*/
 
 
   @Input() navBar?:{ name: string, link: string}[];
@@ -40,8 +44,8 @@ export class NavBarComponent implements OnInit {
       void this.router.navigate(['/home']);
     });
   }
-  navOpen(): void {
+/*  navOpen(): void {
     this.navToggle.emit(true);
     this.isOpen = !this.isOpen;
-  }
+  }*/
 }
