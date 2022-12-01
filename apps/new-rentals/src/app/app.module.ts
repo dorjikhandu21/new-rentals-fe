@@ -19,10 +19,11 @@ import {HomeComponent} from "./public-listing/home/home.component";
 import {ApiInterceptor} from "../../../../libs/shared/src/lib/interceptors/api.interceptor";
 import {MatNativeDateModule} from "@angular/material/core";
 import {MatDialogModule} from "@angular/material/dialog";
+import {MatMenuModule} from "@angular/material/menu";
 
 @NgModule({
   declarations: [AppComponent, NxWelcomeComponent, HomeComponent],
-  imports: [BrowserModule, HttpClientJsonpModule, GooglePlaceModule, MatDialogModule, MatNativeDateModule,  BrowserAnimationsModule, GraphQLModule, RouterOutlet, CoreModule, MatSnackBarModule, TranslateModule.forRoot()],
+  imports: [BrowserModule,MatMenuModule, HttpClientJsonpModule, GooglePlaceModule, MatDialogModule, MatNativeDateModule,  BrowserAnimationsModule, GraphQLModule, RouterOutlet, CoreModule, MatSnackBarModule, TranslateModule.forRoot()],
   providers: [{
     provide: ENV_TOKEN,
     useValue: environment
