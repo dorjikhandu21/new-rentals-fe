@@ -4,7 +4,7 @@
   </a>
 
   <nav fxFlex="70" class="stroke" *ngIf="!authenticated">
-    <ul fxLayout="row" fxLayoutAlign="center center">
+    <ul fxLayout="row" fxLayoutAlign="start center">
       <li [fxFlex]="nav.name === 'Featured Apartments'? 22 : 15 || nav.name === 'Rental Solution'? 18 : 15"  *ngFor="let nav of navBar"
       class="px-20 hand-cursor"><a class="nr-black-color full-width" href="#{{nav.link}}">{{nav.name}}</a></li>
     </ul>
@@ -15,7 +15,7 @@
   </nav>
 
   <nav fxFlex="70" class="stroke" *ngIf="authenticated">
-    <ul *ngIf="authenticated" fxLayout="row" fxLayoutAlign="center center">
+    <ul *ngIf="authenticated" fxLayout="row" fxLayoutAlign="start center">
       <li class="text-center" fxFlex="15" *ngFor="let nav of navs" [routerLinkActive]="['active']">
         <a fxLayout="column" fxLayoutAlign="center center" class="nr-black-color full-width font-size-14" [routerLink]="nav.routerLink">
           <mat-icon class="s-20 boulder-color">{{nav.icon}}</mat-icon>
