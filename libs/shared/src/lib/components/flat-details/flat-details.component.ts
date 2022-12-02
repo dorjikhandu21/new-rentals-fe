@@ -25,7 +25,6 @@ import {STEPPER_GLOBAL_OPTIONS} from "@angular/cdk/stepper";
 })
 export class FlatDetailsComponent implements OnInit {
   items?: GalleryItem[];
-  imageData = data;
   tenant?: Tenant;
   unit?: Unit;
   stepperConfig: any = {
@@ -38,7 +37,6 @@ export class FlatDetailsComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private matDialog: MatDialog, private gallery: Gallery, private sharedFacadeService: SharedFacadeService) {}
 
   ngOnInit(): void {
-    this.items = this.imageData.map(item => new ImageItem({ src: item.srcUrl, thumb: item.previewUrl }));
     this.getUnitDetails();
     this.listenToUnitsChange();
   }
@@ -50,6 +48,7 @@ export class FlatDetailsComponent implements OnInit {
   listenToUnitsChange(): void {
     this.sharedFacadeService.specificStateChange<Unit>(SharedStoreStateEnum.UNIT).pipe(untilDestroyed(this), tap(unit => {
       this.unit = unit;
+      this.items = unit.attachments.map(attachment => new ImageItem({src: 'https://newrentals.tk' + attachment.url, thumb: 'https://newrentals.tk' + attachment.url}))
     })).toPromise().then(() => {
       this.loadMap();
     });
@@ -81,22 +80,3 @@ export class FlatDetailsComponent implements OnInit {
     }), switchMap(() => this.sharedFacadeService.getUnitDetails(this.activatedRoute.snapshot.params['id'])));
   }
 }
-
-const data = [
-  {
-    srcUrl: 'https://preview.ibb.co/jrsA6R/img12.jpg',
-    previewUrl: 'https://preview.ibb.co/jrsA6R/img12.jpg'
-  },
-  {
-    srcUrl: 'https://preview.ibb.co/kPE1D6/clouds.jpg',
-    previewUrl: 'https://preview.ibb.co/kPE1D6/clouds.jpg'
-  },
-  {
-    srcUrl: 'https://preview.ibb.co/mwsA6R/img7.jpg',
-    previewUrl: 'https://preview.ibb.co/mwsA6R/img7.jpg'
-  },
-  {
-    srcUrl: 'https://preview.ibb.co/kZGsLm/img8.jpg',
-    previewUrl: 'https://preview.ibb.co/kZGsLm/img8.jpg'
-  },
-];
