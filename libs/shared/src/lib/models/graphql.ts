@@ -331,6 +331,18 @@ export type MaintenanceAttributes = {
   tenantId?: InputMaybe<Scalars['ID']>;
 };
 
+export type MaintenanceFilterAttributes = {
+  /** Default: asc, options: [:asc, :desc] */
+  direction?: InputMaybe<Scalars['String']>;
+  limitPerPage?: InputMaybe<Scalars['Int']>;
+  offsetPage?: InputMaybe<Scalars['Int']>;
+  propertyId?: InputMaybe<Scalars['ID']>;
+  query?: InputMaybe<Scalars['String']>;
+  /** Note ~> Confirm with Backend For Correct Params */
+  sort?: InputMaybe<Scalars['String']>;
+  tenantId?: InputMaybe<Scalars['ID']>;
+};
+
 export enum MaintenanceStateEnum {
   Completed = 'completed',
   InProgress = 'in_progress',
@@ -573,6 +585,7 @@ export enum PropertyTypeEnum {
 
 export type Query = {
   __typename?: 'Query';
+  maintenances: Array<Maintenance>;
   properties: Array<Property>;
   property: Property;
   tenant: Tenant;
@@ -581,6 +594,11 @@ export type Query = {
   units: Array<Unit>;
   user: User;
   users: Array<User>;
+};
+
+
+export type QueryMaintenancesArgs = {
+  attributes?: InputMaybe<MaintenanceFilterAttributes>;
 };
 
 
@@ -848,9 +866,11 @@ export type User = {
   profile?: Maybe<Profile>;
   profileBackground?: Maybe<Attachment>;
   profilePic?: Maybe<Attachment>;
+  property?: Maybe<Property>;
   role: Role;
   status?: Maybe<Scalars['String']>;
   subscriptionPlan?: Maybe<SubscriptionPlan>;
+  tenant?: Maybe<Tenant>;
 };
 
 export type UserAttributes = {

@@ -84,3 +84,17 @@ export const TENANTS_QUERY: TypedDocumentNode = gql`
     }
   }
 `
+
+export const CURRENT_USER_QUERY: TypedDocumentNode = gql`
+ query currentUser($id: ID!){
+   user(id: $id) {
+     id
+     property {
+       id
+     }
+     tenant {
+       id
+     }
+   }
+ }
+`

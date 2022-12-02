@@ -22,9 +22,9 @@
       </mat-select>
     </mat-form-field>
   </div>
-  <button mat-flat-button mat-button color="primary" fxFlex="16" class="mt-8 mb-20" (click)=" openMaintenanceRequest()">
+  <button mat-flat-button mat-button color="primary" fxFlex="16" class="mt-8 mb-20" (click)=" openMaintenanceRequest()" [newRentalsAuthorized]="[2]">
     <mat-icon>add</mat-icon>
-    {{'Add Request'}}</button>
+    {{'Request Maintenance'}}</button>
 </div>
 
 <div fxLayout="row" fxLayoutAlign="space-between" class="mx-24 mb-24 mt-8">
@@ -34,7 +34,7 @@
       cdkDropList
       #openList="cdkDropList"
       [cdkDropListData]="open"
-      [cdkDropListConnectedTo]="[onholdList,inprogressList,completedList]"
+      [cdkDropListConnectedTo]="[onholdList,inprogressList]"
       class="example-list"
       (cdkDropListDropped)="drop($event)">
       <div fxLayoutAlign="space-between center" class="card-title nr-white-bg br-4 p-12 m-16">
@@ -88,7 +88,7 @@
       cdkDropList
       #onholdList="cdkDropList"
       [cdkDropListData]="onhold"
-      [cdkDropListConnectedTo]="[openList,inprogressList,completedList]"
+      [cdkDropListConnectedTo]="[inprogressList]"
       class="example-list"
       (cdkDropListDropped)="drop($event)">
       <div fxLayoutAlign="space-between center" class="nr-white-bg br-4 p-12 m-16">
@@ -143,7 +143,7 @@
       cdkDropList
       #inprogressList="cdkDropList"
       [cdkDropListData]="inprogress"
-      [cdkDropListConnectedTo]="[openList, onholdList, completedList]"
+      [cdkDropListConnectedTo]="[completedList]"
       class="example-list"
       (cdkDropListDropped)="drop($event)">
       <div fxLayoutAlign="space-between center" class="nr-white-bg br-4 p-12 m-16">
@@ -197,7 +197,7 @@
       cdkDropList
       #completedList="cdkDropList"
       [cdkDropListData]="completed"
-      [cdkDropListConnectedTo]="[openList, onholdList, inprogressList]"
+      [cdkDropListConnectedTo]="[]"
       class="example-list"
       (cdkDropListDropped)="drop($event)">
       <div fxLayoutAlign="space-between center" class="nr-white-bg br-4 p-12 m-16">

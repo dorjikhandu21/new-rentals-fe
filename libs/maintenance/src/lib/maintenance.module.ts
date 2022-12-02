@@ -16,9 +16,11 @@ import {MatBadgeModule} from "@angular/material/badge";
 import {MatTabsModule} from "@angular/material/tabs";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatChipsModule} from "@angular/material/chips";
+import {ReactiveFormsModule} from "@angular/forms";
+import {SharedModule} from "@new-rentals/shared";
 
 @NgModule({
-  imports: [CommonModule, RouterModule, FlexLayoutModule, MatIconModule, DragDropModule, MatInputModule, MatSelectModule, MatButtonModule, MatDialogModule, MatBadgeModule, MatTabsModule, MatMenuModule, MatChipsModule],
+    imports: [CommonModule, RouterModule, FlexLayoutModule, MatIconModule, DragDropModule, MatInputModule, MatSelectModule, MatButtonModule, MatDialogModule, MatBadgeModule, MatTabsModule, MatMenuModule, MatChipsModule, ReactiveFormsModule, SharedModule],
   declarations: [
     MaintenanceListComponent,
     RequestMaintenanceModalComponent,
