@@ -2,23 +2,23 @@
   <div fxLayout="row wrap" fxLayoutAlign="start start" fxFlex="80" fxFlex.lt-md="100" fxLayoutGap="12px">
     <mat-form-field appearance="outline" fxFlex.lt-sm="60" fxFlex.xs="100" fxFlex="40" class="search-field" ngClass.xs="mb-16">
       <i matPrefix class="pi pi-map-marker s-20 py-8  pr-8 pl-12  primary-color"></i>
-      <input type="text" matInput placeholder="Search Property by name or unit" autocomplete="off" data-cy="search">
+      <input type="text" matInput [formControl]="searchControl" placeholder="Search Property by name or unit" autocomplete="off" data-cy="search">
     </mat-form-field>
 
     <mat-form-field fxHide.lt-sm fxFlex="20" appearance="outline" class="pull-right">
       <mat-icon matPrefix class="boulder-color">filter_3</mat-icon>
-      <mat-label>Properties</mat-label>
-      <mat-select>
-        <mat-option [value]="1">lorem</mat-option>
-        <mat-option [value]="2">dummy</mat-option>
+      <mat-label>Property Type</mat-label>
+      <mat-select (selectionChange)="updatePropertyTypeFilters($event)">
+        <mat-option [value]="propertyTypeEnum.ModernBuilding">Modern Building</mat-option>
+        <mat-option [value]="propertyTypeEnum.ModernBuilding">Traditional Home</mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field fxHide.lt-sm fxFlex="20" appearance="outline" class="pull-right">
       <mat-icon matPrefix class="boulder-color">filter_3</mat-icon>
-      <mat-label>Category</mat-label>
-      <mat-select>
-        <mat-option [value]="1">lorem</mat-option>
-        <mat-option [value]="2">dummy</mat-option>
+      <mat-label>Occupancy Type</mat-label>
+      <mat-select (selectionChange)="updateDropdownFilters($event)">
+        <mat-option [value]="occupancyTypeEnum.MultiFamilyHome">Multi Family Home</mat-option>
+        <mat-option [value]="occupancyTypeEnum.SingleFamilyHome">Single Family Home</mat-option>
       </mat-select>
     </mat-form-field>
   </div>
@@ -61,5 +61,5 @@
 </div>
 
 <new-rentals-loader *ngIf="loading"></new-rentals-loader>
-<new-rentals-empty-page *ngIf="!loading && !properties.length"></new-rentals-empty-page>
+<new-rentals-empty-page *ngIf="!loading && properties.length === 0"></new-rentals-empty-page>
 

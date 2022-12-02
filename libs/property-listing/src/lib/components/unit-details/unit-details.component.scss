@@ -19,3 +19,7 @@
   color: $primary-color;
 
 }
+.selected {
+  border-color: $primary-color !important;
+  background: lighten($primary-color, 44%);
+}

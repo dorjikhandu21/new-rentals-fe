@@ -28,7 +28,7 @@ export interface PeriodicElement {
   styleUrls: ['./user-listing.component.scss'],
 })
 @UntilDestroy()
-export class UserListingComponent implements OnInit {
+export class UserListingComponent {
   loading?:boolean;
   emptyData?:boolean;
   displayedColumns: string[] = ['select', 'name', 'email', 'phone', 'building_name', 'apartment', 'status', 'actions'];
@@ -92,8 +92,8 @@ export class UserListingComponent implements OnInit {
     });
   }
 
-  routeToTenantDetail(): void {
-    this.router.navigate(['detail'], {relativeTo: this.route});
+  routeToTenantDetail(row: User): void {
+    this.router.navigate([row.id], {relativeTo: this.route});
   }
 
   updateFilters(event: PageEvent): void {

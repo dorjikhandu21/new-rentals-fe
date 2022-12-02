@@ -1,6 +1,7 @@
 <div fxLayout="row wrap" fxLayoutAlign="space-between start" class="my-24">
   <div fxFlex="24" fxFlex.xs="100" class="nr-white-bg br-8 mb-16">
-    <div class="unit-button br-4 p-20 hand-cursor" *ngFor="let cards of [1,2,3,4,5,6]" fxLayoutAlign="space-between center">Unit 1
+    <div class="unit-button br-4 p-20 hand-cursor" *ngFor="let unit of unitArray" fxLayoutAlign="space-between center" (click)="updateUnitState(unit)" [ngClass]="{'selected': unit.id === activeUnit.id}">
+      {{unit?.unitNumber}}
       <mat-icon>navigate_next</mat-icon>
     </div>
   </div>
@@ -13,8 +14,8 @@
     </div>
     <div fxLayout="row wrap" class="br-4 nr-white-fade-bg p-20">
       <div fxFlex="100">
-        <p class="mb-4 boulder-color">Unit Name or Number</p>
-        <p>Flat 6</p>
+        <p class="mb-4 boulder-color">{{activeUnit?.property?.propertyName}}</p>
+        <p>{{activeUnit?.unitNumber}}</p>
       </div>
 
       <div fxFlex="100">
@@ -22,14 +23,7 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur consequatur cum dolore harum impedit nisi odio pariatur quasi ut voluptatem?</p>
       </div>
     </div>
-
-
-
-
-
-
     </mat-card>
-
     <mat-card class="nr-white-bg br-8 p-20 my-32">
       <div fxLayoutAlign="space-between center" class="mb-20">
         <p class="mb-0">Current Tenant Details</p>
@@ -38,16 +32,16 @@
       </div>
       <div class="br-4 nr-white-fade-bg p-20" fxLayoutAlign="space-between"  fxLayout="row wrap">
         <div fxFlex="20" fxFlex.xs="100" fxFlex.lt-md="30">
-          <p class="boulder-color mb-0">Current Employeer</p>
-          <p>Sweeper</p>
+          <p class="boulder-color mb-0">Current Employer</p>
+          <p>Selise Digital Platforms</p>
         </div>
         <div fxFlex="20" fxFlex.xs="100" fxFlex.lt-md="30">
           <p class="boulder-color mb-0">Phone</p>
-          <p>975 3434 3434</p>
+          <p>+975-17630689</p>
         </div>
         <div fxFlex="20"fxFlex.lt-md="30" fxFlex.xs="100">
           <p class="boulder-color mb-0">Email</p>
-          <p>dsdsf@dfsdf.com</p>
+          <p>thinleyjimmy@123@gmail.com</p>
         </div>
       </div>
     </mat-card>
@@ -58,7 +52,7 @@
         <p>Add Image</p>
       </div>
       <div>
-        <img mat-card-image class="room-image mr-20" src="../../../../../../../assets/images/flat.svg"
+        <img mat-card-image class="room-image mr-20" [src]="activeUnit?.attachments[0]?.url ? 'https://newrentals.tk' + activeUnit?.attachments[0]?.url : '../../../../../../../assets/images/flat.svg'"
              alt="Photo of a Shiba Inu">
       </div>
     </mat-card>

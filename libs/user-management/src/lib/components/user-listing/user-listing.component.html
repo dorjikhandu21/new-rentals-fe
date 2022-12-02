@@ -21,9 +21,6 @@
       <mat-option [value]="2">value</mat-option>
     </mat-select>
   </mat-form-field>-->
-  <button mat-flat-button mat-button color="primary" fxFlex="15" class="mt-4" (click)="routeToTenantDetail()">
-    <mat-icon>add</mat-icon>
-    {{'Open Tenant Detail'}}</button>
 </div>
 
   <button mat-flat-button mat-button color="primary" fxFlex="15" class="mt-4" (click)="openInviteTenant()">
@@ -112,7 +109,7 @@
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns" class="nr-white-fade-bg"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"
-        (click)="selection.toggle(row)">
+        (click)="routeToTenantDetail(row)">
     </tr>
   </table>
   <hr class="full-width">

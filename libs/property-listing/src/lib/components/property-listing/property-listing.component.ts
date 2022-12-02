@@ -1,12 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {STEPPER_GLOBAL_OPTIONS} from "@angular/cdk/stepper";
 import {ActivatedRoute, Router} from "@angular/router";
 import {PropertyFacadeService} from "../../services/property-facade.service";
 import {PropertyStoreEnum} from "../../models/property.store";
 import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
-import { switchMap, tap} from "rxjs";
-import {CredentialsService, PropertiesFilterAttributes, Property, Unit} from "@new-rentals/shared";
+import {debounceTime, filter, switchMap, tap} from "rxjs";
+import {
+  CredentialsService,
+  OccupancyTypeEnum,
+  PropertiesFilterAttributes,
+  Property, PropertyTypeEnum,
+} from "@new-rentals/shared";
 import {PageEvent} from "@angular/material/paginator";
+import {MatSelectChange} from "@angular/material/select";
+import {FormControl} from "@angular/forms";
 
 @UntilDestroy()
 @Component({
@@ -22,10 +29,13 @@ import {PageEvent} from "@angular/material/paginator";
 })
 
 
-  export class PropertyListingComponent implements OnInit {
+export class PropertyListingComponent implements OnInit {
   // @ts-ignore
   currentRole?: number = this.credentialsService?.currentUser()?.['role_id'];
+  searchControl: FormControl = new FormControl('')
   properties: Property[] = [];
+  occupancyTypeEnum = OccupancyTypeEnum;
+  propertyTypeEnum = PropertyTypeEnum;
   propertyFilters: PropertiesFilterAttributes = {
     limitPerPage: 5,
     offsetPage: 0
@@ -48,13 +58,26 @@ import {PageEvent} from "@angular/material/paginator";
     disableDoubleClickZoom: true,
     maxZoom: 15,
   };
-  constructor(private router: Router, private route: ActivatedRoute, private propertyFacadeService: PropertyFacadeService, private credentialsService: CredentialsService) {}
+
+  constructor(private router: Router, private route: ActivatedRoute, private propertyFacadeService: PropertyFacadeService, private credentialsService: CredentialsService) {
+  }
 
   ngOnInit(): void {
     this.center = {lat: 27.4716, lng: 89.6386};
     this.updatePropertyFilters();
     this.listenToPropertyFilters();
-    this.listenToUnitsChange()
+    this.listenToUnitsChange();
+    this.listenToSearchControl();
+  }
+
+  listenToSearchControl(): void {
+    this.searchControl.valueChanges.pipe(debounceTime(200),
+      untilDestroyed(this), tap((value) => {
+        this.propertyFacadeService.updateSpecificState({
+          ...this.propertyFilters,
+          query: value
+        }, PropertyStoreEnum.PROPERTY_FILTERS);
+      })).subscribe();
   }
 
   updatePropertyFilters(): void {
@@ -62,7 +85,7 @@ import {PageEvent} from "@angular/material/paginator";
   }
 
   listenToPropertyFilters(): void {
-    this.propertyFacadeService.specificStateChange<PropertiesFilterAttributes>(PropertyStoreEnum.PROPERTY_FILTERS).pipe(untilDestroyed(this),switchMap((filters) => {
+    this.propertyFacadeService.specificStateChange<PropertiesFilterAttributes>(PropertyStoreEnum.PROPERTY_FILTERS).pipe(untilDestroyed(this), switchMap((filters) => {
       return this.propertyFacadeService.getProperties(filters);
     })).subscribe(() => {
       this.loading = false;
@@ -80,14 +103,25 @@ import {PageEvent} from "@angular/material/paginator";
   }
 
   routeToPropertyDetail(property: Property): void {
-    void  this.router.navigate([`${property.id}`], {relativeTo: this.route});
+    void this.router.navigate([`${property.id}`], {relativeTo: this.route});
   }
 
   updateFilter(event: PageEvent): void {
-    this.propertyFilters = {...this.propertyFilters,
+    this.propertyFilters = {
+      ...this.propertyFilters,
       limitPerPage: event.pageSize,
-      offsetPage: event.pageIndex === 0 ? 0 : event.pageSize
+      offsetPage: event.pageIndex === 0 ? 0 : event.pageSize,
     }
+    this.propertyFacadeService.updateSpecificState(this.propertyFilters, PropertyStoreEnum.PROPERTY_FILTERS);
+  }
+
+  updateDropdownFilters(event: MatSelectChange): void {
+    this.propertyFilters = {...this.propertyFilters, occupancyType: event.value};
+    this.propertyFacadeService.updateSpecificState(this.propertyFilters, PropertyStoreEnum.PROPERTY_FILTERS);
+  }
+
+  updatePropertyTypeFilters(event: MatSelectChange): void {
+    this.propertyFilters = {...this.propertyFilters, propertyType: event.value};
     this.propertyFacadeService.updateSpecificState(this.propertyFilters, PropertyStoreEnum.PROPERTY_FILTERS);
   }
 }
