@@ -1,12 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'new-rentals-user-management',
   templateUrl: './user-management.component.html',
   styleUrls: ['./user-management.component.scss'],
 })
-export class UserManagementComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit(): void {}
+export class UserManagementComponent {
 }

@@ -5,8 +5,14 @@ import {PropertyFacadeService} from "../../services/property-facade.service";
 import {PropertyStoreEnum} from "../../models/property.store";
 import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
 import { switchMap, tap} from "rxjs";
-import {CredentialsService, PropertiesFilterAttributes, Property, Unit} from "@new-rentals/shared";
+import {
+  CredentialsService,
+  OccupancyTypeEnum,
+  PropertiesFilterAttributes,
+  Property, PropertyTypeEnum,
+} from "@new-rentals/shared";
 import {PageEvent} from "@angular/material/paginator";
+import {MatSelectChange} from "@angular/material/select";
 
 @UntilDestroy()
 @Component({
@@ -26,6 +32,8 @@ import {PageEvent} from "@angular/material/paginator";
   // @ts-ignore
   currentRole?: number = this.credentialsService?.currentUser()?.['role_id'];
   properties: Property[] = [];
+  occupancyTypeEnum = OccupancyTypeEnum;
+  propertyTypeEnum = PropertyTypeEnum;
   propertyFilters: PropertiesFilterAttributes = {
     limitPerPage: 5,
     offsetPage: 0
@@ -86,8 +94,18 @@ import {PageEvent} from "@angular/material/paginator";
   updateFilter(event: PageEvent): void {
     this.propertyFilters = {...this.propertyFilters,
       limitPerPage: event.pageSize,
-      offsetPage: event.pageIndex === 0 ? 0 : event.pageSize
+      offsetPage: event.pageIndex === 0 ? 0 : event.pageSize,
     }
+    this.propertyFacadeService.updateSpecificState(this.propertyFilters, PropertyStoreEnum.PROPERTY_FILTERS);
+  }
+
+  updateDropdownFilters(event: MatSelectChange): void {
+    this.propertyFilters = {...this.propertyFilters, occupancyType: event.value};
+    this.propertyFacadeService.updateSpecificState(this.propertyFilters, PropertyStoreEnum.PROPERTY_FILTERS);
+  }
+
+  updatePropertyTypeFilters(event: MatSelectChange): void {
+    this.propertyFilters = {...this.propertyFilters, propertyType: event.value};
     this.propertyFacadeService.updateSpecificState(this.propertyFilters, PropertyStoreEnum.PROPERTY_FILTERS);
   }
 }

@@ -12,7 +12,8 @@ export class UserBlService {
   getTableDataSource(users: User[]): UserTableData[] {
     // @ts-ignore
     return users.map(user => ({
-        name: user.profile?.fullName,
+      id: user.id,
+      name: user.profile?.fullName,
       email: user?.email,
       phone: user?.profile?.phone,
       building_name: '',

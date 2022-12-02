@@ -11,7 +11,7 @@
           {{'Add Units'}}</button>
       </div>
       <p class="boulder-color"> <i class="pi pi-map-marker s-20 mr-8"></i>
-        Babesa, Thimphu |  4 Units</p>
+        {{property?.neighbourhoodDetails}} |  {{property?.unitsCount}} {{property.unitsCount > 1 ? 'Units' : 'Unit'}}</p>
     </mat-card>
 
     <div class="mt-28">
@@ -78,7 +78,7 @@
               <p>Add Image</p>
             </div>
             <div>
-              <img mat-card-image class="room-image mr-20" src="../../../../../../../assets/images/flat.svg"
+              <img mat-card-image class="room-image mr-20" [src]="'https://newrentals.tk' + property?.attachments?.[0]?.url"
                    alt="Photo of a Shiba Inu">
             </div>
           </mat-card>

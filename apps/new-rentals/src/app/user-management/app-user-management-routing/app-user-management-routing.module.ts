@@ -12,17 +12,17 @@ const routes: Routes = [
   ShellService.childRoutes([
     {
       path: '',
-      component: UserListingComponent,
+      component: UserManagementComponent,
       data: {
         breadCrumb: 'USER_MANAGEMENT'
       },
       children: [
         {
-          path: 'user/list',
-          component: UserManagementComponent
+          path: '',
+          component: UserListingComponent
         },
         {
-          path: 'detail',
+          path: ':id',
           component: TenantDetailsComponent
         }
       ]
