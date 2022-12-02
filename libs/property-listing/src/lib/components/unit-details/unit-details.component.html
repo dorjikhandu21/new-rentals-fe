@@ -1,6 +1,7 @@
 <div fxLayout="row wrap" fxLayoutAlign="space-between start" class="my-24">
   <div fxFlex="24" fxFlex.xs="100" class="nr-white-bg br-8 mb-16">
-    <div class="unit-button br-4 p-20 hand-cursor" *ngFor="let unit of unitArray" fxLayoutAlign="space-between center" (click)="updateUnitState(unit)" [ngClass]="{'selected': unit.id === activeUnit.id}">Unit 1
+    <div class="unit-button br-4 p-20 hand-cursor" *ngFor="let unit of unitArray" fxLayoutAlign="space-between center" (click)="updateUnitState(unit)" [ngClass]="{'selected': unit.id === activeUnit.id}">
+      {{unit?.unitNumber}}
       <mat-icon>navigate_next</mat-icon>
     </div>
   </div>
