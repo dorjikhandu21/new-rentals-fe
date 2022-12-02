@@ -4,13 +4,16 @@ import {SelectionModel} from "@angular/cdk/collections";
 import {InviteTenantModalComponent} from "../invite-tenant-modal/invite-tenant-modal.component";
 import {MatDialog} from "@angular/material/dialog";
 import {UserFacadeService} from "../../services/user-facade.service";
-import {User, UserFilterAttributes} from "@new-rentals/shared";
+import {RolesEnum, User, UserFilterAttributes} from "@new-rentals/shared";
 import {UserStoreEnum} from "../../models/user.store.state";
 import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
-import {finalize, switchMap, tap} from "rxjs";
+import {debounceTime, finalize, switchMap, tap} from "rxjs";
 import {UserTableData} from "../../models/user.model";
 import {ActivatedRoute, Router} from "@angular/router";
 import {PageEvent} from "@angular/material/paginator";
+import {PropertyStoreEnum} from "../../../../../property-listing/src/lib/models/property.store";
+import {FormControl} from "@angular/forms";
+import {MatSelectChange} from "@angular/material/select";
 export interface PeriodicElement {
   name: string;
   email: string;
@@ -31,7 +34,9 @@ export interface PeriodicElement {
 export class UserListingComponent {
   loading?:boolean;
   emptyData?:boolean;
-  displayedColumns: string[] = ['select', 'name', 'email', 'phone', 'building_name', 'apartment', 'status', 'actions'];
+  searchControl: FormControl = new FormControl('');
+  rolesEnum = RolesEnum;
+  displayedColumns: string[] = ['select', 'name', 'email', 'phone', 'building_name', 'apartment', 'role', 'actions'];
   dataSource = new MatTableDataSource<UserTableData>([]);
   selection = new SelectionModel<UserTableData>(true, []);
   userFilters: UserFilterAttributes = {
@@ -48,6 +53,17 @@ export class UserListingComponent {
     this.userFacadeService.updateSpecificState(this.userFilters, UserStoreEnum.USER_FILTERS);
     this.listenToUserFilters();
     this.listenToUsersState();
+    this.listenToSearchControl();
+  }
+
+  listenToSearchControl(): void {
+    this.searchControl.valueChanges.pipe(debounceTime(200),
+      untilDestroyed(this), tap((value) => {
+        this.userFacadeService.updateSpecificState({
+          ...this.userFilters,
+          query: value
+        }, UserStoreEnum.USER_FILTERS);
+      })).subscribe();
   }
 
   listenToUserFilters(): void {
@@ -100,6 +116,19 @@ export class UserListingComponent {
     this.userFilters = {...this.userFilters,
       limitPerPage: event.pageSize,
       offsetPage: event.pageIndex === 0 ? 0 : event.pageSize
+    }
+    this.userFacadeService.updateSpecificState(this.userFilters, UserStoreEnum.USER_FILTERS);
+  }
+
+  updateRoleFilter(event: MatSelectChange): void {
+    this.userFilters = {...this.userFilters, roleId: event.value}
+    this.userFacadeService.updateSpecificState(this.userFilters, UserStoreEnum.USER_FILTERS);
+  }
+
+  clearFilters(): void {
+    this.userFilters = {
+      limitPerPage: 5,
+      offsetPage: 0
     }
     this.userFacadeService.updateSpecificState(this.userFilters, UserStoreEnum.USER_FILTERS);
   }
