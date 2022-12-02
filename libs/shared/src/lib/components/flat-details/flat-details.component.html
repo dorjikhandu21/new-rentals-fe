@@ -10,9 +10,9 @@
           <i class="pi pi-map-marker s-20 mr-4 ver-sub mr-8"></i>
           {{ unit?.property?.neighbourhoodDetails}}</p>
         <hr>
-        <p class="mt-4"><span class="nr-black-color">{{unit && unit.nosOfBed}}</span> Bed Rooms</p>
+        <p class="mt-4 white-space--nowrap px-8"><span class="nr-black-color">{{unit && unit.nosOfBed}}</span> Bed Rooms</p>
         <hr/>
-        <p class="mt-4"><span class="nr-black-color">{{unit && unit.nosOfBath}}</span> Baths</p>
+        <p class="mt-4  white-space--nowrap "><span class="nr-black-color">{{unit && unit.nosOfBath}}</span> Baths</p>
       </div>
     </div>
   </div>
@@ -63,7 +63,7 @@
 
     <div fxLayout="row wrap" class="nr-white-fade-bg br-4 mt-24 p-20">
       <p class="font-size-16">Location</p>
-      <div fxFlex="100" class="mr-20" id="map"></div>
+      <div fxFlex="100" class="mr-20" style="width: 320px; height: 480px;" id="map"></div>
     </div>
 
   </div>

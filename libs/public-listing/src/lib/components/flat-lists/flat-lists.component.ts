@@ -23,9 +23,7 @@ export class FlatListsComponent implements OnInit {
   filters: any[] = [
     {name: 'Type', icon: 'category'},
     {name: 'Price', icon: 'attach_money'},
-    {name: 'Move In Date', icon: 'calendar_month'},
-    {name: 'No. of beds', icon: 'account_tree'},
-    {name: 'More Filters', icon: 'tune'}
+    {name: 'No. of beds', icon: 'account_tree'}
   ];
 
   center!: google.maps.LatLngLiteral;

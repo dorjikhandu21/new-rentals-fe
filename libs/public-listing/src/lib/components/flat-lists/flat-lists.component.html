@@ -1,65 +1,54 @@
-<div fxLayout="row wrap" class="full-width p-24" >
-  <div fxLayout="row wrap" fxLayoutAlign="space-between start">
-    <div fxFlex="85">
-      <mat-form-field fxFlex="15" appearance="outline" *ngFor="let filter of filters" class="mr-12" data-cy="filter">
-        <mat-icon matPrefix class="boulder-color">{{filter.icon}}</mat-icon>
-        <mat-label>{{filter.name}}</mat-label>
-        <mat-select>
-          <mat-option [value]="1">dummy</mat-option>
-          <mat-option [value]="2">value</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-
-    <mat-form-field fxFlex="12"  appearance="outline" class="pull-right">
-      <mat-icon matPrefix class="boulder-color">filter_3</mat-icon>
-      <mat-label>Sort By</mat-label>
-      <mat-select>
-        <mat-option [value]="1">lorem</mat-option>
-        <mat-option [value]="2">dummy</mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
-
-  <div fxLayout="row wrap" fxFlex="100" class="mt-8">
+<div fxLayout="row wrap" class="full-width p-20" >
+  <div fxLayout="row wrap" fxFlex="100">
     <div fxFlex="55" fxFlex.xs="100" class="mr-20" id="map"></div>
-
     <div fxFlex="43" fxFlex.xs="100" fxLayout="row wrap" fxLayoutAlign="space-between start">
+      <div fxFlex="100" fxLayoutAlign="space-between">
+          <mat-form-field fxFlex="32" appearance="outline" *ngFor="let filter of filters" data-cy="filter">
+            <mat-icon matPrefix class="boulder-color">{{filter.icon}}</mat-icon>
+            <mat-label>{{filter.name}}</mat-label>
+            <mat-select>
+              <mat-option [value]="1">dummy</mat-option>
+              <mat-option [value]="2">value</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
 
       <p fxFlex="100" class="p-12 nr-white-bg br-4 nr-silver-border">{{units.length}} Apartments, Thimphu Bhutan</p>
-
-      <div  *ngFor="let unit of units" class="example-card hand-cursor br-4 nr-white-bg nr-silver-border mb-24 public-list-card" fxFlex.xs="100" fxFlex="48">
-        <div class="flat-image-container">
-          <span class="cost-label nr-white-color">{{unit.monthlyRent}}/- per month</span>
-          <img mat-card-image class="flat-image" [src]="unit.attachments[0]?.url ? 'https://newrentals.tk' + unit.attachments[0]?.url : '../../../../../../../assets/images/flat.svg'"
-               alt="Photo of a Shiba Inu">
-        </div>
-        <div class="m-16">
-          <p>{{unit.unitNumber}}</p>
-          <div fxLayout="row" class="boulder-color">
-            <i class="pi pi-map-marker s-20 mr-12"></i>
-            <p class="text-truncate">{{unit.property.neighbourhoodDetails}}</p>
-          </div>
-          <div fxLayout="row" class="boulder-color">
-            <i class="pi pi-sitemap s-20 mr-12"></i>
-            <p class="text-truncate">{{unit.nosOfBed}} Beds, {{unit.nosOfBath}} Baths, 2 Corridor</p>
-          </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" (click)="routeToDetails(unit)">
-            <button mat-button color="primary" class="light-bg" fxFlex="95">
+<div class="flat-lists" fxLayout="row wrap" fxLayoutAlign="space-between start">
+  <div  *ngFor="let unit of units" class="example-card hand-cursor br-4 nr-white-bg nr-silver-border mb-24 public-list-card" fxFlex.xs="100" fxFlex="48">
+    <div class="flat-image-container">
+      <span class="cost-label nr-white-color">{{unit.monthlyRent}}/- per month</span>
+      <img mat-card-image class="flat-image" [src]="unit.attachments[0]?.url ? 'https://newrentals.tk' + unit.attachments[0]?.url : '../../../../../../../assets/images/flat.svg'"
+           alt="Photo of a Shiba Inu">
+    </div>
+    <div class="m-16">
+      <p>{{unit.unitNumber}}</p>
+      <div fxLayout="row" class="boulder-color">
+        <i class="pi pi-map-marker s-20 mr-12"></i>
+        <p class="text-truncate">{{unit.property.neighbourhoodDetails}}</p>
+      </div>
+      <div fxLayout="row" class="boulder-color">
+        <i class="pi pi-sitemap s-20 mr-12"></i>
+        <p class="text-truncate">{{unit.nosOfBed}} Beds, {{unit.nosOfBath}} Baths, 2 Corridor</p>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="space-between center" (click)="routeToDetails(unit)">
+        <button mat-button color="primary" class="light-bg" fxFlex="95">
               <span class="font-size-12">View Details <mat-icon class="ver-middle">navigate_next</mat-icon>
 </span>
-            </button>
-            <mat-icon class="nr-white-fade-bg s-20 boulder-color p-8 br-4 hand-cursor ml-20 edit-icons">bookmark_outline</mat-icon>
-          </div>
-        </div>
-
-        <!-- <div class="info full-width" fxLayout="column" fxLayoutAlign="center center">
-           <h3 class="nr-white-color">SKR Building, Babesa</h3>
-           <button mat-flat-button color="primary" class="px-40">View More Details
-           </button>
-         </div>-->
-
+        </button>
+        <mat-icon class="nr-white-fade-bg s-20 boulder-color p-8 br-4 hand-cursor ml-20 edit-icons">bookmark_outline</mat-icon>
       </div>
+    </div>
+
+    <!-- <div class="info full-width" fxLayout="column" fxLayoutAlign="center center">
+       <h3 class="nr-white-color">SKR Building, Babesa</h3>
+       <button mat-flat-button color="primary" class="px-40">View More Details
+       </button>
+     </div>-->
+
+  </div>
+
+</div>
 
     </div>
   </div>

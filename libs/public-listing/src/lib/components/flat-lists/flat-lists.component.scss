@@ -3,6 +3,7 @@
   position: relative;
   .flat-image {
     width: 100%;
+    height: 145px;
     object-fit: cover;
   }
   .cost-label {
@@ -17,9 +18,13 @@
 
 
 #map {
-  height: 100vh;
+  height: 84vh;
   border: 1px solid $alto-gray;
   border-radius: 4px;
+}
+.flat-lists {
+  max-height: 68vh;
+  overflow-y: auto;
 }
 
 /*
