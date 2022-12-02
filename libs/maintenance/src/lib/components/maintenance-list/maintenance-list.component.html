@@ -37,11 +37,11 @@
       [cdkDropListConnectedTo]="[onholdList,inprogressList,completedList]"
       class="example-list"
       (cdkDropListDropped)="drop($event)">
-      <div fxLayoutAlign="space-between center" class="card-title nr-white-bg br-4 p-8 m-20">
+      <div fxLayoutAlign="space-between center" class="card-title nr-white-bg br-4 p-12 m-16">
         <h3 class="my-0">Open</h3>
         <span class="primary-bg py-4 px-8 br-4 nr-white-color">3</span>
       </div>
-      <div fxLayout="column" class="example-box m-16 px-16 pb-16 br-8 hand-cursor" (click)="openMaintenanceDetail()"
+      <div fxLayout="column" class="example-box m-16 px-16 pb-16 br-4 hand-cursor" (click)="openMaintenanceDetail()"
            *ngFor="let item of open" cdkDrag>
         <div fxLayoutAlign="space-between center" class="border-bottom">
           <div>
@@ -74,7 +74,7 @@
         <div fxLayoutAlign="space-between center" class="nr-white-fade-bg br-4 px-12">
           <div fxLayoutAlign="center center">
             <img class="user-profile my-8 mr-8" src="../assets/images/user.svg"/>
-            <span>SonamDorji</span>
+            <span class="font-size-12">Sonam Dorji</span>
           </div>
           <mat-icon matBadge="5" matBadgeSize="small" class="boulder-color mt-8 mr-12">message</mat-icon>
         </div>
@@ -91,11 +91,11 @@
       [cdkDropListConnectedTo]="[openList,inprogressList,completedList]"
       class="example-list"
       (cdkDropListDropped)="drop($event)">
-      <div fxLayoutAlign="space-between center" class="nr-white-bg br-4 p-8 m-20">
+      <div fxLayoutAlign="space-between center" class="nr-white-bg br-4 p-12 m-16">
         <h3 class="my-0">On Hold</h3>
         <span class="green-dragonfly-bg py-4 px-8 br-4 nr-white-color">3</span>
       </div>
-      <div fxLayout="column" class="example-box m-16 px-16 pb-16 br-8" *ngFor="let item of onhold" cdkDrag
+      <div fxLayout="column" class="example-box m-16 px-16 pb-16 br-4" *ngFor="let item of onhold" cdkDrag
            (click)="openMaintenanceDetail()">
         <div fxLayoutAlign="space-between center" class="border-bottom">
           <div>
@@ -119,16 +119,16 @@
           </div>
         </div>
         <div fxLayoutAlign="space-between center" class="mt-16">
-          <div><p class="boulder-color mb-4">Property</p>
-            <p>Licha House</p></div>
-          <div><p class="boulder-color mb-4">Created On</p>
-            <p>23-23-2022</p></div>
+          <div><p class="boulder-color mb-4 font-size-12">Property</p>
+            <p  class="font-size-12">Licha House</p></div>
+          <div><p class="boulder-color mb-4 font-size-12 ">Created On</p>
+            <p  class="font-size-12">23-23-2022</p></div>
         </div>
         <p class="font-size-12">{{item}}</p>
         <div fxLayoutAlign="space-between center" class="nr-white-fade-bg br-4 px-12">
           <div fxLayoutAlign="center center">
             <img class="user-profile my-8 mr-8" src="../assets/images/user.svg"/>
-            <span>SonamDorji</span>
+            <span class="font-size-12">Sonam Dorji</span>
           </div>
           <mat-icon class="boulder-color">message</mat-icon>
         </div>
@@ -146,11 +146,11 @@
       [cdkDropListConnectedTo]="[openList, onholdList, completedList]"
       class="example-list"
       (cdkDropListDropped)="drop($event)">
-      <div fxLayoutAlign="space-between center" class="nr-white-bg br-4 p-16 m-20">
+      <div fxLayoutAlign="space-between center" class="nr-white-bg br-4 p-12 m-16">
         <h3 class="my-0">In Progress</h3>
         <span class="purple-bg py-4 px-8 br-4 nr-white-color">3</span>
       </div>
-      <div fxLayout="column" class="example-box m-16 px-16 pb-16 br-8" *ngFor="let item of inprogress" cdkDrag
+      <div fxLayout="column" class="example-box m-16 px-16 pb-16 br-4" *ngFor="let item of inprogress" cdkDrag
            (click)="openMaintenanceDetail()">
         <div fxLayoutAlign="space-between center" class="border-bottom">
           <div>
@@ -174,16 +174,16 @@
           </div>
         </div>
         <div fxLayoutAlign="space-between center" class="mt-16">
-          <div><p class="boulder-color mb-4">Property</p>
-            <p>Licha House</p></div>
-          <div><p class="boulder-color mb-4">Created On</p>
-            <p>23-23-2022</p></div>
+          <div><p class="boulder-color mb-4 font-size-12 ">Property</p>
+            <p  class="font-size-12 ">Licha House</p></div>
+          <div><p class="boulder-color font-size-12  mb-4">Created On</p>
+            <p  class="font-size-12 ">23-23-2022</p></div>
         </div>
         <p class="font-size-12">{{item}}</p>
         <div fxLayoutAlign="space-between center" class="nr-white-fade-bg br-4 px-12">
           <div fxLayoutAlign="center center">
             <img class="user-profile my-8 mr-8" src="../assets/images/user.svg"/>
-            <span>SonamDorji</span>
+            <span  class="font-size-12 ">Sonam Dorji</span>
           </div>
           <mat-icon class="boulder-color">message</mat-icon>
         </div>
@@ -200,11 +200,11 @@
       [cdkDropListConnectedTo]="[openList, onholdList, inprogressList]"
       class="example-list"
       (cdkDropListDropped)="drop($event)">
-      <div fxLayoutAlign="space-between center" class="nr-white-bg br-4 p-16 m-20">
+      <div fxLayoutAlign="space-between center" class="nr-white-bg br-4 p-12 m-16">
         <h3 class="my-0">Completed</h3>
         <span class="success-bg py-4 px-8 br-4 nr-white-color">3</span>
       </div>
-      <div fxLayout="column" class="example-box m-16 px-16 pb-16 br-8" *ngFor="let item of completed" cdkDrag
+      <div fxLayout="column" class="example-box m-16 px-16 pb-16 br-4" *ngFor="let item of completed" cdkDrag
            (click)="openMaintenanceDetail()">
         <div fxLayoutAlign="space-between center" class="border-bottom">
           <div>
@@ -228,17 +228,17 @@
           </div>
         </div>
         <div fxLayoutAlign="space-between center" class="mt-16">
-          <div><p class="boulder-color mb-4">Property</p>
-            <p>Licha House</p></div>
+          <div><p class="boulder-color mb-4 font-size-12 ">Property</p>
+            <p class="font-size-12 ">Licha House</p></div>
 
-          <div><p class="boulder-color mb-4">Created On</p>
-            <p>23-23-2022</p></div>
+          <div><p class="boulder-color  font-size-12 mb-4">Created On</p>
+            <p  class="font-size-12 ">23-23-2022</p></div>
         </div>
         <p class="font-size-12">{{item}}</p>
         <div fxLayoutAlign="space-between center" class="nr-white-fade-bg br-4 px-12">
           <div fxLayoutAlign="center center">
             <img class="user-profile my-8 mr-8" src="../assets/images/user.svg"/>
-            <span>SonamDorji</span>
+            <span  class="font-size-12">SonamDorji</span>
           </div>
           <mat-icon class="boulder-color">message</mat-icon>
         </div>
