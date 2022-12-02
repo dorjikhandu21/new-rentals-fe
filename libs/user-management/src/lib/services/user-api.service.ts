@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {User, UserAttributes, UserFilterAttributes} from "@new-rentals/shared";
 import {Apollo, Query} from "apollo-angular";
-import {USERS_QUERY} from "../gql/queries";
+import {USER_QUERY, USERS_QUERY} from "../gql/queries";
 import {map, Observable} from "rxjs";
 
 @Injectable({
@@ -19,6 +19,17 @@ export class UserApiService {
     }).pipe(map((user) => {
       // @ts-ignore
       return user.data?.['users']
+    } ))
+  }
+
+  getUser(id: string): Observable<User> {
+    return this.apollo.query<Query>({
+      query: USER_QUERY,
+      fetchPolicy: "no-cache",
+      variables: {id}
+    }).pipe(map((user) => {
+      // @ts-ignore
+      return user.data?.['user']
     } ))
   }
 }

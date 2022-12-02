@@ -1,6 +1,6 @@
-import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {CredentialsService, NotificationService, User} from "@new-rentals/shared";
+import {CredentialsService, NotificationService, RolesEnum, User} from "@new-rentals/shared";
 
 @Component({
   selector: 'new-rentals-nav-bar',
@@ -20,16 +20,15 @@ export class NavBarComponent implements OnInit {
   @Output() navToggle: EventEmitter<boolean> = new EventEmitter<boolean>(true);
 */
 
-
   @Input() navBar?:{ name: string, link: string}[];
 
-  navs: { name: string, icon: string, routerLink: string }[] = [
-    {name: 'Dashboard', icon: 'insert_chart_outlined', routerLink: '/dashboard',},
-    {name: 'Tenants', icon: 'group', routerLink: '/users'},
-    {name: 'Properties', icon: 'domain', routerLink: '/properties'},
-    {name: 'Maintenance', icon: 'control_camera', routerLink: '/maintenance'},
-    {name: 'Payments', icon: 'payments', routerLink: '/payments'},
-    {name: 'Application', icon: 'app_registration', routerLink: '/applications'}];
+  navs: { name: string, icon: string, routerLink: string, authorized: RolesEnum[]  }[] = [
+    {name: 'Dashboard', icon: 'insert_chart_outlined', routerLink: '/dashboard', authorized: [RolesEnum.USER, RolesEnum.TENANT, RolesEnum.OWNER]},
+    {name: 'Tenants', icon: 'group', routerLink: '/users', authorized: [RolesEnum.OWNER]},
+    {name: 'Properties', icon: 'domain', routerLink: '/properties', authorized: [RolesEnum.OWNER]},
+    {name: 'Maintenance', icon: 'control_camera', routerLink: '/maintenance', authorized: [RolesEnum.TENANT, RolesEnum.OWNER]},
+    {name: 'Payments', icon: 'payments', routerLink: '/payments', authorized: [RolesEnum.OWNER]},
+    {name: 'Application', icon: 'app_registration', routerLink: '/applications', authorized: [RolesEnum.OWNER]}];
 
   constructor(private router: Router, private route: ActivatedRoute, private credentials: CredentialsService, private notificationService: NotificationService) {}
 

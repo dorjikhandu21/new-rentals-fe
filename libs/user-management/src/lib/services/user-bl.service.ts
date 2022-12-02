@@ -13,6 +13,7 @@ export class UserBlService {
     // @ts-ignore
     return users.map(user => ({
       id: user.id,
+      role: user.role.roleName,
       name: user.profile?.fullName,
       email: user?.email,
       phone: user?.profile?.phone,

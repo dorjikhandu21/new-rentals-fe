@@ -4,7 +4,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {PropertyFacadeService} from "../../services/property-facade.service";
 import {PropertyStoreEnum} from "../../models/property.store";
 import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
-import {debounceTime, filter, switchMap, tap} from "rxjs";
+import {debounceTime, switchMap, tap} from "rxjs";
 import {
   CredentialsService,
   OccupancyTypeEnum,
@@ -122,6 +122,14 @@ export class PropertyListingComponent implements OnInit {
 
   updatePropertyTypeFilters(event: MatSelectChange): void {
     this.propertyFilters = {...this.propertyFilters, propertyType: event.value};
+    this.propertyFacadeService.updateSpecificState(this.propertyFilters, PropertyStoreEnum.PROPERTY_FILTERS);
+  }
+
+  clearFilters(): void {
+    this.propertyFilters = {
+      limitPerPage: 5,
+      offsetPage: 0
+    }
     this.propertyFacadeService.updateSpecificState(this.propertyFilters, PropertyStoreEnum.PROPERTY_FILTERS);
   }
 }

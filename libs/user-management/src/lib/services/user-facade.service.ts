@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {BaseFacadeService, UserFilterAttributes} from "@new-rentals/shared";
+import {BaseFacadeService, User, UserFilterAttributes} from "@new-rentals/shared";
 import {UserStateService} from "./user-state.service";
 import {UserStoreEnum, UserStoreState} from "../models/user.store.state";
 import {UserApiService} from "./user-api.service";
@@ -21,5 +21,9 @@ export class UserFacadeService extends BaseFacadeService<UserStateService, UserS
       this.updateSpecificState(users, UserStoreEnum.USERS);
       this.updateSpecificState(this.userBlService.getTableDataSource(users), UserStoreEnum.USER_TABLE_DATA);
     }),mapTo(true));
+  }
+
+  getUser(id: string): Observable<User> {
+    return this.userApiService.getUser(id);
   }
 }

@@ -5,4 +5,5 @@ export interface UserTableData {
   building_name?: string;
   apartments?: string;
   status?: string;
+  role?: string;
 }

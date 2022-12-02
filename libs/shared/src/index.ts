@@ -18,3 +18,4 @@ export * from './lib/models/shared.store';
 export * from './lib/components/loader/loader.component'
 export * from './lib/utilities/reverse.geocode'
 export * from './lib/models/roles.enum'
+export * from './lib/directives/authorized.directive'
