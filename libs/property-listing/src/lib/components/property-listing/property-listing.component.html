@@ -1,6 +1,6 @@
-<div fxLayout="row wrap" fxLayoutAlign="space-between center" class="mx-24 mb-16 mt-32 application-container">
+<div fxLayout="row wrap" fxLayoutAlign="space-between center" class="mx-24 mb-8 mt-24 application-container">
   <div fxLayout="row wrap" fxLayoutAlign="start start" fxFlex="80" fxFlex.lt-md="100" fxLayoutGap="12px">
-    <mat-form-field appearance="outline" fxFlex.lt-sm="60" fxFlex.xs="100" fxFlex="40" class="search-field"
+    <mat-form-field appearance="outline" fxFlex.lt-sm="60" fxFlex.xs="100" fxFlex="35" class="search-field"
                     ngClass.xs="mb-16">
       <i matPrefix class="pi pi-map-marker s-20 py-8  pr-8 pl-12  primary-color"></i>
       <input type="text" matInput [formControl]="searchControl" placeholder="Search Property by name or unit"
@@ -23,14 +23,11 @@
         <mat-option [value]="occupancyTypeEnum.SingleFamilyHome">Single Family Home</mat-option>
       </mat-select>
     </mat-form-field>
-
-    <button mat-flat-button mat-button color="primary" fxFlex="16" fxFlex.lt-md="25" fxFlex.xs="100" class="mt-8 mb-20"
-            (click)="clearFilters()">
-      <mat-icon>clear</mat-icon>
-      Clear Filters
-    </button>
+    <button mat-button mat-stroked-button color="primary" fxFlex="17"
+            class="primary-border mt-4 full-width"  (click)="clearFilters()"> <mat-icon>clear</mat-icon>
+      Clear Filters</button>
   </div>
-  <button mat-flat-button mat-button color="primary" fxFlex="16" fxFlex.lt-md="25" fxFlex.xs="100" class="mt-8 mb-20"
+  <button mat-flat-button mat-button color="primary" fxFlex="16" fxFlex.lt-md="25" fxFlex.xs="100" class="mt-4 mb-20"
           (click)="routeToPropertyCreation()" *ngIf="currentRole === 3">
     <mat-icon>add</mat-icon>
     {{'Add Property'}}</button>

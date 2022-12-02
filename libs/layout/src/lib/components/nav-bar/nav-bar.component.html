@@ -15,7 +15,7 @@
   </nav>
 
   <nav fxFlex="70" class="stroke" *ngIf="authenticated">
-    <ul *ngIf="authenticated" fxLayout="row" fxLayoutAlign="start center">
+    <ul *ngIf="authenticated" fxLayout="row" fxLayoutAlign="center center">
       <li class="text-center" fxFlex="15" *ngFor="let nav of navs" [routerLinkActive]="['active']" [newRentalsAuthorized]="nav.authorized" >
         <a fxLayout="column" fxLayoutAlign="center center" class="nr-black-color full-width font-size-14" [routerLink]="nav.routerLink">
           <mat-icon class="s-20 boulder-color">{{nav.icon}}</mat-icon>

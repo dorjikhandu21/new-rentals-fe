@@ -11,9 +11,13 @@
       <mat-label>Your Application Tittle</mat-label>
       <input matInput formControlName="applicationTitle">
     </mat-form-field>
-    <mat-form-field appearance="outline" fxFlex="100">
+    <mat-form-field appearance="outline" fxFlex="100" class="text-area">
       <mat-label>Application Details</mat-label>
-      <input matInput formControlName="applicationDetail">
+      <textarea matInput formControlName="applicationDetail"
+                placeholder="Describe Your home"
+                cdkTextareaAutosize
+                cdkAutosizeMinRows="5"
+                cdkAutosizeMaxRows="10"></textarea>
     </mat-form-field>
 
     <mat-form-field appearance="outline" fxFlex="49" data-cy="email">
