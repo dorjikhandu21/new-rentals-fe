@@ -665,6 +665,9 @@ export const PROPERTY_QUERY: TypedDocumentNode = gql`
         satType
       }
       units {
+        property {
+          propertyName
+        }
         attachments {
           attachableId
           attachableType
