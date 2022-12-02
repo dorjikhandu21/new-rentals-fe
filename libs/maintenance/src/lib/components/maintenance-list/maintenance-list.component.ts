@@ -21,7 +21,7 @@ export class MaintenanceListComponent implements OnInit {
   completed: any[] = ['There is pipe leakage in my area, I would like to request\n' +
   'to solve it as soon as possible'];
 
-  drop(event: CdkDragDrop<string[]>) {
+  drop(event: CdkDragDrop<string[]>):void {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
