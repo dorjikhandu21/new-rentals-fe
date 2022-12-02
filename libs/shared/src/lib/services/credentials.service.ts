@@ -19,7 +19,7 @@ export class CredentialsService {
   constructor() { }
 
   currentUser(): User {
-    return JSON.parse(this.unparsedCredentials)['user'];
+    return JSON.parse(this.unparsedCredentials)?.['user'];
   }
 
   isAuthenticated(): boolean {
