@@ -26,26 +26,28 @@ import {LetsTalkComponent} from './components/landing-page/lets-talk/lets-talk.c
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatDialogModule} from "@angular/material/dialog";
+import {SharedModule} from "@new-rentals/shared";
 
 @NgModule({
-  imports: [
-    CommonModule,
-    GoogleMapsModule,
-    FlexLayoutModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatInputModule,
-    MatIconModule,
-    MatCardModule,
-    MatExpansionModule,
-    MatSelectModule,
-    GooglePlaceModule,
-    RouterLinkWithHref,
-    RouterLinkActive,
-    MatSidenavModule,
-    MatMenuModule,
-    MatDialogModule
-  ],
+    imports: [
+        CommonModule,
+        GoogleMapsModule,
+        FlexLayoutModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatInputModule,
+        MatIconModule,
+        MatCardModule,
+        MatExpansionModule,
+        MatSelectModule,
+        GooglePlaceModule,
+        RouterLinkWithHref,
+        RouterLinkActive,
+        MatSidenavModule,
+        MatMenuModule,
+        MatDialogModule,
+        SharedModule
+    ],
   declarations: [
     LayoutComponent,
     NavBarComponent,

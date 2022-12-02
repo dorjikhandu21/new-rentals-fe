@@ -26,6 +26,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatNativeDateModule} from "@angular/material/core";
 import {MatStepperModule} from "@angular/material/stepper";
 import {ReactiveFormsModule} from "@angular/forms";
+import { AuthorizedDirective } from './directives/authorized.directive';
 
 @NgModule({
     imports: [
@@ -58,9 +59,9 @@ import {ReactiveFormsModule} from "@angular/forms";
         FlatDetailsComponent,
         FilePickerComponent,
     LoaderComponent,
-    EmptyPageComponent, ApplyTenantModalComponent
+    EmptyPageComponent, ApplyTenantModalComponent, AuthorizedDirective
   ],
-  exports: [FilePickerComponent, LoaderComponent, EmptyPageComponent],
+    exports: [FilePickerComponent, LoaderComponent, EmptyPageComponent, AuthorizedDirective],
   providers: [],
   entryComponents: [ApplyTenantModalComponent]
 })
