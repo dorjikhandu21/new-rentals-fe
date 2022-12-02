@@ -1,8 +1,8 @@
-<div fxLayout="row wrap" fxLayoutAlign="space-between center" class="mx-24 mb-16 mt-32 application-container" *ngIf="properties.length > 0">
+<div fxLayout="row wrap" fxLayoutAlign="space-between center" class="mx-24 mb-16 mt-32 application-container">
   <div fxLayout="row wrap" fxLayoutAlign="start start" fxFlex="80" fxFlex.lt-md="100" fxLayoutGap="12px">
     <mat-form-field appearance="outline" fxFlex.lt-sm="60" fxFlex.xs="100" fxFlex="40" class="search-field" ngClass.xs="mb-16">
       <i matPrefix class="pi pi-map-marker s-20 py-8  pr-8 pl-12  primary-color"></i>
-      <input type="text" matInput placeholder="Search Property by name or unit" autocomplete="off" data-cy="search">
+      <input type="text" matInput [formControl]="searchControl" placeholder="Search Property by name or unit" autocomplete="off" data-cy="search">
     </mat-form-field>
 
     <mat-form-field fxHide.lt-sm fxFlex="20" appearance="outline" class="pull-right">

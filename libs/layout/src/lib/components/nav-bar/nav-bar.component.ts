@@ -1,6 +1,6 @@
 import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {CredentialsService, NotificationService} from "@new-rentals/shared";
+import {CredentialsService, NotificationService, User} from "@new-rentals/shared";
 
 @Component({
   selector: 'new-rentals-nav-bar',
@@ -9,6 +9,7 @@ import {CredentialsService, NotificationService} from "@new-rentals/shared";
 })
 export class NavBarComponent implements OnInit {
   authenticated: boolean = this.credentials.isAuthenticated();
+  currentUser?: User;
   currentActiveLink?:string;
 /*
   isOpen = true;
@@ -32,7 +33,9 @@ export class NavBarComponent implements OnInit {
 
   constructor(private router: Router, private route: ActivatedRoute, private credentials: CredentialsService, private notificationService: NotificationService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.currentUser = this.credentials.currentUser();
+  }
 
   routeToAuth(path: string): void {
     this.router.navigate([`auth/${path}`], {});

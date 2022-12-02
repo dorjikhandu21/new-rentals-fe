@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {STEPPER_GLOBAL_OPTIONS} from "@angular/cdk/stepper";
 import {ActivatedRoute, Router} from "@angular/router";
 import {PropertyFacadeService} from "../../services/property-facade.service";
 import {PropertyStoreEnum} from "../../models/property.store";
 import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
-import { switchMap, tap} from "rxjs";
+import {debounceTime, filter, switchMap, tap} from "rxjs";
 import {
   CredentialsService,
   OccupancyTypeEnum,
@@ -13,6 +13,7 @@ import {
 } from "@new-rentals/shared";
 import {PageEvent} from "@angular/material/paginator";
 import {MatSelectChange} from "@angular/material/select";
+import {FormControl} from "@angular/forms";
 
 @UntilDestroy()
 @Component({
@@ -28,9 +29,10 @@ import {MatSelectChange} from "@angular/material/select";
 })
 
 
-  export class PropertyListingComponent implements OnInit {
+export class PropertyListingComponent implements OnInit {
   // @ts-ignore
   currentRole?: number = this.credentialsService?.currentUser()?.['role_id'];
+  searchControl: FormControl = new FormControl('')
   properties: Property[] = [];
   occupancyTypeEnum = OccupancyTypeEnum;
   propertyTypeEnum = PropertyTypeEnum;
@@ -56,13 +58,26 @@ import {MatSelectChange} from "@angular/material/select";
     disableDoubleClickZoom: true,
     maxZoom: 15,
   };
-  constructor(private router: Router, private route: ActivatedRoute, private propertyFacadeService: PropertyFacadeService, private credentialsService: CredentialsService) {}
+
+  constructor(private router: Router, private route: ActivatedRoute, private propertyFacadeService: PropertyFacadeService, private credentialsService: CredentialsService) {
+  }
 
   ngOnInit(): void {
     this.center = {lat: 27.4716, lng: 89.6386};
     this.updatePropertyFilters();
     this.listenToPropertyFilters();
-    this.listenToUnitsChange()
+    this.listenToUnitsChange();
+    this.listenToSearchControl();
+  }
+
+  listenToSearchControl(): void {
+    this.searchControl.valueChanges.pipe(debounceTime(200),
+      untilDestroyed(this), tap((value) => {
+        this.propertyFacadeService.updateSpecificState({
+          ...this.propertyFilters,
+          query: value
+        }, PropertyStoreEnum.PROPERTY_FILTERS);
+      })).subscribe();
   }
 
   updatePropertyFilters(): void {
@@ -70,7 +85,7 @@ import {MatSelectChange} from "@angular/material/select";
   }
 
   listenToPropertyFilters(): void {
-    this.propertyFacadeService.specificStateChange<PropertiesFilterAttributes>(PropertyStoreEnum.PROPERTY_FILTERS).pipe(untilDestroyed(this),switchMap((filters) => {
+    this.propertyFacadeService.specificStateChange<PropertiesFilterAttributes>(PropertyStoreEnum.PROPERTY_FILTERS).pipe(untilDestroyed(this), switchMap((filters) => {
       return this.propertyFacadeService.getProperties(filters);
     })).subscribe(() => {
       this.loading = false;
@@ -88,11 +103,12 @@ import {MatSelectChange} from "@angular/material/select";
   }
 
   routeToPropertyDetail(property: Property): void {
-    void  this.router.navigate([`${property.id}`], {relativeTo: this.route});
+    void this.router.navigate([`${property.id}`], {relativeTo: this.route});
   }
 
   updateFilter(event: PageEvent): void {
-    this.propertyFilters = {...this.propertyFilters,
+    this.propertyFilters = {
+      ...this.propertyFilters,
       limitPerPage: event.pageSize,
       offsetPage: event.pageIndex === 0 ? 0 : event.pageSize,
     }
