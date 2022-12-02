@@ -41,3 +41,39 @@ export const USERS_QUERY: TypedDocumentNode = gql`
     }
   }
 `
+
+export const USER_QUERY: TypedDocumentNode = gql`
+  query user ($id: ID) {
+    user (id: $id) {
+      email
+      enabled
+      id
+      profile {
+        fullName
+        gender
+        id
+        phone
+      }
+      profilePic {
+        attachableId
+        attachableType
+        category
+        fileContentType
+        fileName
+        fileSize
+        id
+        url
+        userId
+      }
+      role {
+        id
+        roleName
+      }
+      status
+      subscriptionPlan {
+        id
+        name
+      }
+    }
+  }
+`

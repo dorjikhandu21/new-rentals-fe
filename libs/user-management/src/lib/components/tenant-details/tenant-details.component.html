@@ -4,7 +4,7 @@
 
 <div fxLayoutAlign="space-between start" class="mx-24 mt-60">
 <mat-card fxFlex="24" class="br-4 p-20 nr-white-bg">
-  <h1 class="text-center nr-black-color">Karma Karma</h1>
+  <h1 class="text-center nr-black-color">{{user.profile?.fullName}}</h1>
   <hr class="full-width">
 
   <div class="br-4 p-20 nr-white-fade-bg">
@@ -24,12 +24,12 @@
   <div class="br-4 p-20 nr-white-fade-bg mt-24">
     <div fxLayoutAlign="start center">
       <i class="pi pi-phone s-16 mr-16 boulder-color"></i>
-<p class="m-0">133434434343</p>
+<p class="m-0">{{user.profile?.phone}}</p>
     </div>
 
     <div fxLayoutAlign="start center" class="mt-16">
       <i class="pi pi-envelope s-16 mr-16 boulder-color"></i>
-      <p class="m-0">sdsfs@sdfsfs.fdf</p>
+      <p class="m-0">{{user.email}}</p>
     </div>
     <button mat-button mat-stroked-button color="primary" class="primary-border mt-20 full-width"
     ><i class="s-20 ver-middle mr-8 pi pi-comments"></i>{{'Message'}}</button>

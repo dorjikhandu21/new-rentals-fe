@@ -67,7 +67,10 @@ export class UserListingComponent {
   }
 
   listenToUserFilters(): void {
-    this.userFacadeService.specificStateChange<UserFilterAttributes>(UserStoreEnum.USER_FILTERS).pipe(untilDestroyed(this), switchMap((filters) => this.userFacadeService.getUsers(filters))).subscribe()
+    this.userFacadeService.specificStateChange<UserFilterAttributes>(UserStoreEnum.USER_FILTERS).pipe(untilDestroyed(this), switchMap((filters) => {
+      this.loading = true;
+      return this.userFacadeService.getUsers(filters)
+    })).subscribe(() => this.loading = false)
   }
 
   listenToUsersState(): void {
