@@ -6,3 +6,4 @@ export * from './lib/services/maintenance-bl.service'
 export * from './lib/services/maintenance-state.service'
 export * from './lib/lib.routes';
 export * from './lib/models/maintenance.store'
+export * from './lib/gql/queries'

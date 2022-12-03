@@ -43,7 +43,8 @@ export class NavBarComponent implements OnInit {
   logOut(): void {
     void this.credentials.logout().toPromise().then(() => {
       this.notificationService.success('Logged out successfully');
-      void this.router.navigate(['/home']);
+      // window.location.reload();
+      this.router.navigate(['/home']);
     });
   }
 /*  navOpen(): void {

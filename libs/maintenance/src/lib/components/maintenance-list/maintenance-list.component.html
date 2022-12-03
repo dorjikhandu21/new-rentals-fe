@@ -42,7 +42,7 @@
         <span class="primary-bg py-4 px-8 br-4 nr-white-color">3</span>
       </div>
       <div fxLayout="column" class="example-box m-16 px-16 pb-16 br-4 hand-cursor" (click)="openMaintenanceDetail()"
-           *ngFor="let item of open" cdkDrag>
+           *ngFor="let item of maintenancesMap?.['open']?.data" cdkDrag>
         <div fxLayoutAlign="space-between center" class="border-bottom">
           <div>
             <span class="chip--planned br-4 py-8 px-12 font-size-12 mr-8">planned</span>
@@ -95,7 +95,7 @@
         <h3 class="my-0">On Hold</h3>
         <span class="green-dragonfly-bg py-4 px-8 br-4 nr-white-color">3</span>
       </div>
-      <div fxLayout="column" class="example-box m-16 px-16 pb-16 br-4" *ngFor="let item of onhold" cdkDrag
+      <div fxLayout="column" class="example-box m-16 px-16 pb-16 br-4" *ngFor="let item of maintenancesMap?.['on_hold']?.data" cdkDrag
            (click)="openMaintenanceDetail()">
         <div fxLayoutAlign="space-between center" class="border-bottom">
           <div>
@@ -150,7 +150,7 @@
         <h3 class="my-0">In Progress</h3>
         <span class="purple-bg py-4 px-8 br-4 nr-white-color">3</span>
       </div>
-      <div fxLayout="column" class="example-box m-16 px-16 pb-16 br-4" *ngFor="let item of inprogress" cdkDrag
+      <div fxLayout="column" class="example-box m-16 px-16 pb-16 br-4" *ngFor="let item of maintenancesMap?.['in_progress']?.data" cdkDrag
            (click)="openMaintenanceDetail()">
         <div fxLayoutAlign="space-between center" class="border-bottom">
           <div>
@@ -204,7 +204,7 @@
         <h3 class="my-0">Completed</h3>
         <span class="success-bg py-4 px-8 br-4 nr-white-color">3</span>
       </div>
-      <div fxLayout="column" class="example-box m-16 px-16 pb-16 br-4" *ngFor="let item of completed" cdkDrag
+      <div fxLayout="column" class="example-box m-16 px-16 pb-16 br-4" *ngFor="let item of maintenancesMap?.['completed']?.data" cdkDrag
            (click)="openMaintenanceDetail()">
         <div fxLayoutAlign="space-between center" class="border-bottom">
           <div>
