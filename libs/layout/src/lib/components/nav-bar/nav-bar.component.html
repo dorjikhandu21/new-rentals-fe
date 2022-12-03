@@ -24,15 +24,28 @@
     </ul>
   </nav>
 
+  <mat-form-field appearance="outline" fxFlex="40" class="search-field">
+    <i matPrefix class="pi pi-search s-16 mb-4 py-8  pr-8 pl-12  primary-color"></i>
+    <input type="text" matInput placeholder="Search home" autocomplete="off" data-cy="search">
+  </mat-form-field>
+
   <div fxLayout="row">
 <!--
     <p class="boulder-color mr-20 mb-0">Manage Rental</p>
 -->
+    <p *ngIf="!authenticated" class="boulder-color pull-right mr-20 hand-cursor mb-0 mt-4" (click)="routeToAuth('signup')">{{'Add properties'}}</p>
     <button *ngIf="!authenticated" mat-button mat-stroked-button color="primary" class="primary-border pull-right mr-20" (click)="routeToAuth('')">{{'Log In'}}</button>
     <button *ngIf="!authenticated" mat-flat-button mat-button color="primary" class="pull-right" (click)="routeToAuth('signup')">{{'Sign Up'}}</button>
-    <div *ngIf="authenticated" fxLayoutAlign="center center">
-      <img class="user-profile my-8 mr-8" src="../assets/images/user.svg"/>
-      <mat-icon class="p-4 br-4 hand-cursor nr-white-fade-bg ver-middle s-16" [matMenuTriggerFor]="menu">
+
+    <div *ngIf="authenticated" fxLayoutAlign="center center" [matMenuTriggerFor]="menu" class="hand-cursor">
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <img class="user-profile my-8 mr-8" src="../assets/images/user.svg"/>
+        <div class="font-size-12 mr-12">
+          <p class="my-0 font-size-12 line-height--24">Sonam Dorji</p>
+          <p class="my-0 font-size-12 boulder-color line-height--24">Tenant</p>
+        </div>
+      </div>
+      <mat-icon class="p-4 br-4 hand-cursor nr-white-fade-bg ver-middle s-16" >
         expand_more</mat-icon>
       <mat-menu #menu="matMenu">
         <button mat-menu-item (click)="logOut()">

@@ -1,7 +1,7 @@
 <div fxLayout="row wrap" fxLayoutAlign="space-between" class="mx-24 mt-24">
-<div fxLayout="row wrap" fxFlex="85"  fxLayoutGap="12px">
+<div fxLayout="row wrap" fxLayoutAlign="start start" fxFlex="85"  fxLayoutGap="12px">
   <mat-form-field appearance="outline" fxFlex="40" class="search-field">
-    <i matPrefix class="pi pi-search s-20 py-8  pr-8 pl-12  primary-color"></i>
+    <i matPrefix class="pi pi-search s-16 mb-4 py-8  pr-8 pl-12  primary-color"></i>
     <input type="text" [formControl]="searchControl" matInput placeholder="Search user" autocomplete="off" data-cy="search">
   </mat-form-field>
 
@@ -14,9 +14,9 @@
       <mat-option [value]="rolesEnum.USER">User</mat-option>
     </mat-select>
   </mat-form-field>
-
-  <button mat-flat-button mat-button color="primary" fxFlex="15" class="mt-4" (click)="clearFilters()">
-    <mat-icon>clear</mat-icon>Clear Filters</button>
+  <button mat-button mat-stroked-button color="primary" fxFlex="15"
+          class="primary-border mt-4 full-width"  (click)="clearFilters()"> <mat-icon>clear</mat-icon>
+    Clear Filters</button>
 </div>
 
   <button mat-flat-button mat-button color="primary" fxFlex="15" class="mt-4" (click)="openInviteTenant()">
@@ -24,7 +24,7 @@
     {{'Invite Member'}}</button>
 </div>
 
-<div class="mx-24 nr-white-bg br-8 p-20 mt-28" *ngIf="!emptyData">
+<div class="mx-24 nr-white-bg br-8 p-20" *ngIf="!emptyData">
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z0 ">
 
     <!-- Checkbox Column -->

@@ -1,9 +1,12 @@
 @import 'mixins';
 
 body {
-  background-color: rgba($primary-color, 0.04) !important;
+  background-color: $white-fade !important;
   height: fit-content !important;
   overflow: hidden !important;
+  @include nr-media(lt-sm) {
+    background-color: rgba($primary-color, 0.04) !important;
+  }
 }
 
 p {
@@ -315,5 +318,11 @@ mat-icon {
     $boxshadow: 0 6px 10px 0 rgba($black-color, 0.2);
     @include nr-box-shadow($boxshadow);
   }
+}
+.user-profile-36 {
+  height: 36px;
+  width: 36px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 

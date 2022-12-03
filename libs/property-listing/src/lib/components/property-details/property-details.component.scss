@@ -17,3 +17,8 @@
 .add-button {
   border: 1px dashed $alto-gray;
 }
+.room-image {
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+}
