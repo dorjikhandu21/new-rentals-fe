@@ -24,6 +24,7 @@ export const UNIT_QUERY: TypedDocumentNode = gql`
         id
         lat
         lng
+        propertyName
         owner {
           email
           profile {

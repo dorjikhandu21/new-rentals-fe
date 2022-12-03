@@ -77,6 +77,6 @@ export class FlatDetailsComponent implements OnInit {
       data: {unit: this.unit}
     }).afterClosed().pipe(untilDestroyed(this),tap((tenant: Tenant) => {
       this.tenant = tenant;
-    }), switchMap(() => this.sharedFacadeService.getUnitDetails(this.activatedRoute.snapshot.params['id'])));
+    }), switchMap(() => this.sharedFacadeService.getUnitDetails(this.activatedRoute.snapshot.params['id']))).subscribe();
   }
 }
