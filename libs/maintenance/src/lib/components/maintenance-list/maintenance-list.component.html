@@ -47,8 +47,8 @@
            *ngFor="let item of maintenancesMap?.['open']?.data" cdkDrag>
         <div fxLayoutAlign="space-between center" class="border-bottom">
           <div>
-            <span class="chip--planned br-4 py-8 px-12 font-size-12 mr-8">planned</span>
-            <span class="chip--priority-high br-4 py-8 px-12 font-size-12">Priority: High</span>
+            <span class="chip--planned br-4 py-8 px-12 font-size-12 mr-8">{{item?.requestType}}</span>
+            <span class="chip--priority-high br-4 py-8 px-12 font-size-12">Priority: {{item?.priority}}</span>
           </div>
           <div class="mt-16 mb-12">
             <mat-menu #menu="matMenu">
@@ -68,15 +68,15 @@
         </div>
         <div fxLayoutAlign="space-between center" class="mt-16">
           <div><p class="boulder-color mb-4 font-size-12">Property</p>
-            <p class="font-size-12">Licha House</p></div>
+            <p class="font-size-12">{{item.property?.propertyName}}</p></div>
           <div><p class="boulder-color font-size-12 mb-4">Created On</p>
             <p class="font-size-12">23-23-2022</p></div>
         </div>
-        <p class="font-size-12">{{item}}</p>
+        <p class="font-size-12">{{item?.descriptions}}</p>
         <div fxLayoutAlign="space-between center" class="nr-white-fade-bg br-4 px-12">
           <div fxLayoutAlign="center center">
             <img class="user-profile-36 my-8 mr-8" src="../assets/images/user.svg"/>
-            <span class="font-size-12">Sonam Dorji</span>
+            <span class="font-size-12">{{item?.tenant?.user?.profile?.fullName}}</span>
           </div>
           <mat-icon matBadge="5" matBadgeSize="small" class="boulder-color mt-8 mr-12">message</mat-icon>
         </div>
@@ -102,8 +102,8 @@
            (click)="openMaintenanceDetail()">
         <div fxLayoutAlign="space-between center" class="border-bottom">
           <div>
-            <span class="chip--corrective br-4 py-8 px-12 font-size-12 mr-8">Corrective</span>
-            <span class="chip--priority-medium br-4 py-8 px-12 font-size-12">Priority: Medium</span>
+            <span class="chip--corrective br-4 py-8 px-12 font-size-12 mr-8">{{item?.requestType}}</span>
+            <span class="chip--priority-medium br-4 py-8 px-12 font-size-12">Priority: {{item?.priority}}</span>
           </div>
           <div class="mt-16 mb-12">
             <mat-menu #menu="matMenu">
@@ -123,15 +123,15 @@
         </div>
         <div fxLayoutAlign="space-between center" class="mt-16">
           <div><p class="boulder-color mb-4 font-size-12">Property</p>
-            <p  class="font-size-12">Licha House</p></div>
+            <p  class="font-size-12">{{item.property?.propertyName}}</p></div>
           <div><p class="boulder-color mb-4 font-size-12 ">Created On</p>
             <p  class="font-size-12">23-23-2022</p></div>
         </div>
-        <p class="font-size-12">{{item}}</p>
+        <p class="font-size-12">{{item?.descriptions}}</p>
         <div fxLayoutAlign="space-between center" class="nr-white-fade-bg br-4 px-12">
           <div fxLayoutAlign="center center">
             <img class="user-profile-36 my-8 mr-8" src="../assets/images/user.svg"/>
-            <span class="font-size-12">Sonam Dorji</span>
+            <span class="font-size-12">{{item?.tenant?.user?.profile?.fullName}}</span>
           </div>
           <mat-icon class="boulder-color">message</mat-icon>
         </div>
@@ -158,8 +158,8 @@
            (click)="openMaintenanceDetail()">
         <div fxLayoutAlign="space-between center" class="border-bottom">
           <div>
-            <span class="chip--planned br-4 py-8 px-12 font-size-12 mr-8">planned</span>
-            <span class="chip--priority-low br-4 py-8 px-12 font-size-12">priority: Low</span>
+            <span class="chip--planned br-4 py-8 px-12 font-size-12 mr-8">{{item?.requestType}}</span>
+            <span class="chip--priority-low br-4 py-8 px-12 font-size-12">priority: {{item?.priority}}</span>
           </div>
           <div class="mt-16 mb-12">
             <mat-menu #menu="matMenu">
@@ -179,15 +179,15 @@
         </div>
         <div fxLayoutAlign="space-between center" class="mt-16">
           <div><p class="boulder-color mb-4 font-size-12 ">Property</p>
-            <p  class="font-size-12 ">Licha House</p></div>
+            <p  class="font-size-12 ">{{item.property?.propertyName}}</p></div>
           <div><p class="boulder-color font-size-12  mb-4">Created On</p>
             <p  class="font-size-12 ">23-23-2022</p></div>
         </div>
-        <p class="font-size-12">{{item}}</p>
+        <p class="font-size-12">{{item?.descriptions}}</p>
         <div fxLayoutAlign="space-between center" class="nr-white-fade-bg br-4 px-12">
           <div fxLayoutAlign="center center">
             <img class="user-profile-36 my-8 mr-8" src="../assets/images/user.svg"/>
-            <span  class="font-size-12 ">Sonam Dorji</span>
+            <span  class="font-size-12 ">{{item?.tenant?.user?.profile?.fullName}}</span>
           </div>
           <mat-icon class="boulder-color">message</mat-icon>
         </div>
@@ -213,8 +213,8 @@
            (click)="openMaintenanceDetail()">
         <div fxLayoutAlign="space-between center" class="border-bottom">
           <div>
-            <span class="chip--planned br-4 py-8 px-12 font-size-12 mr-8">planned</span>
-            <span class="chip--priority-high br-4 py-8 px-12 font-size-12">Priority: High</span>
+            <span class="chip--planned br-4 py-8 px-12 font-size-12 mr-8">{{item?.requestType}}</span>
+            <span class="chip--priority-high br-4 py-8 px-12 font-size-12">Priority: {{item?.priority}}</span>
           </div>
           <div class="mt-16 mb-12">
             <mat-menu #menu="matMenu">
@@ -234,16 +234,16 @@
         </div>
         <div fxLayoutAlign="space-between center" class="mt-16">
           <div><p class="boulder-color mb-4 font-size-12 ">Property</p>
-            <p class="font-size-12 ">Licha House</p></div>
+            <p class="font-size-12 ">{{item.property?.propertyName}}</p></div>
 
           <div><p class="boulder-color  font-size-12 mb-4">Created On</p>
             <p  class="font-size-12 ">23-23-2022</p></div>
         </div>
-        <p class="font-size-12">{{item}}</p>
+        <p class="font-size-12">{{item?.descriptions}}</p>
         <div fxLayoutAlign="space-between center" class="nr-white-fade-bg br-4 px-12">
           <div fxLayoutAlign="center center">
             <img class="user-profile-36 my-8 mr-8" src="../assets/images/user.svg"/>
-            <span  class="font-size-12">SonamDorji</span>
+            <span  class="font-size-12">{{item?.tenant?.user?.profile?.fullName}}</span>
           </div>
           <mat-icon class="boulder-color">message</mat-icon>
         </div>

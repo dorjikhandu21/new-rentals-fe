@@ -13,6 +13,17 @@ export const MAINTENANCES_QUERY: TypedDocumentNode = gql`
       requestType
       state
       tenantId
+      property {
+        id
+        propertyName
+      }
+      tenant {
+        user {
+          profile {
+            fullName
+          }
+        }
+      }
     }
   }
 `
