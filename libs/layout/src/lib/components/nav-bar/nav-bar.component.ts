@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {CredentialsService, NotificationService, RolesEnum, User} from "@new-rentals/shared";
+import {AuthService} from "@new-rentals/auth";
 
 @Component({
   selector: 'new-rentals-nav-bar',
@@ -30,7 +31,7 @@ export class NavBarComponent implements OnInit {
     {name: 'Payments', icon: 'payments', routerLink: '/payments', authorized: [RolesEnum.OWNER]},
     {name: 'Application', icon: 'app_registration', routerLink: '/applications', authorized: [RolesEnum.OWNER]}];
 
-  constructor(private router: Router, private route: ActivatedRoute, private credentials: CredentialsService, private notificationService: NotificationService) {}
+  constructor(private router: Router, private route: ActivatedRoute, private authService: AuthService, private credentials: CredentialsService, private notificationService: NotificationService) {}
 
   ngOnInit(): void {
     this.currentUser = this.credentials.currentUser();
@@ -41,11 +42,14 @@ export class NavBarComponent implements OnInit {
   }
 
   logOut(): void {
-    void this.credentials.logout().toPromise().then(() => {
+    this.authService.logOut().toPromise().then(() => {
       this.notificationService.success('Logged out successfully');
-      // window.location.reload();
       this.router.navigate(['/home']);
-    });
+    })
+    // void this.credentials.logout().toPromise().then(() => {
+    //   this.notificationService.success('Logged out successfully');
+    //   window.location.reload();
+    // });
   }
 /*  navOpen(): void {
     this.navToggle.emit(true);

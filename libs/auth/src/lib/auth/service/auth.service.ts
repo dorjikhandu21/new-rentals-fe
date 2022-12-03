@@ -1,7 +1,7 @@
 import {Inject, Injectable} from '@angular/core';
 import {EndPointUris, ENV_TOKEN, EnvToken, StoreState} from "../models/auth.model";
 import {HttpClient, HttpResponse} from "@angular/common/http";
-import {map, mapTo, Observable} from "rxjs";
+import {map, mapTo, Observable, tap} from "rxjs";
 import {ObservableStore} from "@codewithdan/observable-store";
 import {CredentialsService, NotificationService, User} from "@new-rentals/shared";
 
@@ -20,7 +20,7 @@ export class AuthService extends ObservableStore<StoreState>{
   login(loginData: {user: {email: string, password: string}}): Observable<boolean> {
     // @ts-ignore
     return this.http.post(this.env.loginUrl, loginData, {observe: 'response'}).pipe(map((response: HttpResponse<any>) => {
-      const token = response.headers.get('authorization')
+      const token = response.headers.get('authorization');
       this.setCredentials({token: token as string, user: {...response.body}});
       this.notificationService.success('Logged in Successfully');
     }), map((response: boolean) => response));
@@ -28,6 +28,14 @@ export class AuthService extends ObservableStore<StoreState>{
 
   signUp(signUpData: any): Observable<boolean> {
     return this.http.post(this.env.signUpUrl, signUpData).pipe(mapTo(true))
+  }
+
+  logOut(): Observable<boolean> {
+    const credentialsKey: any = 'NewRentals.token';
+    // @ts-ignore
+    return this.http.delete(this.env.logOutUrl, {headers: {Authorization: JSON.parse(localStorage.getItem(credentialsKey))?.token}}).pipe(tap((res) => {
+      this.credentialsService.clearStorage();
+    }),mapTo(true))
   }
 
   setCredentials(user?: { token: string, user: User }): void {

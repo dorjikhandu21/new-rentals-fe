@@ -44,7 +44,9 @@ export class ApiInterceptor implements HttpInterceptor {
         );
     }
     // If it's not a graphql request, just give it to the next handler.
-    return next.handle(req).pipe( catchError((error) => {
+    return next.handle(req.clone({
+      withCredentials: false,
+    })).pipe( catchError((error) => {
       return this.handleErrorResponse(error)
     }));
   }

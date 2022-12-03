@@ -49,6 +49,10 @@ export class CredentialsService {
     return of(true);
   }
 
+  clearStorage(): void {
+    this.setCredentials();
+  }
+
   get unparsedCredentials(): string {
     return localStorage.getItem(credentialsKey) as unknown as string;
   }

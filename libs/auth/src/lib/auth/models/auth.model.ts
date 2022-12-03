@@ -14,6 +14,7 @@ export enum EndPointUris {
 
 export interface EnvToken {
   loginUrl: string;
+  logOutUrl: string;
   signUpUrl: string;
   graphqlUrl: string;
   googleMapsApiKey?: string;
