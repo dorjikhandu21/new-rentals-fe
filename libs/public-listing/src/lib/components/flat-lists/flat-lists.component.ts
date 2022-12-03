@@ -87,6 +87,7 @@ export class FlatListsComponent implements OnInit {
     })
     const url = 'https://newrentals.tk' + unit.attachments[0]?.url;
     const infowindow = new google.maps.InfoWindow({
+      maxWidth: 300,
       content: `<div style="width: 100%"><img src="${url}" style="height: 150px; width: 100%; object-fit: cover" alt="">` +
         `<p style="width: 100%; color:#757575; margin-top: 12px;">` +
         `${unit.property.neighbourhoodDetails}</p>` +
