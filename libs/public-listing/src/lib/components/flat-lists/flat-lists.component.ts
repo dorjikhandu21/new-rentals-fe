@@ -102,32 +102,10 @@ export class FlatListsComponent implements OnInit {
         map: this.map,
       });
     })
-    infowindow.addListener('click', () => {
-      this.routeToDetails()
-    })
-  }
 
-  dropMarker(event: any): void {
-    this.markers.push({
-      position: {
-        lat: event.latLng.lat(),
-        lng: event.latLng.lng(),
-      },
-      label: {
-        color: '#D7385E',
-        text: 'Marker label ' + (this.markers.length + 1),
-      },
-      title: 'Marker title ' + (this.markers.length + 1),
-      info: 'Marker info ' + (this.markers.length + 1),
-      options: {
-        animation: google.maps.Animation.DROP,
-      },
+    marker.addListener('mouseout', () => {
+      infowindow.close();
     })
-  }
-
-  openInfoWindow(marker: any): void {
-    // @ts-ignore
-    this.infoWindow.open();
   }
 
   routeToDetails(unit?: Unit): void {
