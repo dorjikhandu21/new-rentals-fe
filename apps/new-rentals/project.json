@@ -23,7 +23,13 @@
           "apps/new-rentals/src/styles.scss"
         ],
         "scripts": [],
-        "allowedCommonJsDependencies": ["lodash", "fast-json-stable-stringify", "ngx-google-places-autocomplete", "@codewithdan/observable-store", "google-libphonenumber"]
+        "allowedCommonJsDependencies": [
+          "lodash",
+          "fast-json-stable-stringify",
+          "ngx-google-places-autocomplete",
+          "@codewithdan/observable-store",
+          "google-libphonenumber"
+        ]
       },
       "configurations": {
         "production": {

@@ -23,17 +23,17 @@
         <mat-option [value]="occupancyTypeEnum.SingleFamilyHome">Single Family Home</mat-option>
       </mat-select>
     </mat-form-field>
-    <button mat-button mat-stroked-button color="primary" fxFlex="20"
-            class="primary-border mt-4 full-width"  (click)="clearFilters()"> <mat-icon>clear</mat-icon>
-      Clear Filters</button>
+    <span class="mr-20 nr-white-fade-bg mt-8 br-4 primary-border px-8 py-4 hand-cursor border-color"  [matTooltip]="'Clear Filters'" (click)="clearFilters()">
+      <i class="pi pi-times s-12 primary-color"></i>
+    </span>
   </div>
   <button mat-flat-button mat-button color="primary" fxFlex="16" fxFlex.lt-md="25" fxFlex.xs="100" class="mt-4 mb-20"
           (click)="routeToPropertyCreation()" *ngIf="currentRole === 3">
     <mat-icon>add</mat-icon>
     {{'Add Property'}}</button>
 </div>
-<div fxLayout="column" fxLayoutAlign="space-between start">
-  <div class="mx-24 card-container" fxLayout="row wrap" fxLayoutGap.gt-xs="20px" fxLayoutAlign="start start">
+<div fxLayout="row wrap">
+  <div fxFlex="100" class="mx-24 card-container full-width" fxLayout="row wrap" fxLayoutGap.gt-xs="20px" fxLayoutAlign="start start">
     <div *ngFor="let property of properties" class="property-card hand-cursor br-8 nr-white-bg nr-silver-border mb-24"
          fxFlex="23" fxFlex.xs="100" fxFlex.lt-md="47" fxFlex.lt-lg="30" (click)="routeToPropertyDetail(property)">
       <div class="image-container">
@@ -58,8 +58,8 @@
       </div>
     </div>
   </div>
-  <new-rentals-empty-page *ngIf="!loading && properties.length === 0"></new-rentals-empty-page>
-  <div fxLayoutAlign="center center" class="full-width background-none">
+  <new-rentals-empty-page fxFlex="100" *ngIf="!loading && properties.length === 0"></new-rentals-empty-page>
+  <div fxFlex="100" fxLayoutAlign="center center" class="full-width background-none">
     <mat-paginator [length]="50"
                    [pageSize]="5"
                    [pageSizeOptions]="[5, 10, 20, 50]"

@@ -25,6 +25,7 @@ import { TenantContractComponent } from './components/tenant-contract/tenant-con
 import {MatTabsModule} from "@angular/material/tabs";
 import {MatCardModule} from "@angular/material/card";
 import {RouterOutlet} from "@angular/router";
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 @NgModule({
     imports: [
@@ -49,6 +50,7 @@ import {RouterOutlet} from "@angular/router";
         MatTabsModule,
         MatCardModule,
         RouterOutlet,
+        MatTooltipModule,
     ],
   declarations: [
     UserListingComponent,

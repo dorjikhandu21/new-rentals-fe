@@ -51,6 +51,11 @@ const routes: Routes = [
     canActivate: []
   },
   {
+    path: 'payments',
+    loadChildren: () => import('../payment-base/payment-base.module').then(m => m.PaymentBaseModule),
+    canActivate: []
+  },
+  {
     path: '**',
     redirectTo: 'home'
   },

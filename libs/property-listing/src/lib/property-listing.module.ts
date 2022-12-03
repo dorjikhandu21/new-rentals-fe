@@ -25,27 +25,29 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 import { SharedModule } from '@new-rentals/shared';
 import { UnitDetailsComponent } from './components/unit-details/unit-details.component';
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule,
-    FlexLayoutModule,
-    MatInputModule,
-    MatSelectModule,
-    GoogleMapsModule,
-    MatCardModule,
-    MatIconModule,
-    MatButtonModule,
-    MatPaginatorModule,
-    MatStepperModule,
-    MatExpansionModule,
-    MatButtonToggleModule,
-    MatTabsModule,
-    ReactiveFormsModule,
-    GooglePlaceModule,
-    SharedModule,
-  ],
+    imports: [
+        CommonModule,
+        RouterModule,
+        FlexLayoutModule,
+        MatInputModule,
+        MatSelectModule,
+        GoogleMapsModule,
+        MatCardModule,
+        MatIconModule,
+        MatButtonModule,
+        MatPaginatorModule,
+        MatStepperModule,
+        MatExpansionModule,
+        MatButtonToggleModule,
+        MatTabsModule,
+        ReactiveFormsModule,
+        GooglePlaceModule,
+        SharedModule,
+        MatTooltipModule,
+    ],
   declarations: [
     PropertyListingComponent,
     PropertyDetailsComponent,

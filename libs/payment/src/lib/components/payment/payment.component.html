@@ -1,0 +1,121 @@
+<div fxLayout="row wrap" fxLayoutAlign="space-between center" class="mx-24 mt-24 application-container">
+  <div fxLayout="row wrap" fxFlex="80" fxLayoutAlign="start start" fxLayoutGap="12px">
+    <mat-form-field appearance="outline" fxFlex="40" class="search-field">
+      <i matPrefix class="pi pi-search s-16 mb-4 py-8  pr-8 pl-12  primary-color"></i>
+      <input type="text" matInput placeholder="Search payment by name or building" autocomplete="off" data-cy="search">
+    </mat-form-field>
+
+    <mat-form-field fxFlex="20" appearance="outline" class="pull-right">
+      <mat-icon matPrefix class="boulder-color">filter_3</mat-icon>
+      <mat-label>Building</mat-label>
+      <mat-select>
+        <mat-option>High</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <button mat-flat-button mat-button color="primary" fxFlex="16" class=" mb-20">
+<i class="pi pi-cog s-16"></i>    {{'Payment Setting'}}</button>
+</div>
+
+<div fxLayoutAlign="space-between" class="px-24">
+
+<div class="p-20 br-4 nr-silver-border nr-white-bg" fxFlex="24">
+  <p>TOTAL AMOUNT  RECEIVABLE</p>
+  <div  fxLayout="row" fxLayoutAlign="start center">
+    <svg class="mr-16 building-icon" width="45" height="45" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M28 16V0H8V8H0V36H16V28H20V36H36V16H28ZM8 32H4V28H8V32ZM8 24H4V20H8V24ZM8 16H4V12H8V16ZM16 24H12V20H16V24ZM16 16H12V12H16V16ZM16 8H12V4H16V8ZM24 24H20V20H24V24ZM24 16H20V12H24V16ZM24 8H20V4H24V8ZM32 32H28V28H32V32ZM32 24H28V20H32V24Z" fill="#FFBABA"/>
+    </svg>
+    <h1 class="primary-color m-0">NU. 1050000/-</h1>
+  </div>
+</div>
+<div class="p-20 br-4 nr-silver-border nr-white-bg" fxFlex="24">
+  <p>PAYMENT RECEIVED FROM TENANTS</p>
+  <div  fxLayout="row" fxLayoutAlign="start center">
+    <svg class="mr-16 building-icon" width="45" height="45" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M28 16V0H8V8H0V36H16V28H20V36H36V16H28ZM8 32H4V28H8V32ZM8 24H4V20H8V24ZM8 16H4V12H8V16ZM16 24H12V20H16V24ZM16 16H12V12H16V16ZM16 8H12V4H16V8ZM24 24H20V20H24V24ZM24 16H20V12H24V16ZM24 8H20V4H24V8ZM32 32H28V28H32V32ZM32 24H28V20H32V24Z" fill="#FFBABA"/>
+    </svg>
+    <h1 class="primary-color m-0">25/<span class="light-tex font-size-20t">45</span></h1>
+  </div>
+</div>
+<div class="p-20 br-4 nr-silver-border nr-white-bg" fxFlex="24">
+  <p>TOTAL AMOUNT  RECEVIED THIS MONTH </p>
+  <div  fxLayout="row" fxLayoutAlign="start center">
+    <svg class="mr-16 building-icon" width="45" height="45" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M28 16V0H8V8H0V36H16V28H20V36H36V16H28ZM8 32H4V28H8V32ZM8 24H4V20H8V24ZM8 16H4V12H8V16ZM16 24H12V20H16V24ZM16 16H12V12H16V16ZM16 8H12V4H16V8ZM24 24H20V20H24V24ZM24 16H20V12H24V16ZM24 8H20V4H24V8ZM32 32H28V28H32V32ZM32 24H28V20H32V24Z" fill="#FFBABA"/>
+    </svg>
+    <h1 class="primary-color m-0">NU. 50000/-</h1>
+  </div>
+</div>
+<div class="p-20 br-4 nr-silver-border nr-white-bg" fxFlex="24">
+  <p>TOTAL DUE AMOUNT </p>
+  <div  fxLayout="row" fxLayoutAlign="start center">
+    <svg class="mr-16 building-icon" width="45" height="45" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M28 16V0H8V8H0V36H16V28H20V36H36V16H28ZM8 32H4V28H8V32ZM8 24H4V20H8V24ZM8 16H4V12H8V16ZM16 24H12V20H16V24ZM16 16H12V12H16V16ZM16 8H12V4H16V8ZM24 24H20V20H24V24ZM24 16H20V12H24V16ZM24 8H20V4H24V8ZM32 32H28V28H32V32ZM32 24H28V20H32V24Z" fill="#FFBABA"/>
+    </svg>
+    <h1 class="primary-color m-0">NU. 10000/-</h1>
+  </div>
+</div>
+</div>
+
+<div class="m-24 nr-white-bg br-4 p-20">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z0 br-4">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name. </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="phone">
+      <th mat-header-cell *matHeaderCellDef> Phone </th>
+      <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="unit">
+      <th mat-header-cell *matHeaderCellDef> Unit/Building </th>
+      <td mat-cell *matCellDef="let element"> {{element.unit}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="journal">
+      <th mat-header-cell *matHeaderCellDef> Journal No. </th>
+      <td mat-cell *matCellDef="let element"> {{element.journal}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="bank">
+      <th mat-header-cell *matHeaderCellDef> Bank </th>
+      <td mat-cell *matCellDef="let element"> {{element.bank}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="received">
+      <th mat-header-cell *matHeaderCellDef> Received Date </th>
+      <td mat-cell *matCellDef="let element"> {{element.received}} </td>
+    </ng-container>
+
+
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="month">
+      <th mat-header-cell *matHeaderCellDef> Month </th>
+      <td mat-cell *matCellDef="let element"> {{element.month}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="total">
+      <th mat-header-cell *matHeaderCellDef> Total Amount </th>
+      <td mat-cell *matCellDef="let element"> {{element.total}} </td>
+    </ng-container>
+
+    <tr mat-header-row  class="nr-white-fade-bg" *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [length]="50"
+                 [pageSize]="5"
+                 [pageSizeOptions]="[5, 10, 20, 50]"
+                 aria-label="Select page">
+  </mat-paginator>
+</div>
