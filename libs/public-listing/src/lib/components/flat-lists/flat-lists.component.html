@@ -47,7 +47,13 @@
      </div>-->
 
   </div>
-
+  <div *ngIf="!units.length" class="text-center empty-data full-width" fxLayout="column" fxLayoutAlign="center center">
+    <img fxFlex="30" class="image" src="/../assets/images/empty-page.svg"
+         alt="Photo of a Shiba">
+    <h1 class="whs-silver-color">
+      {{'sorry, not found!'}}
+    </h1>
+  </div>
 </div>
 
     </div>
