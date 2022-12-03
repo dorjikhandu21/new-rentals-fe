@@ -8,7 +8,7 @@
             <h3 class="mb-0 text-truncate">Single Comfortable Home</h3>
             <div fxLayout="row">
             <i class="pi pi-trash edit-icons boulder-color hand-cursor" ngClass.gt-xs="s-18 p-8" ngClass.xs="s-16 p-4" [hidden]="units.controls.length === 1" (click)="deleteUnit(i); $event.stopPropagation()"></i>
-            <i class="pi pi-copy  edit-icons boulder-color hand-cursor" ngClass.gt-xs="s-18 p-8" ngClass.xs="s-16 p-4" (click)="copyUnit(i); $event.stopPropagation()"></i>
+            <i class="pi pi-copy  edit-icons boulder-color hand-cursor" ngClass.gt-xs="s-18 p-8" ngClass.xs="s-16 p-4" *ngIf="$any(basicDetail.get('occupancyType').value) === 'multi_family_home'" (click)="copyUnit(i); $event.stopPropagation()"></i>
             </div>
           </div>
         </mat-panel-title>

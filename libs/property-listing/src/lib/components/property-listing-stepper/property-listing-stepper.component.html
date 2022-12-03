@@ -33,7 +33,7 @@
       </mat-step>
       <mat-step [stepControl]="units" errorMessage="Unit details are required.">
         <ng-template matStepLabel>Unit and Pricing Details</ng-template>
-        <new-rentals-property-pricing-detail [units]="units"></new-rentals-property-pricing-detail>
+        <new-rentals-property-pricing-detail [units]="units" [basicDetail]="basicDetail"></new-rentals-property-pricing-detail>
         <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="py-12">
           <button mat-button mat-stroked-button color="primary" ngClass.xs="full-width mb-12" class="primary-border ">{{'Cancel'}}</button>
           <div ngClass.xs="full-width">

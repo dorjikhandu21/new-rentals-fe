@@ -10,6 +10,7 @@ import {CredentialsService, Unit} from "@new-rentals/shared";
 })
 export class PropertyPricingDetailComponent implements OnInit {
   @Input() units?: FormArray;
+  @Input() basicDetail?: FormGroup;
 
   constructor(private credentialsService: CredentialsService) {}
 
