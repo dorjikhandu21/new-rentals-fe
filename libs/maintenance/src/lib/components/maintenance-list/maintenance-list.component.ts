@@ -4,10 +4,17 @@ import {MatDialog} from "@angular/material/dialog";
 import {MaintenanceDetailModalComponent} from "../maintenance-detail-modal/maintenance-detail-modal.component";
 import {RequestMaintenanceModalComponent} from "../request-maintenance-modal/request-maintenance-modal.component";
 import {MaintenanceFacadeService} from "../../services/maintenance-facade.service";
-import {Maintenance, MaintenanceAttributes, MaintenanceStateEnum} from "@new-rentals/shared";
+import {
+  Maintenance,
+  MaintenanceAttributes,
+  MaintenanceStateEnum, PriorityEnum,
+  PropertyTypeEnum,
+  RequestTypeEnum
+} from "@new-rentals/shared";
 import {MaintenanceStoreEnum} from "../../models/maintenance.store";
 import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
 import {switchMap, tap} from "rxjs";
+import {MAINTENANCE_MAP} from "../../models/maintenance.models";
 
 @UntilDestroy()
 @Component({
@@ -16,19 +23,11 @@ import {switchMap, tap} from "rxjs";
   styleUrls: ['./maintenance-list.component.scss'],
 })
 export class MaintenanceListComponent implements OnInit {
-  maintenancesMap?: Record<string, {data: Maintenance[], openToInProgressApiCall?:string, onHoldToInProgressApiCall?: string, apiCall: string }>
-  open: any[] = ['There is pipe leakage in my area, I would like to request\n' +
-  'to solve it as soon as possible', 'There is pipe leakage in my area, I would like to request\n' +
-  'to solve it as soon as possible',];
-  onhold: any[] = ['There is pipe leakage in my area, I would like to request\n' +
-  'to solve it as soon as possible'];
-  inprogress: any[] = ['There is pipe leakage in my area, I would like to request\n' +
-  'to solve it as soon as possible', 'There is pipe leakage in my area, I would like to request\n' +
-  'to solve it as soon as possible',];
-  completed: any[] = ['There is pipe leakage in my area, I would like to request\n' +
-  'to solve it as soon as possible'];
+  maintenancesMap?: Record<string, {data: Maintenance[], openToInProgressApiCall?:string, onHoldToInProgressApiCall?: string, apiCall: string }> = MAINTENANCE_MAP
+  priorityTypeEnum = PriorityEnum;
+  requestTypeEnum = RequestTypeEnum;
 
-  drop(event: CdkDragDrop<string[]>):void {
+  drop(event: CdkDragDrop<Maintenance[]>):void {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
