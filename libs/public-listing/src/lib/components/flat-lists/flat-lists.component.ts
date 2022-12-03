@@ -85,8 +85,14 @@ export class FlatListsComponent implements OnInit {
       position: {lat: Number(unit.property.lat), lng: Number(unit?.property?.lng)},
       map: this.map
     })
+    const url = 'https://newrentals.tk' + unit.attachments[0]?.url;
     const infowindow = new google.maps.InfoWindow({
-      content: 'contentString',
+      content: `<div style="width: 100%"><img src="${url}" style="height: 150px; width: 100%; object-fit: cover" alt="">` +
+        `<p style="width: 100%; color:#757575; margin-top: 12px;">` +
+        `${unit.property.neighbourhoodDetails}</p>` +
+        `<p style="width: 100%; color:#757575; margin-top: 12px;">` +
+        `${unit.nosOfBed} ${unit?.nosOfBed && unit.nosOfBed > 1 ? 'Beds' : 'Bed'}, ${unit.nosOfBath} ${unit.nosOfBath && unit.nosOfBath > 1 ? 'Baths': 'Bath' }, 2 Corridor</p>` +
+        `<p>${unit.monthlyRent}/-</p></div>`,
     });
 
     marker.addListener('mouseover', () => {
