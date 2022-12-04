@@ -93,8 +93,15 @@ export const CURRENT_USER_QUERY: TypedDocumentNode = gql`
      property {
        id
      }
+     role {
+       roleName
+     }
      tenant {
        id
+     }
+     email
+     profile {
+       fullName
      }
    }
  }

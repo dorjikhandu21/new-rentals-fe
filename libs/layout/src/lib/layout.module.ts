@@ -27,6 +27,7 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatDialogModule} from "@angular/material/dialog";
 import {SharedModule} from "@new-rentals/shared";
+import {AuthService} from "@new-rentals/auth";
 
 @NgModule({
     imports: [

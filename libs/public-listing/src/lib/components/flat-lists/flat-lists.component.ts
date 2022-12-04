@@ -3,7 +3,14 @@ import {MapInfoWindow} from "@angular/google-maps";
 import {HttpClient} from "@angular/common/http";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Loader} from "@googlemaps/js-api-loader";
-import {CredentialsService, geocodeLatLng, SharedFacadeService, SharedStoreStateEnum, Unit} from "@new-rentals/shared";
+import {
+  CredentialsService,
+  geocodeLatLng,
+  SharedApiService,
+  SharedFacadeService,
+  SharedStoreStateEnum,
+  Unit
+} from "@new-rentals/shared";
 import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
 import {switchMap, tap} from "rxjs";
 import {UnitFacadeService} from "../services/unit-facade.service";
@@ -44,6 +51,7 @@ export class FlatListsComponent implements OnInit {
     this.sharedFacadeService.updateSpecificState({}, SharedStoreStateEnum.GEO_CODING_FILTERS);
     this.listenToApartmentListingFilters();
     this.loadMap();
+    this.sharedFacadeService.updateSpecificState(true, SharedStoreStateEnum.SHOW_SEARCH_BAR);
   }
 
   listenToApartmentListingFilters(): void {

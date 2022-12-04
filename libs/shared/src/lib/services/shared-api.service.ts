@@ -5,11 +5,11 @@ import {
   CreateTenantPayload, DeclineTenantPayload,
   InterviewTenantPayload, Tenant,
   TenantAttributes,
-  Unit
+  Unit, User
 } from "../models/graphql";
 import {Apollo, Mutation} from "apollo-angular";
 import {map} from "rxjs/operators";
-import {TENANTS_QUERY, UNIT_QUERY} from "../gql/queries";
+import {CURRENT_USER_QUERY, TENANTS_QUERY, UNIT_QUERY} from "../gql/queries";
 import {APPROVE_TENANT, CREATE_TENANT, DECLINE_TENANT, INTERVIEW_TENANT} from "../gql/mutations";
 
 @Injectable({
@@ -82,6 +82,17 @@ export class SharedApiService {
     }).pipe(map(response => {
       // @ts-ignore
       return response.data['tenant']
+    }))
+  }
+
+getCurrentUserProfile(id: string): Observable<User> {
+    return this.apollo.query<Query>({
+      query: CURRENT_USER_QUERY,
+      variables: {id},
+      fetchPolicy: "no-cache"
+    }).pipe(map(response => {
+      // @ts-ignore
+      return response.data?.['user']
     }))
   }
 }

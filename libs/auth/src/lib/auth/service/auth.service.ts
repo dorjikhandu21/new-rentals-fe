@@ -1,15 +1,15 @@
 import {Inject, Injectable} from '@angular/core';
 import {EndPointUris, ENV_TOKEN, EnvToken, StoreState} from "../models/auth.model";
 import {HttpClient, HttpResponse} from "@angular/common/http";
-import {map, mapTo, Observable, tap} from "rxjs";
+import {map, mapTo, Observable, switchMap, tap} from "rxjs";
 import {ObservableStore} from "@codewithdan/observable-store";
-import {CredentialsService, NotificationService, User} from "@new-rentals/shared";
+import {CredentialsService, NotificationService, SharedFacadeService, User} from "@new-rentals/shared";
 
 @Injectable()
 
 export class AuthService extends ObservableStore<StoreState>{
 
-  constructor(@Inject(ENV_TOKEN) private env: EnvToken, private http: HttpClient, private credentialsService: CredentialsService, private notificationService: NotificationService) {
+  constructor(@Inject(ENV_TOKEN) private env: EnvToken, private http: HttpClient, private credentialsService: CredentialsService, private notificationService: NotificationService, private sharedFacadeService: SharedFacadeService) {
     super({ trackStateHistory: true, includeStateChangesOnSubscribe: true });
     // eslint-disable-next-line @typescript-eslint/typedef
     const initialState = { token: null, user: null };
