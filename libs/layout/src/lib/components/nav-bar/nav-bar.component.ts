@@ -33,25 +33,19 @@ export class NavBarComponent implements OnInit {
     {name: 'Payments', icon: 'payments', routerLink: '/payments', authorized: [RolesEnum.OWNER]},
     {name: 'Application', icon: 'app_registration', routerLink: '/applications', authorized: [RolesEnum.OWNER]}];
 
-  constructor(private router: Router, private route: ActivatedRoute, private sharedFacadeService: SharedFacadeService, private authService: AuthService, private credentials: CredentialsService, private notificationService: NotificationService) {}
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private sharedFacadeService: SharedFacadeService, private authService: AuthService, private credentials: CredentialsService, private notificationService: NotificationService) {}
 
   ngOnInit(): void {
+    // @ts-ignore
+    this.shouldShowSearchBar = this.activatedRoute?.snapshot?.routeConfig?.children?.[0]?.path === 'list';
     this.currentUser = this.credentials.currentUser();
     this.sharedFacadeService.getCurrentUserProfile(this.currentUser?.id).subscribe();
-    this.listenToSearchBarToggle();
     this.listenToProfile();
   }
 
   routeToAuth(path: string): void {
     this.router.navigate([`auth/${path}`], {});
   }
-
-  listenToSearchBarToggle(): void {
-    this.sharedFacadeService.specificStateChange<boolean>(SharedStoreStateEnum.SHOW_SEARCH_BAR).pipe(tap(value => {
-      this.shouldShowSearchBar = value;
-    })).subscribe();
-  }
-
 
   listenToProfile(): void {
     this.sharedFacadeService.specificStateChange<User>(SharedStoreStateEnum.CURRENT_USER_PROFILE).pipe(tap((user) => {
@@ -69,8 +63,4 @@ export class NavBarComponent implements OnInit {
     //   window.location.reload();
     // });
   }
-/*  navOpen(): void {
-    this.navToggle.emit(true);
-    this.isOpen = !this.isOpen;
-  }*/
 }
