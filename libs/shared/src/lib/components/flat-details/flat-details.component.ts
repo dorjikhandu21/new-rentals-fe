@@ -10,6 +10,7 @@ import {Loader} from "@googlemaps/js-api-loader";
 import {MatDialog} from "@angular/material/dialog";
 import {ApplyTenantModalComponent} from "../apply-tenant-modal/apply-tenant-modal.component";
 import {STEPPER_GLOBAL_OPTIONS} from "@angular/cdk/stepper";
+import {CredentialsService} from "../../services/credentials.service";
 
 @UntilDestroy()
 @Component({
@@ -34,7 +35,7 @@ export class FlatDetailsComponent implements OnInit {
     declined: [ 'declined']
   }
   private map?: google.maps.Map;
-  constructor(private activatedRoute: ActivatedRoute, private matDialog: MatDialog, private gallery: Gallery, private sharedFacadeService: SharedFacadeService) {}
+  constructor(private activatedRoute: ActivatedRoute, private matDialog: MatDialog, private credentialsService: CredentialsService, private gallery: Gallery, private sharedFacadeService: SharedFacadeService) {}
 
   ngOnInit(): void {
     this.getUnitDetails();
@@ -77,6 +78,6 @@ export class FlatDetailsComponent implements OnInit {
       data: {unit: this.unit}
     }).afterClosed().pipe(untilDestroyed(this),tap((tenant: Tenant) => {
       this.tenant = tenant;
-    }), switchMap(() => this.sharedFacadeService.getUnitDetails(this.activatedRoute.snapshot.params['id']))).subscribe();
+    }), switchMap(() => this.sharedFacadeService.getUnitDetails(this.activatedRoute.snapshot.params['id'])), switchMap(() => this.sharedFacadeService.getCurrentUserProfile(this.credentialsService.currentUser()?.id))).subscribe();
   }
 }

@@ -19,21 +19,26 @@ import {AuthService} from "@new-rentals/auth";
 export class NavBarComponent implements OnInit {
   authenticated: boolean = this.credentials.isAuthenticated();
   currentUser?: User;
-  currentActiveLink?:string;
-  shouldShowSearchBar?:boolean;
+  shouldShowSearchBar?: boolean;
   profile?: User;
 
-  @Input() navBar?:{ name: string, link: string}[];
+  @Input() navBar?: { name: string, link: string }[];
 
-  navs: { name: string, icon: string, routerLink: string, authorized: RolesEnum[]  }[] = [
+  navs: { name: string, icon: string, routerLink: string, authorized: RolesEnum[] }[] = [
     {name: 'Home', icon: 'home', routerLink: '/home', authorized: [RolesEnum.USER, RolesEnum.TENANT, RolesEnum.OWNER]},
     {name: 'Tenants', icon: 'group', routerLink: '/users', authorized: [RolesEnum.OWNER]},
     {name: 'Properties', icon: 'domain', routerLink: '/properties', authorized: [RolesEnum.OWNER]},
-    {name: 'Maintenance', icon: 'control_camera', routerLink: '/maintenance', authorized: [RolesEnum.TENANT, RolesEnum.OWNER]},
+    {
+      name: 'Maintenance',
+      icon: 'control_camera',
+      routerLink: '/maintenance',
+      authorized: [RolesEnum.TENANT, RolesEnum.OWNER]
+    },
     {name: 'Payments', icon: 'payments', routerLink: '/payments', authorized: [RolesEnum.OWNER]},
     {name: 'Application', icon: 'app_registration', routerLink: '/applications', authorized: [RolesEnum.OWNER]}];
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute, private sharedFacadeService: SharedFacadeService, private authService: AuthService, private credentials: CredentialsService, private notificationService: NotificationService) {}
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private sharedFacadeService: SharedFacadeService, private authService: AuthService, private credentials: CredentialsService, private notificationService: NotificationService) {
+  }
 
   ngOnInit(): void {
     // @ts-ignore
@@ -49,7 +54,7 @@ export class NavBarComponent implements OnInit {
 
   listenToProfile(): void {
     this.sharedFacadeService.specificStateChange<User>(SharedStoreStateEnum.CURRENT_USER_PROFILE).pipe(tap((user) => {
-      this.profile = user
+      this.profile = user;
     })).subscribe()
   }
 
@@ -58,9 +63,5 @@ export class NavBarComponent implements OnInit {
       this.notificationService.success('Logged out successfully');
       this.router.navigate(['/home']);
     })
-    // void this.credentials.logout().toPromise().then(() => {
-    //   this.notificationService.success('Logged out successfully');
-    //   window.location.reload();
-    // });
   }
 }
