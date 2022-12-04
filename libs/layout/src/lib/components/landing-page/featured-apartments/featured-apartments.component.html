@@ -9,19 +9,19 @@
   <div fxFlex="70" fxFlex.xs="88" class="pt-28 featured-apartment">
     <h1 class="nr-black-color text-center mb-28">Featured Apartments</h1>
     <div fxLayout="row wrap" fxLayoutAlign="space-between center">
-      <div fxFlex="30" fxFlex.xs="100" class="card-container" *ngFor="let card of [1,2,3,4,5,6]">
+      <div fxFlex="30" fxFlex.xs="100" class="card-container" *ngFor="let card of cards">
         <div  class="apartment-card hand-cursor br-4  mb-24">
           <div class="card-main nr-white-bg pb-16 br-4 nr-silver-border">
             <div class="image-container">
               <span class="cost-label nr-white-color">Nu.15000/-</span>
-              <img class="image" src="../../../../../../../assets/images/flat.svg"
-                   alt="Photo of a Shiba Inu">
+              <img class="image" src="../../../../../../../assets/images/{{card.img}}"
+                   alt="House Photos">
             </div>
             <div class="mx-16 mt-16">
-              <p>Empty room in Babesa</p>
+              <p>{{card.name}}</p>
               <div fxLayout="row" class="boulder-color">
                 <i class="pi pi-map-marker s-20 mr-12"></i>
-                <p class="text-truncate">Babesa, Thimphu, Highway</p>
+                <p class="text-truncate">{{card.value}}</p>
               </div>
               <div fxLayout="row" class="boulder-color text-truncate">
                 <i class="pi pi-sitemap s-20 mr-12"></i>

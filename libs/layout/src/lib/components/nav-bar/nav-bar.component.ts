@@ -24,7 +24,7 @@ export class NavBarComponent implements OnInit {
   @Input() navBar?:{ name: string, link: string}[];
 
   navs: { name: string, icon: string, routerLink: string, authorized: RolesEnum[]  }[] = [
-    {name: 'Dashboard', icon: 'insert_chart_outlined', routerLink: '/dashboard', authorized: [RolesEnum.USER, RolesEnum.TENANT, RolesEnum.OWNER]},
+    {name: 'Home', icon: 'home', routerLink: '/dashboard', authorized: [RolesEnum.USER, RolesEnum.TENANT, RolesEnum.OWNER]},
     {name: 'Tenants', icon: 'group', routerLink: '/users', authorized: [RolesEnum.OWNER]},
     {name: 'Properties', icon: 'domain', routerLink: '/properties', authorized: [RolesEnum.OWNER]},
     {name: 'Maintenance', icon: 'control_camera', routerLink: '/maintenance', authorized: [RolesEnum.TENANT, RolesEnum.OWNER]},
