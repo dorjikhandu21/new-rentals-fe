@@ -44,7 +44,7 @@ export class NavBarComponent implements OnInit {
     // @ts-ignore
     this.shouldShowSearchBar = this.activatedRoute?.snapshot?.routeConfig?.children?.[0]?.path === 'list';
     this.currentUser = this.credentials.currentUser();
-    this.sharedFacadeService.getCurrentUserProfile(this.currentUser?.id).subscribe();
+    this.credentials.isAuthenticated() && this.sharedFacadeService.getCurrentUserProfile(this.currentUser?.id).subscribe();
     this.listenToProfile();
   }
 
