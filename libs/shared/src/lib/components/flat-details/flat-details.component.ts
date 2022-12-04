@@ -10,6 +10,7 @@ import {Loader} from "@googlemaps/js-api-loader";
 import {MatDialog} from "@angular/material/dialog";
 import {ApplyTenantModalComponent} from "../apply-tenant-modal/apply-tenant-modal.component";
 import {STEPPER_GLOBAL_OPTIONS} from "@angular/cdk/stepper";
+import {MessageModalComponent} from "../message-modal/message-modal.component";
 
 @UntilDestroy()
 @Component({
@@ -78,5 +79,12 @@ export class FlatDetailsComponent implements OnInit {
     }).afterClosed().pipe(untilDestroyed(this),tap((tenant: Tenant) => {
       this.tenant = tenant;
     }), switchMap(() => this.sharedFacadeService.getUnitDetails(this.activatedRoute.snapshot.params['id']))).subscribe();
+  }
+
+  openMessageModal() : void {
+    this.matDialog.open(MessageModalComponent, {
+      panelClass: ['modal-sm', 'full-width-modal',  'discussion-modal'],
+      position: { right: '0' }
+    })
   }
 }

@@ -5,14 +5,12 @@
     </span>
     <div fxFlex="60" fxLayout="row wrap">
       <h1 class="nr-black-color" fxFlex="100">{{unit?.property?.propertyName}}</h1>
-      <div class="boulder-color" fxLayout="row" fxFlex="90" fxLayoutAlign="space-between">
-        <p class="text-truncate">
+      <div class="boulder-color" fxLayout="row" fxFlex="90">
+        <p class="text-truncate pr-20 border-right">
           <i class="pi pi-map-marker s-20 mr-4 ver-sub mr-8"></i>
           {{ unit?.property?.neighbourhoodDetails}}</p>
-        <hr>
-        <p class="mt-4 white-space--nowrap px-8"><span class="nr-black-color">{{unit && unit.nosOfBed}}</span> Bed Rooms</p>
-        <hr/>
-        <p class="mt-4  white-space--nowrap "><span class="nr-black-color">{{unit && unit.nosOfBath}}</span> Baths</p>
+        <p class="white-space--nowrap pr-20 border-right pl-20"><span class="nr-black-color">{{unit && unit.nosOfBed}}</span> Bed Rooms</p>
+        <p class="pl-20  white-space--nowrap "><span class="nr-black-color">{{unit && unit.nosOfBath}}</span> Baths</p>
       </div>
     </div>
   </div>
@@ -105,8 +103,13 @@
         <button mat-flat-button mat-button color="primary" class="full-width mt-24" *ngIf="unit?.currentUserTenant?.length === 0"
                 (click)="openApplyTenantModal()">{{'Apply For Tenant'}}</button>
       </div>
-      <button mat-button mat-stroked-button color="primary"
-              class="primary-border mt-16 full-width">{{'Schedule a Tour'}}</button>
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <button mat-button mat-stroked-button color="primary"
+                class="primary-border mt-16">{{'Schedule a Tour'}}</button>
+        <button mat-button mat-stroked-button color="primary" class="primary-border mt-20" (click)="openMessageModal()"
+        ><i class="s-20 ver-middle mr-8 pi pi-comments"></i></button>
+      </div>
+
       <p class="warn-color mt-20 nr-white-fade-bg br-4 p-8" fxLayoutAlign="start center"><i
         class="pi pi-info-circle s-20 mr-4"> </i> There are {{unit?.nosOfApplicants}} applications ahead of you.</p>
     </div>
