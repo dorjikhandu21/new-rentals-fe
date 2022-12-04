@@ -39,7 +39,7 @@
       <div class="image-container">
         <div class="label">
           <span class="label__text nr-white-color label-green-bg mr-12">Nu.15000/-</span>
-          <span class="label__text nr-white-color primary-bg">Single Unit</span>
+          <span class="label__text nr-white-color" [ngClass]="property?.occupancyType === 'single_family_home' ? 'primary-bg' : 'multi-purple-bg' ">{{occupancyTypeEnumMap[property?.occupancyType]}}</span>
         </div>
         <img mat-card-image class="image"
              [src]="property.attachments[0]?.url ? ('https://newrentals.tk' + property.attachments[0]?.url) : '../../../../../../../assets/images/flat.svg'"

@@ -36,6 +36,10 @@ export class PropertyListingComponent implements OnInit {
   properties: Property[] = [];
   occupancyTypeEnum = OccupancyTypeEnum;
   propertyTypeEnum = PropertyTypeEnum;
+  occupancyTypeEnumMap: any = {
+    'single_family_home' : 'Single Family Home',
+    'multi_family_home' : 'Multi Family Home'
+  }
   propertyFilters: PropertiesFilterAttributes = {
     limitPerPage: 5,
     offsetPage: 0
