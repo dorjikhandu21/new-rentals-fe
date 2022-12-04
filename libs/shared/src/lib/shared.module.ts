@@ -13,56 +13,67 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FilePickerComponent } from './components/file-picker/file-picker.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { EmptyPageComponent } from './components/empty-page/empty-page.component';
-import {GoogleMapsModule} from "@angular/google-maps";
-import {MatButtonModule} from "@angular/material/button";
-import {MatMenuModule} from "@angular/material/menu";
-import {GalleryModule} from "ng-gallery";
-import {ApplyTenantModalComponent} from "./components/apply-tenant-modal/apply-tenant-modal.component";
-import {MatDialogModule} from "@angular/material/dialog";
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatSelectModule} from "@angular/material/select";
-import {MatDatepickerModule} from "@angular/material/datepicker";
-import {MatInputModule} from "@angular/material/input";
-import {MatNativeDateModule} from "@angular/material/core";
-import {MatStepperModule} from "@angular/material/stepper";
-import {ReactiveFormsModule} from "@angular/forms";
+import { GoogleMapsModule } from '@angular/google-maps';
+import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
+import { GalleryModule } from 'ng-gallery';
+import { ApplyTenantModalComponent } from './components/apply-tenant-modal/apply-tenant-modal.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatStepperModule } from '@angular/material/stepper';
+import { ReactiveFormsModule } from '@angular/forms';
 import { AuthorizedDirective } from './directives/authorized.directive';
+import { MessageModalComponent } from './components/message-modal/message-modal.component';
+import {MatDividerModule} from "@angular/material/divider";
 
 @NgModule({
-    imports: [
-        CommonModule,
-        MatIconModule,
-        TranslateModule,
-        MatSnackBarModule,
-        FlexLayoutModule,
-        GoogleMapsModule,
-        MatButtonModule,
-        MatMenuModule,
-        GalleryModule.withConfig({
-            // thumbView: 'contain',
-        }),
-        MatDialogModule,
-        MatFormFieldModule,
-        MatSelectModule,
-        MatDatepickerModule,
-        MatInputModule,
-        MatNativeDateModule,
-        ReactiveFormsModule,
-        MatStepperModule
-    ],
-    declarations: [
-        AdvancedFilterComponent,
-        NavBarComponent,
-        NotificationComponent,
-        SearchBarComponent,
-        PublicListingComponent,
-        FlatDetailsComponent,
-        FilePickerComponent,
-    LoaderComponent,
-    EmptyPageComponent, ApplyTenantModalComponent, AuthorizedDirective
+  imports: [
+    CommonModule,
+    MatIconModule,
+    TranslateModule,
+    MatSnackBarModule,
+    FlexLayoutModule,
+    GoogleMapsModule,
+    MatButtonModule,
+    MatMenuModule,
+    GalleryModule.withConfig({
+      // thumbView: 'contain',
+    }),
+    MatDialogModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatNativeDateModule,
+    ReactiveFormsModule,
+    MatStepperModule,
+    MatDividerModule,
   ],
-    exports: [FilePickerComponent, LoaderComponent, EmptyPageComponent, AuthorizedDirective],
+  declarations: [
+    AdvancedFilterComponent,
+    NavBarComponent,
+    NotificationComponent,
+    SearchBarComponent,
+    PublicListingComponent,
+    FlatDetailsComponent,
+    FilePickerComponent,
+    LoaderComponent,
+    EmptyPageComponent,
+    ApplyTenantModalComponent,
+    AuthorizedDirective,
+    MessageModalComponent,
+  ],
+  exports: [
+    FilePickerComponent,
+    LoaderComponent,
+    EmptyPageComponent,
+    AuthorizedDirective,
+  ],
   providers: [],
-  entryComponents: [ApplyTenantModalComponent]
+  entryComponents: [ApplyTenantModalComponent, MessageModalComponent],
 })
 export class SharedModule {}

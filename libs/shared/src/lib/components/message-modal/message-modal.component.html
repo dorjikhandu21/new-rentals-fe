@@ -1,0 +1,77 @@
+<div fxLayout="row" class="boulder-color pt-20">
+  <mat-icon class="s-24 pl-24 hand-cursor">arrow_back</mat-icon>
+  <h1 fxFlex="90" class="my-0 pb-20 text-center pr-24">{{'Message' | translate}}</h1>
+</div>
+<mat-divider></mat-divider>
+
+<mat-dialog-content class="pt-24 border-bottom discussion-modal">
+  <div fxLayout="column" fxLayoutAlign="end end" class="py-16 discussion-content full-width">
+
+    <!--    &lt;!&ndash; Message from our side should be binded here &ndash;&gt;-->
+    <div class="mb-8 br-12 fit-content full-width">
+      <div fxLayout="row" fxLayoutAlign="start center" fxLayoutAlign.lt-sm="center" class="mb-16 pull-left full-width">
+        <div fxFlex="8" class="mr-16">
+          <img class="profile-img" src="../assets/images/sush.jpeg" alt="profile image">
+        </div>
+        <div fxFlex="75" data-cy="discussion">
+          <p class="mb-4 boulder-color pl-8">Sushmita Rai</p>
+          <div class="br-12 self-message fit-content">
+            <p class="p-12 my-0">I want to ask about the flat la.</p>
+          </div>
+          <p class="light-gray mt-4 pl-8">1 mins ago</p>
+        </div>
+      </div>
+
+
+      <div fxLayout="row" fxLayoutAlign="end" class="pull-right full-width">
+        <div fxFlex="75" fxLayout="row wrap" fxLayoutAlign="end" data-cy="addFile">
+          <div class="br-12 primary-bg fit-content">
+            <p class="p-12 my-0 nr-white-color fit-content">Hi Dechen, Thank you I have received your email thank you.</p>
+          </div>
+          <p fxFlex="100" class="light-gray mt-4 mb-0 text-right pr-8">12:00 pm</p>
+        </div>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="start center" fxLayoutAlign.lt-sm="center" class="mb-16 pull-left full-width">
+        <div fxFlex="8" class="mr-16">
+          <img class="profile-img" src="../assets/images/sush.jpeg" alt="profile image">
+        </div>
+        <div fxFlex="75" data-cy="discussion">
+          <p class="mb-4 boulder-color pl-8">Sushmita Rai</p>
+          <div class="br-12 self-message fit-content">
+            <p class="p-12 my-0">I want to ask about the flat la.</p>
+          </div>
+          <p class="light-gray mt-4 pl-8">1 mins ago</p>
+        </div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="end" class="pull-right full-width">
+        <div fxFlex="75" fxLayout="row wrap" fxLayoutAlign="end" data-cy="addFile">
+          <div class="br-12 primary-bg fit-content">
+            <p class="p-12 my-0 nr-white-color fit-content">Hi Dechen, Thank you I have received your email thank you.</p>
+          </div>
+          <p fxFlex="100" class="light-gray mt-4 mb-0 text-right pr-8">12:00 pm</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</mat-dialog-content>
+
+<div class="whs-modal-footer">
+  <mat-dialog-actions >
+    <div fxLayout="row" fxLayoutAlign="center center" class="px-24 pt-12 full-width">
+      <div fxFlex="75">
+        <mat-form-field appearance="outline" class="mr-12 full-width discussion-chat"  data-cy="message">
+        <textarea matInput
+                  placeholder="Type Message"
+                  cdkTextareaAutosize
+                  cdkAutosizeMinRows="1"
+                  cdkAutosizeMaxRows="2">
+      </textarea>
+        </mat-form-field>
+      </div>
+      <i class="pi pi-send s-20 primary-color hand-cursor mb-20 ml-24" data-cy="send"></i>
+    </div>
+
+  </mat-dialog-actions>
+</div>
