@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {BaseFacadeService} from "./base-facade.service";
 import {SharedStateService} from "./shared-state.service";
 import {SharedStoreState, SharedStoreStateEnum} from "../models/shared.store";
-import {Observable, tap} from "rxjs";
+import {mapTo, Observable, tap} from "rxjs";
 import {
   ApproveTenantPayload,
   CreateTenantPayload, DeclineTenantPayload,
@@ -27,6 +27,12 @@ export class SharedFacadeService extends BaseFacadeService<SharedStateService, S
     return this.sharedApiService.getUnitDetails(id).pipe(tap( (unit) => {
       this.updateSpecificState(unit, SharedStoreStateEnum.UNIT);
     }));
+  }
+
+  getCurrentUserProfile(id: string): Observable<boolean> {
+    return this.sharedApiService.getCurrentUserProfile(id).pipe(tap((user) => {
+      this.updateSpecificState(user, SharedStoreStateEnum.CURRENT_USER_PROFILE);
+    }), mapTo(true));
   }
 
   getTenants(): Observable<Tenant[]> {
