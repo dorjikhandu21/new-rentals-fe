@@ -31,7 +31,7 @@ export class PropertyLocationComponent implements OnInit {
 
   loadMap(): void {
     const loader: Loader = new Loader({
-      apiKey: 'AIzaSyADYSLqh0WTnN9Db6-GOPpE-jo9FOyrJ3c',
+      apiKey: '',
     })
     loader.load().then(() => {
       this.map = new google.maps.Map(document.getElementById('map') as HTMLElement, this.options);
