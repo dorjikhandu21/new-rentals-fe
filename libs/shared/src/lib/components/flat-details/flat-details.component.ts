@@ -50,7 +50,7 @@ export class FlatDetailsComponent implements OnInit {
   listenToUnitsChange(): void {
     this.sharedFacadeService.specificStateChange<Unit>(SharedStoreStateEnum.UNIT).pipe(untilDestroyed(this), tap(unit => {
       this.unit = unit;
-      this.items = unit.attachments.map(attachment => new ImageItem({src: 'https://newrentals.tk' + attachment.url, thumb: 'https://newrentals.tk' + attachment.url}))
+      this.items = unit.attachments.map(attachment => new ImageItem({src: 'https://newrentals.onrender.com' + attachment.url, thumb: 'https://newrentals.onrender.com' + attachment.url}))
     })).toPromise().then(() => {
       this.loadMap();
     });

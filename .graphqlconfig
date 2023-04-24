@@ -4,7 +4,7 @@
   "extensions": {
     "endpoints": {
       "Development": {
-        "url": "https://newrentals.tk/api/v1/graphql",
+        "url": "https://newrentals.onrender.com/api/v1/graphql",
         "headers": {
           "user-agent": "JS GraphQL",
           "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI0YjY4Y2QyMy1iZDlmLTQ0NTEtOTkyZC1lOTEzMTZhMWUwNWEiLCJzdWIiOiI2Iiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjcwMDAwMzY4LCJleHAiOjE2NzAxNzMxNjh9.RQ-qybR0kEb56SnHvvvBa6zfvIHQvlh1eJU32RJpr44"

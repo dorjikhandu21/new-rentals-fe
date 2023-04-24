@@ -7,7 +7,7 @@ import {from} from "apollo-link";
 const omitDeep = require('omit-deep-lodash');
 
 export const createApollo = (httpLink: HttpLink) => ({
-  link: from([httpLink.create({ uri: 'https://newrentals.tk/api/v1/graphql'})]),
+  link: from([httpLink.create({ uri: 'https://newrentals.onrender.com/api/v1/graphql'})]),
   cache: new InMemoryCache()
 });
 @NgModule({

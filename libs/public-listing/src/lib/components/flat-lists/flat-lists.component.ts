@@ -93,7 +93,7 @@ export class FlatListsComponent implements OnInit {
       position: {lat: Number(unit.property.lat), lng: Number(unit?.property?.lng)},
       map: this.map
     })
-    const url = 'https://newrentals.tk' + unit.attachments[0]?.url;
+    const url = 'https://newrentals.onrender.com' + unit.attachments[0]?.url;
     const infowindow = new google.maps.InfoWindow({
       maxWidth: 300,
       content: `<div style="width: 100%"><img src="${url}" style="height: 150px; width: 100%; object-fit: cover" alt="">` +

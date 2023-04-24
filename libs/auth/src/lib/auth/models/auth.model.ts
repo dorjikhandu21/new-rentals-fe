@@ -8,8 +8,8 @@ export type AuthType =
   | 'forgotPassword';
 
 export enum EndPointUris {
-  LOGIN_URI = 'https://newrentals.tk/api/v1/users/sign_in',
-  SIGN_UP_URI = 'https://newrentals.tk/api/v1/users'
+  LOGIN_URI = 'https://newrentals.onrender.com/api/v1/users/sign_in',
+  SIGN_UP_URI = 'https://newrentals.onrender.com/api/v1/users'
 }
 
 export interface EnvToken {
